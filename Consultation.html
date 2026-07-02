@@ -112,7 +112,7 @@
           <div class="eyebrow" id="eyebrow">Consultation intake</div>
           <h1 id="intakeTitle">Define the <span>path</span> forward.</h1>
           <p class="lead" id="intakeLead">Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.</p>
-          <div class="signal-grid" aria-label="Consultation fit">
+          <div class="signal-grid" id="signalGrid" aria-label="Consultation fit">
             <div class="signal"><i>01</i><b>Lifecycle strategy across clinical, medical, and commercial decisions.</b></div>
             <div class="signal"><i>02</i><b>Senior support for the moments where direction needs to hold together.</b></div>
             <div class="signal"><i>03</i><b>Clear next steps for launch, portfolio, diligence, and growth planning.</b></div>
@@ -122,11 +122,11 @@
         <div class="form-card">
           <span class="fig">FIG. INTAKE</span>
           <div class="form-head">
-            <h2>Share the strategic context.</h2>
-            <p>Most fields are optional, but more context helps make the first conversation sharper.</p>
+            <h2 id="formHeadTitle">Share the strategic context.</h2>
+            <p id="formHeadNote">Most fields are optional, but more context helps make the first conversation sharper.</p>
           </div>
 
-          <form action="https://formsubmit.co/aneeshpatel1@gmail.com" method="POST">
+          <form action="https://formsubmit.co/aneeshpatel1@gmail.com" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_subject" id="subjField" value="New Marga Partners consultation request">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Marga Partners. Your intake has been received and Marga Partners will follow up shortly.">
@@ -165,6 +165,7 @@
               </div>
             </fieldset>
 
+            <div id="standardFields">
             <fieldset>
               <legend>Fit</legend>
               <div class="fields">
@@ -244,6 +245,76 @@
                 </div>
               </div>
             </fieldset>
+            </div>
+
+            <div id="consortiumFields" hidden>
+            <fieldset>
+              <legend>Background</legend>
+              <div class="fields">
+                <div class="field">
+                  <label for="credentials">Credentials</label>
+                  <input id="credentials" name="credentials" placeholder="e.g. MD, PharmD, MBA">
+                </div>
+                <div class="field">
+                  <label for="expertise">Domain of expertise</label>
+                  <select id="expertise" name="expertise_domain">
+                    <option value="">Select one</option>
+                    <option>Clinical practice / injector</option>
+                    <option>Dermatology</option>
+                    <option>Plastic &amp; reconstructive surgery</option>
+                    <option>R&amp;D / clinical science</option>
+                    <option>Regulatory / medical affairs</option>
+                    <option>Commercial / marketing</option>
+                    <option>Investment / finance</option>
+                    <option>Data / analytics</option>
+                    <option>Media / KOL / education</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="years">Years in the industry</label>
+                  <select id="years" name="years_experience">
+                    <option value="">Select one</option>
+                    <option>Under 3 years</option>
+                    <option>3 to 7 years</option>
+                    <option>8 to 15 years</option>
+                    <option>15+ years</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="links">LinkedIn or portfolio</label>
+                  <input id="links" name="links" placeholder="Link to your profile or work">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Contribution</legend>
+              <div class="fields">
+                <div class="field">
+                  <label for="interest">Partnership topic of interest</label>
+                  <select id="interest" name="partnership_interest">
+                    <option value="">Select one</option>
+                    <option>Content &amp; commentary</option>
+                    <option>Product / index development</option>
+                    <option>Advisory board</option>
+                    <option>Co-development / ventures</option>
+                    <option>Research collaboration</option>
+                    <option>Speaking / events</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="cv">Resume / CV</label>
+                  <input id="cv" name="attachment" type="file" accept=".pdf,.doc,.docx">
+                </div>
+                <div class="field full">
+                  <label for="background">Tell us about your background and what you would contribute</label>
+                  <textarea id="background" name="background_summary"></textarea>
+                </div>
+              </div>
+            </fieldset>
+            </div>
 
             <label class="check-row">
               <input type="checkbox" name="permission_to_contact" value="yes" required>
@@ -269,16 +340,39 @@
   <script>
   (function(){
     var TYPES={
-      consultation:{eyebrow:'Consultation intake',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request'},
-      consortium:{eyebrow:'Consortium application',title:'Join the <span>consortium</span>.',lead:'KOLs, analysts, operators, and executives shaping where aesthetics goes next: tell Marga how you would contribute. Consortium members inform the reads and are featured in them.',challenge:'How would you contribute to the consortium?',subject:'New Marga Consortium application'},
-      waitlist:{eyebrow:'Product waitlist',title:'Get <span>early access</span>.',lead:'Marga\u2019s productized intelligence \u2014 scorecards, category indices, and diligence reads \u2014 is launching soon. Join the waitlist to be first in line and help shape what ships.',challenge:'Which product or category matters most to you, and why?',subject:'New Marga product waitlist request'},
-      index:{eyebrow:'Commission an index',title:'Put it on the <span>index</span>.',lead:'Commission a P5 scorecard, a category index, or an independent diligence read. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request'},
-      other:{eyebrow:'General inquiry',title:'Start a <span>conversation</span>.',lead:'Tell Marga what prompted you to reach out, and it will point you to the right next step.',challenge:'What can Marga help you with?',subject:'New Marga Partners inquiry'}
+      consultation:{eyebrow:'Consultation intake',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      consortium:{eyebrow:'Consortium application',title:'Join the <span>consortium</span>.',lead:'KOLs, clinicians, operators, analysts, and investors shaping where aesthetics goes next: tell Marga who you are and how you would contribute. Consortium members inform the reads and are featured in them.',subject:'New Marga Consortium application',mode:'consortium',headTitle:'Tell us about you.',headNote:'Share your background and where you would want to contribute. A CV is welcome but optional.',signals:['Credentials and domain expertise across clinical, commercial, and scientific ground.','A point of view that sharpens the reads, and a name featured alongside them.','A standing seat in shaping Marga\u2019s frameworks, indices, and commentary.']},
+      waitlist:{eyebrow:'Product waitlist',title:'Get <span>early access</span>.',lead:'Marga\u2019s productized intelligence \u2014 scorecards, category indices, and diligence reads \u2014 is launching soon. Join the waitlist to be first in line and help shape what ships.',challenge:'Which product or category matters most to you, and why?',subject:'New Marga product waitlist request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      index:{eyebrow:'Commission an index',title:'Put it on the <span>index</span>.',lead:'Commission a P5 scorecard, a category index, or an independent diligence read. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      other:{eyebrow:'General inquiry',title:'Start a <span>conversation</span>.',lead:'Tell Marga what prompted you to reach out, and it will point you to the right next step.',challenge:'What can Marga help you with?',subject:'New Marga Partners inquiry',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'}
     };
     var eb=document.getElementById('eyebrow'),ti=document.getElementById('intakeTitle'),ld=document.getElementById('intakeLead'),cl=document.getElementById('challengeLabel'),sj=document.getElementById('subjField');
-    function apply(t){var c=TYPES[t]||TYPES.consultation;if(eb)eb.textContent=c.eyebrow;if(ti)ti.innerHTML=c.title;if(ld)ld.textContent=c.lead;if(cl)cl.textContent=c.challenge;if(sj)sj.value=c.subject;}
+    var standardBlock=document.getElementById('standardFields'),consortiumBlock=document.getElementById('consortiumFields'),headTitle=document.getElementById('formHeadTitle'),headNote=document.getElementById('formHeadNote'),signalGrid=document.getElementById('signalGrid');
+    function setBlock(block,on){
+      if(!block)return;
+      block.hidden=!on;
+      block.querySelectorAll('input,select,textarea').forEach(function(el){el.disabled=!on;});
+    }
+    function apply(t){
+      var c=TYPES[t]||TYPES.consultation;
+      if(eb)eb.textContent=c.eyebrow;
+      if(ti)ti.innerHTML=c.title;
+      if(ld)ld.textContent=c.lead;
+      if(cl&&c.challenge)cl.textContent=c.challenge;
+      if(sj)sj.value=c.subject;
+      if(headTitle)headTitle.textContent=c.headTitle;
+      if(headNote)headNote.textContent=c.headNote;
+      var consortium=(c.mode==='consortium');
+      setBlock(standardBlock,!consortium);
+      setBlock(consortiumBlock,consortium);
+      if(signalGrid&&c.signals){
+        signalGrid.innerHTML=c.signals.map(function(s,i){return '<div class="signal"><i>0'+(i+1)+'</i><b>'+s+'</b></div>';}).join('');
+      }
+    }
     var q=new URLSearchParams(location.search).get('type');
-    if(q&&TYPES[q]){var r=document.querySelector('input[name="inquiry_type"][value="'+q+'"]');if(r)r.checked=true;apply(q);}
+    if(q&&TYPES[q]){var r=document.querySelector('input[name="inquiry_type"][value="'+q+'"]');if(r)r.checked=true;}
+    var checked=document.querySelector('input[name="inquiry_type"]:checked');
+    apply(checked?checked.value:'consultation');
     document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',function(){if(el.checked)apply(el.value);});});
   })();
   </script>

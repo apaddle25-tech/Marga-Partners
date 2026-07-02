@@ -4,17 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Schedule a Consultation | Marga Partners</title>
-<meta name="description" content="A lifecycle strategy partner turning innovation into impact, from molecule to market to mature brand.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Schedule a Consultation | Marga Partners">
-<meta property="og:description" content="A lifecycle strategy partner turning innovation into impact, from molecule to market to mature brand.">
-<meta property="og:url" content="https://www.margapartners.com/Consultation.html">
-<meta property="og:image" content="https://www.margapartners.com/preview.png">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Schedule a Consultation | Marga Partners">
-<meta name="twitter:description" content="A lifecycle strategy partner turning innovation into impact, from molecule to market to mature brand.">
-<meta name="twitter:image" content="https://www.margapartners.com/preview.png">
   <meta name="description" content="Consultation intake for Marga Partners lifecycle strategy engagements.">
   <meta name="theme-color" content="#14120E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,6 +69,12 @@
     .button{appearance:none;border:0;min-height:52px;border-radius:3px;padding:0 26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}
     .button:hover{transform:translateY(-2px);background:#000}
     .note{font-size:.82rem;color:rgba(22,20,15,.55);max-width:30ch}
+    /* intent chips */
+    .intent{display:flex;flex-wrap:wrap;gap:10px}
+    .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:4px;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}
+    .intent label:hover{border-color:var(--gold)}
+    .intent input{position:absolute;opacity:0;width:0;height:0}
+    .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}
     /* below */
     .below{border-top:1px solid var(--line);padding:30px 0;color:rgba(22,20,15,.55);font-size:.86rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .below a{color:var(--golddeep);font-weight:700}
@@ -114,9 +109,9 @@
     <section class="hero">
       <div class="wrap intake-grid">
         <div>
-          <div class="eyebrow">Consultation intake</div>
-          <h1>Define the <span>path</span> forward.</h1>
-          <p class="lead">Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.</p>
+          <div class="eyebrow" id="eyebrow">Consultation intake</div>
+          <h1 id="intakeTitle">Define the <span>path</span> forward.</h1>
+          <p class="lead" id="intakeLead">Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.</p>
           <div class="signal-grid" aria-label="Consultation fit">
             <div class="signal"><i>01</i><b>Lifecycle strategy across clinical, medical, and commercial decisions.</b></div>
             <div class="signal"><i>02</i><b>Senior support for the moments where direction needs to hold together.</b></div>
@@ -132,10 +127,21 @@
           </div>
 
           <form action="https://formsubmit.co/aneeshpatel1@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New Marga Partners consultation request">
+            <input type="hidden" name="_subject" id="subjField" value="New Marga Partners consultation request">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Marga Partners. Your intake has been received and Marga Partners will follow up shortly.">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
+
+            <fieldset>
+              <legend>I&rsquo;m reaching out to</legend>
+              <div class="intent" role="radiogroup" aria-label="Reason for reaching out">
+                <label><input type="radio" name="inquiry_type" value="consultation" checked>Start a consulting engagement</label>
+                <label><input type="radio" name="inquiry_type" value="consortium">Join the Marga Consortium</label>
+                <label><input type="radio" name="inquiry_type" value="waitlist">Product waitlist / early access</label>
+                <label><input type="radio" name="inquiry_type" value="index">Commission an index or diligence read</label>
+                <label><input type="radio" name="inquiry_type" value="other">Something else</label>
+              </div>
+            </fieldset>
 
             <fieldset>
               <legend>Contact</legend>
@@ -229,7 +235,7 @@
                   <input id="referral" name="referral_source">
                 </div>
                 <div class="field full">
-                  <label for="challenge">What decision or challenge should we understand?</label>
+                  <label for="challenge" id="challengeLabel">What decision or challenge should we understand?</label>
                   <textarea id="challenge" name="strategic_challenge" required></textarea>
                 </div>
                 <div class="field full">
@@ -260,5 +266,21 @@
       </div>
     </div>
   </main>
+  <script>
+  (function(){
+    var TYPES={
+      consultation:{eyebrow:'Consultation intake',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request'},
+      consortium:{eyebrow:'Consortium application',title:'Join the <span>consortium</span>.',lead:'KOLs, analysts, operators, and executives shaping where aesthetics goes next: tell Marga how you would contribute. Consortium members inform the reads and are featured in them.',challenge:'How would you contribute to the consortium?',subject:'New Marga Consortium application'},
+      waitlist:{eyebrow:'Product waitlist',title:'Get <span>early access</span>.',lead:'Marga\u2019s productized intelligence \u2014 scorecards, category indices, and diligence reads \u2014 is launching soon. Join the waitlist to be first in line and help shape what ships.',challenge:'Which product or category matters most to you, and why?',subject:'New Marga product waitlist request'},
+      index:{eyebrow:'Commission an index',title:'Put it on the <span>index</span>.',lead:'Commission a P5 scorecard, a category index, or an independent diligence read. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request'},
+      other:{eyebrow:'General inquiry',title:'Start a <span>conversation</span>.',lead:'Tell Marga what prompted you to reach out, and it will point you to the right next step.',challenge:'What can Marga help you with?',subject:'New Marga Partners inquiry'}
+    };
+    var eb=document.getElementById('eyebrow'),ti=document.getElementById('intakeTitle'),ld=document.getElementById('intakeLead'),cl=document.getElementById('challengeLabel'),sj=document.getElementById('subjField');
+    function apply(t){var c=TYPES[t]||TYPES.consultation;if(eb)eb.textContent=c.eyebrow;if(ti)ti.innerHTML=c.title;if(ld)ld.textContent=c.lead;if(cl)cl.textContent=c.challenge;if(sj)sj.value=c.subject;}
+    var q=new URLSearchParams(location.search).get('type');
+    if(q&&TYPES[q]){var r=document.querySelector('input[name="inquiry_type"][value="'+q+'"]');if(r)r.checked=true;apply(q);}
+    document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',function(){if(el.checked)apply(el.value);});});
+  })();
+  </script>
 </body>
 </html>

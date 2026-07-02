@@ -1,11 +1,11 @@
 # Marga Partners — Website
 
-A static website. Every page is a self-contained HTML file, so it can be hosted anywhere with no build step.
+A static website. Every page is a self-contained HTML file (fonts and images embedded), so it can be hosted anywhere with no build step.
 
 ## Publish with GitHub Pages
 
 1. Create a new repository on GitHub (for example `marga-website`).
-2. Upload the entire contents of this `site/` folder to the repository root
+2. Upload the entire contents of this folder to the repository root
    (so that `index.html` sits at the top level of the repo).
    - Via the web UI: **Add file → Upload files**, drag everything in, commit.
    - Or via git:
@@ -23,25 +23,27 @@ A static website. Every page is a self-contained HTML file, so it can be hosted 
 5. Wait about a minute. Your site goes live at
    `https://USERNAME.github.io/REPO/`.
 
-## Structure
+## Pages
 
 - `index.html` — homepage
-- `Marga Journal.html` — the Journal hub
-- `journal/` — all articles
-- `The 5 Ps Index.html`, `The 5P Playbook.html` — the 5P framework
-- `Marga Products.html` — products & the consortium
-- `The Long Way Around.html` — founding essay
-- `Marga Article Template.html` — duplicate this to add a new article
-- `Consultation.html` — intake form
-- `Marga Social 5P.html` — social post templates
+- `the-marga-difference.html` — how Marga works (dual lens, three phases, expertise, selected work)
+- `5ps-index.html` — the P5 Method (framework)
+- `5p-playbook.html` — the P5 playbook
+- `products.html` — products, intelligence & the consortium
+- `journal.html` — the MargaZine hub
+- `journal/` — all MargaZine articles
+- `the-long-way-around.html` — founding essay
+- `article-template.html` — duplicate this to add a new article
+- `Consultation.html` — intake form (adapts to inquiry type via `?type=` — e.g. `Consultation.html?type=consortium`)
+- `social-5p.html` — social post templates
 
 ## Custom domain (optional)
 
 Add a file named `CNAME` at the root containing your domain (e.g. `margapartners.com`),
-then point your domain’s DNS at GitHub Pages. See GitHub’s docs on custom domains.
+then point your domain's DNS at GitHub Pages. See GitHub's docs on custom domains.
 
 ## Notes
 
 - `.nojekyll` is included so GitHub serves every file and folder as-is.
 - The main pages have fonts and images embedded and work fully offline. The
-  article pages load fonts from Google Fonts, so they look best online.
+  article pages in `journal/` load fonts from Google Fonts, so they look best online.

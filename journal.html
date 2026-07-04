@@ -55,19 +55,49 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 .sp .badge{align-self:flex-start;font:700 9px/1 'Spline Sans Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:6px 10px;border-radius:2px;margin-bottom:16px}
 .sp h3{font-family:'Libre Caslon Text',serif;font-weight:400;font-size:22px;line-height:1.14;margin:0 0 8px;color:var(--cream2)}.sp p{margin:0;font-size:13px;line-height:1.5;color:rgba(241,233,219,.62)}
 .sp .rt{margin-top:auto;padding-top:16px;font:600 10px/1 'Spline Sans Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-@media(max-width:900px){.domains{grid-template-columns:repeat(2,1fr)}.teasers,.rhythm,.special{grid-template-columns:1fr}.how,.formats{grid-template-columns:1fr}.nav a:not(.btn){display:none}}
+.hero .in{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,5vw,60px);align-items:center}
+.hero .col-r{position:relative;height:400px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent)}
+.rhead{position:absolute;top:-30px;left:0;font:600 10px/1 'Spline Sans Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ticker{display:flex;flex-direction:column;gap:12px;animation:tick 26s linear infinite}
+.ticker .item{border:1px solid var(--haird);border-radius:4px;padding:15px 17px;background:rgba(241,233,219,.03)}
+.ticker .item .tg{display:flex;justify-content:space-between;font:600 9px/1 'Spline Sans Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,233,219,.55);margin-bottom:9px}.ticker .item .tg .fr{color:var(--gold)}
+.ticker .item h4{font-family:'Libre Caslon Text',serif;font-weight:400;font-size:17px;line-height:1.2;margin:0;color:var(--cream2)}
+@keyframes tick{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.domains .dom .desc{min-height:44px}.domains .dom .feat{margin-top:18px}
+.special-locked{position:relative;margin-top:1px}
+.blurstack{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);filter:blur(7px);opacity:.6;pointer-events:none;user-select:none}
+.lockover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:radial-gradient(ellipse at center,rgba(20,18,14,.55),rgba(20,18,14,.85))}
+.lockover .lk{font:700 10px/1 'Spline Sans Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.lockover h3{font-family:'Libre Caslon Text',serif;font-weight:400;font-size:clamp(23px,3vw,30px);line-height:1.1;color:var(--cream2);margin:0 0 12px;max-width:24ch}
+.lockover p{font-size:15px;line-height:1.6;color:rgba(241,233,219,.75);margin:0 0 22px;max-width:42ch}
+.lockover a{background:var(--gold);color:var(--ink2);padding:14px 24px;border-radius:3px;font-weight:700;font-size:14px}
+@media(max-width:900px){.hero .in{grid-template-columns:1fr}.hero .col-r{display:none}.domains{grid-template-columns:repeat(2,1fr)}.teasers,.rhythm,.special{grid-template-columns:1fr}.blurstack{grid-template-columns:1fr}.how,.formats{grid-template-columns:1fr}.nav a:not(.btn){display:none}}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
 <nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
 
 <div class="hero"><div class="in wrap">
+<div class="col-l">
 <div class="eb g">The MargaZine &middot; Free, every Monday</div>
 <h1>The strategy of aesthetics, one idea at a time.</h1>
 <p class="sub">A free publication from Marga Partners on the business of aesthetics and life science: deep essays and cross-industry case studies on why products win or fail, from the molecule to the market. Read the opening of any piece free; add your email to unlock the full essay and get each new drop on Monday.</p>
-<div class="stat">Five domains &middot; Two formats &middot; 30+ pieces &middot; A new drop every Monday</div>
-<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join the MargaZine</button></form>
+<div class="stat">Five domains &middot; 30+ pieces &middot; A new drop every Monday</div>
+<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
 <div class="signote" data-mznote>Free. Every Monday. Unsubscribe anytime. <a href="#how" style="color:inherit;text-decoration:underline">See how it works</a></div>
+</div>
+<div class="col-r"><div class="rhead">Free to read now</div><div class="ticker">
+<div class="item"><div class="tg"><span>Molecule</span><span class="fr">Free</span></div><h4>The First New Sunscreen Filter in 25 Years Is Here</h4></div>
+<div class="item"><div class="tg"><span>Architecture</span><span class="fr">Free</span></div><h4>Every Device Company Wants to Be an Injectable Company</h4></div>
+<div class="item"><div class="tg"><span>Reputation</span><span class="fr">Free</span></div><h4>The Loudest Voice in Aesthetics Has Never Held a Syringe</h4></div>
+<div class="item"><div class="tg"><span>Growth</span><span class="fr">Free</span></div><h4>The Generation That Quit Drinking Is Coming for Aesthetics</h4></div>
+<div class="item"><div class="tg"><span>Adoption</span><span class="fr">Free</span></div><h4>We Regulate Wrinkles Like We Regulate Cancer</h4></div>
+<div class="item"><div class="tg"><span>Molecule</span><span class="fr">Free</span></div><h4>The First New Sunscreen Filter in 25 Years Is Here</h4></div>
+<div class="item"><div class="tg"><span>Architecture</span><span class="fr">Free</span></div><h4>Every Device Company Wants to Be an Injectable Company</h4></div>
+<div class="item"><div class="tg"><span>Reputation</span><span class="fr">Free</span></div><h4>The Loudest Voice in Aesthetics Has Never Held a Syringe</h4></div>
+<div class="item"><div class="tg"><span>Growth</span><span class="fr">Free</span></div><h4>The Generation That Quit Drinking Is Coming for Aesthetics</h4></div>
+<div class="item"><div class="tg"><span>Adoption</span><span class="fr">Free</span></div><h4>We Regulate Wrinkles Like We Regulate Cancer</h4></div>
+</div></div>
 </div></div>
 
 <section id="how"><div class="wrap">
@@ -84,31 +114,29 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="sec-head d"><div class="eb g">The framework &middot; MARGA</div><h2>Five domains, from the molecule to the point of care.</h2>
 <p>Everything files under one of five domains. Read in order, their initials spell MARGA, an arc from the science of a treatment to the moment it reaches a patient.</p></div>
 <div class="domains">
-<div class="dom"><div class="L">M</div><h3>Molecule</h3><div class="desc">The science and the product: what a treatment actually is and does, beneath the marketing.</div><div class="feat"><span class="k">Featured</span><span class="t">"Aesthetics Borrowed the Word 'Regenerative.' It Never Earned It."</span></div></div>
-<div class="dom"><div class="L">A</div><h3>Architecture</h3><div class="desc">The commercial teardown: how the companies and products that win are actually built.</div><div class="feat"><span class="k">Featured</span><span class="t">"Trust Compounds: why the oldest products still win."</span></div></div>
-<div class="dom"><div class="L">R</div><h3>Reputation</h3><div class="desc">Trust and perception: how authority and influence move through the industry, and how they are built and lost.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Fragility of Trust: why one post can move a market."</span></div></div>
-<div class="dom"><div class="L">G</div><h3>Growth</h3><div class="desc">Demand and the consumer: how demand is created, expanded, and contracted.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Ozempic Face Is the Best Thing That Ever Happened to Injectables."</span></div></div>
-<div class="dom"><div class="L">A</div><h3>Adoption</h3><div class="desc">The point of care: technique, practice operations, and the regulatory reality that shapes real use.</div><div class="feat"><span class="k">Featured</span><span class="t">"Anatomy Is the Active Ingredient."</span></div></div>
-</div></div></section>
-
-<section><div class="wrap">
-<div class="sec-head"><div class="eb">Two formats</div><h2>Frameworks, and the cases that prove them.</h2>
-<p>On top of the five domains sit two cross-cutting formats. A piece is one domain and one format.</p></div>
-<div class="formats">
-<div class="fmt"><div class="eb">Format</div><h3>Refractions</h3><p>Cross-industry case studies. Each opens on a recognizable outside example and reads it for what aesthetics can learn, then links back to the framework it illustrates.</p><div class="ex">De Beers &middot; Stradivarius &middot; Formula 1 &middot; Liquid Death &middot; Taylor Swift &middot; Theranos</div></div>
-<div class="fmt"><div class="eb">Format</div><h3>Predictions</h3><p>Forward-looking pieces that cut across every domain, including the calls most of the industry would rather not make out loud.</p><div class="ex">Featured: "The Next Five Years in Aesthetics."</div></div>
+<div class="dom"><div class="L">M</div><h3>Molecule</h3><div class="desc">The science and the product, beneath the marketing.</div><div class="feat"><span class="k">Featured</span><span class="t">"Aesthetics Borrowed the Word 'Regenerative.' It Never Earned It."</span></div></div>
+<div class="dom"><div class="L">A</div><h3>Architecture</h3><div class="desc">The commercial teardown: how the winners are built.</div><div class="feat"><span class="k">Featured</span><span class="t">"Trust Compounds: why the oldest products still win."</span></div></div>
+<div class="dom"><div class="L">R</div><h3>Reputation</h3><div class="desc">Trust and perception, and how they are built and lost.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Fragility of Trust: why one post can move a market."</span></div></div>
+<div class="dom"><div class="L">G</div><h3>Growth</h3><div class="desc">Demand and the consumer, made and moved.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Ozempic Face Is the Best Thing That Ever Happened to Injectables."</span></div></div>
+<div class="dom"><div class="L">A</div><h3>Adoption</h3><div class="desc">The point of care: technique, practice, and the real world.</div><div class="feat"><span class="k">Featured</span><span class="t">"Anatomy Is the Active Ingredient."</span></div></div>
 </div></div></section>
 
 <section class="dark"><div class="wrap">
 <div class="sec-head d"><div class="eb g">Special editions</div><h2>Start with the tentpoles.</h2>
-<p>The flagship essays, each naming an idea the rest of the industry ends up borrowing. These are the pieces that best show how Marga reads the business of aesthetics.</p></div>
-<div class="special">
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>The Trojan Horse Product</h3><p>How salmon sperm changed regenerative aesthetics.</p><div class="rt">Growth &middot; 13 min read</div></div>
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>Aesthetics Borrowed the Word "Regenerative." It Never Earned It.</h3><p>The gap between regenerative medicine and regenerative aesthetics.</p><div class="rt">Molecule &middot; 8 min read</div></div>
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>Trust Compounds</h3><p>Why the oldest products still win.</p><div class="rt">Architecture &middot; 7 min read</div></div>
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>The Fragility of Trust</h3><p>Why one post can move an entire market.</p><div class="rt">Reputation &middot; 7 min read</div></div>
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>Men Will Fly to Istanbul for Their Hairline and Flinch at a Needle</h3><p>The real barrier in the male aesthetics market.</p><div class="rt">Growth &middot; 10 min read</div></div>
-<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>Filler Fear</h3><p>Why the market isn't just correcting.</p><div class="rt">Reputation &middot; 9 min read</div></div>
+<p>The flagship essays, each naming an idea the rest of the industry ends up borrowing. We are showing the first; the rest drop to subscribers first.</p></div>
+<div class="special" style="grid-template-columns:1fr">
+<div class="sp" style="min-height:auto"><span class="badge">&#9733; Special Edition</span><h3 style="font-size:clamp(26px,3.6vw,38px)">The Trojan Horse Product</h3><p style="font-size:15px">How salmon sperm changed regenerative aesthetics.</p><div class="rt">Growth &middot; 13 min read</div></div>
+</div>
+<div class="special-locked">
+<div class="blurstack" aria-hidden="true">
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>The framework nobody names out loud.</h3><div class="rt">Molecule</div></div>
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>Why the incumbent refuses to lose.</h3><div class="rt">Architecture</div></div>
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>When a single post moves the market.</h3><div class="rt">Reputation</div></div>
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>The barrier the industry coded in.</h3><div class="rt">Growth</div></div>
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>A correction, or a collapse?</h3><div class="rt">Reputation</div></div>
+<div class="sp"><span class="badge">&#9733; Special Edition</span><h3>The point of care, taken apart.</h3><div class="rt">Adoption</div></div>
+</div>
+<div class="lockover"><div class="lk">&#128274; Subscribers first</div><h3>The rest of the special editions, behind the gate.</h3><p>Each one names a framework the industry starts borrowing. Subscribe free to be first the moment they drop.</p><a href="/subscribe.html">Join free</a></div>
 </div></div></section>
 
 <section style="background:var(--cream3)"><div class="wrap">
@@ -125,23 +153,14 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="tz"><div class="top"><span class="tag">Refractions</span><span class="lock">&#128274; Email to read</span></div><h3>What Aesthetics Can Learn From a Violin That Isn't Actually Better</h3><p>The Stradivarius, the blind tests it keeps failing, and belief markets.</p><div class="rt">9 min read</div></div>
 <div class="tz"><div class="top"><span class="tag">Refractions</span><span class="lock">&#128274; Email to read</span></div><h3>What Aesthetics Can Learn From the Slogan That Invented Forever</h3><p>De Beers and the manufacture of a category's belief.</p><div class="rt">4 min read</div></div>
 </div>
-<div class="center-cta"><p>One email unlocks the full library and brings every Monday drop to your inbox.</p><form class="signup light" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join the MargaZine</button></form><div class="signote" data-mznote>Free. Unsubscribe anytime.</div></div>
+<div class="center-cta"><p>One email unlocks the full library and brings every Monday drop to your inbox.</p><form class="signup light" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form><div class="signote" data-mznote>Free. Unsubscribe anytime.</div></div>
 </div></section>
-
-<section class="dark"><div class="wrap">
-<div class="sec-head d"><div class="eb g">The rhythm</div><h2>New work drops on a schedule, to members first.</h2>
-<p>The library grows one piece at a time, so each idea gets the attention it deserves. This is the drip, not the firehose.</p></div>
-<div class="rhythm">
-<div class="rh"><div class="step">First</div><h3>Members get the drop</h3><p>Each new essay and case study releases to Marga members ahead of anyone else, together with the frameworks and tools behind it.</p></div>
-<div class="rh"><div class="step">Then</div><h3>The library compounds</h3><p>Every release joins a connected archive, wired to the cases that prove it and the frameworks it extends. The value grows as the network does.</p></div>
-<div class="rh"><div class="step">Always</div><h3>Closed by design</h3><p>The MargaZine is not published to a feed. It is a private briefing for the people building the industry, held behind the gate on purpose.</p></div>
-</div></div></section>
 
 <div class="final"><div class="in wrap">
 <div class="eb g">Join the MargaZine</div>
 <h2>The industry read the way its operators actually think.</h2>
 <p>One email unlocks the full library and brings every Monday drop to your inbox. The essays are free; the only ask is your address, and you can leave whenever you like.</p>
-<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join the MargaZine</button></form>
+<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
 <div class="signote" data-mznote>Free. Every Monday. Unsubscribe anytime.</div>
 </div></div>
 

@@ -45,22 +45,22 @@ h1,h2,h3{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.01em;ma
 .filterbar{position:sticky;top:57px;z-index:40;background:rgba(241,233,219,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
 .filterbar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:13px 0}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{font:600 12px/1 'Manrope',sans-serif;letter-spacing:.02em;color:var(--body);background:transparent;border:1px solid var(--hair);border-radius:40px;padding:9px 15px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+.chip{display:inline-flex;align-items:center;gap:9px;font:600 12.5px/1 'Manrope',sans-serif;letter-spacing:.02em;color:var(--body);background:transparent;border:1px solid var(--hair);border-radius:40px;padding:7px 16px 7px 11px;cursor:pointer;transition:all .15s}
+.chip .lt{font-family:'Newsreader',serif;font-weight:400;font-size:21px;line-height:1;color:var(--gold);width:16px;text-align:center}
 .chip:hover{border-color:var(--bronze);color:var(--ink)}
 .chip.on{background:var(--ink2);color:var(--cream2);border-color:var(--ink2)}
-.chip span{font-size:10px;opacity:.6}
+.chip.on .lt{color:var(--gold)}
 .search{position:relative}
 .search input{width:min(280px,52vw);font-size:14px;padding:10px 14px 10px 34px;border-radius:40px;border:1px solid var(--hair);background:#fff;color:var(--ink);font-family:inherit}
 .search input::placeholder{color:rgba(22,20,15,.4)}
 .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4}
 /* grid */
 .a-body{padding:clamp(36px,5vw,60px) 0 clamp(56px,7vw,88px)}
-.dgroup{margin-top:clamp(34px,4.6vw,58px)}.dgroup:first-child{margin-top:0}
-.dhead{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:24px}
-.dhead .L{font-family:'Newsreader',serif;font-size:40px;line-height:.8;color:var(--gold);width:38px;text-align:center;flex:none}
-.dhead h2{font-size:clamp(1.4rem,2.4vw,1.9rem);color:var(--ink);line-height:1}
-.dhead p{font-size:13px;color:var(--body);margin:5px 0 0}
-.dhead .ct{margin-left:auto;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(22,20,15,.42);white-space:nowrap;align-self:flex-start;padding-top:6px}
+.dgroup{margin-top:clamp(34px,4.6vw,58px);scroll-margin-top:132px}.dgroup:first-child{margin-top:0}
+.dhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:24px}
+.dhead h2{font-size:clamp(1.45rem,2.5vw,2rem);color:var(--ink);line-height:1.08}
+.dhead .desc{font-size:13px;color:var(--body);margin:6px 0 0;max-width:52ch}
+.dhead .ct{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(22,20,15,.42);white-space:nowrap;padding-top:7px;flex:none}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
 .card{background:var(--cream);border:1px solid var(--hair);border-radius:10px;padding:22px 22px 18px;display:flex;flex-direction:column;min-height:190px;transition:transform .15s,box-shadow .15s,border-color .15s}
 .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px -18px rgba(22,20,15,.5);border-color:var(--bronze)}
@@ -128,42 +128,41 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 </div></div>
 
 <div class="filterbar"><div class="in wrap">
-<div class="chips" id="chips">
-<button class="chip on" data-f="all">All <span>7</span></button>
-<button class="chip" data-f="molecule">Molecule</button>
-<button class="chip" data-f="architecture">Architecture</button>
-<button class="chip" data-f="reputation">Reputation</button>
-<button class="chip" data-f="growth">Growth</button>
-<button class="chip" data-f="adoption">Adoption</button>
+<div class="chips" id="chips" aria-label="Jump to a MARGA domain">
+<button class="chip on" data-go="d-molecule"><span class="lt">M</span>Molecule</button>
+<button class="chip" data-go="d-architecture"><span class="lt">A</span>Architecture</button>
+<button class="chip" data-go="d-reputation"><span class="lt">R</span>Reputation</button>
+<button class="chip" data-go="d-growth"><span class="lt">G</span>Growth</button>
+<button class="chip" data-go="d-adoption"><span class="lt">A</span>Adoption</button>
 </div>
 <div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16140F" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><input id="q" type="search" placeholder="Search essays&hellip;" aria-label="Search essays"></div>
 </div></div>
 
 <section class="a-body"><div class="wrap" id="grid">
 
-<div class="dgroup" data-domain="molecule"><div class="dhead"><span class="L">M</span><div><h2>Molecule</h2><p>The science and the product, beneath the marketing.</p></div><span class="ct">1 essay</span></div>
+<div class="dgroup" id="d-molecule" data-domain="molecule"><div class="dhead"><div><h2>Molecule</h2><p class="desc">The science and the product, beneath the marketing.</p></div><span class="ct">1 essay</span></div>
 <div class="cards">
 <a class="card" data-domain="molecule" data-title="the first new sunscreen filter in 25 years is here bemotrizinol sunscreen skincare" href="/the-new-sunscreen-filter.html"><div class="card-top"><span class="dtag">Molecule</span><span class="rt">9 min</span></div><h3 class="card-h">The First New Sunscreen Filter in 25 Years Is Here</h3><p class="card-dek">What Bemotrizinol's approval actually changes for everyone in the skincare and sunscreen business.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" data-domain="architecture"><div class="dhead"><span class="L">A</span><div><h2>Architecture</h2><p>The commercial teardown: how the winners are built.</p></div><span class="ct">2 essays</span></div>
+<div class="dgroup" id="d-architecture" data-domain="architecture"><div class="dhead"><div><h2>Architecture</h2><p class="desc">The commercial teardown: how the winners are built.</p></div><span class="ct">2 essays</span></div>
 <div class="cards">
 <a class="card" data-domain="architecture" data-title="every device company eventually wants to be an injectable company recurring biology" href="/every-device-company.html"><div class="card-top"><span class="dtag">Architecture</span><span class="rt">7 min</span></div><h3 class="card-h">Every Device Company Eventually Wants to Be an Injectable Company</h3><p class="card-dek">The gravitational pull of recurring biology over one-time capital.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 <a class="card" data-domain="architecture" data-title="the long way around founding essay molecule to market development commercialization" href="/the-long-way-around.html"><div class="card-top"><span class="dtag">Architecture</span><span class="rt">7 min</span></div><h3 class="card-h">The Long Way Around</h3><p class="card-dek">Why I started Marga Partners — and why development and commercialization were never two disciplines.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" data-domain="reputation"><div class="dhead"><span class="L">R</span><div><h2>Reputation</h2><p>Trust and perception, and how they are built and lost.</p></div><span class="ct">1 essay</span></div>
+<div class="dgroup" id="d-reputation" data-domain="reputation"><div class="dhead"><div><h2>Reputation</h2><p class="desc">Trust and perception, and how they are built and lost.</p></div><span class="ct">1 essay</span></div>
 <div class="cards">
 <a class="card" data-domain="reputation" data-title="the loudest voice in aesthetics has never held a syringe authority accountability" href="/the-loudest-voice.html"><div class="card-top"><span class="dtag">Reputation</span><span class="rt">8 min</span></div><h3 class="card-h">The Loudest Voice in Aesthetics Has Never Held a Syringe</h3><p class="card-dek">How authority in aesthetics decoupled from accountability.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" data-domain="growth"><div class="dhead"><span class="L">G</span><div><h2>Growth</h2><p>Demand and the consumer, made and moved.</p></div><span class="ct">2 essays</span></div>
+<div class="dgroup" id="d-growth" data-domain="growth"><div class="dhead"><div><h2>Growth</h2><p class="desc">Demand and the consumer, made and moved.</p></div><span class="ct">2 essays</span></div>
 <div class="cards">
 <a class="card" data-domain="growth" data-title="the trojan horse product salmon sperm regenerative aesthetics special edition" href="/the-trojan-horse-product.html"><div class="card-top"><span class="dtag">Growth <span class="badge">&#9733; Special</span></span><span class="rt">13 min</span></div><h3 class="card-h">The Trojan Horse Product</h3><p class="card-dek">How salmon sperm changed regenerative aesthetics.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 <a class="card" data-domain="growth" data-title="the generation that quit drinking is coming for aesthetics next platform anchoring" href="/generational-platform-anchoring.html"><div class="card-top"><span class="dtag">Growth</span><span class="rt">8 min</span></div><h3 class="card-h">The Generation That Quit Drinking Is Coming for Aesthetics Next</h3><p class="card-dek">Why each generation's anchor platform decides how it behaves — and who walks through your door.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" data-domain="adoption"><div class="dhead"><span class="L">A</span><div><h2>Adoption</h2><p>The point of care: technique, practice, and the real world.</p></div><span class="ct">1 essay</span></div>
+<div class="dgroup" id="d-adoption" data-domain="adoption"><div class="dhead"><div><h2>Adoption</h2><p class="desc">The point of care: technique, practice, and the real world.</p></div><span class="ct">1 essay</span></div>
 <div class="cards">
 <a class="card" data-domain="adoption" data-title="we regulate wrinkles like we regulate cancer statistical approval clinical reality" href="/we-regulate-wrinkles-like-cancer.html"><div class="card-top"><span class="dtag">Adoption</span><span class="rt">9 min</span></div><h3 class="card-h">We Regulate Wrinkles Like We Regulate Cancer</h3><p class="card-dek">The gap between statistical approval and clinical reality — and the blame game it feeds.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
@@ -220,31 +219,53 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 })();
 </script>
 <script>
-/* Filter chips + live title search over the archive. */
+/* MARGA jump-nav (scroll to a domain, with scroll-spy) + live title search. */
 (function(){
   var q=document.getElementById('q'),chips=document.getElementById('chips'),grid=document.getElementById('grid');
-  if(!grid)return;
-  var groups=[].slice.call(grid.querySelectorAll('.dgroup')),nores=document.getElementById('noresults'),active='all';
-  function apply(){
-    var term=(q&&q.value||'').trim().toLowerCase(),anyVisible=false;
+  if(!grid||!chips)return;
+  var chipEls=[].slice.call(chips.querySelectorAll('.chip'));
+  var groups=[].slice.call(grid.querySelectorAll('.dgroup'));
+  var nores=document.getElementById('noresults');
+  function setActive(i){chipEls.forEach(function(c,idx){c.classList.toggle('on',idx===i);});}
+
+  /* search narrows the cards and hides empty domains */
+  function applySearch(){
+    var term=(q&&q.value||'').trim().toLowerCase(),any=false;
     groups.forEach(function(g){
-      var dom=g.getAttribute('data-domain'),domOk=(active==='all'||active===dom),groupHas=false;
+      var has=false;
       [].slice.call(g.querySelectorAll('.card')).forEach(function(c){
-        var t=c.getAttribute('data-title')||'',show=domOk&&(!term||t.indexOf(term)>-1);
-        c.style.display=show?'':'none'; if(show){groupHas=true;anyVisible=true;}
+        var show=!term||(c.getAttribute('data-title')||'').indexOf(term)>-1;
+        c.style.display=show?'':'none'; if(show){has=true;any=true;}
       });
-      g.style.display=groupHas?'':'none';
+      g.style.display=has?'':'none';
     });
-    if(nores)nores.hidden=anyVisible;
+    if(nores)nores.hidden=any;
+    if(term){chipEls.forEach(function(c){c.classList.remove('on');});}else{spy();}
   }
-  if(q)q.addEventListener('input',apply);
-  if(chips)chips.addEventListener('click',function(e){
+  if(q)q.addEventListener('input',applySearch);
+  var clr=document.getElementById('clearq'); if(clr)clr.addEventListener('click',function(e){e.preventDefault();if(q){q.value='';q.focus();}applySearch();});
+
+  /* chips jump to a domain section (clearing any search so the target is visible) */
+  chips.addEventListener('click',function(e){
     var b=e.target.closest('.chip'); if(!b)return;
-    active=b.getAttribute('data-f');
-    [].slice.call(chips.querySelectorAll('.chip')).forEach(function(c){c.classList.toggle('on',c===b);});
-    apply();
+    if(q&&q.value){q.value='';applySearch();}
+    var t=document.getElementById(b.getAttribute('data-go'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
   });
-  var clr=document.getElementById('clearq'); if(clr)clr.addEventListener('click',function(e){e.preventDefault();if(q)q.value='';apply();});
+
+  /* scroll-spy: highlight the domain currently in view */
+  var ticking=false;
+  function spy(){
+    if(q&&q.value)return;
+    var off=150,idx=0;
+    for(var i=0;i<chipEls.length;i++){
+      var el=document.getElementById(chipEls[i].getAttribute('data-go'));
+      if(el&&el.offsetParent!==null&&el.getBoundingClientRect().top-off<=0)idx=i;
+    }
+    setActive(idx);
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){spy();ticking=false;});ticking=true;}},{passive:true});
+  spy();
 })();
 </script>
 </body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The MargaZine Archive | Marga Partners</title>
+<meta name="description" content="Every published MargaZine essay in one place — long-form writing on the commercialization of aesthetics and life science, organized by the five MARGA domains.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16140F;--ink2:#14120E;--ink3:#1b1811;--footer:#0F0E0B;--bronze:#9A742F;--gold:#C7A24B;--cream:#FBF6EC;--cream2:#F1E9DB;--cream3:#EBE0CC;--body:#4A4435;--hair:rgba(22,20,15,.16);--haird:rgba(241,233,219,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream2);color:#28241B;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
+.wrap{width:min(1240px,100%);margin:0 auto;padding-left:clamp(22px,5vw,64px);padding-right:clamp(22px,5vw,64px)}
+.eb{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}.eb.g{color:var(--gold)}
+h1,h2,h3{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.01em;margin:0}
+.bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(241,233,219,.9);border-bottom:1px solid var(--hair)}.bar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}.brand{display:flex;align-items:center;gap:11px}.brand b{font-weight:800;letter-spacing:-.02em;font-size:17px;color:var(--ink)}
+.nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover,.nav a.on{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700}.nav a.btn:hover{color:var(--cream2)}
+.hero{background:var(--ink2);color:var(--cream2)}.hero .in{padding:clamp(56px,8vw,96px) 0 clamp(44px,6vw,72px)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.05;color:var(--cream2);max-width:18ch;margin:22px 0 0}
+.hero .sub{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6;color:var(--cream2);opacity:.82;max-width:56ch;margin:22px 0 0}
+.hero .stat{font:600 11px/1.8 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:26px 0 0}
+.signup{display:flex;gap:10px;flex-wrap:wrap;max-width:480px;margin-top:26px}
+.signup input{flex:1;min-width:240px;font-size:15px;padding:15px 16px;border-radius:3px;border:1px solid rgba(241,233,219,.3);background:rgba(241,233,219,.06);color:var(--cream2)}
+.signup input::placeholder{color:rgba(241,233,219,.5)}.signup button{background:var(--gold);color:var(--ink2);border:0;padding:15px 24px;border-radius:3px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
+section{padding:clamp(48px,6vw,84px) 0}
+.dgroup{margin-top:clamp(30px,4vw,52px)}.dgroup:first-of-type{margin-top:0}
+.dhd{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:6px}
+.dhd .L{font-family:'Newsreader',serif;font-size:44px;line-height:.9;color:var(--gold)}
+.dhd h2{font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink)}.dhd .dd{font-size:13px;color:var(--body);margin-left:auto;max-width:34ch;text-align:right}
+.rows{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:20px 4px;border-bottom:1px solid rgba(22,20,15,.09);transition:background .15s,padding .15s}
+.row:hover{background:var(--cream);padding-left:14px;padding-right:14px}
+.row .tt{font-family:'Newsreader',serif;font-size:clamp(19px,2.2vw,24px);line-height:1.2;color:var(--ink)}
+.row .mt{display:flex;gap:12px;align-items:center;margin-top:7px;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(22,20,15,.45)}
+.row .free{color:var(--bronze)}.row .badge{color:var(--ink2);background:var(--gold);padding:4px 8px;border-radius:2px;letter-spacing:.08em}
+.row .go{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);white-space:nowrap}.row:hover .go{color:var(--ink)}
+.cross{background:var(--ink2);color:var(--cream2)}.cross .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:40px}
+.cross .c{background:var(--ink2);padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column}.cross .c:hover{background:var(--ink3)}
+.cross .c .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.cross .c h3{font-size:26px;color:var(--cream2);margin-bottom:10px}.cross .c p{font-size:14.5px;line-height:1.6;color:rgba(241,233,219,.72);margin:0 0 20px}
+.cross .c .go{margin-top:auto;font:700 12px/1 'Manrope',sans-serif;letter-spacing:.06em;color:var(--gold)}
+.final{background:var(--footer);color:var(--cream2);text-align:center}.final .in{padding:clamp(56px,8vw,96px) 0}.final h2{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;color:var(--cream2);max-width:20ch;margin:14px auto 0}.final p{font-size:15.5px;line-height:1.7;color:var(--cream2);opacity:.78;max-width:52ch;margin:20px auto 0}.final .signup{margin:26px auto 0}.final .signup.light input{border:1px solid rgba(241,233,219,.3)}
+footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid var(--haird)}footer .in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px;font-size:12.5px}footer .mid{font:500 11px/1.5 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:820px){.cross .grid{grid-template-columns:1fr}.dhd .dd{display:none}.nav a:not(.btn){display:none}}
+</style></head>
+<body><span id="top"></span>
+<header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
+<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a class="on" href="/essays.html">The Archive</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
+
+<div class="hero"><div class="in wrap">
+<div class="eb g">The MargaZine &middot; Archive</div>
+<h1>Every essay, in one place.</h1>
+<p class="sub">The full library of published MargaZine essays, organized by the five MARGA domains. Read anything here on the site, any time — no more digging through your inbox.</p>
+<div class="stat">Free to read &middot; A new essay every Monday</div>
+<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
+</div></div>
+
+<section><div class="wrap">
+
+<div class="dgroup" id="molecule"><div class="dhd"><span class="L">M</span><h2>Molecule</h2><div class="dd">The science and the product, beneath the marketing.</div></div><div class="rows">
+<a class="row" href="/the-new-sunscreen-filter.html"><div><div class="tt">The First New Sunscreen Filter in 25 Years Is Here, and the Ingredient Is the Least Important Part</div><div class="mt"><span>Molecule</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+</div></div>
+
+<div class="dgroup" id="architecture"><div class="dhd"><span class="L">A</span><h2>Architecture</h2><div class="dd">The commercial teardown: how the winners are built.</div></div><div class="rows">
+<a class="row" href="/every-device-company.html"><div><div class="tt">Every Device Company Eventually Wants to Be an Injectable Company</div><div class="mt"><span>Architecture</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<a class="row" href="/the-long-way-around.html"><div><div class="tt">The Long Way Around</div><div class="mt"><span>Architecture</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+</div></div>
+
+<div class="dgroup" id="reputation"><div class="dhd"><span class="L">R</span><h2>Reputation</h2><div class="dd">Trust and perception, and how they are built and lost.</div></div><div class="rows">
+<a class="row" href="/the-loudest-voice.html"><div><div class="tt">The Loudest Voice in Aesthetics Has Never Held a Syringe</div><div class="mt"><span>Reputation</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+</div></div>
+
+<div class="dgroup" id="growth"><div class="dhd"><span class="L">G</span><h2>Growth</h2><div class="dd">Demand and the consumer, made and moved.</div></div><div class="rows">
+<a class="row" href="/the-trojan-horse-product.html"><div><div class="tt">The Trojan Horse Product</div><div class="mt"><span>Growth</span><span class="badge">&#9733; Special Edition</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<a class="row" href="/generational-platform-anchoring.html"><div><div class="tt">The Generation That Quit Drinking Is Coming for Aesthetics Next</div><div class="mt"><span>Growth</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+</div></div>
+
+<div class="dgroup" id="adoption"><div class="dhd"><span class="L">A</span><h2>Adoption</h2><div class="dd">The point of care: technique, practice, and the real world.</div></div><div class="rows">
+<a class="row" href="/we-regulate-wrinkles-like-cancer.html"><div><div class="tt">We Regulate Wrinkles Like We Regulate Cancer</div><div class="mt"><span>Adoption</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+</div></div>
+
+</div></section>
+
+<section class="cross"><div class="wrap">
+<div class="eb g">Beyond the essays</div>
+<h2 style="font-size:clamp(2rem,4.4vw,3.2rem);color:var(--cream2);margin-top:14px;max-width:24ch">The thinking becomes practice.</h2>
+<div class="grid">
+<a class="c" href="/products.html"><span class="k">Join the bench &middot; Marga Consortium</span><h3>Score the market with us.</h3><p>The essays are the public edge of a private practice. The Marga Consortium is the expert bench behind the Marga Index — dermatologists, surgeons, operators, and investors whose judgment sets the category scores.</p><span class="go">Explore the Consortium &rarr;</span></a>
+<a class="c" href="/products.html"><span class="k">For operators &amp; investors &middot; Enterprise</span><h3>The Category Market Reports.</h3><p>Where the frameworks in these essays become numbers: full-market, consortium-scored reads on neurotoxins, fillers, biostimulators, devices, and more — with financials, benchmarks, and the five-force index for every category.</p><span class="go">See the reports &rarr;</span></a>
+</div></div></section>
+
+<div class="final"><div class="in wrap">
+<div class="eb g">Join the MargaZine</div>
+<h2>Never dig through your inbox again.</h2>
+<p>One email brings every Monday drop, and this archive keeps every essay a click away. Free, and yours to leave whenever you like.</p>
+<form class="signup light" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
+</div></div>
+
+<footer><div class="in wrap"><div class="brand"><svg viewBox="0 0 394 321" style="width:22px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b style="color:#F1E9DB;font-size:14px">Marga Partners</b></div><div class="mid">The MargaZine Archive &middot; A Marga publication</div><a href="#top" style="color:#C7A24B;font-weight:600">Back to top &uarr;</a></div></footer>
+<script>
+(function(){
+  document.querySelectorAll('[data-mzform]').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var inp = f.querySelector('input'), em = (inp.value || '').trim();
+      location.href = '/subscribe.html' + (em ? '?email=' + encodeURIComponent(em) : '');
+    });
+  });
+})();
+</script>
+</body></html>

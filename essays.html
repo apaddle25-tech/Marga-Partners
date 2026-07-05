@@ -1,79 +1,174 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The MargaZine Archive | Marga Partners</title>
-<meta name="description" content="Every published MargaZine essay in one place — long-form writing on the commercialization of aesthetics and life science, organized by the five MARGA domains.">
+<meta name="description" content="Every published MargaZine essay in one place — long-form writing on the commercialization of aesthetics and life science, organized by the five MARGA domains. Free with the newsletter.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#16140F;--ink2:#14120E;--ink3:#1b1811;--footer:#0F0E0B;--bronze:#9A742F;--gold:#C7A24B;--cream:#FBF6EC;--cream2:#F1E9DB;--cream3:#EBE0CC;--body:#4A4435;--hair:rgba(22,20,15,.16);--haird:rgba(241,233,219,.14)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream2);color:#28241B;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}
-.wrap{width:min(1240px,100%);margin:0 auto;padding-left:clamp(22px,5vw,64px);padding-right:clamp(22px,5vw,64px)}
+.wrap{width:min(1180px,100%);margin:0 auto;padding-left:clamp(22px,5vw,64px);padding-right:clamp(22px,5vw,64px)}
 .eb{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}.eb.g{color:var(--gold)}
 h1,h2,h3{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.01em;margin:0}
+/* top bar */
 .bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(241,233,219,.9);border-bottom:1px solid var(--hair)}.bar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}.brand{display:flex;align-items:center;gap:11px}.brand b{font-weight:800;letter-spacing:-.02em;font-size:17px;color:var(--ink)}
-.nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover,.nav a.on{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700}.nav a.btn:hover{color:var(--cream2)}
-.hero{background:var(--ink2);color:var(--cream2)}.hero .in{padding:clamp(56px,8vw,96px) 0 clamp(44px,6vw,72px)}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.05;color:var(--cream2);max-width:18ch;margin:22px 0 0}
-.hero .sub{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6;color:var(--cream2);opacity:.82;max-width:56ch;margin:22px 0 0}
-.hero .stat{font:600 11px/1.8 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:26px 0 0}
-.signup{display:flex;gap:10px;flex-wrap:wrap;max-width:480px;margin-top:26px}
-.signup input{flex:1;min-width:240px;font-size:15px;padding:15px 16px;border-radius:3px;border:1px solid rgba(241,233,219,.3);background:rgba(241,233,219,.06);color:var(--cream2)}
-.signup input::placeholder{color:rgba(241,233,219,.5)}.signup button{background:var(--gold);color:var(--ink2);border:0;padding:15px 24px;border-radius:3px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
-section{padding:clamp(48px,6vw,84px) 0}
-.dgroup{margin-top:clamp(30px,4vw,52px)}.dgroup:first-of-type{margin-top:0}
-.dhd{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:6px}
-.dhd .L{font-family:'Newsreader',serif;font-size:44px;line-height:.9;color:var(--gold)}
-.dhd h2{font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink)}.dhd .dd{font-size:13px;color:var(--body);margin-left:auto;max-width:34ch;text-align:right}
-.rows{display:flex;flex-direction:column}
-.row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:20px 4px;border-bottom:1px solid rgba(22,20,15,.09);transition:background .15s,padding .15s}
-.row:hover{background:var(--cream);padding-left:14px;padding-right:14px}
-.row .tt{font-family:'Newsreader',serif;font-size:clamp(19px,2.2vw,24px);line-height:1.2;color:var(--ink)}
-.row .mt{display:flex;gap:12px;align-items:center;margin-top:7px;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(22,20,15,.45)}
-.row .free{color:var(--bronze)}.row .badge{color:var(--ink2);background:var(--gold);padding:4px 8px;border-radius:2px;letter-spacing:.08em}
-.row .go{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);white-space:nowrap}.row:hover .go{color:var(--ink)}
-.cross{background:var(--ink2);color:var(--cream2)}.cross .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:40px}
+.nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700}.nav a.btn:hover{color:var(--cream2)}
+
+/* ---------- LOCKED WALL ---------- */
+#wall .hero{background:var(--ink2);color:var(--cream2)}
+.wallgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:center;padding:clamp(52px,8vw,104px) 0 clamp(52px,8vw,104px)}
+.wall-l .eb{margin-bottom:20px}
+.wall-l h1{font-size:clamp(2.5rem,5.4vw,4.2rem);line-height:1.04;color:var(--cream2);max-width:16ch}
+.wall-l .sub{font-size:clamp(1.02rem,1.4vw,1.2rem);line-height:1.62;color:var(--cream2);opacity:.82;max-width:50ch;margin:22px 0 0}
+.signup{display:flex;gap:10px;flex-wrap:wrap;max-width:480px;margin-top:28px}
+.signup input{flex:1;min-width:230px;font-size:15px;padding:15px 16px;border-radius:3px;border:1px solid rgba(241,233,219,.3);background:rgba(241,233,219,.06);color:var(--cream2)}
+.signup input::placeholder{color:rgba(241,233,219,.5)}
+.signup button{background:var(--gold);color:var(--ink2);border:0;padding:15px 24px;border-radius:3px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
+.gnote{min-height:18px;font:600 12px/1.5 'Manrope',sans-serif;color:var(--gold);margin-top:12px}
+.orline{display:flex;align-items:center;gap:12px;max-width:480px;margin:18px 0 0;color:rgba(241,233,219,.42);font:600 10px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.orline:before,.orline:after{content:"";flex:1;height:1px;background:rgba(241,233,219,.16)}
+#gsign{display:inline-block;margin-top:16px;font:600 13px/1.4 'Manrope',sans-serif;color:var(--gold)}
+.wall-l .stat{font:600 11px/1.8 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,233,219,.5);margin-top:26px}
+.wall-r{position:relative;height:clamp(340px,42vw,460px);overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent)}
+.blurstack{display:grid;grid-template-columns:1fr 1fr;gap:12px;filter:blur(5px);opacity:.55;pointer-events:none;user-select:none}
+.bs{border:1px solid var(--haird);border-radius:8px;padding:18px;background:rgba(241,233,219,.03);min-height:130px;display:flex;flex-direction:column}
+.bs .k{font:600 9px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.bs h4{font-family:'Newsreader',serif;font-weight:400;font-size:19px;line-height:1.16;color:var(--cream2);margin:0}
+.walllock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;font:700 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:rgba(20,18,14,.72);border:1px solid var(--haird);border-radius:40px;padding:12px 20px;white-space:nowrap}
+
+/* ---------- UNLOCKED ARCHIVE ---------- */
+.a-intro{background:var(--ink2);color:var(--cream2)}.a-intro .wrap{padding:clamp(44px,6vw,78px) 0 clamp(30px,4vw,44px)}
+.a-intro .eb{margin-bottom:16px}
+.a-h1{font-size:clamp(2.3rem,4.8vw,3.6rem);line-height:1.04;color:var(--cream2);max-width:18ch}
+.a-sub{font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.6;color:var(--cream2);opacity:.8;max-width:56ch;margin:18px 0 0}
+/* sticky filter/search */
+.filterbar{position:sticky;top:57px;z-index:40;background:rgba(241,233,219,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.filterbar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:13px 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:600 12px/1 'Manrope',sans-serif;letter-spacing:.02em;color:var(--body);background:transparent;border:1px solid var(--hair);border-radius:40px;padding:9px 15px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+.chip:hover{border-color:var(--bronze);color:var(--ink)}
+.chip.on{background:var(--ink2);color:var(--cream2);border-color:var(--ink2)}
+.chip span{font-size:10px;opacity:.6}
+.search{position:relative}
+.search input{width:min(280px,52vw);font-size:14px;padding:10px 14px 10px 34px;border-radius:40px;border:1px solid var(--hair);background:#fff;color:var(--ink);font-family:inherit}
+.search input::placeholder{color:rgba(22,20,15,.4)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4}
+/* grid */
+.a-body{padding:clamp(36px,5vw,60px) 0 clamp(56px,7vw,88px)}
+.dgroup{margin-top:clamp(34px,4.6vw,58px)}.dgroup:first-child{margin-top:0}
+.dhead{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:24px}
+.dhead .L{font-family:'Newsreader',serif;font-size:40px;line-height:.8;color:var(--gold);width:38px;text-align:center;flex:none}
+.dhead h2{font-size:clamp(1.4rem,2.4vw,1.9rem);color:var(--ink);line-height:1}
+.dhead p{font-size:13px;color:var(--body);margin:5px 0 0}
+.dhead .ct{margin-left:auto;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(22,20,15,.42);white-space:nowrap;align-self:flex-start;padding-top:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--cream);border:1px solid var(--hair);border-radius:10px;padding:22px 22px 18px;display:flex;flex-direction:column;min-height:190px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 30px -18px rgba(22,20,15,.5);border-color:var(--bronze)}
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dtag{font:600 9px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+.card-top .rt{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.06em;color:rgba(22,20,15,.4)}
+.badge{font:700 8px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:4px 7px;border-radius:2px;margin-left:8px}
+.card-h{font-size:20px;line-height:1.22;color:var(--ink);margin:0 0 9px}
+.card-dek{font-size:13.5px;line-height:1.55;color:var(--body);margin:0}
+.card-go{margin-top:auto;padding-top:16px;font:600 11px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);display:flex;align-items:center;gap:6px}
+.card:hover .card-go{color:var(--ink)}.card:hover .card-go span{transform:translateX(3px)}.card-go span{transition:transform .15s}
+.noresults{padding:40px 4px;font-size:15px;color:var(--body)}
+/* cross-sell */
+.cross{background:var(--ink2);color:var(--cream2)}.cross .wrap{padding:clamp(48px,6vw,84px) 0}
+.cross .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:36px}
 .cross .c{background:var(--ink2);padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column}.cross .c:hover{background:var(--ink3)}
 .cross .c .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .cross .c h3{font-size:26px;color:var(--cream2);margin-bottom:10px}.cross .c p{font-size:14.5px;line-height:1.6;color:rgba(241,233,219,.72);margin:0 0 20px}
 .cross .c .go{margin-top:auto;font:700 12px/1 'Manrope',sans-serif;letter-spacing:.06em;color:var(--gold)}
-.final{background:var(--footer);color:var(--cream2);text-align:center}.final .in{padding:clamp(56px,8vw,96px) 0}.final h2{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;color:var(--cream2);max-width:20ch;margin:14px auto 0}.final p{font-size:15.5px;line-height:1.7;color:var(--cream2);opacity:.78;max-width:52ch;margin:20px auto 0}.final .signup{margin:26px auto 0}.final .signup.light input{border:1px solid rgba(241,233,219,.3)}
+/* footer */
 footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid var(--haird)}footer .in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px;font-size:12.5px}footer .mid{font:500 11px/1.5 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:820px){.cross .grid{grid-template-columns:1fr}.dhd .dd{display:none}.nav a:not(.btn){display:none}}
+
+@media(max-width:860px){
+  .wallgrid{grid-template-columns:1fr}.wall-r{display:none}
+  .cross .grid{grid-template-columns:1fr}
+  .nav a:not(.btn){display:none}
+  .filterbar .in{gap:12px}.search input{width:100%}.search{flex:1;order:2;width:100%}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a class="on" href="/essays.html">The Archive</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
+<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
 
-<div class="hero"><div class="in wrap">
+<!-- ================= LOCKED WALL (default) ================= -->
+<div id="wall"><div class="hero"><div class="in wrap"><div class="wallgrid">
+<div class="wall-l">
 <div class="eb g">The MargaZine &middot; Archive</div>
-<h1>Every essay, in one place.</h1>
-<p class="sub">The full library of published MargaZine essays, organized by the five MARGA domains. Read anything here on the site, any time — no more digging through your inbox.</p>
-<div class="stat">Free to read &middot; A new essay every Monday</div>
-<form class="signup" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
+<h1>The complete library, behind one email.</h1>
+<p class="sub">Every published MargaZine essay in one place, organized by the five MARGA domains. Add your email to open the archive — it's free, and it unlocks instantly.</p>
+<form class="signup" id="gform"><input id="gemail" type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Unlock the archive</button></form>
+<div class="gnote" id="gnote"></div>
+<div class="orline">or</div>
+<a id="gsign" href="#">Already have a Marga account? Sign in to read &rarr;</a>
+<div class="stat">Free &middot; A new essay every Monday &middot; Unsubscribe anytime</div>
+</div>
+<div class="wall-r" aria-hidden="true">
+<div class="blurstack">
+<div class="bs"><span class="k">Molecule</span><h4>The first new sunscreen filter in 25 years.</h4></div>
+<div class="bs"><span class="k">Architecture</span><h4>Every device company wants to be an injectable company.</h4></div>
+<div class="bs"><span class="k">Reputation</span><h4>The loudest voice has never held a syringe.</h4></div>
+<div class="bs"><span class="k">Growth</span><h4>The Trojan Horse product.</h4></div>
+<div class="bs"><span class="k">Adoption</span><h4>We regulate wrinkles like we regulate cancer.</h4></div>
+<div class="bs"><span class="k">Growth</span><h4>The generation that quit drinking.</h4></div>
+</div>
+<div class="walllock">&#128274; Free with the newsletter</div>
+</div>
+</div></div></div></div>
+
+<!-- ================= UNLOCKED ARCHIVE (hidden until unlocked) ================= -->
+<main id="archive" hidden>
+<div class="a-intro"><div class="wrap">
+<div class="eb g">The MargaZine &middot; Archive</div>
+<h1 class="a-h1">Every essay, in one place.</h1>
+<p class="a-sub" id="welcome">The full library of published MargaZine essays, organized by the five MARGA domains. Filter by domain or search by title — no more digging through your inbox.</p>
 </div></div>
 
-<section><div class="wrap">
-
-<div class="dgroup" id="molecule"><div class="dhd"><span class="L">M</span><h2>Molecule</h2><div class="dd">The science and the product, beneath the marketing.</div></div><div class="rows">
-<a class="row" href="/the-new-sunscreen-filter.html"><div><div class="tt">The First New Sunscreen Filter in 25 Years Is Here, and the Ingredient Is the Least Important Part</div><div class="mt"><span>Molecule</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<div class="filterbar"><div class="in wrap">
+<div class="chips" id="chips">
+<button class="chip on" data-f="all">All <span>7</span></button>
+<button class="chip" data-f="molecule">Molecule</button>
+<button class="chip" data-f="architecture">Architecture</button>
+<button class="chip" data-f="reputation">Reputation</button>
+<button class="chip" data-f="growth">Growth</button>
+<button class="chip" data-f="adoption">Adoption</button>
+</div>
+<div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16140F" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><input id="q" type="search" placeholder="Search essays&hellip;" aria-label="Search essays"></div>
 </div></div>
 
-<div class="dgroup" id="architecture"><div class="dhd"><span class="L">A</span><h2>Architecture</h2><div class="dd">The commercial teardown: how the winners are built.</div></div><div class="rows">
-<a class="row" href="/every-device-company.html"><div><div class="tt">Every Device Company Eventually Wants to Be an Injectable Company</div><div class="mt"><span>Architecture</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
-<a class="row" href="/the-long-way-around.html"><div><div class="tt">The Long Way Around</div><div class="mt"><span>Architecture</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<section class="a-body"><div class="wrap" id="grid">
+
+<div class="dgroup" data-domain="molecule"><div class="dhead"><span class="L">M</span><div><h2>Molecule</h2><p>The science and the product, beneath the marketing.</p></div><span class="ct">1 essay</span></div>
+<div class="cards">
+<a class="card" data-domain="molecule" data-title="the first new sunscreen filter in 25 years is here bemotrizinol sunscreen skincare" href="/the-new-sunscreen-filter.html"><div class="card-top"><span class="dtag">Molecule</span><span class="rt">9 min</span></div><h3 class="card-h">The First New Sunscreen Filter in 25 Years Is Here</h3><p class="card-dek">What Bemotrizinol's approval actually changes for everyone in the skincare and sunscreen business.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" id="reputation"><div class="dhd"><span class="L">R</span><h2>Reputation</h2><div class="dd">Trust and perception, and how they are built and lost.</div></div><div class="rows">
-<a class="row" href="/the-loudest-voice.html"><div><div class="tt">The Loudest Voice in Aesthetics Has Never Held a Syringe</div><div class="mt"><span>Reputation</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<div class="dgroup" data-domain="architecture"><div class="dhead"><span class="L">A</span><div><h2>Architecture</h2><p>The commercial teardown: how the winners are built.</p></div><span class="ct">2 essays</span></div>
+<div class="cards">
+<a class="card" data-domain="architecture" data-title="every device company eventually wants to be an injectable company recurring biology" href="/every-device-company.html"><div class="card-top"><span class="dtag">Architecture</span><span class="rt">7 min</span></div><h3 class="card-h">Every Device Company Eventually Wants to Be an Injectable Company</h3><p class="card-dek">The gravitational pull of recurring biology over one-time capital.</p><div class="card-go">Read <span>&rarr;</span></div></a>
+<a class="card" data-domain="architecture" data-title="the long way around founding essay molecule to market development commercialization" href="/the-long-way-around.html"><div class="card-top"><span class="dtag">Architecture</span><span class="rt">7 min</span></div><h3 class="card-h">The Long Way Around</h3><p class="card-dek">Why I started Marga Partners — and why development and commercialization were never two disciplines.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" id="growth"><div class="dhd"><span class="L">G</span><h2>Growth</h2><div class="dd">Demand and the consumer, made and moved.</div></div><div class="rows">
-<a class="row" href="/the-trojan-horse-product.html"><div><div class="tt">The Trojan Horse Product</div><div class="mt"><span>Growth</span><span class="badge">&#9733; Special Edition</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
-<a class="row" href="/generational-platform-anchoring.html"><div><div class="tt">The Generation That Quit Drinking Is Coming for Aesthetics Next</div><div class="mt"><span>Growth</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<div class="dgroup" data-domain="reputation"><div class="dhead"><span class="L">R</span><div><h2>Reputation</h2><p>Trust and perception, and how they are built and lost.</p></div><span class="ct">1 essay</span></div>
+<div class="cards">
+<a class="card" data-domain="reputation" data-title="the loudest voice in aesthetics has never held a syringe authority accountability" href="/the-loudest-voice.html"><div class="card-top"><span class="dtag">Reputation</span><span class="rt">8 min</span></div><h3 class="card-h">The Loudest Voice in Aesthetics Has Never Held a Syringe</h3><p class="card-dek">How authority in aesthetics decoupled from accountability.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
 
-<div class="dgroup" id="adoption"><div class="dhd"><span class="L">A</span><h2>Adoption</h2><div class="dd">The point of care: technique, practice, and the real world.</div></div><div class="rows">
-<a class="row" href="/we-regulate-wrinkles-like-cancer.html"><div><div class="tt">We Regulate Wrinkles Like We Regulate Cancer</div><div class="mt"><span>Adoption</span><span class="free">Free to read</span></div></div><span class="go">Read &rarr;</span></a>
+<div class="dgroup" data-domain="growth"><div class="dhead"><span class="L">G</span><div><h2>Growth</h2><p>Demand and the consumer, made and moved.</p></div><span class="ct">2 essays</span></div>
+<div class="cards">
+<a class="card" data-domain="growth" data-title="the trojan horse product salmon sperm regenerative aesthetics special edition" href="/the-trojan-horse-product.html"><div class="card-top"><span class="dtag">Growth <span class="badge">&#9733; Special</span></span><span class="rt">13 min</span></div><h3 class="card-h">The Trojan Horse Product</h3><p class="card-dek">How salmon sperm changed regenerative aesthetics.</p><div class="card-go">Read <span>&rarr;</span></div></a>
+<a class="card" data-domain="growth" data-title="the generation that quit drinking is coming for aesthetics next platform anchoring" href="/generational-platform-anchoring.html"><div class="card-top"><span class="dtag">Growth</span><span class="rt">8 min</span></div><h3 class="card-h">The Generation That Quit Drinking Is Coming for Aesthetics Next</h3><p class="card-dek">Why each generation's anchor platform decides how it behaves — and who walks through your door.</p><div class="card-go">Read <span>&rarr;</span></div></a>
 </div></div>
+
+<div class="dgroup" data-domain="adoption"><div class="dhead"><span class="L">A</span><div><h2>Adoption</h2><p>The point of care: technique, practice, and the real world.</p></div><span class="ct">1 essay</span></div>
+<div class="cards">
+<a class="card" data-domain="adoption" data-title="we regulate wrinkles like we regulate cancer statistical approval clinical reality" href="/we-regulate-wrinkles-like-cancer.html"><div class="card-top"><span class="dtag">Adoption</span><span class="rt">9 min</span></div><h3 class="card-h">We Regulate Wrinkles Like We Regulate Cancer</h3><p class="card-dek">The gap between statistical approval and clinical reality — and the blame game it feeds.</p><div class="card-go">Read <span>&rarr;</span></div></a>
+</div></div>
+
+<div class="noresults" id="noresults" hidden>No essays match that search. <a href="#" id="clearq" style="color:var(--bronze);font-weight:600">Clear &times;</a></div>
 
 </div></section>
 
@@ -84,24 +179,72 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 <a class="c" href="/products.html"><span class="k">Join the bench &middot; Marga Consortium</span><h3>Score the market with us.</h3><p>The essays are the public edge of a private practice. The Marga Consortium is the expert bench behind the Marga Index — dermatologists, surgeons, operators, and investors whose judgment sets the category scores.</p><span class="go">Explore the Consortium &rarr;</span></a>
 <a class="c" href="/products.html"><span class="k">For operators &amp; investors &middot; Enterprise</span><h3>The Category Market Reports.</h3><p>Where the frameworks in these essays become numbers: full-market, consortium-scored reads on neurotoxins, fillers, biostimulators, devices, and more — with financials, benchmarks, and the five-force index for every category.</p><span class="go">See the reports &rarr;</span></a>
 </div></div></section>
-
-<div class="final"><div class="in wrap">
-<div class="eb g">Join the MargaZine</div>
-<h2>Never dig through your inbox again.</h2>
-<p>One email brings every Monday drop, and this archive keeps every essay a click away. Free, and yours to leave whenever you like.</p>
-<form class="signup light" data-mzform><input type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email address"><button type="submit">Join free</button></form>
-</div></div>
+</main>
 
 <footer><div class="in wrap"><div class="brand"><svg viewBox="0 0 394 321" style="width:22px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b style="color:#F1E9DB;font-size:14px">Marga Partners</b></div><div class="mid">The MargaZine Archive &middot; A Marga publication</div><a href="#top" style="color:#C7A24B;font-weight:600">Back to top &uarr;</a></div></footer>
+
+<script>window.MZ_NEWSLETTER_ENDPOINT="https://app.margapartners.com/newsletter/subscribe";</script>
 <script>
+/* Gate: the archive is hidden until the reader joins (mz_subscribed) or signs in. */
 (function(){
-  document.querySelectorAll('[data-mzform]').forEach(function(f){
-    f.addEventListener('submit', function(e){
-      e.preventDefault();
-      var inp = f.querySelector('input'), em = (inp.value || '').trim();
-      location.href = '/subscribe.html' + (em ? '?email=' + encodeURIComponent(em) : '');
-    });
+  var K='mz_subscribed',wall=document.getElementById('wall'),arch=document.getElementById('archive'),f=document.getElementById('gform');
+  function reveal(name){
+    if(arch)arch.hidden=false; if(wall)wall.style.display='none';
+    try{localStorage.setItem(K,'1'); if(name)localStorage.setItem('mz_reader_name',name);}catch(_){}
+    if(name){var w=document.getElementById('welcome'); if(w)w.textContent='Welcome back, '+name+'. The full library of published MargaZine essays, organized by the five MARGA domains — filter by domain or search by title.';}
+  }
+  window.__mzReveal=reveal;
+  if(localStorage.getItem(K)==='1'){reveal(); return;}
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('gemail').value.trim(),n=document.getElementById('gnote'),ep=window.MZ_NEWSLETTER_ENDPOINT;
+    try{if(ep)fetch(ep,{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:'email='+encodeURIComponent(em)});}catch(_){}
+    if(n)n.textContent="You're in. Check your inbox to confirm — the archive is open.";
+    reveal();
   });
+})();
+</script>
+<script>
+/* Signed-in Marga members unlock via a redirect handshake (reader token). */
+(function(){
+  var APP="https://app.margapartners.com",sign=document.getElementById("gsign"),note=document.getElementById("gnote");
+  var here=location.origin+location.pathname;
+  if(sign)sign.href=APP+"/reader/authorize?return="+encodeURIComponent(here);
+  var p=new URLSearchParams(location.search),tok=p.get("mzt");
+  if(tok){
+    fetch(APP+"/reader/verify?token="+encodeURIComponent(tok)).then(function(r){return r.ok?r.json():null;}).then(function(j){
+      if(j&&j.ok){(window.__mzReveal||function(){})(j.name); if(note)note.textContent=(j.name?("Welcome back, "+j.name+". "):"")+"Signed in with your Marga account.";}
+      p.delete("mzt"); history.replaceState({},"",location.pathname+(p.toString()?("?"+p.toString()):"")+location.hash);
+    }).catch(function(){});
+  }
+})();
+</script>
+<script>
+/* Filter chips + live title search over the archive. */
+(function(){
+  var q=document.getElementById('q'),chips=document.getElementById('chips'),grid=document.getElementById('grid');
+  if(!grid)return;
+  var groups=[].slice.call(grid.querySelectorAll('.dgroup')),nores=document.getElementById('noresults'),active='all';
+  function apply(){
+    var term=(q&&q.value||'').trim().toLowerCase(),anyVisible=false;
+    groups.forEach(function(g){
+      var dom=g.getAttribute('data-domain'),domOk=(active==='all'||active===dom),groupHas=false;
+      [].slice.call(g.querySelectorAll('.card')).forEach(function(c){
+        var t=c.getAttribute('data-title')||'',show=domOk&&(!term||t.indexOf(term)>-1);
+        c.style.display=show?'':'none'; if(show){groupHas=true;anyVisible=true;}
+      });
+      g.style.display=groupHas?'':'none';
+    });
+    if(nores)nores.hidden=anyVisible;
+  }
+  if(q)q.addEventListener('input',apply);
+  if(chips)chips.addEventListener('click',function(e){
+    var b=e.target.closest('.chip'); if(!b)return;
+    active=b.getAttribute('data-f');
+    [].slice.call(chips.querySelectorAll('.chip')).forEach(function(c){c.classList.toggle('on',c===b);});
+    apply();
+  });
+  var clr=document.getElementById('clearq'); if(clr)clr.addEventListener('click',function(e){e.preventDefault();if(q)q.value='';apply();});
 })();
 </script>
 </body></html>

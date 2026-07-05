@@ -89,10 +89,29 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
   .nav a:not(.btn){display:none}
   .filterbar .in{gap:12px}.search input{width:100%}.search{flex:1;order:2;width:100%}
 }
+
+/* --- mobile nav (hamburger) + section edge-bleed fix --- */
+.navtoggle{display:none;background:none;border:0;padding:10px;margin:-10px -8px -10px 0;cursor:pointer;color:var(--ink)}
+.navtoggle span{position:relative;display:block;width:20px;height:2px;background:currentColor;border-radius:2px}
+.navtoggle span:before,.navtoggle span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s,top .2s}
+.navtoggle span:before{top:-6px}.navtoggle span:after{top:6px}
+.bar.open .navtoggle span{background:transparent}
+.bar.open .navtoggle span:before{top:0;transform:rotate(45deg)}
+.bar.open .navtoggle span:after{top:0;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .bar .in{position:relative}
+  .navtoggle{display:inline-flex}
+  .bar .nav{position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream2);border-bottom:1px solid var(--hair);box-shadow:0 18px 34px -22px rgba(22,20,15,.6);padding:4px 0 12px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .16s,transform .16s,visibility .16s}
+  .bar.open .nav{opacity:1;visibility:visible;transform:none}
+  .bar .nav a{display:block;padding:13px clamp(22px,5vw,40px);font-size:15px}
+  .bar .nav a:not(.btn){color:var(--ink);border-top:1px solid rgba(22,20,15,.07)}
+  .bar .nav a.btn{margin:12px clamp(22px,5vw,40px) 2px;text-align:center;border-radius:3px;color:var(--cream2)}
+  .hero .in{padding-left:clamp(22px,5vw,40px);padding-right:clamp(22px,5vw,40px)}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
+<nav class="nav" id="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <!-- ================= LOCKED WALL (default) ================= -->
 <div id="wall"><div class="hero"><div class="in wrap"><div class="wallgrid">
@@ -268,4 +287,4 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
   spy();
 })();
 </script>
-</body></html>
+<script>(function(){var b=document.querySelector(".bar"),t=b&&b.querySelector(".navtoggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=b.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(b.classList.contains("open")&&!b.contains(e.target)){b.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script></body></html>

@@ -40,6 +40,8 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .wkln{border-top:1px solid var(--haird);padding-top:16px}.wkln .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}.wkln p{margin:0;font-size:14.5px;line-height:1.62;color:rgba(241,233,219,.74)}
 .wkcta{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font:600 11px/1 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .wkdots{display:flex;gap:8px;margin-top:30px}.wkdots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(241,233,219,.25);cursor:pointer;transition:background .3s,transform .3s}.wkdots button.on{background:var(--gold);transform:scale(1.3)}
+.wkctrl{display:flex;align-items:center;gap:16px;margin-top:30px}.wkctrl .wkdots{margin-top:0}
+.wkarrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--haird);background:transparent;color:var(--cream2);cursor:pointer;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}.wkarrow:hover{background:rgba(241,233,219,.08);border-color:var(--gold);color:var(--gold)}
 .wfade{transition:opacity .35s ease}
 .work-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
 .wcta{background:var(--cream);border:1px solid var(--hair);border-radius:8px;padding:clamp(22px,2.6vw,30px)}.wcta h4{font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:var(--ink);margin:0 0 8px}.wcta p{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--body)}.wcta a{font:600 12px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--bronze)}
@@ -130,7 +132,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="wkln"><div class="k">Commercial lens</div><p data-com>Brand that active so the market asks for it by name, the way buyers demanded Intel Inside, turning a spec into pricing power.</p></div>
 </div>
 <a class="wkcta" href="/Consultation.html?type=index">&#128274; Commission the full breakdown &rarr;</a>
-<div class="wkdots" data-dots></div>
+<div class="wkctrl"><button class="wkarrow" type="button" data-prev aria-label="Previous case study">&larr;</button><div class="wkdots" data-dots></div><button class="wkarrow" type="button" data-next aria-label="Next case study">&rarr;</button></div>
 </div>
 </div>
 <div class="work-cta">
@@ -162,8 +164,9 @@ function show(i){idx=i;for(var f=0;f<fades.length;f++)fades[f].style.opacity=0;
 setTimeout(function(){var d=DATA[i];topic.textContent=d.topic;par.innerHTML=d.par;sci.textContent=d.sci;com.textContent=d.com;count.textContent=pad(i+1)+' / '+pad(DATA.length);for(var f=0;f<fades.length;f++)fades[f].style.opacity=1;},350);
 for(var j=0;j<dotEls.length;j++)dotEls[j].className=(j===i?'on':'');}
 DATA.forEach(function(d,j){var b=document.createElement('button');b.className=(j===0?'on':'');b.setAttribute('aria-label','Case study '+(j+1));b.onclick=function(){show(j);rst();};dotsWrap.appendChild(b);dotEls.push(b);});
-var timer=setInterval(function(){show((idx+1)%DATA.length);},6000);
-function rst(){clearInterval(timer);timer=setInterval(function(){show((idx+1)%DATA.length);},6000);}
+var pv=C.querySelector('[data-prev]'),nx=C.querySelector('[data-next]');if(pv)pv.onclick=function(){show((idx-1+DATA.length)%DATA.length);rst();};if(nx)nx.onclick=function(){show((idx+1)%DATA.length);rst();};
+var timer=setInterval(function(){show((idx+1)%DATA.length);},9000);
+function rst(){clearInterval(timer);timer=setInterval(function(){show((idx+1)%DATA.length);},9000);}
 C.addEventListener('mouseenter',function(){clearInterval(timer);});
 C.addEventListener('mouseleave',function(){rst();});
 })();</script>

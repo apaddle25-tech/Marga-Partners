@@ -28,19 +28,24 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .close-line{margin-top:26px;font-family:'Newsreader',serif;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.4;color:var(--cream2)}
 .domains{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:40px}
 .dom{background:var(--cream);padding:clamp(22px,2.6vw,30px)}.dom h3{font-size:20px;color:var(--ink);margin-bottom:8px}.dom p{margin:0;font-size:13.5px;line-height:1.55;color:var(--body)}
-.work{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:40px}
-.wk{background:var(--ink2);padding:clamp(26px,3vw,36px);display:flex;flex-direction:column}.wk:hover{background:var(--ink3)}
-.wk .tag{align-self:flex-start;font:600 9px/1 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:5px 9px;border-radius:2px;margin-bottom:18px}
-.wk h3{font-size:clamp(21px,2.3vw,26px);line-height:1.1;color:var(--cream2);margin-bottom:12px}
-.wk .par{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.wk p{margin:0 0 22px;font-size:14.5px;line-height:1.62;color:rgba(241,233,219,.72)}
-.wk .go{margin-top:auto;display:flex;align-items:center;gap:8px;font:600 11px/1 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-top:1px solid var(--haird);padding-top:16px}
+.wkcar{margin-top:40px}
+.wktile{background:var(--ink2);border:1px solid var(--haird);border-radius:8px;padding:clamp(30px,4vw,48px)}
+.wktile .wktop{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}
+.wktile .tag{font:600 9px/1 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:5px 9px;border-radius:2px}
+.wktile .wkcount{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.12em;color:rgba(241,233,219,.5)}
+.wktile h3{font-size:clamp(24px,3.1vw,36px);line-height:1.08;color:var(--cream2);max-width:22ch}
+.wktile .par{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:14px 0 28px}
+.wklenses{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.wkln{border-top:1px solid var(--haird);padding-top:16px}.wkln .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}.wkln p{margin:0;font-size:14.5px;line-height:1.62;color:rgba(241,233,219,.74)}
+.wkcta{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font:600 11px/1 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.wkdots{display:flex;gap:8px;margin-top:30px}.wkdots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(241,233,219,.25);cursor:pointer;transition:background .3s,transform .3s}.wkdots button.on{background:var(--gold);transform:scale(1.3)}
+.wfade{transition:opacity .35s ease}
 .work-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
 .wcta{background:var(--cream);border:1px solid var(--hair);border-radius:8px;padding:clamp(22px,2.6vw,30px)}.wcta h4{font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:var(--ink);margin:0 0 8px}.wcta p{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--body)}.wcta a{font:600 12px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--bronze)}
 .final{background:var(--ink2);color:var(--cream2);text-align:center}.final .in{padding:clamp(64px,9vw,110px) 0}.final h2{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.06;color:var(--cream2);max-width:20ch;margin:22px auto 0}.final p{font-size:16px;line-height:1.7;color:var(--cream2);opacity:.78;max-width:56ch;margin:22px auto 0}
 .primary{display:inline-block;background:var(--gold);color:var(--ink2);padding:15px 26px;border-radius:3px;font-weight:700;font-size:14px;margin-top:30px}
 footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:30px;padding-bottom:30px;font-size:12.5px}footer .mid{font:500 11px/1.5 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase}footer nav{display:flex;gap:20px}footer nav a{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,233,219,.6)}
-@media(max-width:860px){.hero .in,.cards3,.lens,.domains,.work,.work-cta,.ex .row{grid-template-columns:1fr}.ex .row{gap:6px}.nav a:not(.btn){display:none}}
+@media(max-width:860px){.hero .in,.cards3,.lens,.domains,.wklenses,.work-cta,.ex .row{grid-template-columns:1fr}.ex .row{gap:6px}.nav a:not(.btn){display:none}}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
@@ -94,12 +99,19 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 
 <section id="work"><div class="wrap">
 <div class="sec-head"><div class="eb">Selected work</div><h2>What aesthetics can learn from everyone else.</h2>
-<p>Every hard problem in this industry has already been solved somewhere else. A sample of the parallels we study and the strategies we bring back. Each one is the seed of a report we build for a client; the thinking behind them runs free in the MargaZine.</p></div>
-<div class="work">
-<a class="wk" href="/Consultation.html"><span class="tag">Example analysis</span><h3>Make the molecule the reason to buy.</h3><div class="par">The parallel &middot; Intel Inside</div><p>Intel took an invisible component and made buyers demand it by name, turning a spec sheet into pricing power. Aesthetics sells the finished brand while the molecule that actually differentiates stays anonymous. The move is to brand the active before a competitor claims it.</p><span class="go">&#128274; Full breakdown &middot; Commission &rarr;</span></a>
-<a class="wk" href="/Consultation.html"><span class="tag">Example analysis</span><h3>Turn a safety scare into the cheapest trust you will ever buy.</h3><div class="par">The parallel &middot; Tylenol, 1982</div><p>Johnson and Johnson pulled every bottle after a tampering crisis, absorbed the loss, and set the standard for crisis response for forty years. Aesthetics manages every adverse-event story quietly, as PR. The parallel shows why over-responding to a trust shock compounds in your favor.</p><span class="go">&#128274; Full breakdown &middot; Commission &rarr;</span></a>
-<a class="wk" href="/Consultation.html"><span class="tag">Example analysis</span><h3>Pull the hesitant majority into the category.</h3><div class="par">The parallel &middot; Invisalign</div><p>Invisalign did not beat braces on price; it reframed orthodontics as an adult choice and removed the social cost of starting. Aesthetics fights over the penetrated few while the curious many sit out. Lower the perceived cost of the first step, not the price of the treatment.</p><span class="go">&#128274; Full breakdown &middot; Commission &rarr;</span></a>
-<a class="wk" href="/Consultation.html"><span class="tag">Example analysis</span><h3>Hold a premium as the category commoditizes.</h3><div class="par">The parallel &middot; Dyson</div><p>Dyson charged five times the going rate for a vacuum by making its engineering visible and its design desirable. Energy devices are sliding toward price parity as claims converge. Make the technology legible and the experience aspirational before the number is all that is left.</p><span class="go">&#128274; Full breakdown &middot; Commission &rarr;</span></a>
+<p>Every hard problem in this industry has already been solved somewhere else. A rotating sample of the parallels we study, each read through both lenses, scientific and commercial, the way Marga reads everything. Each is the seed of a report we build for a client, and the thinking behind them runs free in the MargaZine.</p></div>
+<div class="wkcar" id="wkcar">
+<div class="wktile">
+<div class="wktop"><span class="tag">Example analysis</span><span class="wkcount" data-count>01 / 04</span></div>
+<h3 class="wfade" data-topic>Make the molecule the reason to buy.</h3>
+<div class="par wfade" data-par>The parallel &middot; Intel Inside</div>
+<div class="wklenses wfade">
+<div class="wkln"><div class="k">Scientific lens</div><p data-sci>Isolate what actually makes the molecule distinct: the mechanism, the data, the difference a clinician can defend.</p></div>
+<div class="wkln"><div class="k">Commercial lens</div><p data-com>Brand that active so the market asks for it by name, the way buyers demanded Intel Inside, turning a spec into pricing power.</p></div>
+</div>
+<a class="wkcta" href="/Consultation.html">&#128274; Commission the full breakdown &rarr;</a>
+<div class="wkdots" data-dots></div>
+</div>
 </div>
 <div class="work-cta">
 <div class="wcta"><h4>Read the thinking, free.</h4><p>Analyses like these, the parallels and the strategy in full, publish free in the MargaZine on a rolling basis.</p><a href="/journal.html">Read the MargaZine &rarr;</a></div>
@@ -115,4 +127,24 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 </div></div>
 
 <footer><div class="in wrap"><div class="brand"><svg viewBox="0 0 394 321" style="width:22px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b style="color:#F1E9DB;font-size:14px">Marga Partners</b></div><div class="mid">Molecule to market to mature brand</div><nav><a href="/the-marga-difference.html">Difference</a><a href="/journal.html">MargaZine</a><a href="/products.html">Products</a><a href="/Consultation.html">Contact</a></nav></div></footer>
+<script>(function(){
+var C=document.getElementById('wkcar');if(!C)return;
+var DATA=[
+{topic:'Make the molecule the reason to buy.',par:'The parallel &middot; Intel Inside',sci:'Isolate what actually makes the molecule distinct: the mechanism, the data, the difference a clinician can defend.',com:'Brand that active so the market asks for it by name, the way buyers demanded Intel Inside, turning a spec into pricing power.'},
+{topic:'Turn a safety scare into the cheapest trust you will ever buy.',par:'The parallel &middot; Tylenol, 1982',sci:'Lead with the pharmacovigilance and the real numbers, not reassurance; let the evidence carry the response.',com:'Over-respond in public the way Johnson and Johnson pulled every bottle, so a trust shock compounds in your favor instead of against you.'},
+{topic:'Pull the hesitant majority into the category.',par:'The parallel &middot; Invisalign',sci:'Use the clinical evidence to shrink the perceived risk of starting, not to win a spec war with the incumbent.',com:'Reframe the treatment as a normal adult choice and remove the social cost of the first step, the way Invisalign did to braces.'},
+{topic:'Hold a premium as the category commoditizes.',par:'The parallel &middot; Dyson',sci:'Make the engineering legible: show the histology, the dosimetry, the mechanism a competitor cannot cheaply copy.',com:'Wrap it in an aspirational experience, the way Dyson made a vacuum desirable, so price stops being the only comparison.'}
+];
+var topic=C.querySelector('[data-topic]'),par=C.querySelector('[data-par]'),sci=C.querySelector('[data-sci]'),com=C.querySelector('[data-com]'),count=C.querySelector('[data-count]'),dotsWrap=C.querySelector('[data-dots]');
+var fades=C.querySelectorAll('.wfade'),idx=0,dotEls=[];
+function pad(n){return (n<10?'0':'')+n;}
+function show(i){idx=i;for(var f=0;f<fades.length;f++)fades[f].style.opacity=0;
+setTimeout(function(){var d=DATA[i];topic.textContent=d.topic;par.innerHTML=d.par;sci.textContent=d.sci;com.textContent=d.com;count.textContent=pad(i+1)+' / '+pad(DATA.length);for(var f=0;f<fades.length;f++)fades[f].style.opacity=1;},350);
+for(var j=0;j<dotEls.length;j++)dotEls[j].className=(j===i?'on':'');}
+DATA.forEach(function(d,j){var b=document.createElement('button');b.className=(j===0?'on':'');b.setAttribute('aria-label','Case study '+(j+1));b.onclick=function(){show(j);rst();};dotsWrap.appendChild(b);dotEls.push(b);});
+var timer=setInterval(function(){show((idx+1)%DATA.length);},6000);
+function rst(){clearInterval(timer);timer=setInterval(function(){show((idx+1)%DATA.length);},6000);}
+C.addEventListener('mouseenter',function(){clearInterval(timer);});
+C.addEventListener('mouseleave',function(){rst();});
+})();</script>
 </body></html>

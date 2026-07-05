@@ -321,11 +321,31 @@
               <span>Marga Partners may use these details to evaluate fit and respond to this inquiry.</span>
             </label>
 
+            <label class="check-row">
+              <input type="checkbox" id="mz-optin" name="join_margazine" value="yes" checked>
+              <span>Also send me the MargaZine, Marga&rsquo;s free weekly read on the business of aesthetics. You can unsubscribe anytime.</span>
+            </label>
+
             <div class="actions">
               <button class="button" type="submit">Submit intake</button>
               <p class="note">Your submission will be routed to Marga Partners.</p>
             </div>
           </form>
+          <script>
+          (function(){
+            var f=document.querySelector('form'); if(!f) return;
+            f.addEventListener('submit', function(){
+              try{
+                var cb=document.getElementById('mz-optin'), em=((document.getElementById('email')||{}).value||'');
+                if(cb && cb.checked && em.indexOf('@')>0){
+                  var role=((document.getElementById('expertise')||{}).value||'');
+                  var body='email='+encodeURIComponent(em.trim())+'&role='+encodeURIComponent(role)+'&consortium=';
+                  navigator.sendBeacon('https://app.margapartners.com/newsletter/subscribe', new Blob([body],{type:'application/x-www-form-urlencoded'}));
+                }
+              }catch(_){}
+            });
+          })();
+          </script>
         </div>
       </div>
     </section>

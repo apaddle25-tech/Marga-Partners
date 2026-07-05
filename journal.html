@@ -73,10 +73,29 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 .lockover p{font-size:15px;line-height:1.6;color:rgba(241,233,219,.75);margin:0 0 22px;max-width:42ch}
 .lockover a{background:var(--gold);color:var(--ink2);padding:14px 24px;border-radius:3px;font-weight:700;font-size:14px}
 @media(max-width:900px){.hero .in{grid-template-columns:1fr}.hero .col-r{display:none}.domains{grid-template-columns:repeat(2,1fr)}.teasers,.rhythm,.special{grid-template-columns:1fr}.blurstack{grid-template-columns:1fr}.how,.formats{grid-template-columns:1fr}.nav a:not(.btn){display:none}}
+
+/* --- mobile nav (hamburger) + section edge-bleed fix --- */
+.navtoggle{display:none;background:none;border:0;padding:10px;margin:-10px -8px -10px 0;cursor:pointer;color:var(--ink)}
+.navtoggle span{position:relative;display:block;width:20px;height:2px;background:currentColor;border-radius:2px}
+.navtoggle span:before,.navtoggle span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s,top .2s}
+.navtoggle span:before{top:-6px}.navtoggle span:after{top:6px}
+.bar.open .navtoggle span{background:transparent}
+.bar.open .navtoggle span:before{top:0;transform:rotate(45deg)}
+.bar.open .navtoggle span:after{top:0;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .bar .in{position:relative}
+  .navtoggle{display:inline-flex}
+  .bar .nav{position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream2);border-bottom:1px solid var(--hair);box-shadow:0 18px 34px -22px rgba(22,20,15,.6);padding:4px 0 12px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .16s,transform .16s,visibility .16s}
+  .bar.open .nav{opacity:1;visibility:visible;transform:none}
+  .bar .nav a{display:block;padding:13px clamp(22px,5vw,40px);font-size:15px}
+  .bar .nav a:not(.btn){color:var(--ink);border-top:1px solid rgba(22,20,15,.07)}
+  .bar .nav a.btn{margin:12px clamp(22px,5vw,40px) 2px;text-align:center;border-radius:3px;color:var(--cream2)}
+  .hero .in{padding-left:clamp(22px,5vw,40px);padding-right:clamp(22px,5vw,40px)}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
+<nav class="nav" id="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <div class="hero"><div class="in wrap">
 <div class="col-l">
@@ -115,11 +134,11 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="sec-head d"><div class="eb g">The framework &middot; MARGA</div><h2>Five domains, from the molecule to the point of care.</h2>
 <p>Everything files under one of five domains. Read in order, their initials spell MARGA, an arc from the science of a treatment to the moment it reaches a patient.</p></div>
 <div class="domains">
-<div class="dom"><div class="L">M</div><h3>Molecule</h3><div class="desc">The science and the product, beneath the marketing.</div><div class="feat"><span class="k">Featured</span><span class="t">"Aesthetics Borrowed the Word 'Regenerative.' It Never Earned It."</span></div></div>
-<div class="dom"><div class="L">A</div><h3>Architecture</h3><div class="desc">The commercial teardown: how the winners are built.</div><div class="feat"><span class="k">Featured</span><span class="t">"Trust Compounds: why the oldest products still win."</span></div></div>
-<div class="dom"><div class="L">R</div><h3>Reputation</h3><div class="desc">Trust and perception, and how they are built and lost.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Fragility of Trust: why one post can move a market."</span></div></div>
-<div class="dom"><div class="L">G</div><h3>Growth</h3><div class="desc">Demand and the consumer, made and moved.</div><div class="feat"><span class="k">Featured</span><span class="t">"The Ozempic Face Is the Best Thing That Ever Happened to Injectables."</span></div></div>
-<div class="dom"><div class="L">A</div><h3>Adoption</h3><div class="desc">The point of care: technique, practice, and the real world.</div><div class="feat"><span class="k">Featured</span><span class="t">"Anatomy Is the Active Ingredient."</span></div></div>
+<a class="dom" href="/the-new-sunscreen-filter.html"><div class="L">M</div><h3>Molecule</h3><div class="desc">The science and the product, beneath the marketing.</div><div class="feat"><span class="k">Featured &middot; Free to read</span><span class="t">The First New Sunscreen Filter in 25 Years Is Here &rarr;</span></div></a>
+<a class="dom" href="/every-device-company.html"><div class="L">A</div><h3>Architecture</h3><div class="desc">The commercial teardown: how the winners are built.</div><div class="feat"><span class="k">Featured &middot; Free to read</span><span class="t">Every Device Company Wants to Be an Injectable Company &rarr;</span></div></a>
+<a class="dom" href="/the-loudest-voice.html"><div class="L">R</div><h3>Reputation</h3><div class="desc">Trust and perception, and how they are built and lost.</div><div class="feat"><span class="k">Featured &middot; Free to read</span><span class="t">The Loudest Voice in Aesthetics Has Never Held a Syringe &rarr;</span></div></a>
+<a class="dom" href="/the-trojan-horse-product.html"><div class="L">G</div><h3>Growth</h3><div class="desc">Demand and the consumer, made and moved.</div><div class="feat"><span class="k">Featured &middot; Free to read</span><span class="t">The Trojan Horse Product &rarr;</span></div></a>
+<a class="dom" href="/we-regulate-wrinkles-like-cancer.html"><div class="L">A</div><h3>Adoption</h3><div class="desc">The point of care: technique, practice, and the real world.</div><div class="feat"><span class="k">Featured &middot; Free to read</span><span class="t">We Regulate Wrinkles Like We Regulate Cancer &rarr;</span></div></a>
 </div></div></section>
 
 <section class="dark"><div class="wrap">
@@ -165,4 +184,4 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
   });
 })();
 </script>
-</body></html>
+<script>(function(){var b=document.querySelector(".bar"),t=b&&b.querySelector(".navtoggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=b.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(b.classList.contains("open")&&!b.contains(e.target)){b.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script></body></html>

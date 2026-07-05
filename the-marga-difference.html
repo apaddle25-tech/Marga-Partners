@@ -13,7 +13,8 @@ h1,h2,h3{font-family:'Newsreader',serif;font-optical-sizing:auto;font-weight:400
 .nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700;font-size:13px}.nav a.btn:hover{color:var(--cream2)}
 section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(--cream2)}
 .sec-head{max-width:64ch}.sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.08;color:var(--ink);margin:22px 0 0}.sec-head.d h2{color:var(--cream2)}.sec-head p{font-size:16px;line-height:1.7;color:var(--body);margin:18px 0 0;max-width:62ch}.sec-head.d p{color:var(--cream2);opacity:.78}
-.hero{background:var(--cream2)}.hero .in{padding:clamp(70px,10vw,120px) 0 clamp(56px,8vw,96px);display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,5vw,60px);align-items:center}
+.hero{background:var(--cream3);border-bottom:1px solid var(--hair)}.hero .in{padding:clamp(70px,10vw,120px) 0 clamp(56px,8vw,96px);display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,5vw,60px);align-items:center}
+#approach{background:var(--cream2)}
 .hero h1{font-size:clamp(2.8rem,6.6vw,5rem);line-height:1.04;color:var(--ink);max-width:12ch;margin:22px 0 0}.hero h1 em{font-style:italic;color:var(--bronze)}
 .hero .sub{font-size:16px;line-height:1.7;color:var(--body);max-width:52ch;margin:24px 0 0}
 .jump{display:flex;flex-direction:column;border:1px solid var(--hair);border-radius:8px;overflow:hidden}
@@ -46,10 +47,29 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .primary{display:inline-block;background:var(--gold);color:var(--ink2);padding:15px 26px;border-radius:3px;font-weight:700;font-size:14px;margin-top:30px}
 footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:30px;padding-bottom:30px;font-size:12.5px}footer .mid{font:500 11px/1.5 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase}footer nav{display:flex;gap:20px}footer nav a{font:600 11px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(241,233,219,.6)}
 @media(max-width:860px){.hero .in,.cards3,.lens,.domains,.wklenses,.work-cta,.ex .row{grid-template-columns:1fr}.ex .row{gap:6px}.nav a:not(.btn){display:none}}
+
+/* --- mobile nav (hamburger) + section edge-bleed fix --- */
+.navtoggle{display:none;background:none;border:0;padding:10px;margin:-10px -8px -10px 0;cursor:pointer;color:var(--ink)}
+.navtoggle span{position:relative;display:block;width:20px;height:2px;background:currentColor;border-radius:2px}
+.navtoggle span:before,.navtoggle span:after{content:"";position:absolute;left:0;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s,top .2s}
+.navtoggle span:before{top:-6px}.navtoggle span:after{top:6px}
+.bar.open .navtoggle span{background:transparent}
+.bar.open .navtoggle span:before{top:0;transform:rotate(45deg)}
+.bar.open .navtoggle span:after{top:0;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .bar .in{position:relative}
+  .navtoggle{display:inline-flex}
+  .bar .nav{position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream2);border-bottom:1px solid var(--hair);box-shadow:0 18px 34px -22px rgba(22,20,15,.6);padding:4px 0 12px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .16s,transform .16s,visibility .16s}
+  .bar.open .nav{opacity:1;visibility:visible;transform:none}
+  .bar .nav a{display:block;padding:13px clamp(22px,5vw,40px);font-size:15px}
+  .bar .nav a:not(.btn){color:var(--ink);border-top:1px solid rgba(22,20,15,.07)}
+  .bar .nav a.btn{margin:12px clamp(22px,5vw,40px) 2px;text-align:center;border-radius:3px;color:var(--cream2)}
+  .hero .in{padding-left:clamp(22px,5vw,40px);padding-right:clamp(22px,5vw,40px)}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav></div></header>
+<nav class="nav" id="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <div class="hero"><div class="in wrap">
 <div><div class="eb">The Marga Difference &middot; How Marga works</div>
@@ -109,13 +129,13 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="wkln"><div class="k">Scientific lens</div><p data-sci>Isolate what actually makes the molecule distinct: the mechanism, the data, the difference a clinician can defend.</p></div>
 <div class="wkln"><div class="k">Commercial lens</div><p data-com>Brand that active so the market asks for it by name, the way buyers demanded Intel Inside, turning a spec into pricing power.</p></div>
 </div>
-<a class="wkcta" href="/Consultation.html">&#128274; Commission the full breakdown &rarr;</a>
+<a class="wkcta" href="/Consultation.html?type=index">&#128274; Commission the full breakdown &rarr;</a>
 <div class="wkdots" data-dots></div>
 </div>
 </div>
 <div class="work-cta">
 <div class="wcta"><h4>Read the thinking, free.</h4><p>Analyses like these, the parallels and the strategy in full, publish free in the MargaZine on a rolling basis.</p><a href="/journal.html">Read the MargaZine &rarr;</a></div>
-<div class="wcta"><h4>Commission your own.</h4><p>Bring the question that keeps you up at night. We build the cross-industry analysis and the strategy around your exact asset, as a custom report.</p><a href="/Consultation.html">Commission an analysis &rarr;</a></div>
+<div class="wcta"><h4>Commission your own.</h4><p>Bring the question that keeps you up at night. We build the cross-industry analysis and the strategy around your exact asset, as a custom report.</p><a href="/Consultation.html?type=index">Commission an analysis &rarr;</a></div>
 </div>
 </div></section>
 
@@ -147,4 +167,4 @@ function rst(){clearInterval(timer);timer=setInterval(function(){show((idx+1)%DA
 C.addEventListener('mouseenter',function(){clearInterval(timer);});
 C.addEventListener('mouseleave',function(){rst();});
 })();</script>
-</body></html>
+<script>(function(){var b=document.querySelector(".bar"),t=b&&b.querySelector(".navtoggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=b.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(b.classList.contains("open")&&!b.contains(e.target)){b.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script></body></html>

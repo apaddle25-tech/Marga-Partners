@@ -13,9 +13,11 @@ h1,h2,h3{font-family:'Newsreader',serif;font-optical-sizing:auto;font-weight:400
 .bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(241,233,219,.9);border-bottom:1px solid var(--hair)}.bar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}.brand{display:flex;align-items:center;gap:11px}.brand b{font-weight:800;letter-spacing:-.02em;font-size:17px;color:var(--ink)}
 .nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700;font-size:13px}.nav a.btn:hover{color:var(--cream2)}
 .panel{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:grid;align-content:safe center;padding:82px 0 62px}
-.hero{background:var(--ink2);color:var(--cream2)}.hero .in{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
-.hero h1{font-size:clamp(3rem,7vw,5.3rem);line-height:1.03;color:var(--cream2);max-width:15ch;margin:24px 0 0}.hero h1 em{font-style:italic;color:var(--gold)}
-.hero .sub{font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.55;color:rgba(241,233,219,.74);max-width:52ch;margin:26px 0 0}
+.hero{background:var(--ink2);color:var(--cream2);padding-top:72px;padding-bottom:42px}.hero .in{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.04;color:var(--cream2);max-width:15ch;margin:20px 0 0}.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .sub{font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.5;color:rgba(241,233,219,.74);max-width:52ch;margin:20px 0 0}
+.hero .cta-row{margin-top:26px}
+@media(max-height:820px){.hero{padding-top:62px;padding-bottom:30px}.hero h1{font-size:clamp(2.3rem,4.8vw,3.8rem);margin-top:16px}.hero .sub{font-size:1.04rem;line-height:1.47;margin-top:16px}.hero .cta-row{margin-top:20px}}
 .hero .col-r{display:flex;align-items:center;justify-content:center}
 .mark{width:clamp(190px,28vw,320px);height:auto;overflow:visible}
 .mark path{transform-box:fill-box;transform-origin:50% 100%;opacity:0;animation:rise .85s cubic-bezier(.2,.7,.2,1) forwards}
@@ -102,11 +104,21 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 <a class="pil" href="/products.html"><div class="k">For investors &amp; boards</div><h3>Underwrite the thesis</h3><p>Commercial due diligence and consortium-scored category reads that tell you what is actually true about an asset, a deal, or a category, rather than what the deck asserts.</p><span class="go">See the intelligence &rarr;</span></a>
 </div></div></section>
 
-<section class="panel"><div class="wrap">
+<section class="panel" style="background:var(--cream3)"><div class="wrap">
 <div class="sec-head"><div class="eb">Built from the inside</div><h2 class="oneline">From someone who grew up in it.</h2></div>
 <div class="founder">
 <img class="ph-img" src="/assets/founder.webp" alt="Aneesh Patel, PharmD, founder of Marga Partners" width="220" height="276" loading="lazy">
 <div><p class="nm">Aneesh Patel, PharmD</p><div class="role">Founder, Marga Partners</div><p>A pharmacist and scientist turned commercial leader who grew up in aesthetics and dermatology, from early work on a category-defining neurotoxin to pricing, loyalty, and lifecycle strategy across injectables, energy devices, and skincare. Marga brings a rare vantage: reading the science and the market through the same eyes, honed inside some of the industry's most iconic brands. The mission is to hold aesthetics to a higher standard, with that push coming from inside it rather than from the outside looking in.</p></div>
+</div></div></section>
+
+<section class="panel"><div class="wrap">
+<div class="sec-head"><div class="eb">Work with Marga</div><h2>Let's shape what comes next, together.</h2>
+<p>Executive strategy for the decisions that matter most, delivered through a partnership model that fits the moment.</p></div>
+<div class="services">
+<div class="sv" style="--ac:#C7A24B"><div class="svtop"><span class="svn">01</span><span class="svk">Embedded</span></div><h3>Fractional marketing leadership</h3><p>Embedded senior commercial and marketing leadership for teams that need strategic weight without a full-time executive hire.</p></div>
+<div class="sv" style="--ac:#1F7A4D"><div class="svtop"><span class="svn">02</span><span class="svk">Deal-linked</span></div><h3>Commercial due diligence</h3><p>Independent, deal-linked diligence for investors and boards, reading an asset or a deal for what is actually true rather than what the deck asserts.</p></div>
+<div class="sv" style="--ac:#9A742F"><div class="svtop"><span class="svn">03</span><span class="svk">Fixed-scope</span></div><h3>Project-based support</h3><p>Fixed-scope strategy engagements across pre-market, launch, and lifecycle, scoped to the decision in front of you.</p></div>
+<div class="sv" style="--ac:#4A4435"><div class="svtop"><span class="svn">04</span><span class="svk">Ongoing</span></div><h3>Collaborations &amp; partnerships</h3><p>Advisory, board, and longer-term collaboration arrangements for work that compounds over time.</p></div>
 </div></div></section>
 
 <div class="mz panel"><div class="in wrap">
@@ -118,16 +130,6 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 <div class="mzcard"><div class="t">Free to read now</div>
 <!--MZFEED--><div class="row"><a href="/the-long-way-around.html">The Long Way Around</a><span class="fr">Free</span></div><!--/MZFEED--></div>
 </div></div>
-
-<section class="panel"><div class="wrap">
-<div class="sec-head"><div class="eb">Work with Marga</div><h2>Let's shape what comes next, together.</h2>
-<p>Executive strategy for the decisions that matter most, delivered through a partnership model that fits the moment.</p></div>
-<div class="services">
-<div class="sv" style="--ac:#C7A24B"><div class="svtop"><span class="svn">01</span><span class="svk">Embedded</span></div><h3>Fractional marketing leadership</h3><p>Embedded senior commercial and marketing leadership for teams that need strategic weight without a full-time executive hire.</p></div>
-<div class="sv" style="--ac:#1F7A4D"><div class="svtop"><span class="svn">02</span><span class="svk">Deal-linked</span></div><h3>Commercial due diligence</h3><p>Independent, deal-linked diligence for investors and boards, reading an asset or a deal for what is actually true rather than what the deck asserts.</p></div>
-<div class="sv" style="--ac:#9A742F"><div class="svtop"><span class="svn">03</span><span class="svk">Fixed-scope</span></div><h3>Project-based support</h3><p>Fixed-scope strategy engagements across pre-market, launch, and lifecycle, scoped to the decision in front of you.</p></div>
-<div class="sv" style="--ac:#4A4435"><div class="svtop"><span class="svn">04</span><span class="svk">Ongoing</span></div><h3>Collaborations &amp; partnerships</h3><p>Advisory, board, and longer-term collaboration arrangements for work that compounds over time.</p></div>
-</div></div></section>
 
 <div class="final panel"><div class="in wrap">
 <div class="eb g">Start a conversation</div>

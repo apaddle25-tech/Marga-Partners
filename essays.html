@@ -11,7 +11,7 @@
 .eb{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}.eb.g{color:var(--gold)}
 h1,h2,h3{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.01em;margin:0}
 /* top bar */
-.bar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(241,233,219,.9);border-bottom:1px solid var(--hair)}.bar .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}.brand{display:flex;align-items:center;gap:11px}.brand b{font-weight:800;letter-spacing:-.02em;font-size:17px;color:var(--ink)}
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px clamp(12px,3vw,20px) 0}.bar .in{position:relative;width:min(1180px,100%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px 10px 20px;background:rgba(251,246,236,.72);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(22,20,15,.10);border-radius:15px;box-shadow:0 16px 40px -24px rgba(22,20,15,.7)}.brand{display:flex;align-items:center;gap:10px}.brand b{font-weight:800;letter-spacing:-.02em;font-size:16px;color:var(--ink)}
 .nav{display:flex;align-items:center;gap:22px}.nav a{font:600 13px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.7)}.nav a:hover{color:var(--ink)}.nav a.btn{background:var(--ink);color:var(--cream2);padding:11px 16px;border-radius:3px;font-weight:700}.nav a.btn:hover{color:var(--cream2)}
 
 /* ---------- LOCKED WALL ---------- */
@@ -84,10 +84,10 @@ h1,h2,h3{font-family:'Newsreader',serif;font-weight:400;letter-spacing:-.01em;ma
 /* footer */
 footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid var(--haird)}footer .in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px;font-size:12.5px}footer .mid{font:500 11px/1.5 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase}
 
-@media(max-width:860px){
+@media(max-width:1040px){
   .wallgrid{grid-template-columns:1fr}.wall-r{display:none}
   .cross .grid{grid-template-columns:1fr}
-  .nav a:not(.btn){display:none}
+  
   .filterbar .in{gap:12px}.search input{width:100%}.search{flex:1;order:2;width:100%}
 }
 
@@ -99,7 +99,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 .bar.open .navtoggle span{background:transparent}
 .bar.open .navtoggle span:before{top:0;transform:rotate(45deg)}
 .bar.open .navtoggle span:after{top:0;transform:rotate(-45deg)}
-@media(max-width:860px){
+@media(max-width:1040px){
   .bar .in{position:relative}
   .navtoggle{display:inline-flex}
   .bar .nav{position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream2);border-bottom:1px solid var(--hair);box-shadow:0 18px 34px -22px rgba(22,20,15,.6);padding:4px 0 12px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .16s,transform .16s,visibility .16s}
@@ -114,7 +114,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in wrap"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav" id="nav"><a href="/the-marga-difference.html">The Marga Difference</a><a href="/journal.html">The MargaZine</a><a href="/products.html">Products</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
+<nav class="nav" id="nav"><a href="/for-manufacturers.html">For Manufacturers</a><a href="/for-investors.html">For Investors</a><a href="/for-providers.html">For Providers</a><a href="/the-marga-method.html">The Marga Method</a><a href="/journal.html">The MargaZine</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <!-- ================= LOCKED WALL (default) ================= -->
 <div id="wall"><div class="hero"><div class="in wrap"><div class="wallgrid">
@@ -166,8 +166,8 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 <div class="eb g">Beyond the essays</div>
 <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);color:var(--cream2);margin-top:14px;max-width:24ch">The thinking becomes practice.</h2>
 <div class="grid">
-<a class="c" href="/products.html"><span class="k">Join the bench &middot; Marga Consortium</span><h3>Score the market with us.</h3><p>The essays are the public edge of a private practice. The Marga Consortium is the expert bench behind the Marga Index — dermatologists, surgeons, operators, and investors whose judgment sets the category scores.</p><span class="go">Explore the Consortium &rarr;</span></a>
-<a class="c" href="/products.html"><span class="k">For operators &amp; investors &middot; Enterprise</span><h3>The Category Market Reports.</h3><p>Where the frameworks in these essays become numbers: full-market, consortium-scored reads on neurotoxins, fillers, biostimulators, devices, and more — with financials, benchmarks, and the five-force index for every category.</p><span class="go">See the reports &rarr;</span></a>
+<a class="c" href="/the-marga-method.html"><span class="k">Join the bench &middot; Marga Consortium</span><h3>Score the market with us.</h3><p>The essays are the public edge of a private practice. The Marga Consortium is the expert bench behind the Marga Index — dermatologists, surgeons, operators, and investors whose judgment sets the category scores.</p><span class="go">Explore the Consortium &rarr;</span></a>
+<a class="c" href="/the-marga-method.html"><span class="k">For operators &amp; investors &middot; Enterprise</span><h3>The Category Market Reports.</h3><p>Where the frameworks in these essays become numbers: full-market, consortium-scored reads on neurotoxins, fillers, biostimulators, devices, and more — with financials, benchmarks, and the five-force index for every category.</p><span class="go">See the reports &rarr;</span></a>
 </div></div></section>
 </main>
 

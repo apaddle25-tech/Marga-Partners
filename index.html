@@ -99,10 +99,19 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
   .bar .nav a.btn{margin:10px clamp(18px,4vw,26px) 4px;text-align:center;border-radius:9px;color:var(--cream2)}
   .hero .in{padding-left:clamp(22px,5vw,40px);padding-right:clamp(22px,5vw,40px)}
 }
+
+/* segmented audience nav */
+.bar .nav .segnav{display:inline-flex;align-items:center;gap:2px;background:rgba(22,20,15,.05);border:1px solid rgba(22,20,15,.10);border-radius:999px;padding:3px}
+.bar .nav .segnav a{display:inline-flex;align-items:center;font:600 12px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.62);padding:7px 12px;margin:0;border:0;border-radius:999px;white-space:nowrap;transition:background .18s,color .18s}
+.bar .nav .segnav a:hover{color:#16140F}
+.bar .nav .segnav a.on{background:#16140F;color:#F1E9DB}
+@media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
+/* scroll reveal */
+@media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav" id="nav"><a href="/for-manufacturers.html">For Manufacturers</a><a href="/for-investors.html">For Investors</a><a href="/for-providers.html">For Providers</a><a href="/the-marga-method.html">The Marga Method</a><a href="/journal.html">The MargaZine</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
+<nav class="nav" id="nav"><span class="segnav"><a href="/for-manufacturers.html">Manufacturers</a><a href="/for-investors.html">Investors</a><a href="/for-providers.html">Providers</a></span><a href="/the-marga-method.html">The Marga Method</a><a href="/journal.html">The MargaZine</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <div class="hero panel"><div class="in wrap">
 <div class="col-l">
@@ -178,4 +187,5 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 <script>
 (function(){document.querySelectorAll('[data-mzform]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input'),em=(inp.value||'').trim();location.href='/subscribe.html'+(em?'?email='+encodeURIComponent(em):'');});});})();
 </script>
-<script>(function(){var b=document.querySelector(".bar"),t=b&&b.querySelector(".navtoggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=b.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(b.classList.contains("open")&&!b.contains(e.target)){b.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script></body></html>
+<script>(function(){var b=document.querySelector(".bar"),t=b&&b.querySelector(".navtoggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=b.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(b.classList.contains("open")&&!b.contains(e.target)){b.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script><script>(function(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;var sel='.sec-head,.pil,.sv,.con,.off,.comm-slide,.mi .col,.eng .cell,.wcta,.founder,.exp,.deliv,.build,.mzcard,.actrow,.cben,.wktile,.lens .col,.mlist';var vh=window.innerHeight||800;var els=[].filter.call(document.querySelectorAll(sel),function(el){var r=el.getBoundingClientRect();if(r.top<vh*0.92)return false;var p=el.parentElement,idx=0,n=el;while((n=n.previousElementSibling))idx++;if(p&&/pillars|services|grid3|grid4|eng|cbenefits|acts2|comm-track/.test(p.className||''))el.style.transitionDelay=(Math.min(idx,6)*55)+'ms';el.classList.add('rv');return true;});if(!els.length)return;var ticking=false;function check(){ticking=false;var h=window.innerHeight||800;for(var i=els.length-1;i>=0;i--){if(els[i].getBoundingClientRect().top<h*0.9){els[i].classList.add('in');els.splice(i,1);}}if(!els.length){window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',onScroll);}}function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(check);}}window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);window.addEventListener('load',onScroll);setTimeout(check,80);setTimeout(check,700);})();</script>
+</body></html>

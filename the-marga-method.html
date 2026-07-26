@@ -50,9 +50,59 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .d-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 0 18px;background:var(--cream)}.d-dots{display:flex;gap:7px;justify-content:center}.d-dots .dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(22,20,15,.2);cursor:pointer;transition:background .3s,transform .3s}.d-dots .dot.on{background:var(--bronze);transform:scale(1.3)}
 .d-arrow{width:30px;height:30px;border-radius:50%;border:1px solid rgba(22,20,15,.2);background:transparent;color:var(--ink);cursor:pointer;font-size:14px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}.d-arrow:hover{border-color:var(--bronze);color:var(--bronze)}
 .note{margin-top:16px;font-size:12.5px;color:rgba(22,20,15,.5);font-style:italic}
-/* engine */
-.eng{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:40px}
-.eng .cell{background:var(--ink2);padding:clamp(24px,3vw,34px)}.eng .n{font:600 11px/1 'Manrope',sans-serif;color:var(--gold);margin-bottom:14px}.eng h3{font-size:20px;color:var(--cream2);margin-bottom:8px}.eng p{margin:0;font-size:14px;line-height:1.6;color:rgba(241,233,219,.68)}
+/* engine: stepwise build */
+.build{margin-top:40px;border:1px solid var(--haird)}
+.build-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--haird)}
+@media(max-width:720px){.build-steps{grid-template-columns:repeat(2,1fr)}}
+.bstep{display:flex;flex-direction:column;gap:7px;align-items:flex-start;text-align:left;background:var(--ink2);border:0;border-top:2px solid transparent;padding:15px 17px;cursor:pointer;transition:background .2s,border-color .2s;font-family:inherit}
+.bstep:hover{background:var(--ink3)}.bstep.on{background:var(--ink3);border-top-color:var(--gold)}
+.bstep .bn{font:700 12px/1 ui-monospace,'Manrope',monospace;color:rgba(241,233,219,.38)}.bstep.on .bn{color:var(--gold)}
+.bstep .bl{font:600 12.5px/1.25 'Manrope',sans-serif;color:rgba(241,233,219,.66)}.bstep.on .bl{color:var(--cream2)}
+.bstep:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.build-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,52px);align-items:center;background:var(--ink2);border-top:1px solid var(--haird);padding:clamp(24px,4vw,46px)}
+@media(max-width:820px){.build-stage{grid-template-columns:1fr;gap:24px}}
+.build-viz svg{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
+.build-viz .scene{opacity:0;transition:opacity .5s ease;pointer-events:none}
+.build[data-step="1"] .scene.s1,.build[data-step="2"] .scene.s2,.build[data-step="3"] .scene.s3,.build[data-step="4"] .scene.s4{opacity:1}
+@media(prefers-reduced-motion:reduce){.build-viz .scene{transition:none}}
+.build-cap .capk{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.build-cap h3{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,3vw,31px);line-height:1.1;color:var(--cream2);margin:0 0 12px;text-wrap:balance}
+.build-cap p{margin:0;font-size:15px;line-height:1.65;color:rgba(241,233,219,.72);max-width:44ch}
+.build-ctrl{display:flex;align-items:center;gap:15px;margin-top:26px}
+.build-dots{display:flex;gap:8px}
+.build-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(241,233,219,.25);cursor:pointer;transition:background .3s,transform .3s}.build-dots button.on{background:var(--gold);transform:scale(1.3)}
+.barrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--haird);background:transparent;color:var(--cream2);cursor:pointer;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}.barrow:hover{border-color:var(--gold);color:var(--gold)}.barrow:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* commission: deliverable carousel */
+.comm{margin-top:40px}
+.comm-view{overflow:hidden;border:1px solid var(--hair);border-radius:8px}
+.comm-track{display:flex;transition:transform .5s cubic-bezier(.5,0,.12,1)}
+@media(prefers-reduced-motion:reduce){.comm-track{transition:none}}
+.comm-slide{flex:0 0 100%;display:grid;grid-template-columns:1.05fr .95fr;background:var(--cream)}
+@media(max-width:820px){.comm-slide{grid-template-columns:1fr}}
+.dmock{background:var(--cream3);padding:clamp(22px,3vw,42px);display:flex;align-items:center;justify-content:center;position:relative}
+.dpaper{width:100%;max-width:330px;background:#fff;border:1px solid var(--hair);border-radius:6px;box-shadow:0 22px 50px -30px rgba(22,20,15,.6);padding:19px 20px;position:relative}
+.dwm{position:absolute;top:11px;right:13px;font:600 8px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(22,20,15,.26)}
+.dhd{font:600 8.5px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);margin-bottom:5px}
+.dsub{font:600 9px/1.3 'Manrope',sans-serif;color:rgba(22,20,15,.5);margin-bottom:13px}
+.dlbl{font:600 8.5px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);margin:14px 0 8px}
+.rd{display:block;height:8px;border-radius:4px;background:rgba(22,20,15,.1)}.rd+.rd{margin-top:7px}
+.dcomp{display:flex;align-items:flex-end;gap:10px;margin-bottom:12px}.dcomp b{font-family:'Newsreader',serif;font-weight:400;font-size:46px;line-height:.8;color:var(--ink)}
+.dpill{font:600 8px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:10px;white-space:nowrap}
+.dpill.neu{color:var(--bronze);background:rgba(154,116,47,.14)}.dpill.adv{color:var(--green);background:rgba(31,122,77,.12)}
+.dfr{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px solid rgba(22,20,15,.08)}
+.dfr .dk{font:600 8px/1 'Manrope',sans-serif;color:rgba(22,20,15,.4);width:15px}.dfr .dbar{height:7px;border-radius:4px;background:rgba(199,162,75,.55)}.dfr .dsc{font-family:'Newsreader',serif;font-size:13px;color:var(--ink);margin-left:auto}
+.dbench{display:flex;flex-direction:column;gap:9px}
+.dbrow{display:flex;align-items:center;gap:9px}.dbrow .dn{font:600 9px/1 'Manrope',sans-serif;color:var(--body);width:50px}.dbrow .dtrack{flex:1;height:9px;border-radius:5px;background:rgba(22,20,15,.07);overflow:hidden}.dbrow .dfill{height:100%;border-radius:5px;background:var(--bronze)}.dbrow .dv{font-family:'Newsreader',serif;font-size:13px;color:var(--ink);width:20px;text-align:right}
+.dmeta{padding:clamp(26px,3.5vw,46px);display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--hair)}
+@media(max-width:820px){.dmeta{border-left:0;border-top:1px solid var(--hair)}}
+.dmeta .tag{font:600 9px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);margin-bottom:14px}
+.dmeta h3{font-size:clamp(24px,3vw,32px);color:var(--ink);margin:0 0 12px;line-height:1.08}
+.dmeta p{margin:0 0 22px;font-size:15px;line-height:1.65;color:var(--body);max-width:42ch}
+.dmeta a{font:600 12px/1 'Manrope',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--bronze)}
+.comm-ctrl{display:flex;align-items:center;gap:15px;margin-top:22px}
+.comm-dots{display:flex;gap:8px}
+.comm-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(22,20,15,.18);cursor:pointer;transition:background .3s,transform .3s}.comm-dots button.on{background:var(--bronze);transform:scale(1.3)}
+.carrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);background:transparent;color:var(--ink);cursor:pointer;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:.2s;flex:none}.carrow:hover{border-color:var(--bronze);color:var(--bronze)}.carrow:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
 /* offerings + consortium */
 .grid3{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--haird);border:1px solid var(--haird);margin-top:40px}
 .off{background:var(--ink2);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;min-height:170px}.off:hover{background:var(--ink3)}
@@ -121,25 +171,135 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <p class="note">Illustrative only. Figures and asset are anonymized; a live scorecard is built on real evidence, tuned to the asset type, and weighted to the audience.</p>
 </div></section>
 
-<section class="dark"><div class="wrap">
-<div class="sec-head d"><div class="eb g">The platform behind it</div><h2>Built to stay consistent, current, and rigorous.</h2>
-<p>Behind every read sits Marga's proprietary platform, built so the index means the same thing from one asset to the next, and so it keeps pace with a category that moves fast. A high-level view of what it accounts for:</p></div>
-<div class="eng">
-<div class="cell"><div class="n">01</div><h3>Five forces, many signals</h3><p>Every read is scored across five forces and the attributes beneath them, so a single number always traces back to specifics.</p></div>
-<div class="cell"><div class="n">02</div><h3>Weighted to the decision</h3><p>The same evidence is weighted differently for an investor, an operator, or a board, because the question each is asking is different.</p></div>
-<div class="cell"><div class="n">03</div><h3>Three inputs, one read</h3><p>Structured evidence, field input from the consortium, and real-time market signals are synthesized into one comparable score.</p></div>
-<div class="cell"><div class="n">04</div><h3>Confidence, not just a number</h3><p>Every read carries how sure it is and how it has moved over time, so the index is never louder than the evidence behind it.</p></div>
+<section class="dark" id="build"><div class="wrap">
+<div class="sec-head d"><div class="eb g">The platform behind it</div><h2>How a read gets built.</h2>
+<p>Behind every read sits Marga's proprietary platform. Here is the same read, built up one layer at a time, so the number always traces back to something specific.</p></div>
+<div class="build" data-build data-step="1">
+<div class="build-steps" role="tablist" aria-label="How a read is built">
+<button class="bstep on" type="button" role="tab" aria-selected="true"><span class="bn">01</span><span class="bl">The five forces</span></button>
+<button class="bstep" type="button" role="tab" aria-selected="false"><span class="bn">02</span><span class="bl">Your lens</span></button>
+<button class="bstep" type="button" role="tab" aria-selected="false"><span class="bn">03</span><span class="bl">Live inputs</span></button>
+<button class="bstep" type="button" role="tab" aria-selected="false"><span class="bn">04</span><span class="bl">The index</span></button>
+</div>
+<div class="build-stage">
+<div class="build-viz"><svg viewBox="0 0 440 360" data-buildsvg aria-hidden="true"></svg></div>
+<div class="build-cap">
+<div class="capk" data-capk>Step 1 of 4</div>
+<h3 data-capt>Five forces, many signals</h3>
+<p data-capp>Every asset is scored across five forces, Product, Patient, Provider, Price, and Practice, each built up from the many signals beneath it.</p>
+<div class="build-ctrl"><button class="barrow" type="button" data-bprev aria-label="Previous step">&larr;</button><div class="build-dots" data-bdots></div><button class="barrow" type="button" data-bnext aria-label="Next step">&rarr;</button></div>
+</div>
+</div>
 </div></div></section>
+<script>(function(){
+var B=document.querySelector('[data-build]');if(!B)return;var svg=B.querySelector('[data-buildsvg]');if(!svg)return;
+var NS='http://www.w3.org/2000/svg',GOLD='#C7A24B',cx=220,cy=178,R=92,N=5;
+function ang(i){return(-90+i*72)*Math.PI/180;}
+function P(i,f){var a=ang(i);return[cx+Math.cos(a)*R*f,cy+Math.sin(a)*R*f];}
+function ring(f){var o=[];for(var i=0;i<N;i++)o.push(P(i,f));return o;}
+function ringF(a){var o=[];for(var i=0;i<N;i++)o.push(P(i,a[i]));return o;}
+function str(a){return a.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
+function E(t,at,pa){var e=document.createElementNS(NS,t);for(var k in at)e.setAttribute(k,at[k]);(pa||svg).appendChild(e);return e;}
+function G(n){return E('g',{'class':'scene s'+n});}
+function frame(g,op){E('polygon',{points:str(ring(1)),fill:'none',stroke:'rgba(199,162,75,'+(0.55*op)+')','stroke-width':'1.5','stroke-linejoin':'round'},g);for(var i=0;i<N;i++){var v=P(i,1);E('line',{x1:cx,y1:cy,x2:v[0],y2:v[1],stroke:'rgba(241,233,219,'+(0.13*op)+')','stroke-width':'1'},g);}for(var j=0;j<N;j++){var w=P(j,1);E('circle',{cx:w[0],cy:w[1],r:'3.4',fill:'rgba(199,162,75,'+(0.9*op)+')'},g);}}
+function profile(g,op){E('polygon',{points:str(ringF([.82,.6,.74,.55,.7])),fill:'rgba(199,162,75,'+(0.2*op)+')',stroke:GOLD,'stroke-width':'2','stroke-opacity':op,'stroke-linejoin':'round'},g);}
+function chip(g,ctr,y,label,on){var w=Math.max(64,label.length*7.2+22),h=23,x=ctr-w/2;E('rect',{x:x,y:y,width:w,height:h,rx:11.5,fill:on?GOLD:'none',stroke:on?'none':'rgba(241,233,219,.42)','stroke-width':'1'},g);E('text',{x:ctr,y:y+15,'text-anchor':'middle',fill:on?'#14120E':'rgba(241,233,219,.78)','font-family':"'Manrope',sans-serif",'font-size':'11.5','font-weight':'600'},g).textContent=label;}
+var defs=E('defs',{});var mk=E('marker',{id:'barw',viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'7',markerHeight:'7',orient:'auto'},defs);E('path',{d:'M0,0 L10,5 L0,10 z',fill:GOLD},mk);
+// Scene 1
+var s1=G(1);frame(s1,1);var FL=['Product','Patient','Provider','Price','Practice'];
+for(var k=0;k<14;k++){var a1=k*(360/14)*Math.PI/180,rr=R*(1.06+0.13*(k%4)/3),x1=cx+Math.cos(a1)*rr,y1=cy+Math.sin(a1)*rr;E('circle',{cx:x1,cy:y1,r:(1.5+(k%3)*0.5),fill:'rgba(241,233,219,.32)'},s1);}
+for(var i=0;i<N;i++){var l=P(i,1.4),co=Math.cos(ang(i)),an=(i===0?'middle':(co>0.15?'start':(co<-0.15?'end':'middle')));E('text',{x:l[0].toFixed(1),y:(l[1]+(i===0?-3:4)).toFixed(1),'text-anchor':an,fill:'rgba(241,233,219,.6)','font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600'},s1).textContent=FL[i];}
+// Scene 2
+var s2=G(2);frame(s2,.85);profile(s2,1);E('circle',{cx:cx,cy:cy,r:(R*1.26).toFixed(1),fill:'none',stroke:'rgba(241,233,219,.28)','stroke-width':'1','stroke-dasharray':'3 5'},s2);
+chip(s2,128,10,'Investor',false);chip(s2,220,10,'Operator',true);chip(s2,312,10,'Board',false);
+// Scene 3
+var s3=G(3);frame(s3,.9);profile(s3,1);var pl=P(4,1),pr=P(1,1);
+E('path',{d:'M118,116 C126,128 129,140 '+pl[0].toFixed(0)+','+pl[1].toFixed(0),fill:'none',stroke:GOLD,'stroke-width':'1.6','stroke-opacity':'.75','marker-end':'url(#barw)'},s3);
+E('path',{d:'M322,116 C314,128 311,140 '+pr[0].toFixed(0)+','+pr[1].toFixed(0),fill:'none',stroke:GOLD,'stroke-width':'1.6','stroke-opacity':'.75','marker-end':'url(#barw)'},s3);
+chip(s3,78,92,'Consortium',false);chip(s3,362,92,'Market signals',false);
+// Scene 4
+var s4=G(4);frame(s4,.28);profile(s4,.28);
+E('text',{x:cx,y:(cy-56).toFixed(0),'text-anchor':'middle',fill:'rgba(241,233,219,.55)','font-family':"'Manrope',sans-serif",'font-size':'10','letter-spacing':'2'},s4).textContent='MARGA INDEX';
+E('text',{x:cx,y:(cy+20).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Newsreader',serif",'font-size':'72'},s4).textContent='62';
+var bw=88,bh=24,bx=cx-bw/2,by=cy+40;E('rect',{x:bx,y:by,width:bw,height:bh,rx:12,fill:'rgba(199,162,75,.16)',stroke:'rgba(199,162,75,.5)','stroke-width':'1'},s4);E('text',{x:cx,y:by+16,'text-anchor':'middle',fill:GOLD,'font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600','letter-spacing':'1'},s4).textContent='Neutral';
+// nav
+var CAP=[{k:'Step 1 of 4',t:'Five forces, many signals',p:'Every asset is scored across five forces, Product, Patient, Provider, Price, and Practice, each built up from the many signals beneath it.'},{k:'Step 2 of 4',t:'Weighted to your question',p:'The same evidence gets re-weighted for the decision in front of you, whether you read as an investor, an operator, or a board.'},{k:'Step 3 of 4',t:'Layered with live inputs',p:'Expert judgment from the standing consortium and real-time market signals layer in, so the read reflects the field as it moves.'},{k:'Step 4 of 4',t:'One comparable number',p:'It resolves to a single composite on one scale, with the band and the confidence behind it, so any asset reads against any other.'}];
+var tabs=B.querySelectorAll('.bstep'),capk=B.querySelector('[data-capk]'),capt=B.querySelector('[data-capt]'),capp=B.querySelector('[data-capp]'),dw=B.querySelector('[data-bdots]'),dots=[],idx=0;
+for(var d=0;d<4;d++){(function(d){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Step '+(d+1));if(d===0)b.className='on';b.onclick=function(){show(d);stop();};dw.appendChild(b);dots.push(b);})(d);}
+function show(i){idx=(i+4)%4;B.setAttribute('data-step',String(idx+1));for(var t=0;t<tabs.length;t++){tabs[t].classList.toggle('on',t===idx);tabs[t].setAttribute('aria-selected',t===idx?'true':'false');}for(var e=0;e<dots.length;e++)dots[e].className=(e===idx?'on':'');capk.textContent=CAP[idx].k;capt.textContent=CAP[idx].t;capp.textContent=CAP[idx].p;}
+for(var t=0;t<tabs.length;t++){(function(t){tabs[t].onclick=function(){show(t);stop();};})(t);}
+B.querySelector('[data-bprev]').onclick=function(){show(idx-1);stop();};B.querySelector('[data-bnext]').onclick=function(){show(idx+1);stop();};
+var timer=null;function stop(){if(timer){clearInterval(timer);timer=null;}}
+if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))timer=setInterval(function(){show(idx+1);},6500);
+B.addEventListener('mouseenter',stop);show(0);
+})();</script>
 
-<section><div class="wrap">
+<section id="commission"><div class="wrap">
 <div class="sec-head"><div class="eb">What you can commission</div><h2>Commission, subscribe, or license.</h2>
-<p>The same method and index, packaged to the decision in front of you.</p></div>
-<div class="grid3">
-<a class="off" href="/Consultation.html?type=index"><div class="n">01</div><h3>The Marga Index Scorecard</h3><p>A full quantitative read on a single asset, scored across all five forces, with the verdict and the exposures.</p><div class="tag">Commissioned</div></a>
-<a class="off" href="/Consultation.html?type=index"><div class="n">02</div><h3>Category Indices</h3><p>Benchmarking across every player in a category, tracked on one comparable scale over time.</p><div class="tag">Subscription</div></a>
-<a class="off" href="/Consultation.html?type=index"><div class="n">03</div><h3>Diligence Reads</h3><p>An independent read on an asset or a deal, built for a board, an investor, or a thesis.</p><div class="tag">Deal-linked</div></a>
-<a class="off" href="/Consultation.html?type=index"><div class="n">04</div><h3>Custom Research &amp; Lenses</h3><p>Bespoke research and scoring lenses tuned to a specific question or a specific buyer.</p><div class="tag">Bespoke</div></a>
-</div></div></section>
+<p>The same method and index, packaged to the decision in front of you. A conceptual look at what each one delivers.</p></div>
+<div class="comm" data-comm>
+<div class="comm-view"><div class="comm-track" data-commtrack>
+
+<div class="comm-slide">
+<div class="dmock"><div class="dpaper"><span class="dwm">Illustrative</span>
+<div class="dhd">Marga Index Scorecard</div><div class="dsub">Asset A &middot; example category</div>
+<div class="dcomp"><b>62</b><span class="dpill neu">Neutral</span></div>
+<div class="dfr"><span class="dk">01</span><span class="dbar" style="width:64%"></span><span class="dsc">78</span></div>
+<div class="dfr"><span class="dk">02</span><span class="dbar" style="width:48%"></span><span class="dsc">64</span></div>
+<div class="dfr"><span class="dk">03</span><span class="dbar" style="width:56%"></span><span class="dsc">71</span></div>
+<div class="dfr"><span class="dk">04</span><span class="dbar" style="width:40%"></span><span class="dsc">52</span></div>
+<div class="dfr"><span class="dk">05</span><span class="dbar" style="width:36%"></span><span class="dsc">45</span></div>
+<div style="margin-top:13px;padding-top:12px;border-top:1px solid rgba(22,20,15,.08)"><span class="rd" style="width:82%"></span><span class="rd" style="width:96%"></span><span class="rd" style="width:58%"></span></div>
+</div></div>
+<div class="dmeta"><div class="tag">Commissioned</div><h3>The Marga Index Scorecard</h3><p>A full quantitative read on a single asset, scored across all five forces, with the verdict and where it is exposed.</p><a href="/Consultation.html?type=index">Commission this &rarr;</a></div>
+</div>
+
+<div class="comm-slide">
+<div class="dmock"><div class="dpaper"><span class="dwm">Illustrative</span>
+<div class="dhd">Category Index</div><div class="dsub">Example category &middot; one comparable scale</div>
+<div class="dbench">
+<div class="dbrow"><span class="dn">Asset A</span><span class="dtrack"><span class="dfill" style="width:82%"></span></span><span class="dv">78</span></div>
+<div class="dbrow"><span class="dn">Asset B</span><span class="dtrack"><span class="dfill" style="width:74%"></span></span><span class="dv">71</span></div>
+<div class="dbrow"><span class="dn">Asset C</span><span class="dtrack"><span class="dfill" style="width:66%"></span></span><span class="dv">64</span></div>
+<div class="dbrow"><span class="dn">Asset D</span><span class="dtrack"><span class="dfill" style="width:54%"></span></span><span class="dv">52</span></div>
+<div class="dbrow"><span class="dn">Asset E</span><span class="dtrack"><span class="dfill" style="width:44%"></span></span><span class="dv">41</span></div>
+</div></div></div>
+<div class="dmeta"><div class="tag">Subscription</div><h3>Category Indices</h3><p>Every player in a category, benchmarked on one comparable scale and tracked over time.</p><a href="/Consultation.html?type=index">Commission this &rarr;</a></div>
+</div>
+
+<div class="comm-slide">
+<div class="dmock"><div class="dpaper"><span class="dwm">Illustrative</span>
+<div class="dhd">Diligence Read</div><div class="dsub">Prepared for a board or investor</div>
+<div class="dlbl">Thesis</div><span class="rd" style="width:100%"></span><span class="rd" style="width:86%"></span>
+<div class="dlbl">Where it is exposed</div><span class="rd" style="width:92%"></span><span class="rd" style="width:68%"></span>
+<div style="margin-top:15px;display:inline-flex;align-items:center;gap:9px"><span class="dpill neu">Verdict</span><span style="font-family:'Newsreader',serif;font-size:13px;color:var(--ink)">Proceed with conditions</span></div>
+</div></div>
+<div class="dmeta"><div class="tag">Deal-linked</div><h3>Diligence Reads</h3><p>An independent read on an asset or a deal, written for a board, an investor, or a thesis.</p><a href="/Consultation.html?type=index">Commission this &rarr;</a></div>
+</div>
+
+<div class="comm-slide">
+<div class="dmock"><div class="dpaper"><span class="dwm">Illustrative</span>
+<div class="dhd">Custom Lens</div><div class="dsub">Weighted to your question</div>
+<div class="dbench">
+<div class="dbrow"><span class="dn">Force 01</span><span class="dtrack"><span class="dfill" style="width:72%"></span></span></div>
+<div class="dbrow"><span class="dn">Force 02</span><span class="dtrack"><span class="dfill" style="width:54%"></span></span></div>
+<div class="dbrow"><span class="dn">Force 03</span><span class="dtrack"><span class="dfill" style="width:88%"></span></span></div>
+<div class="dbrow"><span class="dn">Force 04</span><span class="dtrack"><span class="dfill" style="width:46%"></span></span></div>
+<div class="dbrow"><span class="dn">Force 05</span><span class="dtrack"><span class="dfill" style="width:63%"></span></span></div>
+</div>
+<div style="margin-top:13px"><span class="rd" style="width:84%"></span><span class="rd" style="width:62%"></span></div>
+</div></div>
+<div class="dmeta"><div class="tag">Bespoke</div><h3>Custom Research &amp; Lenses</h3><p>Bespoke research and a scoring lens tuned to a specific question or a specific buyer.</p><a href="/Consultation.html?type=index">Commission this &rarr;</a></div>
+</div>
+
+</div></div>
+<div class="comm-ctrl"><button class="carrow" type="button" data-commprev aria-label="Previous deliverable">&larr;</button><div class="comm-dots" data-commdots></div><button class="carrow" type="button" data-commnext aria-label="Next deliverable">&rarr;</button></div>
+</div>
+</div></section>
+<script>(function(){var C=document.querySelector('[data-comm]');if(!C)return;var track=C.querySelector('[data-commtrack]'),n=track.children.length,dw=C.querySelector('[data-commdots]'),dots=[],i=0;
+for(var d=0;d<n;d++){(function(d){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Deliverable '+(d+1));if(d===0)b.className='on';b.onclick=function(){go(d);};dw.appendChild(b);dots.push(b);})(d);}
+function go(m){i=(m+n)%n;track.style.transform='translateX('+(-i*100)+'%)';for(var d=0;d<dots.length;d++)dots[d].className=(d===i?'on':'');}
+C.querySelector('[data-commprev]').onclick=function(){go(i-1);};C.querySelector('[data-commnext]').onclick=function(){go(i+1);};go(0);})();</script>
 
 <section class="tint"><div class="wrap">
 <div class="sec-head"><div class="eb">Backed by the consortium</div><h2>The voices you actually want to hear from.</h2>

@@ -1,0 +1,11 @@
+# Secrets — never commit
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*credential*
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp

@@ -59,7 +59,16 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .bstep .bn{font:700 12px/1 ui-monospace,'Manrope',monospace;color:rgba(241,233,219,.38)}.bstep.on .bn{color:var(--gold)}
 .bstep .bl{font:600 12.5px/1.25 'Manrope',sans-serif;color:rgba(241,233,219,.66)}.bstep.on .bl{color:var(--cream2)}
 .bstep:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
-.build-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,52px);align-items:center;background:var(--ink2);border-top:1px solid var(--haird);padding:clamp(24px,4vw,46px)}
+.build-stage{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,52px);align-items:stretch;background:var(--ink2);border-top:1px solid var(--haird);padding:clamp(24px,4vw,46px)}
+.build-viz{display:flex;flex-direction:column;justify-content:center}
+.viz-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;min-height:32px;margin-bottom:4px}
+.vchip{font:600 11.5px/1 'Manrope',sans-serif;color:rgba(241,233,219,.72);background:none;border:1px solid rgba(241,233,219,.32);border-radius:12px;padding:6px 13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.vchip:hover{border-color:var(--gold);color:var(--cream2)}
+.vchip.on{background:var(--gold);border-color:var(--gold);color:#14120E}
+.vchip.tog:not(.on)::before{content:"+ "}
+.vchip.tog.on::before{content:"\2713 "}
+.vchip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.build-cap{display:flex;flex-direction:column}
 @media(max-width:820px){.build-stage{grid-template-columns:1fr;gap:24px}}
 .build-viz svg{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
 .build-viz .viz-note{text-align:center;margin-top:14px;font:600 10px/1.4 'Manrope',sans-serif;letter-spacing:.06em;color:rgba(241,233,219,.45)}
@@ -69,7 +78,8 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .build-cap .capk{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .build-cap h3{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,3vw,31px);line-height:1.1;color:var(--cream2);margin:0 0 12px;text-wrap:balance}
 .build-cap p{margin:0;font-size:15px;line-height:1.65;color:rgba(241,233,219,.72);max-width:44ch}
-.build-ctrl{display:flex;align-items:center;gap:15px;margin-top:26px}
+.build-ctrl{display:flex;align-items:center;gap:15px;margin-top:auto;padding-top:26px}
+.build-cap .cap-text{min-height:132px}
 .build-dots{display:flex;gap:8px}
 .build-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(241,233,219,.25);cursor:pointer;transition:background .3s,transform .3s}.build-dots button.on{background:var(--gold);transform:scale(1.3)}
 .barrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--haird);background:transparent;color:var(--cream2);cursor:pointer;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}.barrow:hover{border-color:var(--gold);color:var(--gold)}.barrow:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
@@ -192,56 +202,115 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <button class="bstep" type="button" role="tab" aria-selected="false"><span class="bn">04</span><span class="bl">The index</span></button>
 </div>
 <div class="build-stage">
-<div class="build-viz"><svg viewBox="0 0 440 360" data-buildsvg aria-hidden="true"></svg><div class="viz-note">&#128274; Forces anonymized &middot; named in full for clients</div></div>
+<div class="build-viz">
+<div class="viz-chips" data-chips aria-hidden="true"></div>
+<svg viewBox="0 0 440 372" data-buildsvg aria-hidden="true"></svg>
+<div class="viz-note">&#128274; Forces anonymized &middot; named in full for clients</div>
+</div>
 <div class="build-cap">
-<div class="capk" data-capk>Step 1 of 4</div>
-<h3 data-capt>Five forces, many signals</h3>
-<p data-capp>Every asset is scored across five forces, each built up from the many signals beneath it.</p>
+<div class="cap-text"><div class="capk" data-capk>Step 1 of 4</div><h3 data-capt>Five forces, many signals</h3><p data-capp>Every asset is scored across five forces, each built up from the many signals beneath it.</p></div>
 <div class="build-ctrl"><button class="barrow" type="button" data-bprev aria-label="Previous step">&larr;</button><div class="build-dots" data-bdots></div><button class="barrow" type="button" data-bnext aria-label="Next step">&rarr;</button></div>
 </div>
 </div>
 </div></div></section>
 <script>(function(){
-var B=document.querySelector('[data-build]');if(!B)return;var svg=B.querySelector('[data-buildsvg]');if(!svg)return;
-var NS='http://www.w3.org/2000/svg',GOLD='#C7A24B',cx=220,cy=178,R=92,N=5;
+var B=document.querySelector('[data-build]');if(!B)return;
+var svg=B.querySelector('[data-buildsvg]');if(!svg)return;
+var NS='http://www.w3.org/2000/svg',GOLD='#C7A24B',cx=220,cy=182,R=92,N=5;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function ang(i){return(-90+i*72)*Math.PI/180;}
-function P(i,f){var a=ang(i);return[cx+Math.cos(a)*R*f,cy+Math.sin(a)*R*f];}
-function ring(f){var o=[];for(var i=0;i<N;i++)o.push(P(i,f));return o;}
-function ringF(a){var o=[];for(var i=0;i<N;i++)o.push(P(i,a[i]));return o;}
-function str(a){return a.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
+function pt(i,f){var a=ang(i);return[cx+Math.cos(a)*R*f,cy+Math.sin(a)*R*f];}
+function polyStr(v){return v.map(function(x,i){var p=pt(i,x);return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
 function E(t,at,pa){var e=document.createElementNS(NS,t);for(var k in at)e.setAttribute(k,at[k]);(pa||svg).appendChild(e);return e;}
-function G(n){return E('g',{'class':'scene s'+n});}
-function frame(g,op){E('polygon',{points:str(ring(1)),fill:'none',stroke:'rgba(199,162,75,'+(0.55*op)+')','stroke-width':'1.5','stroke-linejoin':'round'},g);for(var i=0;i<N;i++){var v=P(i,1);E('line',{x1:cx,y1:cy,x2:v[0],y2:v[1],stroke:'rgba(241,233,219,'+(0.13*op)+')','stroke-width':'1'},g);}for(var j=0;j<N;j++){var w=P(j,1);E('circle',{cx:w[0],cy:w[1],r:'3.4',fill:'rgba(199,162,75,'+(0.9*op)+')'},g);}}
-function profile(g,op){E('polygon',{points:str(ringF([.82,.6,.74,.55,.7])),fill:'rgba(199,162,75,'+(0.2*op)+')',stroke:GOLD,'stroke-width':'2','stroke-opacity':op,'stroke-linejoin':'round'},g);}
-function chip(g,ctr,y,label,on){var w=Math.max(64,label.length*7.2+22),h=23,x=ctr-w/2;E('rect',{x:x,y:y,width:w,height:h,rx:11.5,fill:on?GOLD:'none',stroke:on?'none':'rgba(241,233,219,.42)','stroke-width':'1'},g);E('text',{x:ctr,y:y+15,'text-anchor':'middle',fill:on?'#14120E':'rgba(241,233,219,.78)','font-family':"'Manrope',sans-serif",'font-size':'11.5','font-weight':'600'},g).textContent=label;}
-var defs=E('defs',{});var mk=E('marker',{id:'barw',viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'7',markerHeight:'7',orient:'auto'},defs);E('path',{d:'M0,0 L10,5 L0,10 z',fill:GOLD},mk);
-// Scene 1
-var s1=G(1);frame(s1,1);var FL=['Force 01','Force 02','Force 03','Force 04','Force 05'];
-for(var k=0;k<14;k++){var a1=k*(360/14)*Math.PI/180,rr=R*(1.06+0.13*(k%4)/3),x1=cx+Math.cos(a1)*rr,y1=cy+Math.sin(a1)*rr;E('circle',{cx:x1,cy:y1,r:(1.5+(k%3)*0.5),fill:'rgba(241,233,219,.32)'},s1);}
-for(var i=0;i<N;i++){var l=P(i,1.4),co=Math.cos(ang(i)),an=(i===0?'middle':(co>0.15?'start':(co<-0.15?'end':'middle')));E('text',{x:l[0].toFixed(1),y:(l[1]+(i===0?-3:4)).toFixed(1),'text-anchor':an,fill:'rgba(241,233,219,.6)','font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600'},s1).textContent=FL[i];}
-// Scene 2
-var s2=G(2);frame(s2,.85);profile(s2,1);E('circle',{cx:cx,cy:cy,r:(R*1.26).toFixed(1),fill:'none',stroke:'rgba(241,233,219,.28)','stroke-width':'1','stroke-dasharray':'3 5'},s2);
-chip(s2,128,10,'Investor',false);chip(s2,220,10,'Operator',true);chip(s2,312,10,'Board',false);
-// Scene 3
-var s3=G(3);frame(s3,.9);profile(s3,1);var pl=P(4,1),pr=P(1,1);
-E('path',{d:'M118,116 C126,128 129,140 '+pl[0].toFixed(0)+','+pl[1].toFixed(0),fill:'none',stroke:GOLD,'stroke-width':'1.6','stroke-opacity':'.75','marker-end':'url(#barw)'},s3);
-E('path',{d:'M322,116 C314,128 311,140 '+pr[0].toFixed(0)+','+pr[1].toFixed(0),fill:'none',stroke:GOLD,'stroke-width':'1.6','stroke-opacity':'.75','marker-end':'url(#barw)'},s3);
-chip(s3,78,92,'Consortium',false);chip(s3,362,92,'Market signals',false);
-// Scene 4
-var s4=G(4);frame(s4,.28);profile(s4,.28);
-E('text',{x:cx,y:(cy-56).toFixed(0),'text-anchor':'middle',fill:'rgba(241,233,219,.55)','font-family':"'Manrope',sans-serif",'font-size':'10','letter-spacing':'2'},s4).textContent='MARGA INDEX';
-E('text',{x:cx,y:(cy+20).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Newsreader',serif",'font-size':'72'},s4).textContent='62';
-var bw=88,bh=24,bx=cx-bw/2,by=cy+40;E('rect',{x:bx,y:by,width:bw,height:bh,rx:12,fill:'rgba(199,162,75,.16)',stroke:'rgba(199,162,75,.5)','stroke-width':'1'},s4);E('text',{x:cx,y:by+16,'text-anchor':'middle',fill:GOLD,'font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600','letter-spacing':'1'},s4).textContent='Neutral';
-// nav
-var CAP=[{k:'Step 1 of 4',t:'Five forces, many signals',p:'Every asset is scored across five forces, each built up from the many signals beneath it.'},{k:'Step 2 of 4',t:'Weighted to your question',p:'The same evidence gets re-weighted for the decision in front of you, whether you read as an investor, an operator, or a board.'},{k:'Step 3 of 4',t:'Layered with live inputs',p:'Expert judgment from the standing consortium and real-time market signals layer in, so the read reflects the field as it moves.'},{k:'Step 4 of 4',t:'One comparable number',p:'It resolves to a single composite on one scale, with the band and the confidence behind it, so any asset reads against any other.'}];
-var tabs=B.querySelectorAll('.bstep'),capk=B.querySelector('[data-capk]'),capt=B.querySelector('[data-capt]'),capp=B.querySelector('[data-capp]'),dw=B.querySelector('[data-bdots]'),dots=[],idx=0;
+function clamp(v){return Math.max(.14,Math.min(1,v));}
+// Illustrative, anonymized model. Each lens re-weights the same five forces.
+var LENS={investor:[.88,.55,.5,.82,.6],operator:[.63,.84,.75,.52,.7],board:[.57,.6,.88,.66,.83]};
+var LORDER=['investor','operator','board'],LLABEL={investor:'Investor',operator:'Operator',board:'Board'};
+var CONSORTIUM=[.05,-.05,.09,-.03,.06],MARKET=[-.05,.1,-.04,.09,.03],NEUTRAL=[.5,.5,.5,.5,.5];
+var st={step:0,lens:'operator',consortium:false,market:false};
+function target(){
+  if(st.step===0)return NEUTRAL.slice();
+  var b=LENS[st.lens].slice();
+  if(st.step>=2){if(st.consortium)for(var i=0;i<N;i++)b[i]=clamp(b[i]+CONSORTIUM[i]);if(st.market)for(var j=0;j<N;j++)b[j]=clamp(b[j]+MARKET[j]);}
+  return b;
+}
+function composite(v){var m=v.reduce(function(a,b){return a+b;},0)/N;return Math.round(24+m*56);}
+function band(n){return n>=70?['Advantage','#5FA777']:(n>=45?['Neutral',GOLD]:['Detractor','#B4463C']);}
+// ---- persistent scaffold ----
+E('polygon',{points:polyStr([1,1,1,1,1]),fill:'none',stroke:'rgba(199,162,75,.5)','stroke-width':'1.5','stroke-linejoin':'round'});
+for(var i=0;i<N;i++){var v=pt(i,1);E('line',{x1:cx,y1:cy,x2:v[0].toFixed(1),y2:v[1].toFixed(1),stroke:'rgba(241,233,219,.13)','stroke-width':'1'});}
+for(var j=0;j<N;j++){var w=pt(j,1);E('circle',{cx:w[0].toFixed(1),cy:w[1].toFixed(1),r:'3.2',fill:'rgba(199,162,75,.85)'});}
+var FL=['Force 01','Force 02','Force 03','Force 04','Force 05'];
+for(var k=0;k<N;k++){var l=pt(k,1.44),co=Math.cos(ang(k)),an=(k===0?'middle':(co>.15?'start':(co<-.15?'end':'middle')));E('text',{x:l[0].toFixed(1),y:(l[1]+(k===0?-5:5)).toFixed(1),'text-anchor':an,fill:'rgba(241,233,219,.55)','font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600'}).textContent=FL[k];}
+// signal cloud (step 1 emphasis)
+var sig=E('g',{opacity:'0'});
+for(var s=0;s<16;s++){var sa=s*(360/16)*Math.PI/180,sr=R*(1.05+.15*(s%4)/3),sx=cx+Math.cos(sa)*sr,sy=cy+Math.sin(sa)*sr;E('circle',{cx:sx.toFixed(1),cy:sy.toFixed(1),r:(1.4+(s%3)*.5).toFixed(1),fill:'rgba(241,233,219,.3)'},sig);}
+// the one morphing profile
+var fill=E('polygon',{points:polyStr(NEUTRAL),fill:'rgba(199,162,75,.2)',stroke:GOLD,'stroke-width':'2','stroke-linejoin':'round'});
+var verts=[];for(var vv=0;vv<N;vv++){var pv=pt(vv,.5);verts.push(E('circle',{cx:pv[0].toFixed(1),cy:pv[1].toFixed(1),r:'3',fill:GOLD}));}
+// index readout (step 4)
+var idxG=E('g',{opacity:'0'});
+E('text',{x:cx,y:(cy-52).toFixed(0),'text-anchor':'middle',fill:'rgba(241,233,219,.5)','font-family':"'Manrope',sans-serif",'font-size':'10','letter-spacing':'2'},idxG).textContent='MARGA INDEX';
+var idxNum=E('text',{x:cx,y:(cy+20).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Newsreader',serif",'font-size':'70'},idxG);
+var idxRect=E('rect',{x:(cx-47).toFixed(0),y:(cy+40).toFixed(0),width:'94',height:'24',rx:'12',fill:'rgba(199,162,75,.14)',stroke:'rgba(199,162,75,.5)','stroke-width':'1'},idxG);
+var idxBand=E('text',{x:cx,y:(cy+56).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600','letter-spacing':'1'},idxG);
+// ---- render + tween ----
+var cur=NEUTRAL.slice(),raf=null;
+function paint(v){
+  fill.setAttribute('points',polyStr(v));
+  for(var i=0;i<N;i++){var p=pt(i,v[i]);verts[i].setAttribute('cx',p[0].toFixed(1));verts[i].setAttribute('cy',p[1].toFixed(1));}
+  var n=composite(v),bd=band(n);
+  idxNum.textContent=n;idxNum.setAttribute('fill',bd[1]);idxBand.textContent=bd[0];idxBand.setAttribute('fill',bd[1]);idxRect.setAttribute('stroke',bd[1]);
+}
+function tween(to){
+  if(raf)cancelAnimationFrame(raf);
+  if(reduce){cur=to.slice();paint(cur);return;}
+  var from=cur.slice(),t0=performance.now(),dur=580;
+  (function loop(now){var k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3),o=[];for(var i=0;i<N;i++)o[i]=from[i]+(to[i]-from[i])*e;cur=o;paint(o);if(k<1)raf=requestAnimationFrame(loop);else cur=to.slice();})(t0);
+}
+// ---- interactive chips (lens in steps 2 & 4, signal toggles in step 3) ----
+var chips=B.querySelector('[data-chips]');
+function drawChips(){
+  chips.innerHTML='';
+  if(st.step===1||st.step===3){
+    LORDER.forEach(function(ln){var b=document.createElement('button');b.type='button';b.className='vchip'+(st.lens===ln?' on':'');b.textContent=LLABEL[ln];b.onclick=function(){st.lens=ln;drawChips();apply();stop();};chips.appendChild(b);});
+  }else if(st.step===2){
+    [['consortium','Consortium'],['market','Market signals']].forEach(function(pr){var b=document.createElement('button');b.type='button';b.className='vchip tog'+(st[pr[0]]?' on':'');b.textContent=pr[1];b.onclick=function(){st[pr[0]]=!st[pr[0]];drawChips();apply();stop();};chips.appendChild(b);});
+  }
+}
+function apply(){
+  sig.setAttribute('opacity',st.step===0?'1':'0');
+  idxG.setAttribute('opacity',st.step===3?'1':'0');
+  fill.setAttribute('opacity',st.step===0?'.55':'1');
+  fill.setAttribute('fill',st.step===3?'rgba(199,162,75,.1)':'rgba(199,162,75,.2)');
+  verts.forEach(function(c){c.setAttribute('opacity',st.step===3?'.5':'1');});
+  tween(target());
+}
+// ---- steps / tabs / dots / arrows / captions ----
+var CAP=[
+ {k:'Step 1 of 4',t:'Five forces, many signals',p:'Every asset is scored across five forces, each built up from the many signals beneath it.'},
+ {k:'Step 2 of 4',t:'Weighted to your question',p:'The same evidence is re-weighted for the decision in front of you. Switch the lens and watch the shape move to what an investor, an operator, or a board actually cares about.'},
+ {k:'Step 3 of 4',t:'Layered with live inputs',p:'Consortium judgment and real-time market signals push and pull each force as they integrate, so the read reflects the field as it moves.'},
+ {k:'Step 4 of 4',t:'One comparable number',p:'The whole shape resolves to a single composite on one scale, with its band. Change the lens and the number moves with it.'}
+];
+var tabs=B.querySelectorAll('.bstep'),capk=B.querySelector('[data-capk]'),capt=B.querySelector('[data-capt]'),capp=B.querySelector('[data-capp]'),dw=B.querySelector('[data-bdots]'),dots=[];
 for(var d=0;d<4;d++){(function(d){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Step '+(d+1));if(d===0)b.className='on';b.onclick=function(){show(d);stop();};dw.appendChild(b);dots.push(b);})(d);}
-function show(i){idx=(i+4)%4;B.setAttribute('data-step',String(idx+1));for(var t=0;t<tabs.length;t++){tabs[t].classList.toggle('on',t===idx);tabs[t].setAttribute('aria-selected',t===idx?'true':'false');}for(var e=0;e<dots.length;e++)dots[e].className=(e===idx?'on':'');capk.textContent=CAP[idx].k;capt.textContent=CAP[idx].t;capp.textContent=CAP[idx].p;}
+function show(i){
+  st.step=(i+4)%4;
+  if(st.step===2){st.consortium=true;st.market=true;} // Live inputs: signals integrated by default (toggleable)
+  B.setAttribute('data-step',String(st.step+1));
+  for(var t=0;t<tabs.length;t++){tabs[t].classList.toggle('on',t===st.step);tabs[t].setAttribute('aria-selected',t===st.step?'true':'false');}
+  for(var e=0;e<dots.length;e++)dots[e].className=(e===st.step?'on':'');
+  capk.textContent=CAP[st.step].k;capt.textContent=CAP[st.step].t;capp.textContent=CAP[st.step].p;
+  drawChips();apply();
+}
 for(var t=0;t<tabs.length;t++){(function(t){tabs[t].onclick=function(){show(t);stop();};})(t);}
-B.querySelector('[data-bprev]').onclick=function(){show(idx-1);stop();};B.querySelector('[data-bnext]').onclick=function(){show(idx+1);stop();};
+B.querySelector('[data-bprev]').onclick=function(){show(st.step-1);stop();};
+B.querySelector('[data-bnext]').onclick=function(){show(st.step+1);stop();};
 var timer=null;function stop(){if(timer){clearInterval(timer);timer=null;}}
-if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))timer=setInterval(function(){show(idx+1);},6500);
-B.addEventListener('mouseenter',stop);show(0);
+if(!reduce)timer=setInterval(function(){show(st.step+1);},6500);
+B.addEventListener('mouseenter',stop);
+show(0);
 })();</script>
 
 <section id="commission"><div class="wrap">

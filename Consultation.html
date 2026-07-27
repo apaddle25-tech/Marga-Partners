@@ -126,10 +126,9 @@
             <p id="formHeadNote">Most fields are optional, but more context helps make the first conversation sharper.</p>
           </div>
 
-          <form action="https://formsubmit.co/admin@margapartners.com" method="POST" enctype="multipart/form-data">
+          <div id="sentBanner" role="status" style="display:none;margin:0 0 24px;padding:16px 20px;border-radius:10px;background:rgba(199,162,75,.14);border:1px solid rgba(154,116,47,.4);color:#16140F;font:600 15px/1.5 'Manrope',system-ui,sans-serif">Thank you. Your intake has been received, and Marga Partners will follow up shortly.</div>
+          <form action="https://app.margapartners.com/contact" method="POST">
             <input type="hidden" name="_subject" id="subjField" value="New Marga Partners consultation request">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Marga Partners. Your intake has been received and Marga Partners will follow up shortly.">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
 
             <fieldset>
@@ -304,10 +303,6 @@
                     <option>Other</option>
                   </select>
                 </div>
-                <div class="field">
-                  <label for="cv">Resume / CV</label>
-                  <input id="cv" name="attachment" type="file" accept=".pdf,.doc,.docx">
-                </div>
                 <div class="field full">
                   <label for="background">Tell us about your background and what you would contribute</label>
                   <textarea id="background" name="background_summary"></textarea>
@@ -396,5 +391,6 @@
     document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',function(){if(el.checked)apply(el.value);});});
   })();
   </script>
+  <script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>
 </body>
 </html>

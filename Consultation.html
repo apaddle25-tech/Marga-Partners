@@ -75,6 +75,7 @@
     .intent label:hover{border-color:var(--gold)}
     .intent input{position:absolute;opacity:0;width:0;height:0}
     .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}
+.intent-hint{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.04em;text-transform:none;color:var(--muted,#8a8578);margin-left:8px;opacity:.8}
     /* below */
     .below{border-top:1px solid var(--line);padding:30px 0;color:rgba(22,20,15,.55);font-size:.86rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .below a{color:var(--golddeep);font-weight:700}
@@ -132,13 +133,13 @@
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
 
             <fieldset>
-              <legend>I&rsquo;m reaching out to</legend>
-              <div class="intent" role="radiogroup" aria-label="Reason for reaching out">
-                <label><input type="radio" name="inquiry_type" value="consultation" checked>Start a consulting engagement</label>
-                <label><input type="radio" name="inquiry_type" value="consortium">Join the Marga Consortium</label>
-                <label><input type="radio" name="inquiry_type" value="waitlist">Product waitlist / early access</label>
-                <label><input type="radio" name="inquiry_type" value="index">Commission an index or diligence read</label>
-                <label><input type="radio" name="inquiry_type" value="other">Something else</label>
+              <legend>I&rsquo;m reaching out to <span class="intent-hint">Select any that apply</span></legend>
+              <div class="intent" role="group" aria-label="Reason for reaching out (select any that apply)">
+                <label><input type="checkbox" name="inquiry_type" value="consultation" checked>Start a consulting engagement</label>
+                <label><input type="checkbox" name="inquiry_type" value="consortium">Join the Marga Consortium</label>
+                <label><input type="checkbox" name="inquiry_type" value="waitlist">Product waitlist / early access</label>
+                <label><input type="checkbox" name="inquiry_type" value="index">Commission an index or diligence read</label>
+                <label><input type="checkbox" name="inquiry_type" value="other">Something else</label>
               </div>
             </fieldset>
 
@@ -368,27 +369,33 @@
       block.hidden=!on;
       block.querySelectorAll('input,select,textarea').forEach(function(el){el.disabled=!on;});
     }
-    function apply(t){
-      var c=TYPES[t]||TYPES.consultation;
-      if(eb)eb.textContent=c.eyebrow;
-      if(ti)ti.innerHTML=c.title;
-      if(ld)ld.textContent=c.lead;
-      if(cl&&c.challenge)cl.textContent=c.challenge;
-      if(sj)sj.value=c.subject;
-      if(headTitle)headTitle.textContent=c.headTitle;
-      if(headNote)headNote.textContent=c.headNote;
-      var consortium=(c.mode==='consortium');
-      setBlock(standardBlock,!consortium);
-      setBlock(consortiumBlock,consortium);
-      if(signalGrid&&c.signals){
-        signalGrid.innerHTML=c.signals.map(function(s,i){return '<div class="signal"><i>0'+(i+1)+'</i><b>'+s+'</b></div>';}).join('');
-      }
+    var signalDefault=signalGrid?signalGrid.innerHTML:'';
+    function renderSignals(list){signalGrid.innerHTML=list.map(function(s,i){return '<div class="signal"><i>0'+(i+1)+'</i><b>'+s+'</b></div>';}).join('');}
+    // Multi-select: hero is tailored for a single intent, neutral for zero or
+    // several; the fields shown are the UNION of what the selected intents need,
+    // so one form captures everything (no filling out two intakes).
+    function apply(){
+      var boxes=[].slice.call(document.querySelectorAll('input[name="inquiry_type"]'));
+      var sel=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+      var single=(sel.length===1)?sel[0]:null;
+      var c=single?(TYPES[single]||TYPES.consultation):TYPES.consultation;
+      if(eb)eb.textContent=single?c.eyebrow:'Consultation intake';
+      if(ti)ti.innerHTML=single?c.title:'Define the <span>path</span> forward.';
+      if(ld)ld.textContent=single?c.lead:'Share the decisions, launches, or opportunities in front of you. Select any that apply, and this single intake captures what Marga needs for each.';
+      if(cl)cl.textContent=(single&&c.challenge)?c.challenge:'What decision or challenge should we understand?';
+      if(headTitle)headTitle.textContent=single?c.headTitle:'Share the strategic context.';
+      if(headNote)headNote.textContent=single?c.headNote:'Most fields are optional. Selected more than one path? Fill in what applies to each.';
+      var wantsCons=sel.indexOf('consortium')>=0;
+      var wantsStd=sel.some(function(v){return (TYPES[v]||{}).mode!=='consortium';})||sel.length===0;
+      setBlock(standardBlock,wantsStd);
+      setBlock(consortiumBlock,wantsCons);
+      if(signalGrid){(wantsCons&&TYPES.consortium.signals)?renderSignals(TYPES.consortium.signals):(signalGrid.innerHTML=signalDefault);}
+      if(sj)sj.value=single?c.subject:(sel.length?'New Marga Partners inquiry ('+sel.join(', ')+')':'New Marga Partners inquiry');
     }
     var q=new URLSearchParams(location.search).get('type');
-    if(q&&TYPES[q]){var r=document.querySelector('input[name="inquiry_type"][value="'+q+'"]');if(r)r.checked=true;}
-    var checked=document.querySelector('input[name="inquiry_type"]:checked');
-    apply(checked?checked.value:'consultation');
-    document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',function(){if(el.checked)apply(el.value);});});
+    if(q){q.split(',').forEach(function(v){var r=document.querySelector('input[name="inquiry_type"][value="'+v.trim()+'"]');if(r)r.checked=true;});}
+    apply();
+    document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',apply);});
   })();
   </script>
   <script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>

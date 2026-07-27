@@ -80,6 +80,12 @@ section{padding:clamp(58px,8vw,100px) 0}.dark{background:var(--ink2);color:var(-
 .build-cap p{margin:0;font-size:15px;line-height:1.65;color:rgba(241,233,219,.72);max-width:44ch}
 .build-ctrl{display:flex;align-items:center;gap:15px;margin-top:auto;padding-top:26px}
 .build-cap .cap-text{min-height:132px}
+.build-cap .idx-out{display:flex;align-items:center;gap:18px;margin-top:24px}
+.build-cap .idx-out[hidden]{display:none}
+.build-cap .idx-num{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(48px,6.5vw,68px);line-height:.92;color:var(--gold);font-variant-numeric:tabular-nums}
+.build-cap .idx-meta{display:flex;flex-direction:column;gap:9px}
+.build-cap .idx-k{font:600 9.5px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,233,219,.5)}
+.build-cap .idx-band{align-self:flex-start;font:600 11px/1 'Manrope',sans-serif;letter-spacing:.03em;padding:6px 13px;border-radius:20px;border:1px solid var(--gold);color:var(--gold)}
 .build-dots{display:flex;gap:8px}
 .build-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(241,233,219,.25);cursor:pointer;transition:background .3s,transform .3s}.build-dots button.on{background:var(--gold);transform:scale(1.3)}
 .barrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--haird);background:transparent;color:var(--cream2);cursor:pointer;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}.barrow:hover{border-color:var(--gold);color:var(--gold)}.barrow:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
@@ -209,6 +215,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 </div>
 <div class="build-cap">
 <div class="cap-text"><div class="capk" data-capk>Step 1 of 4</div><h3 data-capt>Five forces, many signals</h3><p data-capp>Every asset is scored across five forces, each built up from the many signals beneath it.</p></div>
+<div class="idx-out" data-idxout hidden><span class="idx-num" data-idxnum>66</span><div class="idx-meta"><span class="idx-k">Marga Index&trade;</span><span class="idx-band" data-idxband>Neutral</span></div></div>
 <div class="build-ctrl"><button class="barrow" type="button" data-bprev aria-label="Previous step">&larr;</button><div class="build-dots" data-bdots></div><button class="barrow" type="button" data-bnext aria-label="Next step">&rarr;</button></div>
 </div>
 </div>
@@ -249,19 +256,16 @@ var gverts=[];for(var gv=0;gv<N;gv++){var gp=pt(gv,.5);gverts.push(E('circle',{c
 // the one prominent profile
 var fill=E('polygon',{points:polyStr(NEUTRAL),fill:'rgba(199,162,75,.2)',stroke:GOLD,'stroke-width':'2','stroke-linejoin':'round'});
 var verts=[];for(var vv=0;vv<N;vv++){var pv=pt(vv,.5);verts.push(E('circle',{cx:pv[0].toFixed(1),cy:pv[1].toFixed(1),r:'3',fill:GOLD}));}
-// index readout (step 4)
-var idxG=E('g',{opacity:'0'});
-E('text',{x:cx,y:(cy-52).toFixed(0),'text-anchor':'middle',fill:'rgba(241,233,219,.5)','font-family':"'Manrope',sans-serif",'font-size':'10','letter-spacing':'2'},idxG).textContent='MARGA INDEX';
-var idxNum=E('text',{x:cx,y:(cy+20).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Newsreader',serif",'font-size':'70'},idxG);
-var idxRect=E('rect',{x:(cx-47).toFixed(0),y:(cy+40).toFixed(0),width:'94',height:'24',rx:'12',fill:'rgba(199,162,75,.14)',stroke:'rgba(199,162,75,.5)','stroke-width':'1'},idxG);
-var idxBand=E('text',{x:cx,y:(cy+56).toFixed(0),'text-anchor':'middle',fill:GOLD,'font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600','letter-spacing':'1'},idxG);
+// the index readout lives in the caption (data-idxout), clear of the pentagon
+var idxOut=B.querySelector('[data-idxout]'),idxNumEl=B.querySelector('[data-idxnum]'),idxBandEl=B.querySelector('[data-idxband]');
 // ---- render + tween ----
 var cur=NEUTRAL.slice(),raf=null;
 function paint(v){
   fill.setAttribute('points',polyStr(v));
   for(var i=0;i<N;i++){var p=pt(i,v[i]);verts[i].setAttribute('cx',p[0].toFixed(1));verts[i].setAttribute('cy',p[1].toFixed(1));}
   var n=composite(v),bd=band(n);
-  idxNum.textContent=n;idxNum.setAttribute('fill',bd[1]);idxBand.textContent=bd[0];idxBand.setAttribute('fill',bd[1]);idxRect.setAttribute('stroke',bd[1]);
+  if(idxNumEl){idxNumEl.textContent=n;idxNumEl.style.color=bd[1];}
+  if(idxBandEl){idxBandEl.textContent=bd[0];idxBandEl.style.color=bd[1];idxBandEl.style.borderColor=bd[1];}
 }
 function tween(to){
   if(raf)cancelAnimationFrame(raf);
@@ -293,12 +297,11 @@ function paintGhost(v){
 }
 function apply(){
   sig.setAttribute('opacity',st.step===0?'1':'0');
-  idxG.setAttribute('opacity',st.step===3?'1':'0');
+  if(idxOut)idxOut.hidden=(st.step!==3);
   var to=target(),g=ghostVals();
   paintGhost(g&&maxDiff(g,to)>0.03?g:null);
   fill.setAttribute('opacity',st.step===0?'.6':'1');
-  fill.setAttribute('fill',st.step===3?'rgba(199,162,75,.09)':'rgba(199,162,75,.2)');
-  verts.forEach(function(c){c.setAttribute('opacity',st.step===3?'0':'1');});
+  verts.forEach(function(c){c.setAttribute('opacity','1');});
   tween(to);
 }
 // ---- steps / tabs / dots / arrows / captions ----

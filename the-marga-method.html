@@ -237,15 +237,16 @@ function target(){
 function composite(v){var m=v.reduce(function(a,b){return a+b;},0)/N;return Math.round(24+m*56);}
 function band(n){return n>=70?['Advantage','#5FA777']:(n>=45?['Neutral',GOLD]:['Detractor','#B4463C']);}
 // ---- persistent scaffold ----
-E('polygon',{points:polyStr([1,1,1,1,1]),fill:'none',stroke:'rgba(199,162,75,.5)','stroke-width':'1.5','stroke-linejoin':'round'});
-for(var i=0;i<N;i++){var v=pt(i,1);E('line',{x1:cx,y1:cy,x2:v[0].toFixed(1),y2:v[1].toFixed(1),stroke:'rgba(241,233,219,.13)','stroke-width':'1'});}
-for(var j=0;j<N;j++){var w=pt(j,1);E('circle',{cx:w[0].toFixed(1),cy:w[1].toFixed(1),r:'3.2',fill:'rgba(199,162,75,.85)'});}
+for(var i=0;i<N;i++){var v=pt(i,1);E('line',{x1:cx,y1:cy,x2:v[0].toFixed(1),y2:v[1].toFixed(1),stroke:'rgba(241,233,219,.08)','stroke-width':'1'});}
 var FL=['Force 01','Force 02','Force 03','Force 04','Force 05'];
 for(var k=0;k<N;k++){var l=pt(k,1.44),co=Math.cos(ang(k)),an=(k===0?'middle':(co>.15?'start':(co<-.15?'end':'middle')));E('text',{x:l[0].toFixed(1),y:(l[1]+(k===0?-5:5)).toFixed(1),'text-anchor':an,fill:'rgba(241,233,219,.55)','font-family':"'Manrope',sans-serif",'font-size':'11','font-weight':'600'}).textContent=FL[k];}
 // signal cloud (step 1 emphasis)
 var sig=E('g',{opacity:'0'});
 for(var s=0;s<16;s++){var sa=s*(360/16)*Math.PI/180,sr=R*(1.05+.15*(s%4)/3),sx=cx+Math.cos(sa)*sr,sy=cy+Math.sin(sa)*sr;E('circle',{cx:sx.toFixed(1),cy:sy.toFixed(1),r:(1.4+(s%3)*.5).toFixed(1),fill:'rgba(241,233,219,.3)'},sig);}
-// the one morphing profile
+// greyed baseline: the 'before' position, shown behind on a change so the delta reads
+var ghost=E('polygon',{points:polyStr(NEUTRAL),fill:'none',stroke:'rgba(241,233,219,.32)','stroke-width':'1.4','stroke-dasharray':'4 5','stroke-linejoin':'round',opacity:'0'});
+var gverts=[];for(var gv=0;gv<N;gv++){var gp=pt(gv,.5);gverts.push(E('circle',{cx:gp[0].toFixed(1),cy:gp[1].toFixed(1),r:'2.2',fill:'rgba(241,233,219,.4)',opacity:'0'}));}
+// the one prominent profile
 var fill=E('polygon',{points:polyStr(NEUTRAL),fill:'rgba(199,162,75,.2)',stroke:GOLD,'stroke-width':'2','stroke-linejoin':'round'});
 var verts=[];for(var vv=0;vv<N;vv++){var pv=pt(vv,.5);verts.push(E('circle',{cx:pv[0].toFixed(1),cy:pv[1].toFixed(1),r:'3',fill:GOLD}));}
 // index readout (step 4)
@@ -278,13 +279,27 @@ function drawChips(){
     [['consortium','Consortium'],['market','Market signals']].forEach(function(pr){var b=document.createElement('button');b.type='button';b.className='vchip tog'+(st[pr[0]]?' on':'');b.textContent=pr[1];b.onclick=function(){st[pr[0]]=!st[pr[0]];drawChips();apply();stop();};chips.appendChild(b);});
   }
 }
+function maxDiff(a,b){var m=0;for(var i=0;i<N;i++)m=Math.max(m,Math.abs(a[i]-b[i]));return m;}
+function ghostVals(){
+  if(st.step===0)return null;                   // five forces: nothing to compare yet
+  if(st.step===1)return NEUTRAL.slice();         // lens: vs the un-weighted baseline
+  if(st.step===2)return LENS[st.lens].slice();   // inputs: vs the lens shape before signals
+  return null;                                   // index: keep it clean
+}
+function paintGhost(v){
+  if(!v){ghost.setAttribute('opacity','0');gverts.forEach(function(c){c.setAttribute('opacity','0');});return;}
+  ghost.setAttribute('points',polyStr(v));ghost.setAttribute('opacity','1');
+  for(var i=0;i<N;i++){var p=pt(i,v[i]);gverts[i].setAttribute('cx',p[0].toFixed(1));gverts[i].setAttribute('cy',p[1].toFixed(1));gverts[i].setAttribute('opacity','1');}
+}
 function apply(){
   sig.setAttribute('opacity',st.step===0?'1':'0');
   idxG.setAttribute('opacity',st.step===3?'1':'0');
-  fill.setAttribute('opacity',st.step===0?'.55':'1');
-  fill.setAttribute('fill',st.step===3?'rgba(199,162,75,.1)':'rgba(199,162,75,.2)');
-  verts.forEach(function(c){c.setAttribute('opacity',st.step===3?'.5':'1');});
-  tween(target());
+  var to=target(),g=ghostVals();
+  paintGhost(g&&maxDiff(g,to)>0.03?g:null);
+  fill.setAttribute('opacity',st.step===0?'.6':'1');
+  fill.setAttribute('fill',st.step===3?'rgba(199,162,75,.09)':'rgba(199,162,75,.2)');
+  verts.forEach(function(c){c.setAttribute('opacity',st.step===3?'0':'1');});
+  tween(to);
 }
 // ---- steps / tabs / dots / arrows / captions ----
 var CAP=[

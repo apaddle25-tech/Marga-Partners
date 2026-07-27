@@ -47,13 +47,15 @@ h1,h2,h3{font-family:'Newsreader',serif;font-optical-sizing:auto;font-weight:400
 .pil .acts li{font:600 12px/1 'Manrope',sans-serif;color:var(--ink);background:rgba(22,20,15,.045);border:1px solid rgba(22,20,15,.16);border-radius:8px;padding:10px 13px;transition:background .15s,border-color .15s}
 .pil:hover .acts li{border-color:rgba(154,116,47,.5);background:rgba(199,162,75,.12)}
 /* founder */
-.founder{display:grid;grid-template-columns:1fr auto;gap:clamp(26px,4vw,56px);align-items:start;margin-top:36px}
-.founder .ph-img{width:clamp(340px,44vw,560px);height:auto;display:block;align-self:start;-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,#000 88%,transparent 100%)}
-@media(max-width:900px){.founder .ph-img{width:min(400px,90%)}}
+.founder{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,2.6vw,40px);align-items:start;margin-top:36px}
+.founder .ph-wrap{position:relative;align-self:start;justify-self:end;margin-right:calc(-1 * clamp(8px,2.6vw,52px))}
+.founder .ph-img{width:clamp(340px,44vw,560px);height:auto;display:block}
+.founder .ph-wrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(52px,11vw,104px);background:linear-gradient(to top,rgba(22,20,15,.26),rgba(22,20,15,0));pointer-events:none}
+@media(max-width:900px){.founder .ph-wrap{margin-right:0;justify-self:start}.founder .ph-img{width:min(400px,90%)}}
 .founder .nm{font-family:'Newsreader',serif;font-optical-sizing:auto;font-size:clamp(1.5rem,2.4vw,2rem);color:var(--ink);margin:0}.founder .role{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);margin:10px 0 16px}.founder p{margin:0;font-size:16px;line-height:1.7;color:var(--body);max-width:64ch}
 .explead{margin-top:44px;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze)}
 .exp{margin-top:24px;max-width:800px}
-.expco{display:grid;grid-template-columns:210px 1fr;gap:clamp(14px,3.5vw,48px);padding:22px 0;border-top:1px solid var(--hair)}
+.expco{display:grid;grid-template-columns:150px 1fr;gap:clamp(14px,3vw,40px);padding:22px 0;border-top:1px solid var(--hair)}
 .expleft{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .expco .conm{font-family:'Newsreader',serif;font-optical-sizing:auto;font-size:clamp(1.3rem,2vw,1.65rem);line-height:1.08;color:var(--ink)}
 .expco .coyr{font:700 9px/1 'Manrope',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze)}
@@ -154,7 +156,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 </div>
 <a class="explink" href="https://www.linkedin.com/in/aneeshpatel" target="_blank" rel="noopener">See the full history on LinkedIn &rarr;</a>
 </div>
-<img class="ph-img" src="/assets/founder.webp" alt="Aneesh Patel, PharmD, founder of Marga Partners" width="600" height="722" loading="lazy">
+<div class="ph-wrap"><img class="ph-img" src="/assets/founder.webp" alt="Aneesh Patel, PharmD, founder of Marga Partners" width="600" height="722" loading="lazy"></div>
 </div></div></section>
 
 <section class="panel dark"><div class="wrap">

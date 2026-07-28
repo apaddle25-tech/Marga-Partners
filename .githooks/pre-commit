@@ -1,0 +1,56 @@
+#!/bin/sh
+# Marga public-repo pre-commit guard. Mirrors .github/workflows/content-guard.yml
+# so violations are caught before they ever reach GitHub.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Bypass in an emergency:  git commit --no-verify
+
+fail=0
+files=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$files" ] && exit 0
+
+# Only inspect text files that actually exist in the work tree.
+check=""
+for f in $files; do
+  [ -f "$f" ] || continue
+  case "$f" in
+    # The guard files themselves contain these patterns by design.
+    .githooks/*|.github/workflows/content-guard.yml) continue ;;
+    .git/*|*.png|*.jpg|*.jpeg|*.webp|*.gif|*.ico|*.pdf|*.woff|*.woff2) continue ;;
+  esac
+  check="$check $f"
+done
+[ -z "$check" ] && exit 0
+
+# 1. Personal email addresses (firm margapartners.com addresses are fine).
+if grep -InE '[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|icloud|aol|proton(mail)?)\.[A-Za-z]{2,}' $check; then
+  echo "pre-commit: personal email address found. Use a margapartners.com address."
+  fail=1
+fi
+
+# 2. Calibrated band cutoffs (public illustrations use even thirds).
+for f in $check; do
+  case "$f" in
+    journal/*|refractions/*|essays/*) continue ;;
+    *.html|*.js)
+      if grep -InE '(>=|>|<=|<)[[:space:]]*(40|70)[[:space:]]*\?' "$f"; then
+        echo "pre-commit: $f encodes a calibrated band cutoff. Use BAND_LO/BAND_HI."
+        fail=1
+      fi ;;
+  esac
+done
+
+# 3. Private scoring-engine identifiers.
+if grep -InE 'BAND_THRESHOLDS|LENSES_REF|headlineGamma|perceptionGapThreshold|strongMultiple|reconcileThreshold|socialDirectionThreshold|momentumFloorK|lenses\.data\.json' $check; then
+  echo "pre-commit: private scoring-engine identifier found in public source."
+  fail=1
+fi
+
+# 4. Obvious secrets.
+if grep -InE '(ghp|gho|ghs|github_pat)_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----' $check; then
+  echo "pre-commit: possible secret or key material found."
+  fail=1
+fi
+
+[ "$fail" -eq 0 ] || echo "pre-commit: commit blocked. Fix the above, or use --no-verify if this is a false positive."
+exit $fail

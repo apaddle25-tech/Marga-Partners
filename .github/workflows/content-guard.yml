@@ -1,0 +1,63 @@
+name: content-guard
+
+# This repository is PUBLIC. These checks fail the build if source ever carries
+# secrets, personal contact details, or proprietary scoring internals.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  secrets:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  content:
+    name: PII and proprietary-value scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Personal contact details must never appear in public source. The firm
+      # addresses (admin@ / studio@ / aneesh@margapartners.com) are allowed.
+      - name: No personal email addresses
+        run: |
+          if grep -rInE '[A-Za-z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|icloud|aol|proton(mail)?)\.[A-Za-z]{2,}' \
+               --exclude-dir=.git --exclude-dir=.github --exclude-dir=.githooks . ; then
+            echo "::error::A personal email address is present in public source. Use a margapartners.com address."
+            exit 1
+          fi
+          echo "OK: no personal email addresses."
+
+      # The calibrated band cutoffs live server-side in the scoring engine and
+      # must not be encoded in public illustrations. Public demos use even thirds.
+      - name: No calibrated band cutoffs in scoring illustrations
+        run: |
+          if grep -rInE '(>=|>|<=|<)[[:space:]]*(40|70)[[:space:]]*\?' \
+               --include='*.html' --include='*.js' \
+               --exclude-dir=.git --exclude-dir=.github --exclude-dir=.githooks \
+               --exclude-dir=journal --exclude-dir=refractions --exclude-dir=essays . ; then
+            echo "::error::A band comparison uses a calibrated cutoff (40/70). Use the illustrative BAND_LO/BAND_HI thirds."
+            exit 1
+          fi
+          echo "OK: no calibrated cutoffs."
+
+      # Real lens weight vectors and engine identifiers belong to the private
+      # p5-studio repo only.
+      - name: No engine internals
+        run: |
+          if grep -rInE 'BAND_THRESHOLDS|LENSES_REF|headlineGamma|perceptionGapThreshold|strongMultiple|reconcileThreshold|socialDirectionThreshold|momentumFloorK|lenses\.data\.json' \
+               --exclude-dir=.git --exclude-dir=.github --exclude-dir=.githooks . ; then
+            echo "::error::A private scoring-engine identifier appears in public source."
+            exit 1
+          fi
+          echo "OK: no engine internals."

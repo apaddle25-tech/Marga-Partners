@@ -39,9 +39,14 @@ Measured 2026-07-28, contrast against the three cream grounds:
 
 Bronze alone does not clear 4.5:1 on any cream. Use #7A5A20 when the text is body size.
 
-## The four marks (see WO-7)
-Marga Method, Marga Index, Marga Studio, MargaZine. Nothing else.
+## The marks (see WO-7)
+The trademark is on Marga itself, and it covers every product name used under it.
+Sub-brands are not registered separately, so a new Marga-prefixed name is covered
+the moment it ships.
+Product names in use: Marga Method, Marga Index, Marga Studio, MargaZine. Nothing else.
 Trademark symbol on first use in any human-visible surface.
+Attribution reads: Marga™ is a trademark of Marga Partners LLC and covers the
+product names used under it. Do not claim each sub-brand as a separate mark.
 
 ## Security rules
 - Marga-Partners is a PUBLIC repo. Nothing proprietary goes in it: no weight

@@ -46,7 +46,16 @@ if grep -InE 'BAND_THRESHOLDS|LENSES_REF|headlineGamma|perceptionGapThreshold|st
   fail=1
 fi
 
-# 4. Obvious secrets.
+# 4. Lens weight matrices. Runs the same detector CI uses, because a regex over
+# raw bytes misses a matrix laid out in an HTML table.
+if command -v node >/dev/null 2>&1 && [ -f .github/scripts/check-weight-matrix.mjs ]; then
+  if ! node .github/scripts/check-weight-matrix.mjs $check; then
+    echo "pre-commit: lens weight matrix found. Weights live server-side in p5-studio."
+    fail=1
+  fi
+fi
+
+# 5. Obvious secrets.
 if grep -InE '(ghp|gho|ghs|github_pat)_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----' $check; then
   echo "pre-commit: possible secret or key material found."
   fail=1

@@ -51,6 +51,13 @@ jobs:
           fi
           echo "OK: no calibrated cutoffs."
 
+      # A lens weight matrix is a table of calibration constants. One shipped in
+      # this repo's history inside a playbook page and was only caught during
+      # WO-2, because the earlier checks looked for identifiers and cutoffs, not
+      # for a row of decimals sitting next to a lens name.
+      - name: No lens weight matrix
+        run: node .github/scripts/check-weight-matrix.mjs
+
       # Real lens weight vectors and engine identifiers belong to the private
       # p5-studio repo only.
       - name: No engine internals

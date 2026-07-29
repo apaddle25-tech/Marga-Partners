@@ -49,7 +49,13 @@ function trackedFiles() {
     ? ['diff', '--cached', '--name-only', '--diff-filter=ACMR']
     : ['ls-files'];
   const out = execFileSync('git', cmd, { cwd: ROOT, encoding: 'utf8' });
-  return out.split('\n').filter(Boolean).filter((f) => EXTS.has(path.extname(f)));
+  const tracked = out.split('\n').filter(Boolean);
+  // Extension match, plus an explicit list for files that have no scannable
+  // extension. .env.example is the case that motivated this: it carries
+  // EMAIL_FROM, which becomes the From header on real mail, and path.extname
+  // returns ".example" so no extension rule could ever reach it.
+  const extra = new Set(config.scan.extraFiles || []);
+  return tracked.filter((f) => EXTS.has(path.extname(f)) || extra.has(f));
 }
 
 const isAllowed = (file) => ALLOW.some((a) => (a.endsWith('/') ? file.startsWith(a) : file === a));

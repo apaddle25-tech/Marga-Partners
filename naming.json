@@ -129,10 +129,6 @@
       "reason": "The descriptive name of the five domains in running prose. Not a product mark. See prose.domains."
     },
     {
-      "pattern": "P5 Studio backend listening",
-      "reason": "Matched by the P5 Studio rule and replaced there. Listed so the intent is visible: the log line is human-visible and does get corrected."
-    },
-    {
       "pattern": "`[^`]*\\.html`|\"[^\"]*\\.html\"|'[^']*\\.html'",
       "reason": "A quoted filename is a reference to a file that exists under that exact name. Renaming the reference makes the document point at nothing. The file itself is renamed as a deliberate operation, and the reference follows it then."
     },

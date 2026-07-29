@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practice Benchmark &middot; Marga Partners</title>
+<meta name="description" content="Benchmark your practice against published industry sources. Four steps, no account, results on the page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16140F; --ink2:#14120E; --bronze:#9A742F; --gold:#C7A24B;
+  --cream:#FBF6EC; --cream2:#F1E9DB; --cream3:#EBE0CC; --body:#4A4435;
+  /* 4.85:1 on the darkest cream. Body-size text uses this, never gold. */
+  --bronze-text:#7A5A20;
+  --ok:#2F6B45; --warn:#8A4B1F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--body);
+  font:400 16px/1.6 'Manrope',-apple-system,BlinkMacSystemFont,sans-serif}
+h1,h2,h3{font-family:'Newsreader',Georgia,serif;color:var(--ink);font-weight:500;
+  margin:0 0 .4em;line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(28px,7vw,42px)}
+h2{font-size:clamp(21px,4.5vw,27px)}
+h3{font-size:18px}
+p{margin:0 0 1em;max-width:64ch}
+a{color:var(--bronze-text)}
+.wrap{max-width:640px;margin:0 auto;padding:24px 20px 80px}
+.eyebrow{font:600 11px/1.4 'Manrope',sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bronze-text);margin-bottom:10px}
+
+/* Skip link, visible on focus */
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--cream);
+  padding:10px 16px;z-index:100}
+.skip:focus{left:8px;top:8px}
+
+/* Focus is always visible and never removed */
+:focus-visible{outline:3px solid var(--bronze-text);outline-offset:2px;border-radius:2px}
+
+/* ---- mandatory cohort label. On the page, never a tooltip, never dismissible ---- */
+.cohort-label{border:1px solid var(--gold);background:var(--cream2);
+  padding:12px 14px;margin:0 0 20px;font-size:13.5px;line-height:1.5;color:var(--body);
+  border-radius:3px}
+.cohort-label b{color:var(--ink);font-weight:600}
+
+/* ---- progress ---- */
+.progress{margin:0 0 24px}
+.progress ol{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 8px}
+.progress li{flex:1;height:5px;background:var(--cream3);border-radius:3px}
+.progress li[data-done="true"]{background:var(--gold)}
+.progress p{margin:0;font-size:13px;color:var(--bronze-text);font-weight:600}
+
+/* ---- form ---- */
+fieldset{border:0;padding:0;margin:0 0 8px;min-width:0}
+legend{padding:0;margin-bottom:4px}
+.field{margin:0 0 18px}
+.field label{display:block;font-weight:600;color:var(--ink);font-size:15px;margin-bottom:2px}
+.field .hint{display:block;font-size:13px;color:var(--body);margin-bottom:6px}
+.field input,.field select{width:100%;padding:12px 13px;font:400 16px 'Manrope',sans-serif;
+  color:var(--ink);background:#fff;border:1px solid var(--cream3);border-radius:4px}
+.field input:hover,.field select:hover{border-color:var(--bronze)}
+.opt{font-weight:400;color:var(--bronze-text);font-size:13px}
+.err{color:var(--warn);font-size:13.5px;font-weight:600;margin-top:5px}
+.honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.actions{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+button{font:600 16px 'Manrope',sans-serif;padding:13px 22px;border-radius:4px;cursor:pointer;
+  border:1px solid var(--ink);min-height:48px}
+.btn-primary{background:var(--ink);color:var(--cream)}
+.btn-primary:hover{background:var(--ink2)}
+.btn-secondary{background:transparent;color:var(--ink)}
+.btn-secondary:hover{background:var(--cream2)}
+button[disabled]{opacity:.5;cursor:not-allowed}
+
+/* ---- results ---- */
+.hero{background:var(--cream2);border-left:4px solid var(--gold);
+  padding:20px 18px;border-radius:0 4px 4px 0;margin:0 0 18px}
+.hero .v{font-family:'Newsreader',Georgia,serif;font-size:clamp(34px,10vw,52px);
+  color:var(--ink);line-height:1;margin:6px 0}
+.metric{border-top:1px solid var(--cream3);padding:16px 0}
+.metric .t{font-weight:700;color:var(--ink);font-size:15px}
+.metric .v{font-family:'Newsreader',Georgia,serif;font-size:26px;color:var(--ink);margin:4px 0}
+.cmp{font-size:14px;margin:6px 0}
+.cmp .above{color:var(--ok);font-weight:600}
+.cmp .below{color:var(--warn);font-weight:600}
+.cmp .nocmp{font-style:italic}
+.read{font-size:14px;margin:6px 0 0}
+.read b{color:var(--bronze-text)}
+.gate{background:var(--cream2);border:1px solid var(--cream3);padding:20px 18px;
+  border-radius:4px;margin:22px 0}
+.consent{display:flex;gap:11px;align-items:flex-start;margin:0 0 16px}
+.consent input{margin-top:4px;width:20px;height:20px;flex:0 0 auto}
+.consent label{font-size:14px;line-height:1.5}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the calculator</a>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Marga Partners</div>
+  <h1>Practice Benchmark</h1>
+  <p>Four steps. No account. Your figures never leave your phone unless you ask for the full report.</p>
+</header>
+
+<main id="main">
+
+  <!-- The mandatory label. Present on the form and on every results screen. -->
+  <div class="cohort-label" id="cohortLabel">
+    <b>Seed cohort, v1</b>, assembled from published industry sources. Sample sizes and definitions
+    vary by source. Marga Consortium panel data replaces this from wave one.
+  </div>
+
+  <form id="calc" novalidate>
+    <div class="progress">
+      <ol id="bars">
+        <li data-done="true"></li><li></li><li></li><li></li>
+      </ol>
+      <p id="progressText" aria-live="polite">Step 1 of 4: your practice</p>
+    </div>
+
+    <!-- Honeypot. Off screen, not hidden from the accessibility tree by
+         display:none, and explicitly excluded from tab order and from screen
+         readers so a real user never meets it. -->
+    <div class="honey" aria-hidden="true">
+      <label for="practiceWebsite">Practice website</label>
+      <input type="text" id="practiceWebsite" name="practiceWebsite" tabindex="-1" autocomplete="off">
+    </div>
+
+    <!-- STEP 1 -->
+    <fieldset id="step1" data-step="1">
+      <legend><h2>Your practice</h2></legend>
+      <p>These four are needed to compute anything. Everything after is optional.</p>
+      <div class="field">
+        <label for="locations">Locations</label>
+        <span class="hint" id="locations-h">How many physical sites you operate.</span>
+        <input type="number" id="locations" name="locations" min="1" step="1" inputmode="numeric"
+               aria-describedby="locations-h" required>
+      </div>
+      <div class="field">
+        <label for="treatmentRooms">Treatment rooms</label>
+        <span class="hint" id="rooms-h">Total across all locations.</span>
+        <input type="number" id="treatmentRooms" name="treatmentRooms" min="1" step="1" inputmode="numeric"
+               aria-describedby="rooms-h" required>
+      </div>
+      <div class="field">
+        <label for="injectorFte">Injector FTEs</label>
+        <span class="hint" id="inj-h">Full time equivalents, so two half-time injectors are 1.</span>
+        <input type="number" id="injectorFte" name="injectorFte" min="0.1" step="0.1" inputmode="decimal"
+               aria-describedby="inj-h" required>
+      </div>
+      <div class="field">
+        <label for="openHoursPerWeek">Open hours per week</label>
+        <span class="hint" id="hrs-h">Hours the practice is open for treatment.</span>
+        <input type="number" id="openHoursPerWeek" name="openHoursPerWeek" min="1" step="1" inputmode="numeric"
+               aria-describedby="hrs-h" required>
+      </div>
+    </fieldset>
+
+    <!-- STEP 2 -->
+    <fieldset id="step2" data-step="2" hidden>
+      <legend><h2>Revenue</h2></legend>
+      <p>Last full year. Leave anything blank that you would rather not share.</p>
+      <div class="field">
+        <label for="annualRevenue">Annual revenue <span class="opt">optional</span></label>
+        <input type="number" id="annualRevenue" name="annualRevenue" min="0" step="1000" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="revenueInjectables">Injectables <span class="opt">optional</span></label>
+        <input type="number" id="revenueInjectables" name="revenueInjectables" min="0" step="1000" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="revenueEnergy">Energy-based devices <span class="opt">optional</span></label>
+        <input type="number" id="revenueEnergy" name="revenueEnergy" min="0" step="1000" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="revenueRetail">Skincare retail <span class="opt">optional</span></label>
+        <input type="number" id="revenueRetail" name="revenueRetail" min="0" step="1000" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="revenueMemberships">Memberships <span class="opt">optional</span></label>
+        <input type="number" id="revenueMemberships" name="revenueMemberships" min="0" step="1000" inputmode="numeric">
+      </div>
+    </fieldset>
+
+    <!-- STEP 3 -->
+    <fieldset id="step3" data-step="3" hidden>
+      <legend><h2>Patients</h2></legend>
+      <div class="field">
+        <label for="newPatientsPerMonth">New patients per month <span class="opt">optional</span></label>
+        <input type="number" id="newPatientsPerMonth" name="newPatientsPerMonth" min="0" step="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="returningPatientShare">Returning patient share <span class="opt">optional</span></label>
+        <span class="hint" id="ret-h">As a decimal. Enter 0.73 for 73 percent.</span>
+        <input type="number" id="returningPatientShare" name="returningPatientShare" min="0" max="1" step="0.01"
+               inputmode="decimal" aria-describedby="ret-h">
+      </div>
+      <div class="field">
+        <label for="averageTicket">Average ticket <span class="opt">optional</span></label>
+        <span class="hint" id="tick-h">What a patient spends in one visit.</span>
+        <input type="number" id="averageTicket" name="averageTicket" min="0" step="10" inputmode="numeric"
+               aria-describedby="tick-h">
+      </div>
+      <div class="field">
+        <label for="activeMembers">Active membership count <span class="opt">optional</span></label>
+        <input type="number" id="activeMembers" name="activeMembers" min="0" step="1" inputmode="numeric">
+      </div>
+    </fieldset>
+
+    <!-- STEP 4 -->
+    <fieldset id="step4" data-step="4" hidden>
+      <legend><h2>Market</h2></legend>
+      <div class="field">
+        <label for="monthlyMarketingSpend">Monthly marketing spend <span class="opt">optional</span></label>
+        <input type="number" id="monthlyMarketingSpend" name="monthlyMarketingSpend" min="0" step="100" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="state">State <span class="opt">optional</span></label>
+        <select id="state" name="state"><option value="">Prefer not to say</option></select>
+      </div>
+      <div class="field">
+        <label for="metroTier">Market type <span class="opt">optional</span></label>
+        <select id="metroTier" name="metroTier">
+          <option value="">Prefer not to say</option>
+          <option value="major_metro">Major metro</option>
+          <option value="secondary_metro">Secondary metro</option>
+          <option value="suburban">Suburban</option>
+          <option value="rural">Rural</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <p class="err" id="formError" role="alert" hidden></p>
+
+    <div class="actions">
+      <button type="button" class="btn-secondary" id="backBtn" hidden>Back</button>
+      <button type="button" class="btn-primary" id="nextBtn">Next</button>
+    </div>
+  </form>
+
+  <!-- RESULTS -->
+  <section id="results" hidden aria-labelledby="resultsHeading">
+    <h2 id="resultsHeading">Your numbers</h2>
+
+    <div class="cohort-label">
+      <b>Seed cohort, v1</b>, assembled from published industry sources. Sample sizes and definitions
+      vary by source. Marga Consortium panel data replaces this from wave one.
+    </div>
+
+    <!-- Results are announced to screen readers the moment they compute. -->
+    <p class="vh" role="status" aria-live="polite" id="srAnnounce"></p>
+
+    <div id="ungated"></div>
+
+    <div class="gate" id="gate">
+      <h3>See the full report</h3>
+      <p>The rest of your metrics, each with its comparison and a plain-language read, plus a PDF.</p>
+      <div class="field">
+        <label for="email">Work email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="role">Your role</label>
+        <select id="role" name="role" required>
+          <option value="">Choose one</option>
+          <option value="owner">Owner</option>
+          <option value="medical_director">Medical director</option>
+          <option value="practice_manager">Practice manager</option>
+          <option value="injector">Injector</option>
+          <option value="investor">Investor</option>
+          <option value="other_role">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="practiceSize">Practice size</label>
+        <select id="practiceSize" name="practiceSize" required>
+          <option value="">Choose one</option>
+          <option value="1">1 location</option>
+          <option value="2-3">2 to 3 locations</option>
+          <option value="4-10">4 to 10 locations</option>
+          <option value="11+">11 or more locations</option>
+        </select>
+      </div>
+
+      <!-- Two consents. Separate boxes, separate wording, both unchecked. -->
+      <div class="consent">
+        <input type="checkbox" id="consentBenchmarks" required>
+        <label for="consentBenchmarks">
+          We store your submission to build anonymized industry benchmarks. We never publish anything
+          identifiable to your practice. You can request deletion at any time and we will delete it.
+          <a href="privacy.html">Read the privacy policy</a>.
+        </label>
+      </div>
+      <div class="consent">
+        <input type="checkbox" id="consentConsortium">
+        <label for="consentConsortium">
+          Separately, I would like to hear about the Marga Consortium panel. This is optional and is
+          not required to receive your report.
+        </label>
+      </div>
+
+      <p class="err" id="gateError" role="alert" hidden></p>
+      <div class="actions">
+        <button type="button" class="btn-primary" id="unlockBtn">Show the full report</button>
+      </div>
+    </div>
+
+    <div id="gated" hidden></div>
+
+    <div class="actions">
+      <button type="button" class="btn-secondary" id="restartBtn">Start over</button>
+    </div>
+  </section>
+</main>
+
+<footer style="margin-top:48px;font-size:13px;border-top:1px solid var(--cream3);padding-top:18px">
+  <p>Marga&trade; is a trademark of Marga Partners LLC and covers the product names used under it.
+  <a href="privacy.html">Privacy</a>. To delete a submission, email
+  <a href="mailto:admin@margapartners.com">admin@margapartners.com</a> with your report token.</p>
+</footer>
+</div>
+
+<script type="module">
+import { buildReport, UNGATED_METRICS } from './assets/benchmark/calculator.js';
+
+const API = 'https://app.margapartners.com/v1/benchmark';
+const NUMERIC = ['locations','treatmentRooms','injectorFte','openHoursPerWeek','annualRevenue',
+  'revenueInjectables','revenueEnergy','revenueRetail','revenueMemberships','newPatientsPerMonth',
+  'returningPatientShare','averageTicket','activeMembers','monthlyMarketingSpend'];
+const STEP_NAMES = ['your practice','revenue','patients','market'];
+const STATES = 'AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC'.split(' ');
+
+let cohort = null;
+let step = 1;
+let report = null;
+const startedAt = Date.now();
+
+const $ = (id) => document.getElementById(id);
+const stateSel = $('state');
+for (const s of STATES) { const o = document.createElement('option'); o.value = s; o.textContent = s; stateSel.append(o); }
+
+// ---- state in the URL hash. No cookies, nothing in storage. ----
+function readForm() {
+  const out = {};
+  for (const k of NUMERIC) { const v = $(k).value.trim(); if (v !== '') out[k] = Number(v); }
+  if ($('state').value) out.state = $('state').value;
+  if ($('metroTier').value) out.metroTier = $('metroTier').value;
+  return out;
+}
+function saveHash() {
+  const data = readForm();
+  if (!Object.keys(data).length) return;
+  location.replace(`#s=${step}&d=${btoa(JSON.stringify(data))}`);
+}
+function loadHash() {
+  const m = /#s=(\d)&d=(.+)$/.exec(location.hash);
+  if (!m) return;
+  try {
+    const data = JSON.parse(atob(m[2]));
+    for (const [k, v] of Object.entries(data)) if ($(k)) $(k).value = v;
+    step = Math.min(4, Math.max(1, Number(m[1])));
+  } catch { /* a malformed hash just starts a fresh form */ }
+}
+
+// ---- steps ----
+function showStep(n) {
+  step = n;
+  for (let i = 1; i <= 4; i++) $(`step${i}`).hidden = (i !== n);
+  [...$('bars').children].forEach((li, i) => li.dataset.done = String(i < n));
+  $('progressText').textContent = `Step ${n} of 4: ${STEP_NAMES[n - 1]}`;
+  $('backBtn').hidden = (n === 1);
+  $('nextBtn').textContent = (n === 4) ? 'See my numbers' : 'Next';
+  const heading = $(`step${n}`).querySelector('h2');
+  if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+  saveHash();
+}
+
+function validateStep1() {
+  const missing = ['locations','treatmentRooms','injectorFte','openHoursPerWeek']
+    .filter((k) => !$(k).value.trim() || Number($(k).value) <= 0);
+  for (const k of ['locations','treatmentRooms','injectorFte','openHoursPerWeek']) {
+    $(k).setAttribute('aria-invalid', missing.includes(k) ? 'true' : 'false');
+  }
+  if (missing.length) {
+    $('formError').textContent = 'These four are needed before anything can be computed: '
+      + missing.map((k) => $(k).previousElementSibling ? $(`${k}`).labels[0].textContent.replace(/ optional$/, '') : k).join(', ') + '.';
+    $('formError').hidden = false;
+    $(missing[0]).focus();
+    return false;
+  }
+  $('formError').hidden = true;
+  return true;
+}
+
+$('nextBtn').addEventListener('click', () => {
+  if (step === 1 && !validateStep1()) return;
+  if (step < 4) { showStep(step + 1); return; }
+  compute();
+});
+$('backBtn').addEventListener('click', () => showStep(step - 1));
+$('restartBtn').addEventListener('click', () => { location.hash = ''; location.reload(); });
+
+// ---- compute, entirely in the browser ----
+const money = (v) => '$' + Math.round(v).toLocaleString('en-US');
+const pctText = (v) => (v * 100).toFixed(1) + ' percent';
+function fmt(m) {
+  if (m.value === null) return 'not supplied';
+  if (m.unit.startsWith('USD')) return money(m.value);
+  if (/share|service dollar|active patient/.test(m.unit)) return pctText(m.value);
+  return String(m.value);
+}
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+function comparisonHtml(c) {
+  if (!c || c.type === 'none') {
+    return `<p class="cmp"><span class="nocmp">No industry comparison for this one. ${esc(c ? c.reason : '')}</span></p>`;
+  }
+  if (c.type === 'percentile') {
+    return `<p class="cmp"><b>${Math.round(c.percentile)}th percentile</b> of ${esc(c.cutLabel)}, n=${c.n}.</p>`;
+  }
+  if (c.type === 'wide_band') {
+    return `<p class="cmp"><b>${esc(c.band)}</b> of ${esc(c.cutLabel)}. <span class="nocmp">${esc(c.reason)}</span></p>`;
+  }
+  const cls = c.direction === 'above' ? 'above' : 'below';
+  const avg = c.average < 10 ? pctText(c.average) : money(c.average);
+  return `<p class="cmp"><span class="${cls}">${c.ratio}x the published average</span> of ${avg}.
+    <span class="nocmp">${esc(c.reason)}</span></p>`;
+}
+
+function metricHtml(m, hero = false) {
+  const read = m.read ? `<p class="read"><b>What it means.</b> ${esc(m.read.means)}</p>
+    <p class="read"><b>What moves it.</b> ${esc(m.read.moves)}</p>` : '';
+  if (hero) {
+    return `<div class="hero"><div class="eyebrow">Revenue per injector chair-hour</div>
+      <div class="v">${esc(fmt(m))}</div>${comparisonHtml(m.comparison)}${read}</div>`;
+  }
+  return `<div class="metric"><div class="t">${esc(TITLES[m.id] || m.id)}</div>
+    <div class="v">${esc(fmt(m))}</div>${comparisonHtml(m.comparison)}${read}</div>`;
+}
+
+const TITLES = {
+  revenue_per_chair_hour:'Revenue per injector chair-hour',
+  revenue_per_treatment_room:'Revenue per treatment room',
+  retail_attach_rate:'Retail attach rate',
+  membership_penetration:'Membership penetration',
+  injectable_mix:'Injectable mix',
+  new_patient_acquisition_cost:'New patient acquisition cost',
+  revenue_per_new_patient:'Revenue per new patient',
+  annual_revenue:'Annual revenue',
+  average_ticket:'Average ticket',
+  returning_patient_share:'Returning patient share',
+  revenue_split_check:'Revenue split check',
+};
+
+async function compute() {
+  if (!cohort) {
+    const res = await fetch('./assets/benchmark/cohort-v1.json');
+    cohort = await res.json();
+  }
+  report = buildReport(readForm(), cohort);
+
+  const hero = report.metrics.find((m) => m.id === 'revenue_per_chair_hour');
+  const room = report.metrics.find((m) => m.id === 'revenue_per_treatment_room');
+  $('ungated').innerHTML = (hero && hero.value !== null ? metricHtml(hero, true) : '')
+    + (room && room.value !== null ? metricHtml(room) : '');
+
+  $('calc').hidden = true;
+  $('results').hidden = false;
+  $('srAnnounce').textContent = hero && hero.value !== null
+    ? `Results ready. Revenue per injector chair-hour is ${fmt(hero)}. Two metrics are shown. The full report needs an email address.`
+    : 'Results ready. Enter annual revenue to see revenue per chair-hour.';
+  $('resultsHeading').setAttribute('tabindex', '-1');
+  $('resultsHeading').focus();
+}
+
+// ---- the gate ----
+$('unlockBtn').addEventListener('click', async () => {
+  const email = $('email').value.trim();
+  const role = $('role').value;
+  const size = $('practiceSize').value;
+  const consent = $('consentBenchmarks').checked;
+  const problems = [];
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) problems.push('a valid work email');
+  if (!role) problems.push('your role');
+  if (!size) problems.push('your practice size');
+  if (!consent) problems.push('your consent to store the submission');
+  $('email').setAttribute('aria-invalid', String(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)));
+
+  if (problems.length) {
+    $('gateError').textContent = 'Still needed: ' + problems.join(', ') + '.';
+    $('gateError').hidden = false;
+    return;
+  }
+  $('gateError').hidden = true;
+  $('unlockBtn').disabled = true;
+  $('unlockBtn').textContent = 'Sending…';
+
+  const rest = report.metrics.filter((m) => m.value !== null && !UNGATED_METRICS.includes(m.id));
+  $('gated').innerHTML = rest.map((m) => metricHtml(m)).join('')
+    + `<p class="read" style="margin-top:18px"><b>Not computable from these inputs.</b>
+       ${esc(report.notComputable.filler_to_toxin_ratio)}</p>`;
+  $('gated').hidden = false;
+  $('gate').hidden = true;
+  $('srAnnounce').textContent = `Full report unlocked. ${rest.length} more metrics are now shown.`;
+
+  try {
+    const res = await fetch(`${API}/submit`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        input: readForm(),
+        gate: { email, role, practiceSize: size },
+        consent: { benchmarks: true, consortium: $('consentConsortium').checked },
+        practiceWebsite: $('practiceWebsite').value,
+        elapsedSeconds: Math.round((Date.now() - startedAt) / 1000),
+      }),
+    });
+    const body = await res.json();
+    if (res.ok && body.token) {
+      const p = document.createElement('p');
+      p.className = 'read';
+      p.innerHTML = `Your report token is <code>${esc(body.token)}</code>. Keep it to retrieve or
+        delete this submission, or email admin@margapartners.com and we will delete it for you.`;
+      $('gated').append(p);
+    }
+  } catch {
+    // The report is already on screen and computed locally. A failed save is
+    // worth knowing about but must not take the results away.
+    const p = document.createElement('p');
+    p.className = 'err';
+    p.textContent = 'Your report is shown above. We could not save a copy just now, so there is no '
+      + 'token to retrieve it with later.';
+    $('gated').append(p);
+  } finally {
+    $('unlockBtn').disabled = false;
+    $('unlockBtn').textContent = 'Show the full report';
+  }
+});
+
+document.getElementById('calc').addEventListener('input', saveHash);
+loadHash();
+showStep(step);
+</script>
+</body>
+</html>

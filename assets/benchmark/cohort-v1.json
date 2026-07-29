@@ -1,0 +1,133 @@
+{
+  "cohortVersion": "v1",
+  "derivedAt": "2026-07-28",
+  "label": "Seed cohort, v1, assembled from published industry sources. Sample sizes and definitions vary by source. Marga Consortium panel data replaces this from wave one.",
+
+  "$readThisFirst": "Every figure below traces to a citation in `sources`, and nothing here was estimated, modeled, or filled in to make a screen look complete. That has one large consequence, stated plainly in `limitations.noDistributions`: the published sources report MEANS, not distributions. A percentile requires a distribution. So no metric in this cohort can yield a percentile, and the calculator returns a ratio to the published average instead, labeled as such. Inventing a spread around a published mean would be exactly the false precision this file exists to avoid.",
+
+  "limitations": {
+    "noDistributions": "No source below publishes a percentile distribution for any practice-level metric. Every entry is therefore `central` only, with `distribution: null`. The calculator's percentile path is built and tested against fixtures, and activates without code change when Consortium wave one supplies real distributions.",
+    "noPracticeLevelOperations": "Nothing published covers treatment rooms per location, injector FTEs, open hours, retail attach, membership penetration, or marketing spend at practice level. Those metrics are listed in `unavailable` with the reason. The calculator computes the user's own figure and shows the plain-language read, with no comparison attached.",
+    "noGeographicCuts": "No published source breaks practice economics by state or metro tier. Those cuts are declared unavailable so the interface does not offer a comparison it cannot make.",
+    "selfReported": "AmSpa figures are self-reported survey responses from member and non-member medical spas. Respondents skew toward practices engaged enough with the industry to answer a survey.",
+    "knownInconsistency": "AmSpa reports mean annual revenue of $1,398,833, mean visits of 245 per month, and mean spend of $527 per visit. Those do not reconcile: 245 x 12 x $527 is $1,549,380, about 10.8 percent higher. They are means of different subsamples of the same survey and are not expected to multiply out. Both are recorded as published rather than silently adjusted."
+  },
+
+  "sources": [
+    {
+      "id": "amspa-2024",
+      "title": "2024 Medical Spa State of the Industry Executive Report",
+      "publisher": "American Med Spa Association (AmSpa)",
+      "url": "https://www.americanmedspa.org/news/2024-medical-spa-state-of-the-industry-executive-report-recap/",
+      "accessed": "2026-07-28",
+      "reportingPeriod": "2023 calendar year",
+      "method": "Self-reported industry survey. The public recap does not state the respondent count, so cohort n is unknown rather than assumed.",
+      "access": "Public recap page. The full executive report is a paid AmSpa product and was not used."
+    },
+    {
+      "id": "asps-2024",
+      "title": "2024 ASPS Procedural Statistics Report",
+      "publisher": "American Society of Plastic Surgeons",
+      "url": "https://www.plasticsurgery.org/plastic-surgery-statistics",
+      "accessed": "2026-07-28",
+      "reportingPeriod": "2024 calendar year",
+      "method": "National procedure volume reported by ASPS member and surveyed non-member physicians.",
+      "caveat": "National PROCEDURE counts, not practice-level economics. A ratio derived from them describes the national procedure mix and is not a distribution of practice mixes."
+    },
+    {
+      "id": "asds-pending",
+      "title": "ASDS Survey on Dermatologic Procedures",
+      "publisher": "American Society for Dermatologic Surgery",
+      "url": "https://www.asds.net/medical-professionals/practice-resources/asds-survey-on-dermatologic-procedures",
+      "accessed": null,
+      "status": "NOT INCORPORATED",
+      "reason": "Named in the brief as a source. No figure from it is used in v1, because none was read and verified. Listing it here without a figure attached is deliberate: it records the intent without implying a citation that does not exist."
+    },
+    {
+      "id": "mso-filings-pending",
+      "title": "Public MSO and manufacturer filings and transcripts",
+      "publisher": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar/search/",
+      "accessed": null,
+      "status": "NOT INCORPORATED",
+      "reason": "Public aesthetics issuers are manufacturers (InMode, Cutera, Evolus, Revance) rather than practice operators, so their filings report device and injectable sell-through, not practice unit economics. No pure-play medical spa operator of scale files publicly. Nothing usable for a practice benchmark was found."
+    }
+  ],
+
+  "cuts": {
+    "all": {
+      "id": "all",
+      "label": "All medical spas",
+      "n": null,
+      "nBasis": "Unknown. The public AmSpa recap does not state a respondent count. Treated as under 30 by the interface, which widens every band and shows the caveat rather than implying precision.",
+      "metrics": {
+        "annual_revenue": {
+          "central": 1398833,
+          "centralType": "mean",
+          "unit": "USD per location per year",
+          "distribution": null,
+          "sourceId": "amspa-2024",
+          "quote": "average annual medical spa revenue increased to $1,398,833 in 2024, from $1,307,587 in 2023",
+          "priorYear": 1307587
+        },
+        "patient_visits_per_month": {
+          "central": 245,
+          "centralType": "mean",
+          "unit": "visits per month",
+          "distribution": null,
+          "sourceId": "amspa-2024",
+          "quote": "245 patient visits per month"
+        },
+        "average_ticket": {
+          "central": 527,
+          "centralType": "mean",
+          "unit": "USD per visit",
+          "distribution": null,
+          "sourceId": "amspa-2024",
+          "quote": "Patients spend an average of $527 during a medical spa visit"
+        },
+        "returning_patient_share": {
+          "central": 0.73,
+          "centralType": "mean",
+          "unit": "share of patients",
+          "distribution": null,
+          "sourceId": "amspa-2024",
+          "quote": "73% of medical spa patients are repeat patients",
+          "priorYear": 0.65
+        },
+        "employees_per_location": {
+          "central": 8,
+          "centralType": "mean",
+          "unit": "employees",
+          "distribution": null,
+          "sourceId": "amspa-2024",
+          "quote": "eight employees",
+          "note": "Single-location practices. Multi-location practices average 12 at their primary location. This is total staff, not injector FTEs, and must not be read as an injector count."
+        },
+        "filler_to_toxin_ratio": {
+          "central": 0.5394,
+          "centralType": "national_procedure_ratio",
+          "unit": "HA filler procedures per neuromodulator procedure",
+          "distribution": null,
+          "sourceId": "asps-2024",
+          "derivation": "5,331,426 hyaluronic acid filler procedures divided by 9,883,711 neuromodulator procedures, both ASPS 2024.",
+          "note": "A national procedure-volume ratio, not a practice-level distribution. It answers what the country did, not what a typical practice does, and a practice differing from it is not thereby unusual."
+        }
+      }
+    }
+  },
+
+  "unavailable": {
+    "revenue_per_injector_chair_hour": "No published source reports injector FTEs or open hours at practice level, so there is no denominator to build a benchmark from. The calculator computes the practice's own figure and explains it, with no comparison.",
+    "revenue_per_treatment_room": "No published source reports treatment rooms per location.",
+    "retail_attach_rate": "No published source separates retail from service revenue at practice level.",
+    "membership_penetration": "No published source reports membership counts against active patient counts.",
+    "new_patient_acquisition_cost": "No published source reports practice marketing spend.",
+    "revenue_per_new_patient": "Derivable only from a new-patient count, which no source reports. AmSpa reports repeat patient SHARE against visits, which is a different denominator and cannot be substituted."
+  },
+
+  "unavailableCuts": {
+    "state": "No published source breaks practice economics by state.",
+    "metro_tier": "No published source breaks practice economics by metro density."
+  }
+}

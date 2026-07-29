@@ -68,3 +68,8 @@ jobs:
             exit 1
           fi
           echo "OK: no engine internals."
+
+      - name: Product naming guard
+        # Four marks, no strays. A retired product name fails the build, which is
+        # what stops the rename from regressing one commit at a time.
+        run: node bin/naming-check.js

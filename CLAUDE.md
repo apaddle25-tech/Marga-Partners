@@ -39,14 +39,48 @@ Measured 2026-07-28, contrast against the three cream grounds:
 
 Bronze alone does not clear 4.5:1 on any cream. Use #7A5A20 when the text is body size.
 
-## The marks (see WO-7)
-The trademark is on Marga itself, and it covers every product name used under it.
-Sub-brands are not registered separately, so a new Marga-prefixed name is covered
-the moment it ships.
-Product names in use: Marga Method, Marga Index, Marga Studio, MargaZine. Nothing else.
-Trademark symbol on first use in any human-visible surface.
-Attribution reads: Marga™ is a trademark of Marga Partners LLC and covers the
-product names used under it. Do not claim each sub-brand as a separate mark.
+## The marks (enforced by bin/naming-check.js)
+
+The estate is **four product marks under one root mark, and nothing else**:
+
+| Mark | What it names |
+|---|---|
+| **Marga Method** | the methodology |
+| **Marga Index** | the composite score and the model that produces it |
+| **Marga Studio** | the application surface |
+| **MargaZine** | the publication |
+
+The trademark is on **Marga** itself and covers every product name used under it.
+Sub-brands are not registered separately, so a new Marga-prefixed name is covered the
+moment it ships. That is a legal fact, not a naming licence: a fifth Marga-prefixed
+product name would be covered and is still forbidden, because the estate is four marks.
+
+**Prose rule.**
+- Trademark symbol on first prominent use in any human-visible surface.
+- Attribution reads: Marga™ is a trademark of Marga Partners LLC and covers the product
+  names used under it. Never claim each sub-brand as a separate mark.
+- The five domains are Product, Patient, Provider, Price, and Practice. In running prose
+  they are **the five P's**, lower case. That describes the model. It is not a product
+  name and is never capitalised as a mark.
+- Retired: P5 Studio, 5P Studio, P5/5P Index, P5/5P Method, P5/5P Playbook, Marga
+  Framework, The Marga Journal. `naming.json` maps every one to its replacement.
+
+**This is enforced, not advisory.** `bin/naming-check.js` reads `naming.json`, scans every
+tracked text file, and fails CI and the pre-commit hook on a retired name.
+
+```bash
+node bin/naming-check.js
+```
+
+```bash
+node bin/naming-check.js --fix
+```
+
+Identifiers are deliberately exempt and listed in `naming.json` under `neverReplace`:
+`P5_*` environment variables, the `p5_session` cookie, the `p5-method-1.0` methodology
+version stamped on frozen deliverables, and the `p5-studio` repository name. Renaming
+those breaks deployments, signs out every member, or rewrites provenance on exports
+already sent to clients. They are infrastructure, not branding.
 
 ## Security rules
 - Marga-Partners is a PUBLIC repo. Nothing proprietary goes in it: no weight

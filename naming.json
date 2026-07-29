@@ -159,10 +159,6 @@
         "reason": "The checker carries the patterns it searches for."
       },
       {
-        "path": "docs/",
-        "reason": "Historical notes and audit material quote the estate as it was."
-      },
-      {
         "path": "CLAUDE.md",
         "reason": "Documents the naming rule, so it must be able to name the retired terms it retires. Same category as naming.json itself."
       }

@@ -39,6 +39,55 @@ if (!existsSync(CONFIG)) {
 }
 const config = JSON.parse(readFileSync(CONFIG, 'utf8'));
 
+// ---- validate the config before trusting it -----------------------------
+//
+// The exemption lists are where a violation hides by being described as
+// something else. Two have done so on this estate: a neverReplace pattern that
+// was the literal offending string, and a whole-file scan.allowlist entry for
+// the very test written to prevent that. Both left the checker green.
+//
+// This runs in the checker rather than in a test because only one of the three
+// repos has a test runner, and the exemption lists exist in all three.
+function validateConfig() {
+  const problems = [];
+  const retired = (config.rules || []).map((r) => r.find);
+
+  for (const n of config.neverReplace || []) {
+    for (const term of retired) {
+      if (n.pattern.toLowerCase().includes(term.toLowerCase())) {
+        problems.push(`neverReplace ${JSON.stringify(n.pattern)} spells out the retired term "${term}". `
+          + 'Protect the identifier, then fix the prose.');
+      }
+    }
+  }
+
+  for (const a of config.scan.allowlist || []) {
+    const p = path.join(ROOT, a.path);
+    if (!existsSync(p)) {
+      problems.push(`allowlist entry ${a.path} does not exist. A stale exemption reads as a `
+        + 'considered decision and silently widens if the path is reused.');
+    }
+    if (/(^|\/)test\//.test(a.path) || /\.test\.[jt]s$/.test(a.path)) {
+      problems.push(`allowlist entry ${a.path} is a test file. Rewrite the test to describe a `
+        + 'retired term rather than quote it, so it needs no exemption.');
+    }
+    if (/^(src|public)\//.test(a.path)) {
+      problems.push(`allowlist entry ${a.path} ships to a user and must not be exempt.`);
+    }
+    if (!a.reason || a.reason.length < 30) {
+      problems.push(`allowlist entry ${a.path} needs a reason saying why it cannot simply be fixed.`);
+    }
+  }
+
+  if (problems.length) {
+    console.error('\nnaming-check: the configuration itself is unsound.\n');
+    for (const p of problems) console.error(`  ${p}`);
+    console.error('\nAn exemption list that hides a real violation is worse than no check.\n');
+    process.exit(1);
+  }
+}
+validateConfig();
+
 const EXTS = new Set(config.scan.extensions);
 const ALLOW = config.scan.allowlist.map((a) => a.path);
 const NEVER = config.neverReplace.map((n) => new RegExp(n.pattern, 'g'));

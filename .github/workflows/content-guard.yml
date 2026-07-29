@@ -3,9 +3,11 @@ name: content-guard
 # This repository is PUBLIC. These checks fail the build if source ever carries
 # secrets, personal contact details, or proprietary scoring internals.
 
+# Runs on every branch and every pull request, not only on main. A guard that
+# only runs after the merge reports a breach instead of preventing one.
 on:
   push:
-    branches: [main]
+  pull_request:
   pull_request:
   workflow_dispatch:
 

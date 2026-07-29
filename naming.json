@@ -1,0 +1,176 @@
+{
+  "$note": "Product naming contract. The estate uses four product marks under one root mark, and nothing else. bin/naming-check.js enforces this file in CI and in the pre-commit hook.",
+  "version": "1.0.0",
+  "updated": "2026-07-28",
+  "rootMark": "Marga",
+  "marks": [
+    "Marga Method",
+    "Marga Index",
+    "Marga Studio",
+    "MargaZine"
+  ],
+  "markRule": "The trademark is on Marga itself and covers every product name used under it. Sub-brands are not registered separately. Product naming is a separate discipline from trademark coverage: a fifth Marga-prefixed name would be legally covered and is still forbidden, because the estate is four marks.",
+  "prose": {
+    "firstUse": "Every mark takes the trademark symbol on first prominent use in any human-visible surface.",
+    "attribution": "Marga is a trademark of Marga Partners LLC and covers the product names used under it. Never claim each sub-brand as a separate mark.",
+    "domains": "The five domains are Product, Patient, Provider, Price, and Practice. Refer to them as the five P's in lower case running prose. That is a description of the model, not a product name, and it is never capitalised as a mark."
+  },
+  "rules": [
+    {
+      "find": "P5 Studio",
+      "replace": "Marga Studio",
+      "note": "The application surface. Includes the article form, The P5 Studio."
+    },
+    {
+      "find": "5P Studio",
+      "replace": "Marga Studio"
+    },
+    {
+      "find": "P5 Index",
+      "replace": "Marga Index",
+      "note": "The composite score and the model that produces it."
+    },
+    {
+      "find": "5P Index",
+      "replace": "Marga Index"
+    },
+    {
+      "find": "P5 Method",
+      "replace": "Marga Method",
+      "note": "The methodology. Not the score, which is the Marga Index."
+    },
+    {
+      "find": "5P Method",
+      "replace": "Marga Method"
+    },
+    {
+      "find": "P5 Playbook",
+      "replace": "Marga Method",
+      "note": "The playbook was never a separate product. It was a presentation of the Method."
+    },
+    {
+      "find": "5P Playbook",
+      "replace": "Marga Method"
+    },
+    {
+      "find": "P5 Framework",
+      "replace": "Marga Method"
+    },
+    {
+      "find": "5P Framework",
+      "replace": "Marga Method"
+    },
+    {
+      "find": "Marga Framework",
+      "replace": "Marga Method",
+      "note": "Framework was never a mark. The methodology is the Marga Method."
+    },
+    {
+      "find": "The Marga Journal",
+      "replace": "MargaZine",
+      "note": "Replace the article form first, so the shorter rule does not leave a stray The."
+    },
+    {
+      "find": "Marga Journal",
+      "replace": "MargaZine"
+    }
+  ],
+  "reviewRequired": [
+    {
+      "term": "The 5 P's of Aesthetics",
+      "apostropheVariants": [
+        "The 5 P's of Aesthetics",
+        "The 5 P\u2019s of Aesthetics",
+        "The 5 Ps of Aesthetics",
+        "The Five P's of Aesthetics"
+      ],
+      "reason": "This is the only term whose replacement genuinely depends on what the sentence is doing. Used as the NAME of the methodology it must become Marga Method. Used descriptively, to say what the model measures, it is correct prose and must be left alone or lowercased to the five P's. A blanket replacement would produce sentences like the Marga Method of Aesthetics, which is wrong, and would also destroy legitimate descriptions of the model.",
+      "options": [
+        "Marga Method (when it names the methodology)",
+        "the five P's (lower case, when it describes the five domains)",
+        "leave as is (inside a historical document)"
+      ],
+      "autoReplace": false
+    },
+    {
+      "term": "Marga Engine",
+      "reason": "A fifth Marga-prefixed product name. Legally covered by the root mark, and still outside the four-mark estate. The replacement depends on what it labels: the scoring model is the Marga Index, the application around it is Marga Studio. Currently used once, as internal in-app branding under the Studio wordmark, where Marga Index is the likely intent.",
+      "options": [
+        "Marga Index",
+        "Marga Studio",
+        "remove the sub-label entirely"
+      ],
+      "autoReplace": false
+    }
+  ],
+  "neverReplace": [
+    {
+      "pattern": "P5_[A-Z0-9_]+",
+      "reason": "Environment variable names. Renaming them breaks every existing deployment and every .env file in the wild."
+    },
+    {
+      "pattern": "p5_session",
+      "reason": "The session cookie name. Renaming it signs out every member on deploy."
+    },
+    {
+      "pattern": "p5-method-1\\.0",
+      "reason": "The methodology version string stamped onto every frozen deliverable. It is provenance, not branding, and changing it rewrites history on past exports."
+    },
+    {
+      "pattern": "p5-studio(-backend)?",
+      "reason": "Repository, directory, and npm package name. An infrastructure identifier, not a product mark. Renaming the repo is a separate, deliberate operation."
+    },
+    {
+      "pattern": "apaddle25-tech/p5-studio",
+      "reason": "The GitHub remote path."
+    },
+    {
+      "pattern": "the five P's|five P's|5 P's \u00b7",
+      "reason": "The descriptive name of the five domains in running prose. Not a product mark. See prose.domains."
+    },
+    {
+      "pattern": "P5 Studio backend listening",
+      "reason": "Matched by the P5 Studio rule and replaced there. Listed so the intent is visible: the log line is human-visible and does get corrected."
+    },
+    {
+      "pattern": "`[^`]*\\.html`|\"[^\"]*\\.html\"|'[^']*\\.html'",
+      "reason": "A quoted filename is a reference to a file that exists under that exact name. Renaming the reference makes the document point at nothing. The file itself is renamed as a deliberate operation, and the reference follows it then."
+    },
+    {
+      "pattern": "MARGA engine|Marga engine|the engine",
+      "reason": "Lower-case 'engine' after the root mark is descriptive prose in code comments, meaning the scoring engine of the Marga system. Only the capitalised 'Marga Engine' used as a wordmark is a fifth product name."
+    }
+  ],
+  "scan": {
+    "extensions": [
+      ".html",
+      ".md",
+      ".js",
+      ".mjs",
+      ".json",
+      ".css",
+      ".py",
+      ".yml",
+      ".yaml"
+    ],
+    "allowlist": [
+      {
+        "path": "naming.json",
+        "reason": "This file names the forbidden terms by definition."
+      },
+      {
+        "path": "bin/naming-check.js",
+        "reason": "The checker carries the patterns it searches for."
+      },
+      {
+        "path": "docs/",
+        "reason": "Historical notes and audit material quote the estate as it was."
+      },
+      {
+        "path": "CLAUDE.md",
+        "reason": "Documents the naming rule, so it must be able to name the retired terms it retires. Same category as naming.json itself."
+      }
+    ]
+  },
+  "$repo": "Marga-Partners"
+}

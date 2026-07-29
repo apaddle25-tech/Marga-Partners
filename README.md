@@ -27,8 +27,8 @@ A static website. Every page is a self-contained HTML file (fonts and images emb
 
 - `index.html` — homepage
 - `the-marga-difference.html` — how Marga works (dual lens, three phases, expertise, selected work)
-- `5ps-index.html` — the P5 Method (framework)
-- `5p-playbook.html` — the P5 playbook
+- `5ps-index.html` — the Marga Method (framework)
+- `5p-playbook.html` — the Marga Method
 - `products.html` — products, intelligence & the consortium
 - `journal.html` — the MargaZine hub
 - `journal/` — all MargaZine articles

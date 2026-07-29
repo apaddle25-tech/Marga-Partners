@@ -3,9 +3,10 @@ name: content-guard
 # This repository is PUBLIC. These checks fail the build if source ever carries
 # secrets, personal contact details, or proprietary scoring internals.
 
+# Runs on every branch and every pull request, not only on main. A guard that
+# only runs after the merge reports a breach instead of preventing one.
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -68,3 +69,8 @@ jobs:
             exit 1
           fi
           echo "OK: no engine internals."
+
+      - name: Product naming guard
+        # Four marks, no strays. A retired product name fails the build, which is
+        # what stops the rename from regressing one commit at a time.
+        run: node bin/naming-check.js

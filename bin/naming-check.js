@@ -64,9 +64,9 @@ function validateConfig() {
       // exemption conceal a violation the scanner would otherwise catch? Only an exemption
       // spelling the term exactly as the scanner matches it can do that.
       //
-      // The concrete case: `Marga engine` protects lower-case descriptive prose, meaning
-      // the scoring engine of the Marga system. `Marga Engine` capitalised was a fifth
-      // wordmark, retired 2026-07-30 for Marga Intelligence. The scanner still catches the
+      // The concrete case: the exemption protects lower-case descriptive prose meaning
+      // the scoring engine of the Marga system. The capitalised form was a fifth
+      // wordmark, retired 2026-07-30 for Marga Intelligence. The scanner still catches that
       // capitalised form, so the exemption hides nothing.
       if (n.pattern.includes(term)) {
         problems.push(`neverReplace ${JSON.stringify(n.pattern)} spells out the retired term "${term}". `

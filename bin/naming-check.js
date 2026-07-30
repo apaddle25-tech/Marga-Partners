@@ -54,7 +54,21 @@ function validateConfig() {
 
   for (const n of config.neverReplace || []) {
     for (const term of retired) {
-      if (n.pattern.toLowerCase().includes(term.toLowerCase())) {
+      // Case-SENSITIVE, deliberately, because the scanner is. Retired terms are matched
+      // with indexOf and with a RegExp carrying only the `g` flag, so `Marga engine` and
+      // `Marga Engine` are different strings to it.
+      //
+      // This check previously lowercased both sides, which sounds safer and is not: it
+      // fired on an exemption that could not possibly hide anything, and a guard that
+      // cries wolf gets edited until it stops. The question this asks is narrow. Does the
+      // exemption conceal a violation the scanner would otherwise catch? Only an exemption
+      // spelling the term exactly as the scanner matches it can do that.
+      //
+      // The concrete case: `Marga engine` protects lower-case descriptive prose, meaning
+      // the scoring engine of the Marga system. `Marga Engine` capitalised was a fifth
+      // wordmark, retired 2026-07-30 for Marga Intelligence. The scanner still catches the
+      // capitalised form, so the exemption hides nothing.
+      if (n.pattern.includes(term)) {
         problems.push(`neverReplace ${JSON.stringify(n.pattern)} spells out the retired term "${term}". `
           + 'Protect the identifier, then fix the prose.');
       }

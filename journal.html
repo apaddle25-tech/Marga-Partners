@@ -83,6 +83,22 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 @media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
 /* scroll reveal */
 @media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
+
+
+/* The audience nav on mobile, 2026-08-01. The pill stretched to full width but its three
+   links were inline-flex packed to the start, so 41px sat dead on the right and three
+   destinations read as one label strip. They were also 28px tall, against the 44px minimum
+   both Apple and Google publish for a touch target. Three equal columns fill the tray and
+   each segment takes its own surface, which is the segmented control every phone teaches. */
+@media(max-width:1040px){
+  .bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;
+    margin:10px clamp(18px,4vw,26px) 6px}
+  .bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;
+    min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;
+    background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}
+  .bar .nav .segnav a:active{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+  .bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>

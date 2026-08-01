@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For Investors | Marga Partners</title>
-<meta name="description" content="Independent commercial intelligence for aesthetics investors and boards: commercial due diligence, market assessment, and competitive intelligence, scored on the Marga Index&trade;.">
+<meta name="description" content="Independent commercial intelligence for investors and boards across aesthetics and life science: due diligence, market sizing, and competitive intelligence.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -53,6 +53,33 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 @media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
 /* scroll reveal */
 @media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
+
+/* Type scale, 2026-08-01. The eyebrow family ran 9px to 11px and the smallest text on the
+   site was 9px; nothing here gains more than 1.5 points and the floor is 10px. Tracking is
+   set in em so it widens on its own as the size grows, and each value is pulled back a hair
+   so the letters stay as open as they were. */
+.eb{font-size:11.5px;letter-spacing:.18em}
+
+/* The audience nav on mobile, 2026-08-01. The pill stretched to full width but its three
+   links were inline-flex packed to the start, so 41px sat dead on the right and three
+   destinations read as one label strip. They were also 28px tall, against the 44px minimum
+   both Apple and Google publish for a touch target. Three equal columns fill the tray and
+   each segment takes its own surface, which is the segmented control every phone teaches. */
+@media(max-width:1040px){
+  .bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;
+    margin:10px clamp(18px,4vw,26px) 6px}
+  .bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;
+    min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;
+    background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}
+  .bar .nav .segnav a:active{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+  .bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+}
+
+/* Headings against their subheads, 2026-08-01. Measured at 375 by 812: 32px over 16px, a
+   ratio of 2.0, which is the "the headline looks small" reading. Both sides move and land
+   near 2.5. The clamp cap moves by a point, because this is a phone complaint. */
+.sec-head h2,.audlead h2{font-size:clamp(2.4rem,4.8vw,3.25rem)}
+.sec-head p{font-size:15.5px}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
@@ -61,7 +88,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <div class="hero"><div class="in wrap">
 <div class="eb g">For investors</div>
 <h1>Underwrite the <em>thesis</em>.</h1>
-<p class="sub">Independent commercial intelligence for the funds, boards, and dealmakers moving in aesthetics, scored on the Marga Index&trade;, so you know what is actually true about an asset, a deal, or a category rather than what the deck asserts.</p>
+<p class="sub">Independent commercial intelligence for the funds, boards, and dealmakers moving across aesthetics and life science, scored on the Marga Index&trade;, so you know what is actually true about an asset, a deal, or a category rather than what the deck asserts.</p>
 <div class="cta-row"><a class="primary" href="/Consultation.html?type=index">Start a conversation</a><a class="ghost" href="/the-marga-method.html">See Marga Intelligence&trade;</a></div>
 </div></div>
 
@@ -70,7 +97,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 <p>Every read is scored on the Marga Method&trade; and pressure-tested by a consortium of industry insiders, so the answer is defensible, not a single consultant's guess.</p></div>
 <div class="acts2">
 <div class="actrow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.3"/><path d="M19.5 19.5 15 15"/></svg></div><div><h3>Commercial due diligence</h3><p>An independent read on an asset or a deal, scored across the five forces, built for a board, a fund, or a thesis, so the number is defensible and the exposures are named before you commit.</p></div></div>
-<div class="actrow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="13" width="2.6" height="7" rx="1"/><rect x="10.7" y="8" width="2.6" height="12" rx="1"/><rect x="15.4" y="4.6" width="2.6" height="15.4" rx="1"/></svg></div><div><h3>Market assessment</h3><p>Real sizing, dynamics, and the true adoption curve of a category, separating durable demand from the hype cycle, so the model rests on what the market will actually do.</p></div></div>
+<div class="actrow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><rect x="6" y="13" width="2.6" height="7" rx="1"/><rect x="10.7" y="8" width="2.6" height="12" rx="1"/><rect x="15.4" y="4.6" width="2.6" height="15.4" rx="1"/></svg></div><div><h3>Market assessment</h3><p>Real market sizing, category dynamics, and the true adoption curve, separating durable demand from the hype cycle, so the model rests on what the market will actually do.</p></div></div>
 <div class="actrow"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.4"/><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none"/></svg></div><div><h3>Competitive intelligence</h3><p>Where every player actually stands, benchmarked on one comparable scale and tracked over time, so you see the shifts before the market prices them in.</p></div></div>
 </div></div></section>
 

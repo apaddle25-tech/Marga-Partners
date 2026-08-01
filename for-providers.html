@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For Practices | Marga Partners</title>
-<meta name="description" content="Growth strategy for aesthetics providers and practices: digital marketing and SEO across AI and Google, maximizing vendor relationships, and optimizing practice operations, plus the MargaZine and the Marga Consortium.">
+<meta name="description" content="Growth strategy for practices across aesthetics and life science: digital marketing and SEO for AI and Google, vendor leverage, and practice operations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -56,6 +56,33 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 @media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
 /* scroll reveal */
 @media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
+
+/* Type scale, 2026-08-01. The eyebrow family ran 9px to 11px and the smallest text on the
+   site was 9px; nothing here gains more than 1.5 points and the floor is 10px. Tracking is
+   set in em so it widens on its own as the size grows, and each value is pulled back a hair
+   so the letters stay as open as they were. */
+.eb{font-size:11.5px;letter-spacing:.18em}
+
+/* The audience nav on mobile, 2026-08-01. The pill stretched to full width but its three
+   links were inline-flex packed to the start, so 41px sat dead on the right and three
+   destinations read as one label strip. They were also 28px tall, against the 44px minimum
+   both Apple and Google publish for a touch target. Three equal columns fill the tray and
+   each segment takes its own surface, which is the segmented control every phone teaches. */
+@media(max-width:1040px){
+  .bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;
+    margin:10px clamp(18px,4vw,26px) 6px}
+  .bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;
+    min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;
+    background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}
+  .bar .nav .segnav a:active{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+  .bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+}
+
+/* Headings against their subheads, 2026-08-01. Measured at 375 by 812: 32px over 16px, a
+   ratio of 2.0, which is the "the headline looks small" reading. Both sides move and land
+   near 2.5. The clamp cap moves by a point, because this is a phone complaint. */
+.sec-head h2,.audlead h2{font-size:clamp(2.4rem,4.8vw,3.25rem)}
+.sec-head p{font-size:15.5px}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
@@ -78,7 +105,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 </div></div></section>
 
 <section style="background:var(--cream)"><div class="wrap">
-<div class="sec-head"><div class="eb">The MargaZine &middot; New every Monday</div><h2>Keep a read on where aesthetics is going.</h2>
+<div class="sec-head"><div class="eb">The MargaZine &middot; New every Monday</div><h2>Keep a read on where aesthetics and life science are going.</h2>
 <p>The frameworks behind the work, free. The MargaZine is how Marga thinks out loud about the category, the trends, and the lessons worth borrowing from other industries. Add your email to get each piece.</p></div>
 <form class="mzform" data-mzform><input type="email" required autocomplete="email" placeholder="you@practice.com" aria-label="Email address"><button type="submit">Join the mailing list</button></form>
 <div class="mznote">Free. Unsubscribe anytime.</div>
@@ -86,7 +113,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 
 <section class="dark" id="consortium"><div class="wrap">
 <div class="sec-head d"><div class="eb g">The Marga Consortium</div><h2>Have a hand in the standard.</h2>
-<p>Marga convenes the people who actually shape aesthetics. Providers in the consortium help set the benchmark the whole industry reads, and get a front-row seat to where the category is heading.</p></div>
+<p>Marga convenes the people who actually shape the market. Providers in the consortium help set the benchmark the whole industry reads, and get a front-row seat to where the category is heading.</p></div>
 <div class="cbenefits">
 <div class="cben"><div class="k">Research</div><h3>Shape the index</h3><p>Participate in research studies, surveys, and structured commentary that feed the Marga Index&trade;.</p></div>
 <div class="cben"><div class="k">Access</div><h3>Exclusive rooms</h3><p>Invitations to events, briefings, and educational opportunities with peers and industry leaders.</p></div>

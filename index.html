@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marga Partners | Commercialization strategy for aesthetics &amp; life science</title>
-<meta name="description" content="A commercialization strategy partner for the innovators, investors, and providers shaping aesthetics and dermatology.">
-<meta property="og:title" content="Marga Partners"><meta property="og:description" content="Commercialization strategy for aesthetics, built by someone who grew up in it."><meta property="og:type" content="website"><meta property="og:url" content="https://www.margapartners.com/"><meta property="og:image" content="https://www.margapartners.com/assets/og/home.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Marga Partners"><meta name="twitter:description" content="Commercialization strategy for aesthetics, built by someone who grew up in it."><meta name="twitter:image" content="https://www.margapartners.com/assets/og/home.png"><link rel="icon" href="/assets/favicon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="description" content="A strategy partner for the innovators, investors, and providers turning complex science into enduring market leadership.">
+<meta property="og:title" content="Marga Partners"><meta property="og:description" content="Commercialization strategy for aesthetics and life science, built by someone who grew up in it."><meta property="og:type" content="website"><meta property="og:url" content="https://www.margapartners.com/"><meta property="og:image" content="https://www.margapartners.com/assets/og/home.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Marga Partners"><meta name="twitter:description" content="Commercialization strategy for aesthetics and life science, built by someone who grew up in it."><meta name="twitter:image" content="https://www.margapartners.com/assets/og/home.png"><link rel="icon" href="/assets/favicon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -111,6 +111,106 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 @media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
 /* scroll reveal */
 @media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
+
+/* The pillars, rebuilt to screenshot 2. The audience name moves up into a numbered kicker,
+   the tagline becomes the headline, the service chips give way to one sentence and a named
+   link. #7A5A20 on cream measures 4.85:1, which is the floor for text this size. */
+.pil .pilnum{font:700 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bronze-text,#7A5A20);margin-bottom:15px}
+.pil .pildesc{font-size:15px;line-height:1.65;color:var(--body);margin:0 0 24px;max-width:34ch}
+.pil .pillink{font:700 13px/1 'Manrope',sans-serif;color:var(--ink);margin-top:auto}
+.pil:hover .pillink{color:var(--bronze-text,#7A5A20)}
+/* pilname carries min-height:2.1em so the three descriptions line up across the row. Below
+   900px the cards stack, so there is nothing to line up with and the reserved second line
+   is just a hole under a one-line headline. */
+@media(max-width:900px){.pil .pilname{min-height:0}}
+/* The number, the separator and the label now read as one unit in the same colour. That
+   also retires a live defect: the label was rgba(22,20,15,.45) on cream, 2.94:1 at 9px,
+   which fails AA on the page as it stands. #7A5A20 measures 5.89:1 on this ground. */
+.sv .svd{font:600 9px/1 'Manrope',sans-serif}
+.sv .svn,.sv .svd,.sv .svk{color:var(--bronze-text,#7A5A20)}
+
+/* Card 04's title runs to two lines and the other three do not, so its description started
+   lower than its neighbours. Two lines are reserved on every title, which puts all four
+   descriptions on the same baseline. Below 560px the cards stack one per row, so there is
+   nothing to align to and the reserved line would just be a hole. */
+.sv h3{line-height:1.16;min-height:2.32em}
+@media(max-width:560px){.sv h3{min-height:0}}
+
+/* ---- the eyebrow family ---- */
+.eb{font-size:11.5px;letter-spacing:.18em}
+.explead{font-size:11.5px;letter-spacing:.17em}
+.founder .role{font-size:11px;letter-spacing:.13em}
+.pil .pilnum{font-size:11px;letter-spacing:.15em}
+.sv .svk,.sv .svd{font-size:10.5px;letter-spacing:.13em}
+.sv .svn{font-size:13.5px}
+.expco .coyr{font-size:10px}
+.mzcard .t{font-size:10.5px;letter-spacing:.15em}
+.mzcard .row .fr{font-size:10.5px}
+.mznote{font-size:11.5px}
+.explink{font-size:12.5px}
+footer .mid{font-size:11.5px}
+footer nav a{font-size:11.5px}
+
+/* ---- headings against their subheads ---- */
+.hero h1{font-size:clamp(3.15rem,6.8vw,4.9rem)}
+.hero .sub{font-size:clamp(1.02rem,1.5vw,1.3rem)}
+@media(max-height:820px){
+  .hero h1{font-size:clamp(3rem,6vw,3.95rem)}
+  .hero .sub{font-size:1.04rem}
+}
+.sec-head h2,.audlead h2{font-size:clamp(2.5rem,5vw,3.55rem)}
+.sec-head p{font-size:16px}
+.mz h2{font-size:clamp(2.35rem,4.6vw,3.15rem)}
+.mz p{font-size:15.5px}
+.final h2{font-size:clamp(2.55rem,5.2vw,3.7rem)}
+.final p{font-size:15.5px}
+.pil .pilname{font-size:clamp(28px,3.2vw,34px)}
+.pil .pildesc{font-size:14.5px}
+.sv h3{font-size:23px}
+
+/* ---- the audience nav on mobile ----
+   Two defects, measured on a 375 wide phone.
+   NOT CENTRED. The pill stretches to 311px because the open menu lays its children out
+   full width, but the three links inside were inline-flex packed to the start. 261px of
+   content, 41px of dead space on the right, which is the leftward lean on screen.
+   NOT OBVIOUSLY TAPPABLE. One tray, one border, no divisions, so three separate
+   destinations read as a single label strip. They are also 28px tall, against the 44px
+   minimum both Apple and Google publish for a touch target.
+   Both go at once. Three equal columns fill the tray, so there is no dead space and each
+   label centres in its own segment. Each segment gets a white surface on the grey tray,
+   which is the segmented control every phone already teaches, and 44px of height. */
+@media(max-width:1040px){
+  .bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;
+    margin:10px clamp(18px,4vw,26px) 6px}
+  .bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;
+    min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;
+    background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}
+  /* A tap has to look like it landed. Nothing acknowledged one before. */
+  .bar .nav .segnav a:active{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+  .bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+}
+
+/* Type scale, 2026-08-01. The eyebrow family ran 9px to 11px and the smallest text on the
+   site was 9px; nothing here gains more than 1.5 points and the floor is 10px. Tracking is
+   set in em so it widens on its own as the size grows, and each value is pulled back a hair
+   so the letters stay as open as they were. */
+.eb{font-size:11.5px;letter-spacing:.18em}
+
+/* The audience nav on mobile, 2026-08-01. The pill stretched to full width but its three
+   links were inline-flex packed to the start, so 41px sat dead on the right and three
+   destinations read as one label strip. They were also 28px tall, against the 44px minimum
+   both Apple and Google publish for a touch target. Three equal columns fill the tray and
+   each segment takes its own surface, which is the segmented control every phone teaches. */
+@media(max-width:1040px){
+  .bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;
+    margin:10px clamp(18px,4vw,26px) 6px}
+  .bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;
+    min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;
+    background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}
+  .bar .nav .segnav a:active{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+  .bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}
+}
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
@@ -120,26 +220,26 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 <div class="col-l">
 <div class="eb g">Commercialization strategy &middot; Aesthetics &amp; life science</div>
 <h1>Turn innovation into <em>impact</em>.</h1>
-<p class="sub">A strategy partner for the innovators, investors, and providers shaping aesthetics.</p>
+<p class="sub">A strategy partner for the innovators, investors, and providers turning complex science into enduring market leadership.</p>
 <div class="cta-row"><a class="primary" href="/Consultation.html">Start a conversation</a><a class="ghost" href="/the-marga-method.html">Explore Marga Intelligence&trade;</a></div>
 </div>
 <div class="col-r"><svg class="mark" viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg></div>
 </div></div>
 
 <section class="panel" style="background:var(--cream2)"><div class="wrap">
-<div class="sec-head audlead"><div class="eb">Who we work with</div><h2>Services for stakeholders across the industry.</h2></div>
+<div class="sec-head audlead"><div class="eb">Where we create leverage</div><h2>Strategy for the people moving the category forward.</h2><p>Choose the decision in front of you. We’ll help define the path through it.</p></div>
 <div class="pillars">
-<a class="pil" href="/for-manufacturers.html"><h3 class="pilname">For Manufacturers &amp; Brands <span class="pilarr">&rarr;</span></h3><div class="piltag">Build the whole path</div><ul class="acts"><li>Product commercialization</li><li>Scientific communications</li><li>Launch strategy</li><li>Lifecycle management</li></ul></a>
-<a class="pil" href="/for-investors.html"><h3 class="pilname">For Investors <span class="pilarr">&rarr;</span></h3><div class="piltag">Underwrite the thesis</div><ul class="acts"><li>Commercial due diligence</li><li>Market assessment</li><li>Competitive intelligence</li></ul></a>
-<a class="pil" href="/for-providers.html"><h3 class="pilname">For Practices <span class="pilarr">&rarr;</span></h3><div class="piltag">Unlock growth</div><ul class="acts"><li>Digital marketing &amp; SEO (AI and Google)</li><li>Maximizing vendor relationships</li><li>Optimizing practice operations</li></ul></a>
+<a class="pil" href="/for-manufacturers.html"><div class="pilnum">01 &middot; Manufacturers &amp; Brands</div><h3 class="pilname">Build the whole path.</h3><p class="pildesc">Commercialization architecture from portfolio choice to launch and lifecycle.</p><span class="pillink">Explore manufacturer strategy &rarr;</span></a>
+<a class="pil" href="/for-investors.html"><div class="pilnum">02 &middot; Investors</div><h3 class="pilname">Underwrite the thesis.</h3><p class="pildesc">Commercial diligence that sees the science, category behavior, and execution risk together.</p><span class="pillink">Explore investor strategy &rarr;</span></a>
+<a class="pil" href="/for-providers.html"><div class="pilnum">03 &middot; Practices</div><h3 class="pilname">Unlock growth.</h3><p class="pildesc">Practical commercial systems for patient demand, operations, and vendor leverage.</p><span class="pillink">Explore practice strategy &rarr;</span></a>
 </div></div></section>
 
 <section class="panel" style="background:var(--cream3)"><div class="wrap">
-<div class="sec-head"><div class="eb">Built from the inside</div><h2 class="oneline">From someone who grew up in it.</h2></div>
+<div class="sec-head"><div class="eb">Built from the inside</div><h2>Commercial clarity from someone who has carried the work.</h2></div>
 <div class="founder">
 <div class="fcol">
-<div><p class="nm">Aneesh Patel, PharmD</p><div class="role">Founder, Marga Partners</div><p>A pharmacist and scientist turned commercial leader who grew up in aesthetics and dermatology, from early work on a category-defining neurotoxin to pricing, loyalty, and lifecycle strategy across injectables, energy devices, and skincare. Marga brings a rare vantage: reading the science and the market through the same eyes, honed inside some of the industry's most iconic brands.</p></div>
-<div class="explead">Experience</div>
+<div><p class="nm">Aneesh Patel, PharmD</p><div class="role">Founder, Marga Partners</div><p>A pharmacist and scientist turned commercial leader, Aneesh brings a rare vantage: reading the science and the market through the same eyes.</p></div>
+<div class="explead">Select operating experience</div>
 <div class="exp">
 <div class="expco">
 <div class="expleft"><span class="conm">Galderma</span><span class="coyr">2023 - 2026</span></div>
@@ -160,13 +260,13 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 </div></div></section>
 
 <section class="panel dark"><div class="wrap">
-<div class="sec-head d"><div class="eb g">Work with Marga</div><h2>Let's shape what comes next<em>, together</em>.</h2>
-<p>Executive strategy for the decisions that matter most, delivered through a partnership model that fits the moment.</p></div>
+<div class="sec-head d"><div class="eb g">How to work together</div><h2>The right strategic weight for the moment.</h2>
+<p>Executive strategy for the decisions that matter most, delivered through a partnership model that fits the scope.</p></div>
 <div class="services">
-<div class="sv" style="--ac:#C7A24B"><div class="svtop"><span class="svn">01</span><span class="svk">Embedded</span></div><h3>Fractional marketing leadership</h3><p>Embedded senior commercial and marketing leadership for teams that need strategic weight without a full-time executive hire.</p><div class="svtags"><span>Positioning</span><span>Brand strategy</span><span>Go-to-market</span><span>Launch</span></div></div>
-<div class="sv" style="--ac:#B0863C"><div class="svtop"><span class="svn">02</span><span class="svk">Deal-linked</span></div><h3>Commercial due diligence</h3><p>Independent, deal-linked diligence for investors and boards, reading an asset or a deal for what is actually true rather than what the deck asserts.</p><div class="svtags"><span>Diligence</span><span>Market sizing</span><span>Competitive read</span></div></div>
-<div class="sv" style="--ac:#9A742F"><div class="svtop"><span class="svn">03</span><span class="svk">Fixed-scope</span></div><h3>Project-based support</h3><p>Fixed-scope strategy engagements across pre-market, launch, and lifecycle, scoped to the decision in front of you.</p><div class="svtags"><span>Pre-market</span><span>Launch</span><span>Lifecycle</span></div></div>
-<div class="sv" style="--ac:#4A4435"><div class="svtop"><span class="svn">04</span><span class="svk">Ongoing</span></div><h3>Collaborations &amp; partnerships</h3><p>Advisory, board, and longer-term collaboration arrangements for work that compounds over time.</p><div class="svtags"><span>Advisory</span><span>Board</span><span>Retainer</span></div></div>
+<div class="sv" style="--ac:#C7A24B"><div class="svtop"><span class="svn">01</span><span class="svd">&middot;</span><span class="svk">Embedded</span></div><h3>Fractional leadership</h3><p>Senior commercial leadership without a full-time executive hire.</p></div>
+<div class="sv" style="--ac:#B0863C"><div class="svtop"><span class="svn">02</span><span class="svd">&middot;</span><span class="svk">Deal-linked</span></div><h3>Commercial diligence</h3><p>Independent clarity for the asset, thesis, and market around it.</p></div>
+<div class="sv" style="--ac:#9A742F"><div class="svtop"><span class="svn">03</span><span class="svd">&middot;</span><span class="svk">Fixed-scope</span></div><h3>Project strategy</h3><p>Defined support across pre-market, launch, and lifecycle decisions.</p></div>
+<div class="sv" style="--ac:#4A4435"><div class="svtop"><span class="svn">04</span><span class="svd">&middot;</span><span class="svk">Ongoing</span></div><h3>Long-horizon partnership</h3><p>Advisory and board relationships designed for work that compounds.</p></div>
 </div></div></section>
 
 <div class="mz panel"><div class="in wrap">
@@ -181,8 +281,8 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);scroll-snap-align:en
 
 <div class="final panel"><div class="in wrap">
 <div class="eb g">Start a conversation</div>
-<h2>Design the whole path, from first decision to last.</h2>
-<p>Whether you are launching an asset, weighing a deal, or scaling a franchise, the work begins with the same conviction: every stage belongs to one continuous path.</p>
+<h2>The decisions that shape the whole path deserve a full view.</h2>
+<p>Bring the launch, deal, or growth question into focus.</p>
 <div class="cta-row"><a class="primary" href="/Consultation.html">Start a conversation</a><a class="ghost" href="/the-marga-method.html">Explore Marga Intelligence&trade;</a></div>
 </div></div>
 

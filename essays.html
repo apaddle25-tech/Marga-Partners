@@ -119,7 +119,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72);border-top:1px solid
 .bar .nav .segnav a{display:inline-flex;align-items:center;font:600 12px/1 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.62);padding:7px 12px;margin:0;border:0;border-radius:999px;white-space:nowrap;transition:background .18s,color .18s}
 .bar .nav .segnav a:hover{color:#16140F}
 .bar .nav .segnav a.on{background:#16140F;color:#F1E9DB}
-@media(max-width:1040px){.bar .nav .segnav{margin:8px clamp(18px,4vw,26px) 2px}.bar .nav .segnav a{padding:8px 11px}}
+@media(max-width:1040px){.bar .nav .segnav{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:5px;margin:10px clamp(18px,4vw,26px) 6px}.bar .nav .segnav a{justify-content:center;text-align:center;letter-spacing:0;min-height:44px;padding:12px 4px;font-size:12.5px;border-radius:9px;background:#fff;border:1px solid rgba(22,20,15,.15);color:var(--ink)}.bar .nav .segnav a:active,.bar .nav .segnav a.on{background:var(--ink);border-color:var(--ink);color:var(--cream2)}}
 /* scroll reveal */
 @media(prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}.rv.in{opacity:1;transform:none}}
 </style></head>

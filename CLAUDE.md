@@ -132,14 +132,20 @@ The public scorecard and the method radar are demonstrations, not the product.
 `margazine-build` publishes into this repo. Editing generated files here means your work
 is silently overwritten on the next publish. Fix the source in `margazine-build` instead.
 
-- Fully generated: everything in `journal/`, each released article page at the repo root
-  (for example `the-long-way-around.html`), and `essays.html`.
+- Fully generated: everything in `journal/`, and each released article page at the repo root
+  (for example `the-long-way-around.html`).
 - Partially generated, so edit with care:
   - `index.html`: the "Free to read now" list between the `<!--MZFEED-->` and
     `<!--/MZFEED-->` markers is rewritten on every publish. The rest of the page is
     hand-authored and safe to edit.
   - `journal.html`: the five `.feat` blocks inside the domain cards are rewritten. The
     rest is hand-authored.
+  - `essays.html`: **this line used to say fully generated, and that was wrong.**
+    `write_essays` in `build_site.py` reads the file that is already here, swaps the
+    `<section class="a-body">` block, and writes it back. The head, the stylesheet, the
+    nav and the footer are all hand-authored here and survive every publish, which means
+    they can only be fixed here. Corrected 2026-08-01, after the mobile nav fix had to be
+    applied to this file directly.
 - Also generated: `assets/og/*.png`, produced by `make_og.py` in `margazine-build`.
   Regenerate there, do not edit the PNGs.
 

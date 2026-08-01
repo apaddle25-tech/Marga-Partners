@@ -1,0 +1,327 @@
+/* Marga v3 design system
+   ==========================================================================================
+   Ported from the v3 handoff on 2026-08-01. Phase 1 of the migration: this file exists and
+   nothing links it yet. The homepage is the first page to use it, in Phase 2.
+
+   WHAT CHANGED FROM THE HANDOFF, AND WHY.
+
+   The v3 token table sets bronze #9A742F for "eyebrows, links and accents on light
+   backgrounds" and three muted alphas for secondary text. Measured on a real page load, that
+   produced 24 contrast failures out of 62 text nodes on the homepage alone, all of them
+   token-level, so they would have repeated on all nine pages.
+
+     bronze #9A742F as text     3.27 to 3.97:1 across the four light grounds
+     rgba(22,20,15,.40)         2.55:1
+     rgba(22,20,15,.45)         2.94:1
+     rgba(22,20,15,.50)         3.32 to 3.41:1
+     rgba(241,233,219,.35)      2.87:1
+     rgba(241,233,219,.40)      3.36:1
+
+   AA wants 4.5:1 for anything under 24px, and every one of those is used at 10 to 15px.
+
+   Five values move and the design does not. Bronze stays exactly as it is for fills, rules,
+   borders and the left-border callout; it simply stops being a text colour, which is what
+   the brand has said since 28 July. The alphas rise to the lowest step that clears on the
+   WORST ground of each family, so no page can inherit a failure by sitting on sand rather
+   than card.
+
+   WHAT DID NOT NEED CHANGING, and this is most of the palette. Gold on the dark grounds
+   measures 6.93 to 7.99:1, so v3's gold eyebrows on dark are correct and are left alone.
+   Body text on dark at .72 measures 7.77 to 8.53:1. Advantage and Detractor in the scorecard
+   clear at 6.46 and 5.02:1. The only scorecard colour that failed was Neutral, which is
+   bronze again.
+   ========================================================================================== */
+
+/* Border-box everywhere. Every page on the current site already does this and the system
+   assumed it rather than stating it, so `width:calc(100% - 40px)` plus 28px of padding
+   overflowed its parent, which inflated the fixed nav, which widened the document, which
+   widened the fixed nav again. One missing line, 44px of horizontal scroll on a phone. */
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  /* ---- ground colours. Unchanged from the handoff. ---- */
+  --ink:#16140F;          /* primary text on light, solid dark buttons */
+  --ink2:#14120E;         /* dark section background, nav capsule */
+  --ink3:#221D15;         /* warmer dark, separates two adjacent dark sections */
+  --footer:#0F0E0B;
+  --cream:#F1E9DB;        /* default page background, and text on dark */
+  --sand:#EBE0CC;         /* alternate section background */
+  --card:#FBF6EC;
+  --card2:#F6F0E3;
+
+  /* ---- accents. Both unchanged, but only one of them may be text. ---- */
+  --gold:#C7A24B;         /* PRIMARY CTA FILL. On dark it is also safe as text, 6.93:1+ */
+  --gold-hover:#D4B45F;
+  --bronze:#9A742F;       /* FILL, RULE AND BORDER ONLY. 3.27:1 as text on sand. Never text. */
+
+  /* ---- text colours. These are the only tokens a text rule may use. ---- */
+  --text:var(--ink);                        /* body and headings on light */
+  --text-body:#4A4435;                      /* long-form body on light, 7.4:1 on sand */
+  --text-accent:#7A5A20;                    /* eyebrows and links on light. 4.85:1 on sand,
+                                               5.89:1 on card. This replaces bronze-as-text. */
+  --text-muted:rgba(22,20,15,.62);          /* was .40/.45/.50, all failing. 4.67:1 on sand */
+  --text-on-dark:var(--cream);
+  --text-on-dark-body:rgba(241,233,219,.72);/* 7.77:1 on ink3, the lightest dark ground */
+  --text-on-dark-muted:rgba(241,233,219,.55);/* was .35/.40, both failing. 5.0:1 on ink3 */
+  --text-accent-dark:var(--gold);           /* gold IS safe as text on dark. 6.93:1 on ink3 */
+
+  /* ---- semantic, scorecard only ---- */
+  --advantage:#1A6640;    /* 6.46:1 on card */
+  --neutral:#7A5A20;      /* the handoff said #9A742F, which is 3.97:1 and fails */
+  --detractor:#B4463C;    /* 5.02:1 on card */
+
+  /* ---- rules and grid gaps ---- */
+  --line:rgba(22,20,15,.18);
+  --line-dark:rgba(241,233,219,.16);
+
+  /* ---- type ---- */
+  --serif:'Newsreader',Georgia,serif;       /* display and headings, all weights */
+  --sans:'Manrope',system-ui,sans-serif;    /* body, UI, buttons, nav */
+  --mono:'Spline Sans Mono',ui-monospace,monospace; /* eyebrows, metadata, numerics */
+
+  /* ---- layout ---- */
+  --col:min(1240px,100%);
+  --col-narrow:min(900px,100%);
+  --pad-y:clamp(60px,8vw,88px);
+  --pad-x:clamp(22px,5vw,64px);
+  --pad-hero-top:clamp(126px,13vw,160px);   /* clears the fixed nav */
+  --pad-card:clamp(26px,3.4vw,42px);
+
+  /* ---- radius. The design is deliberately square. ---- */
+  --r-pill:40px;
+  --r-nav:44px;
+  --r-panel:20px;
+  --r-tag:24px;
+}
+
+/* ==========================================================================================
+   Type scale, from the handoff's table. Fluid at every size, so intermediate widths need no
+   extra work.
+   ========================================================================================== */
+.t-h1{font:400 clamp(44px,6.4vw,92px)/.96 var(--serif);letter-spacing:-.03em;text-wrap:balance}
+.t-h2{font:400 clamp(32px,4.2vw,50px)/1.04 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.t-statement{font:300 clamp(34px,4.4vw,54px)/1.1 var(--serif);letter-spacing:-.015em;
+  text-wrap:balance}
+.t-h3{font:400 clamp(26px,2.6vw,34px)/1.08 var(--serif);letter-spacing:-.01em}
+.t-lead{font:400 clamp(17px,1.6vw,20px)/1.58 var(--sans)}
+.t-body{font:400 16px/1.62 var(--sans)}
+.t-small{font:500 13px/1.5 var(--sans)}
+.t-eyebrow{font:600 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--text-accent)}
+.t-label{font:600 11px/1 var(--mono);letter-spacing:.17em;text-transform:uppercase;
+  color:var(--text-muted)}
+.t-dek{font:italic 400 15px/1.5 var(--serif);color:var(--text-accent)}
+
+/* On a dark ground the same roles take the dark-safe values. Applied by putting .on-dark on
+   any section, so a component does not need to know which ground it landed on. */
+.on-dark{color:var(--text-on-dark)}
+.on-dark .t-eyebrow{color:var(--text-accent-dark)}
+.on-dark .t-label,.on-dark .t-muted{color:var(--text-on-dark-muted)}
+.on-dark .t-body,.on-dark .t-lead{color:var(--text-on-dark-body)}
+.on-dark .t-dek{color:var(--gold)}
+.t-muted{color:var(--text-muted)}
+
+/* ==========================================================================================
+   The hairline grid. The signature layout device of v3: a 1px gap over a rule-coloured
+   background, with each cell filled, so dividers are a single pixel rather than two abutting
+   borders.
+   ========================================================================================== */
+.hair{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.hair>*{background:var(--card)}
+.hair.on-dark,.on-dark .hair{background:var(--line-dark);border-color:var(--line-dark)}
+.hair.on-dark>*,.on-dark .hair>*{background:var(--ink2)}
+.hair-2{grid-template-columns:repeat(2,1fr)}
+.hair-3{grid-template-columns:repeat(3,1fr)}
+.hair-4{grid-template-columns:repeat(4,1fr)}
+/* The single breakpoint. Every multi-column grid goes to one column, which the handoff
+   specifies and which the first draft of this file did not implement: a three-up hairline
+   grid held its three columns at 375px and scrolled 103px past the viewport. Subgrid is
+   released at the same time, since there is nothing left to align against. */
+@media(max-width:980px){
+  .hair-2,.hair-3,.hair-4{grid-template-columns:1fr}
+  .hair>*{grid-row:auto !important;grid-template-rows:none !important}
+}
+
+/* ==========================================================================================
+   Buttons. Every variant carries a 44px minimum height, which the prototype does not: 13 of
+   20 interactive elements on the v3 homepage measured under 44px at 375px, and the footer
+   links measured 13px. Apple and Google both publish 44px as the floor.
+   ========================================================================================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:15px 28px;border-radius:var(--r-pill);font:700 14.5px/1 var(--sans);
+  text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--gold);color:var(--ink);
+  box-shadow:0 14px 28px -12px rgba(22,20,15,.5)}
+.btn-primary:hover{background:var(--gold-hover)}
+.btn-square{border-radius:0}
+.btn-outline{border-color:rgba(22,20,15,.32);color:var(--ink);background:transparent}
+.btn-outline:hover{border-color:var(--ink)}
+.on-dark .btn-outline{border-color:rgba(241,233,219,.34);color:var(--cream)}
+.on-dark .btn-outline:hover{border-color:var(--cream)}
+.btn-dark{background:var(--ink);color:var(--cream)}
+.btn-dark:hover{background:#000}
+
+/* The text link with its rule and arrow. Given real padding so the target is not 21px. */
+.link-arrow{display:inline-flex;align-items:center;gap:.4em;min-height:44px;
+  font:700 13.5px/1 var(--sans);color:var(--text-accent);text-decoration:none;
+  border-bottom:1px solid rgba(122,90,32,.4);padding-bottom:6px;align-self:flex-start}
+.link-arrow:hover{border-bottom-color:var(--text-accent)}
+.on-dark .link-arrow{color:var(--gold);border-bottom-color:rgba(199,162,75,.4)}
+.on-dark .link-arrow:hover{border-bottom-color:var(--gold)}
+
+/* ==========================================================================================
+   The callout: a panel with a 2px gold left border. Used for the homepage thesis and the
+   Exchange statement.
+   ========================================================================================== */
+.callout{background:rgba(241,233,219,.09);border-left:2px solid var(--gold);
+  padding:34px 36px}
+.callout p{font-size:21px;line-height:1.5;color:var(--text-on-dark-body);margin:0 0 18px}
+
+/* ==========================================================================================
+   Sections and rhythm. Backgrounds alternate deliberately and two identical grounds never
+   meet; where two darks must, the second takes ink3.
+   ========================================================================================== */
+.section{padding:var(--pad-y) 0}
+.section>.inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
+.section.narrow>.inner{width:var(--col-narrow)}
+.bg-cream{background:var(--cream)}
+.bg-sand{background:var(--sand)}
+.bg-ink{background:var(--ink2)}
+.bg-ink3{background:var(--ink3)}
+.hero{padding-top:var(--pad-hero-top)}
+.hero-gradient{background:
+  radial-gradient(70% 70% at 84% 10%,#F0E4C8 0%,rgba(240,228,200,0) 52%),
+  linear-gradient(158deg,#F1E9DB 0%,#EBE0CC 62%,#E4D8BF 100%)}
+.hero-gradient-dark{background:
+  radial-gradient(72% 70% at 84% 8%,rgba(199,162,75,.18) 0%,rgba(199,162,75,0) 55%),
+  linear-gradient(150deg,#14120E 0%,#191510 60%,#1E1913 100%)}
+
+/* ==========================================================================================
+   Focus. The prototype specifies no focus state at all. Every interactive element gets a
+   visible one, on both grounds.
+   ========================================================================================== */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--text-accent);outline-offset:3px;border-radius:2px}
+.on-dark :where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline-color:var(--gold)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ==========================================================================================
+   NAVIGATION
+   ------------------------------------------------------------------------------------------
+   Fixed and floating over the page. The wrapper ignores pointer events so it does not block
+   the content beneath it; the capsule re-enables them.
+
+   The handoff notes that the prototype opens the dropdown on hover and says plainly that this
+   "is not sufficient on its own". It is a real <button> with aria-expanded here, it opens on
+   click as well as hover, Escape closes it and returns focus, and arrow keys walk the panel.
+   ========================================================================================== */
+.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:70;padding:16px clamp(14px,4vw,40px);
+  pointer-events:none}
+.nav-cap{width:min(1200px,100%);margin:0 auto;pointer-events:auto;display:flex;
+  align-items:center;justify-content:space-between;gap:18px;
+  padding:11px 14px 11px 22px;background:rgba(20,18,14,.85);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border-radius:var(--r-nav);box-shadow:0 16px 44px -20px rgba(10,16,16,.55)}
+
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
+.nav-brand svg{width:26px;height:auto;flex:none}
+.nav-brand b{font:700 17px/1 var(--sans);color:var(--cream);letter-spacing:-.01em}
+
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{font:600 13.5px/1 var(--sans);color:rgba(241,233,219,.78);text-decoration:none;
+  padding:14px 12px;min-height:44px;display:inline-flex;align-items:center;
+  transition:color .15s}
+.nav-links a:hover,.nav-links a[aria-current=page]{color:var(--cream)}
+/* The CTA is a button that happens to sit in the nav, and `.nav-links a` out-specifies
+   `.btn-primary`, so it inherited cream text onto a gold fill: 1.74:1, the worst pair on the
+   page. A button keeps its own colour wherever it lands. */
+.nav-links a.btn{padding:15px 28px}
+.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:var(--ink)}
+.nav-links a.btn-dark,.nav-links a.btn-dark:hover{color:var(--cream)}
+
+/* the "Who we serve" trigger and its panel */
+.nav-drop{position:relative}
+.nav-drop>button{display:inline-flex;align-items:center;gap:7px;min-height:44px;
+  padding:11px 15px;background:rgba(241,233,219,.07);border:0;border-radius:30px;
+  font:600 13.5px/1 var(--sans);color:rgba(241,233,219,.78);cursor:pointer;
+  transition:color .15s,background .15s}
+.nav-drop>button:hover,.nav-drop>button[aria-expanded=true]{color:var(--cream);
+  background:rgba(241,233,219,.12)}
+.nav-drop>button svg{width:9px;height:9px;transition:transform .18s}
+.nav-drop>button[aria-expanded=true] svg{transform:rotate(180deg)}
+.nav-panel{position:absolute;top:calc(100% + 14px);left:0;width:340px;
+  background:rgba(20,18,14,.97);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border:1px solid rgba(241,233,219,.14);
+  border-radius:var(--r-panel);box-shadow:0 24px 60px -24px rgba(0,0,0,.7);
+  padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .16s,transform .16s,visibility 0s .16s}
+.nav-drop[data-open=true] .nav-panel{opacity:1;visibility:visible;transform:none;
+  transition:opacity .16s,transform .16s,visibility 0s}
+.nav-panel a{display:block;padding:13px 15px;border-radius:12px;text-decoration:none;
+  min-height:auto}
+.nav-panel a:hover,.nav-panel a:focus-visible{background:rgba(241,233,219,.07)}
+.nav-panel a b{display:block;font:700 14.5px/1.3 var(--sans);color:var(--cream);
+  margin-bottom:3px}
+.nav-panel a span{display:block;font:500 12.5px/1.45 var(--sans);
+  color:var(--text-on-dark-muted)}
+
+.nav-toggle{display:none;width:44px;height:44px;flex:none;border-radius:50%;border:0;
+  background:rgba(241,233,219,.07);cursor:pointer;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px}
+.nav-toggle:hover{background:rgba(241,233,219,.12)}
+.nav-toggle i{display:block;width:18px;height:2px;background:var(--cream);border-radius:2px;
+  transition:transform .2s,opacity .2s}
+.nav-cap[data-menu=true] .nav-toggle i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.nav-cap[data-menu=true] .nav-toggle i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+
+@media(max-width:980px){
+  .nav-links{position:absolute;top:calc(100% + 12px);left:0;right:0;flex-direction:column;
+    align-items:stretch;gap:0;background:rgba(20,18,14,.97);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);border:1px solid rgba(241,233,219,.14);
+    border-radius:var(--r-panel);padding:6px 0 10px;opacity:0;visibility:hidden;
+    transform:translateY(-6px);
+    transition:opacity .16s,transform .16s,visibility 0s .16s}
+  .nav-cap{position:relative}
+  .nav-cap[data-menu=true] .nav-links{opacity:1;visibility:visible;transform:none;
+    transition:opacity .16s,transform .16s,visibility 0s}
+  .nav-toggle{display:inline-flex}
+  .nav-links>a,.nav-drop{border-top:1px solid rgba(241,233,219,.09)}
+  .nav-links>a:first-child,.nav-drop:first-child{border-top:0}
+  .nav-links>a{padding:14px 20px}
+  .nav-drop>button{width:calc(100% - 40px);margin:10px 20px 4px;justify-content:space-between;
+    border-radius:12px}
+  /* the panel stops floating and simply opens in place */
+  .nav-panel{position:static;width:auto;opacity:1;visibility:visible;transform:none;
+    background:transparent;border:0;box-shadow:none;padding:0 10px;
+    max-height:0;overflow:hidden;transition:max-height .2s}
+  .nav-drop[data-open=true] .nav-panel{max-height:320px}
+  .nav-links .btn{margin:10px 20px 4px;width:calc(100% - 40px)}
+}
+
+/* ==========================================================================================
+   FOOTER
+   ========================================================================================== */
+.site-foot{background:var(--footer);color:var(--text-on-dark-muted);
+  padding:48px var(--pad-x) 34px}
+.site-foot .inner{width:var(--col);margin:0 auto;display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.site-foot .brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.site-foot .brand svg{width:24px;height:auto}
+.site-foot .brand b{font:700 15.5px/1 var(--sans);color:var(--cream)}
+.site-foot .desc{font:400 13.5px/1.6 var(--sans);max-width:32ch;
+  color:var(--text-on-dark-muted)}
+.site-foot h4{font:600 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(241,233,219,.55);margin:0 0 6px}
+.site-foot ul{list-style:none;margin:0;padding:0}
+.site-foot ul a{display:inline-flex;align-items:center;min-height:44px;
+  font:500 13.5px/1 var(--sans);color:var(--text-on-dark-muted);text-decoration:none;
+  transition:color .15s}
+.site-foot ul a:hover{color:var(--cream)}
+@media(max-width:980px){
+  .site-foot .inner{grid-template-columns:1fr;gap:32px}
+}

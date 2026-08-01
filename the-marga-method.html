@@ -183,7 +183,7 @@ footer{background:var(--footer);color:rgba(241,233,219,.72)}footer .in{display:f
 </style></head>
 <body><span id="top"></span>
 <header class="bar"><div class="in"><a class="brand" href="/index.html"><svg viewBox="0 0 394 321" style="width:28px;height:auto" fill="none"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg><b>Marga Partners</b></a>
-<nav class="nav" id="nav"><span class="segnav"><a href="/for-manufacturers.html">Manufacturers</a><a href="/for-investors.html">Investors</a><a href="/for-providers.html">Practices</a></span><a href="/the-marga-method.html" class="on">Marga Intelligence&trade;</a><a href="/journal.html">The MargaZine</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
+<nav class="nav" id="nav"><span class="segnav"><a href="/for-manufacturers.html">Manufacturers</a><a href="/for-investors.html">Investors</a><a href="/for-providers.html">Providers</a></span><a href="/the-marga-method.html" class="on">Marga Intelligence&trade;</a><a href="/journal.html">The MargaZine</a><a class="btn" href="/Consultation.html">Start a conversation</a></nav><button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button></div></header>
 
 <div class="hero"><div class="in wrap">
 <div class="eb g">The Marga Difference</div>
@@ -295,7 +295,7 @@ function drawChips(){
   if(st.step===1||st.step===3){
     LORDER.forEach(function(ln){var b=document.createElement('button');b.type='button';b.className='vchip'+(st.lens===ln?' on':'');b.textContent=LLABEL[ln];b.onclick=function(){st.lens=ln;drawChips();apply();stop();};chips.appendChild(b);});
   }else if(st.step===2){
-    [['consortium','Consortium'],['market','Market signals']].forEach(function(pr){var b=document.createElement('button');b.type='button';b.className='vchip tog'+(st[pr[0]]?' on':'');b.textContent=pr[1];b.onclick=function(){st[pr[0]]=!st[pr[0]];drawChips();apply();stop();};chips.appendChild(b);});
+    [['consortium','Exchange'],['market','Market signals']].forEach(function(pr){var b=document.createElement('button');b.type='button';b.className='vchip tog'+(st[pr[0]]?' on':'');b.textContent=pr[1];b.onclick=function(){st[pr[0]]=!st[pr[0]];drawChips();apply();stop();};chips.appendChild(b);});
   }
 }
 function maxDiff(a,b){var m=0;for(var i=0;i<N;i++)m=Math.max(m,Math.abs(a[i]-b[i]));return m;}
@@ -323,7 +323,7 @@ function apply(){
 var CAP=[
  {k:'Step 1 of 4',t:'Five forces, many signals',p:'Every asset is scored across five forces, each built up from the many signals beneath it.'},
  {k:'Step 2 of 4',t:'Weighted to your question',p:'The same evidence is re-weighted for the decision in front of you. Switch the lens and watch the shape move to what an investor, an operator, or a board actually cares about.'},
- {k:'Step 3 of 4',t:'Layered with live inputs',p:'Consortium judgment and real-time market signals push and pull each force as they integrate, so the read reflects the field as it moves.'},
+ {k:'Step 3 of 4',t:'Layered with live inputs',p:'Exchange judgment and real-time market signals push and pull each force as they integrate, so the read reflects the field as it moves.'},
  {k:'Step 4 of 4',t:'One comparable number',p:'The whole shape resolves to a single composite on one scale, with its band. Change the lens and the number moves with it.'}
 ];
 var tabs=B.querySelectorAll('.bstep'),capk=B.querySelector('[data-capk]'),capt=B.querySelector('[data-capt]'),capp=B.querySelector('[data-capp]'),dw=B.querySelector('[data-bdots]'),dots=[];

@@ -1,7 +1,7 @@
 {
   "$note": "Product naming contract. The estate uses four product marks under one root mark, and nothing else. bin/naming-check.js enforces this file in CI and in the pre-commit hook.",
   "version": "1.0.0",
-  "updated": "2026-07-28",
+  "updated": "2026-08-02",
   "rootMark": "Marga",
   "marks": [
     "Marga Method",
@@ -73,6 +73,27 @@
     {
       "find": "Marga Journal",
       "replace": "MargaZine"
+    },
+    {
+      "find": "Marga Consortium",
+      "replace": "Marga Exchange",
+      "note": "The expert panel behind the Marga Index. Renamed 2 August 2026. The panel had two names on the live site at once, which is worse than either."
+    },
+    {
+      "find": "the Consortium",
+      "replace": "the Exchange"
+    },
+    {
+      "find": "the consortium",
+      "replace": "the Exchange"
+    },
+    {
+      "find": "Consortium panel",
+      "replace": "Exchange panel"
+    },
+    {
+      "find": "consortium-scored",
+      "replace": "Exchange-scored"
     }
   ],
   "reviewRequired": [
@@ -80,7 +101,7 @@
       "term": "The 5 P's of Aesthetics",
       "apostropheVariants": [
         "The 5 P's of Aesthetics",
-        "The 5 P\u2019s of Aesthetics",
+        "The 5 P’s of Aesthetics",
         "The 5 Ps of Aesthetics",
         "The Five P's of Aesthetics"
       ],
@@ -125,7 +146,7 @@
       "reason": "The GitHub remote path."
     },
     {
-      "pattern": "the five P's|five P's|5 P's \u00b7",
+      "pattern": "the five P's|five P's|5 P's ·",
       "reason": "The descriptive name of the five domains in running prose. Not a product mark. See prose.domains."
     },
     {
@@ -135,6 +156,14 @@
     {
       "pattern": "MARGA engine|Marga engine|the engine",
       "reason": "Lower-case 'engine' after the root mark is descriptive prose in code comments, meaning the scoring engine of the Marga system. Only the capitalised 'Marga Engine' used as a wordmark is a fifth product name."
+    },
+    {
+      "pattern": "value=\"consortium\"|inquiry_type=consortium|&consortium=|consent: \\{[^}]*consortium",
+      "reason": "The value the consultation and benchmark forms POST to app.margapartners.com/contact. The label a person reads is the Marga Exchange; this is the wire contract, and renaming one side of a live intake drops enquiries into a case the backend does not handle. It retires when the backend does."
+    },
+    {
+      "pattern": "consortiumFields|consentConsortium|consortiumBlock|TYPES\\.consortium|st\\.consortium|CONSORTIUM=",
+      "reason": "DOM ids and local JavaScript identifiers inside a single page. Not visible to a reader and not a name. Renaming them is churn with no reader-facing effect."
     }
   ],
   "scan": {

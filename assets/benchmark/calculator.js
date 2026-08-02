@@ -20,7 +20,7 @@
 //
 //   It will not report a percentile from a mean. Every published source behind
 //   cohort v1 reports averages, not distributions. The percentile path exists,
-//   is tested, and activates when Consortium wave one lands real distributions.
+//   is tested, and activates when Exchange wave one lands real distributions.
 
 /** Fields the form collects. Nothing else is accepted. */
 export const FIELDS = Object.freeze([

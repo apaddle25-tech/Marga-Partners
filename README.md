@@ -29,12 +29,12 @@ A static website. Every page is a self-contained HTML file (fonts and images emb
 - `the-marga-difference.html` — how Marga works (dual lens, three phases, expertise, selected work)
 - `5ps-index.html` — the Marga Method (framework)
 - `5p-playbook.html` — the Marga Method
-- `products.html` — products, intelligence & the consortium
+- `products.html` — products, intelligence & the Exchange
 - `journal.html` — the MargaZine hub
 - `journal/` — all MargaZine articles
 - `the-long-way-around.html` — founding essay
 - `article-template.html` — duplicate this to add a new article
-- `Consultation.html` — intake form (adapts to inquiry type via `?type=` — e.g. `Consultation.html?type=consortium`)
+- `Consultation.html` — intake form (adapts to inquiry type via `?type=` — e.g. `Consultation.html?type=exchange`)
 - `social-5p.html` — social post templates
 
 ## Custom domain (optional)

@@ -1,7 +1,7 @@
 {
   "cohortVersion": "v1",
   "derivedAt": "2026-07-28",
-  "label": "Seed cohort, v1, assembled from published industry sources. Sample sizes and definitions vary by source. Marga Consortium panel data replaces this from wave one.",
+  "label": "Seed cohort, v1, assembled from published industry sources. Sample sizes and definitions vary by source. Marga Exchange panel data replaces this from wave one.",
 
   "$readThisFirst": "Every figure below traces to a citation in `sources`, and nothing here was estimated, modeled, or filled in to make a screen look complete. That has one large consequence, stated plainly in `limitations.noDistributions`: the published sources report MEANS, not distributions. A percentile requires a distribution. So no metric in this cohort can yield a percentile, and the calculator returns a ratio to the published average instead, labeled as such. Inventing a spread around a published mean would be exactly the false precision this file exists to avoid.",
 

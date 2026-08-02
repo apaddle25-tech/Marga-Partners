@@ -433,6 +433,57 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
 }
 
 /* ==========================================================================================
+   AUDIENCE PAGE SECTIONS
+   ------------------------------------------------------------------------------------------
+   The vocabulary the three "who we serve" pages are built from. Measured off the v4
+   prototypes at 1280: sections pad 88/64, grids gap 18, and the split head is 491/601 on 60.
+   ========================================================================================== */
+
+/* A wall of questions. Two columns of equal cards, each one sentence of Newsreader 300. */
+.qgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.qgrid>li,.qgrid>div{list-style:none;display:flex;align-items:center;
+  padding:32px 34px;background:var(--card);border:1px solid rgba(22,20,15,.18);
+  font:300 clamp(21px,2.2vw,28px)/1.22 var(--serif);color:var(--text);text-wrap:balance}
+
+/* Numbered deliverables. Three columns, unfilled cards, the numeral doing the indexing.
+   Subgrid for the same reason the homepage cards use it: the titles are different lengths
+   and without it every description below them starts at a different height. */
+.numgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(3,auto);column-gap:18px;row-gap:18px}
+.numgrid>li{list-style:none;display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:9px;
+  padding:30px 32px;border:1px solid rgba(22,20,15,.22)}
+/* 24px, not the design's 22. --text-numeral is 3.19 to 3.41:1, which clears the 3:1 bar that
+   applies at 24px and up and fails the 4.5:1 bar that applies below it. Two pixels decide
+   which rule the numeral is judged by, and 24 also matches the homepage card index, so the
+   two numeral treatments on the site are one treatment. */
+.numgrid .n{font:400 24px/1 var(--serif);color:var(--text-numeral)}
+.numgrid h3{margin:0;font:400 clamp(18px,1.7vw,21px)/1.22 var(--sans);font-weight:700;
+  color:var(--text);text-wrap:balance}
+.numgrid p{margin:0;font:400 14.5px/1.5 var(--sans);color:var(--text-body)}
+@supports not (grid-template-rows:subgrid){
+  .numgrid{grid-template-rows:none}
+  .numgrid>li{display:flex;flex-direction:column;gap:9px}
+}
+
+/* A heading on the left, a wrapped set of chips on the right. */
+.split-head{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);gap:60px;
+  align-items:start}
+.split-head h2{margin:10px 0 0;font:400 clamp(28px,3.4vw,44px)/1.06 var(--serif);
+  letter-spacing:-.015em;text-wrap:balance}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;margin:0;list-style:none}
+.chips li{padding:12px 17px;background:var(--cream);border:1px solid rgba(22,20,15,.24);
+  font:500 13px/1 var(--sans);color:var(--text-body)}
+.on-dark .chips li{background:rgba(241,233,219,.06);border-color:rgba(241,233,219,.22);
+  color:var(--text-on-dark-body)}
+
+@media(max-width:980px){
+  .qgrid,.numgrid{grid-template-columns:minmax(0,1fr)}
+  .numgrid{grid-template-rows:none}
+  .numgrid>li{display:flex;flex-direction:column;gap:9px}
+  .split-head{grid-template-columns:minmax(0,1fr);gap:24px}
+}
+
+/* ==========================================================================================
    FOOTER
    ========================================================================================== */
 .site-foot{background:var(--footer);color:var(--text-on-dark-muted);padding:54px 0 44px;

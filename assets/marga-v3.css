@@ -206,6 +206,13 @@
 .on-dark :where(a,button,input,select,textarea,[tabindex]):focus-visible{
   outline-color:var(--gold)}
 
+/* Skip link. Off screen until focused, then a real target at the top left. Done in CSS
+   rather than with inline onfocus/onblur handlers, which is what the first draft used: those
+   depend on script and do not survive a page where JS has not run yet, which is exactly the
+   moment a keyboard user is tabbing. */
+.skip{position:absolute;left:-9999px;top:0;z-index:99}
+.skip:focus,.skip:focus-visible{left:16px;top:16px}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
 }
@@ -315,7 +322,7 @@
 .site-foot .brand b{font:700 15.5px/1 var(--sans);color:var(--cream)}
 .site-foot .desc{font:400 13.5px/1.6 var(--sans);max-width:32ch;
   color:var(--text-on-dark-muted)}
-.site-foot h4{font:600 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+.site-foot h3,.site-foot h4{font:600 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
   color:rgba(241,233,219,.55);margin:0 0 6px}
 .site-foot ul{list-style:none;margin:0;padding:0}
 .site-foot ul a{display:inline-flex;align-items:center;min-height:44px;

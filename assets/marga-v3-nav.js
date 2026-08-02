@@ -40,13 +40,11 @@
     var setOpen = function (open, focusFirst) {
       drop.setAttribute('data-open', String(open));
       btn.setAttribute('aria-expanded', String(open));
-      // The panel is visibility:hidden until the attribute lands, and a hidden element
-      // cannot take focus. Focusing in the same tick silently does nothing, which made
-      // ArrowDown look like it had no handler at all. One frame later the style has been
-      // recomputed and the row is focusable.
-      if (open && focusFirst && items.length) {
-        window.requestAnimationFrame(function () { items[0].focus(); });
-      }
+      // A hidden element cannot take focus, which is why the stylesheet flips the panel's
+      // visibility instantly on the way open rather than transitioning it. With that in
+      // place a same-tick focus lands, and this needs no rAF. It used to have one, and rAF
+      // is the single thing in this file that does not fire in a backgrounded tab.
+      if (open && focusFirst && items.length) items[0].focus();
     };
 
     btn.addEventListener('click', function (e) {

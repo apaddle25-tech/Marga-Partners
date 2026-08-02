@@ -98,6 +98,16 @@
    Type scale, from the handoff's table. Fluid at every size, so intermediate widths need no
    extra work.
    ========================================================================================== */
+
+/* THE DOCUMENT NEEDS A FACE OF ITS OWN. The scale below is entirely class driven, and the
+   system set no font on the root, so any element that carried neither a t- class nor a font
+   shorthand fell through to the browser's default serif. One did: the callout paragraph on
+   the homepage was rendering in Times. A base declaration makes the worst case a wrong brand
+   face rather than no brand face, which matters more with every page Phase 3 onward adds.
+   Manrope because CLAUDE.md assigns it body and UI, and headings set --serif explicitly. */
+body{font-family:var(--sans);font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
 .t-h1{font:400 clamp(44px,6.4vw,92px)/.96 var(--serif);letter-spacing:-.03em;text-wrap:balance}
 .t-h2{font:400 clamp(32px,4.2vw,50px)/1.04 var(--serif);letter-spacing:-.01em;text-wrap:balance}
 .t-statement{font:300 clamp(34px,4.4vw,54px)/1.1 var(--serif);letter-spacing:-.015em;

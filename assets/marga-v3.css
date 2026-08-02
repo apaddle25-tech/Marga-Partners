@@ -49,6 +49,30 @@
   --card:#FBF6EC;
   --card2:#F6F0E3;
 
+  /* ---- tokens the carried components need, which nothing defined ----------------------
+     The benchmark wizard, the consultation form and the Marga Index scorecard were lifted
+     from pages that carried their own :root. scope_css prefixes every selector in a carried
+     sheet, which is what stops it redefining the system, and it also meant those :root
+     declarations stopped applying. The sheets kept referencing the names.
+
+     An unresolved var() is silent: the declaration is dropped and the property falls back to
+     inherited or initial. 41 declarations were failing this way. The visible ones were
+     `color:var(--paper)` on the dark submit button and `color:var(--green)` on the Advantage
+     pill, which was rendering as initial black. Border colours fell back to currentColor, so
+     hairlines were drawing in the text colour.
+
+     Values come from the documented palette. --bronze-text is the 2026-08-02 accent rather
+     than the #7A5A20 the carried sheets pass as a fallback: #7A5A20 measures 4.48:1 on
+     --sand2 and this one clears AA on every ground the site uses. */
+  --body:#4A4435;               /* body copy on a light ground */
+  --cream2:#F1E9DB;             /* light text on a dark ground, and a light fill */
+  --paper:#F1E9DB;              /* label on a solid dark button */
+  --bronze-text:#6B4F1C;        /* small accent type, eyebrows, legends */
+  --golddeep:#6B4F1C;
+  --green:#166638;              /* the advantage band. Semantic, not a brand accent. */
+  --muted:#6B6455;
+  --hair:rgba(22,20,15,.18);    /* hairline rules inside carried components */
+
   /* ---- three grounds the v4 design adds. Measured, not eyeballed. ---- */
   --sand2:#E3D8BE;        /* the thesis band. The darkest light ground on the site, which
                              is why the accent below had to move. */

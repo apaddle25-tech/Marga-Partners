@@ -1,116 +1,151 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Practice Benchmark &middot; Marga Partners</title>
-<meta name="description" content="Benchmark your practice against published industry sources. Four steps, no account, results on the page.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Benchmark | Marga Partners</title>
+<meta name="description" content="Compare your practice against anonymized industry benchmarks. The calculator runs in your browser and nothing is sent unless you ask for the full report.">
+<link rel="canonical" href="https://www.margapartners.com/benchmark.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marga Partners">
+<meta property="og:title" content="See where your practice actually stands.">
+<meta property="og:description" content="Compare your practice against anonymized industry benchmarks. The calculator runs in your browser and nothing is sent unless you ask for the full report.">
+<meta property="og:url" content="https://www.margapartners.com/benchmark.html">
+<meta property="og:image" content="https://www.margapartners.com/assets/og/home.png">
+<meta property="og:image:width" content="2400"><meta property="og:image:height" content="1260">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="See where your practice actually stands.">
+<meta name="twitter:description" content="Compare your practice against anonymized industry benchmarks. The calculator runs in your browser and nothing is sent unless you ask for the full report.">
+<meta name="twitter:image" content="https://www.margapartners.com/assets/og/home.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.margapartners.com/benchmark.html#page","url":"https://www.margapartners.com/benchmark.html","name":"Practice Benchmark","description":"Compare your practice against anonymized industry benchmarks. The calculator runs in your browser and nothing is sent unless you ask for the full report.","isPartOf":{"@id":"https://www.margapartners.com/#website"},"about":{"@id":"https://www.margapartners.com/#org"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.margapartners.com/benchmark.html#crumbs"}},{"@type":"BreadcrumbList","@id":"https://www.margapartners.com/benchmark.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.margapartners.com/"},{"@type":"ListItem","position":2,"name":"Practice benchmark"}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/marga-v3.css">
 <style>
-:root{
+.section{padding:88px 0}
+.inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
+.bg-card-solid{background:var(--card)}
+.hero{position:relative;padding:calc(var(--pad-hero-top) + 10px) 0 84px;overflow:hidden}
+.hero h1{margin:0;font:400 clamp(36px,5.2vw,66px)/1 var(--serif);letter-spacing:-.03em;
+  color:var(--cream);max-width:16ch;text-wrap:balance}
+.hero .lead{margin:30px 0 0;max-width:58ch}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.t-h2{margin:12px 0 0;font:400 clamp(28px,3.6vw,48px)/1.06 var(--serif);letter-spacing:-.015em;
+  max-width:22ch;text-wrap:balance}
+.prose-p{max-width:66ch;margin:22px 0 0}
+.closing{padding:96px 0 0}
+.cta-block{width:var(--col);margin:0 auto;padding:0 var(--pad-x) 96px;text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.cta-block h2{margin:18px 0 0;font:400 clamp(30px,4vw,48px)/1.06 var(--serif);
+  letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+.cta-block .sub{margin:18px 0 30px;max-width:46ch}
+@media(max-width:720px){
+  .section{padding:60px 0}
+  .hero{padding-bottom:60px}
+  .closing{padding-top:64px}
+  .cta-block{padding-bottom:64px}
+}
+
+/* The wizard sits inside the v4 page rather than owning it, so it gets a plate to sit on
+   and the page keeps its own hero and footer. */
+.tool{width:min(980px,100%);margin:0 auto;padding:0 var(--pad-x)}
+.tool-card{padding:clamp(24px,3.2vw,40px);background:var(--card);
+  border:1px solid rgba(22,20,15,.2)}
+.tool-card{
   --ink:#16140F; --ink2:#14120E; --bronze:#9A742F; --gold:#C7A24B;
   --cream:#FBF6EC; --cream2:#F1E9DB; --cream3:#EBE0CC; --body:#4A4435;
   /* 4.85:1 on the darkest cream. Body-size text uses this, never gold. */
   --bronze-text:#7A5A20;
   --ok:#2F6B45; --warn:#8A4B1F;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--cream);color:var(--body);
-  font:400 16px/1.6 'Manrope',-apple-system,BlinkMacSystemFont,sans-serif}
-h1,h2,h3{font-family:'Newsreader',Georgia,serif;color:var(--ink);font-weight:500;
-  margin:0 0 .4em;line-height:1.15;text-wrap:balance}
-h1{font-size:clamp(28px,7vw,42px)}
-h2{font-size:clamp(21px,4.5vw,27px)}
-h3{font-size:18px}
-p{margin:0 0 1em;max-width:64ch}
-a{color:var(--bronze-text)}
-.wrap{max-width:640px;margin:0 auto;padding:24px 20px 80px}
-.eyebrow{font:600 11px/1.4 'Manrope',sans-serif;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--bronze-text);margin-bottom:10px}
-
-/* Skip link, visible on focus */
+}.tool-card *{box-sizing:border-box}.tool-card{-webkit-text-size-adjust:100%}.tool-card{margin:0;background:var(--cream);color:var(--body);
+  font:400 16px/1.6 'Manrope',-apple-system,BlinkMacSystemFont,sans-serif}.tool-card h1,.tool-card h2,.tool-card h3{font-family:'Newsreader',Georgia,serif;color:var(--ink);font-weight:500;
+  margin:0 0 .4em;line-height:1.15;text-wrap:balance}.tool-card h1{font-size:clamp(28px,7vw,42px)}.tool-card h2{font-size:clamp(21px,4.5vw,27px)}.tool-card h3{font-size:18px}.tool-card p{margin:0 0 1em;max-width:64ch}.tool-card a{color:var(--bronze-text)}.tool-card .wrap{max-width:640px;margin:0 auto;padding:24px 20px 80px}.tool-card .eyebrow{font:600 11px/1.4 'Manrope',sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bronze-text);margin-bottom:10px}.tool-card /* Skip link,.tool-card visible on focus */
 .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--cream);
-  padding:10px 16px;z-index:100}
-.skip:focus{left:8px;top:8px}
-
-/* Focus is always visible and never removed */
-:focus-visible{outline:3px solid var(--bronze-text);outline-offset:2px;border-radius:2px}
-
-/* ---- mandatory cohort label. On the page, never a tooltip, never dismissible ---- */
+  padding:10px 16px;z-index:100}.tool-card .skip:focus{left:8px;top:8px}.tool-card /* Focus is always visible and never removed */
+:focus-visible{outline:3px solid var(--bronze-text);outline-offset:2px;border-radius:2px}.tool-card /* ---- mandatory cohort label. On the page,.tool-card never a tooltip,.tool-card never dismissible ---- */
 .cohort-label{border:1px solid var(--gold);background:var(--cream2);
   padding:12px 14px;margin:0 0 20px;font-size:13.5px;line-height:1.5;color:var(--body);
-  border-radius:3px}
-.cohort-label b{color:var(--ink);font-weight:600}
-
-/* ---- progress ---- */
-.progress{margin:0 0 24px}
-.progress ol{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 8px}
-.progress li{flex:1;height:5px;background:var(--cream3);border-radius:3px}
-.progress li[data-done="true"]{background:var(--gold)}
-.progress p{margin:0;font-size:13px;color:var(--bronze-text);font-weight:600}
-
-/* ---- form ---- */
-fieldset{border:0;padding:0;margin:0 0 8px;min-width:0}
-legend{padding:0;margin-bottom:4px}
-.field{margin:0 0 18px}
-.field label{display:block;font-weight:600;color:var(--ink);font-size:15px;margin-bottom:2px}
-.field .hint{display:block;font-size:13px;color:var(--body);margin-bottom:6px}
-.field input,.field select{width:100%;padding:12px 13px;font:400 16px 'Manrope',sans-serif;
-  color:var(--ink);background:#fff;border:1px solid var(--cream3);border-radius:4px}
-.field input:hover,.field select:hover{border-color:var(--bronze-text, #7A5A20)}
-.opt{font-weight:400;color:var(--bronze-text);font-size:13px}
-.err{color:var(--warn);font-size:13.5px;font-weight:600;margin-top:5px}
-.honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-
-.actions{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
-button{font:600 16px 'Manrope',sans-serif;padding:13px 22px;border-radius:4px;cursor:pointer;
-  border:1px solid var(--ink);min-height:48px}
-.btn-primary{background:var(--ink);color:var(--cream)}
-.btn-primary:hover{background:var(--ink2)}
-.btn-secondary{background:transparent;color:var(--ink)}
-.btn-secondary:hover{background:var(--cream2)}
-button[disabled]{opacity:.5;cursor:not-allowed}
-
-/* ---- results ---- */
+  border-radius:3px}.tool-card .cohort-label b{color:var(--ink);font-weight:600}.tool-card /* ---- progress ---- */
+.progress{margin:0 0 24px}.tool-card .progress ol{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 8px}.tool-card .progress li{flex:1;height:5px;background:var(--cream3);border-radius:3px}.tool-card .progress li[data-done="true"]{background:var(--gold)}.tool-card .progress p{margin:0;font-size:13px;color:var(--bronze-text);font-weight:600}.tool-card /* ---- form ---- */
+fieldset{border:0;padding:0;margin:0 0 8px;min-width:0}.tool-card legend{padding:0;margin-bottom:4px}.tool-card .field{margin:0 0 18px}.tool-card .field label{display:block;font-weight:600;color:var(--ink);font-size:15px;margin-bottom:2px}.tool-card .field .hint{display:block;font-size:13px;color:var(--body);margin-bottom:6px}.tool-card .field input,.tool-card .field select{width:100%;padding:12px 13px;font:400 16px 'Manrope',sans-serif;
+  color:var(--ink);background:#fff;border:1px solid var(--cream3);border-radius:4px}.tool-card .field input:hover,.tool-card .field select:hover{border-color:var(--bronze-text, #7A5A20)}.tool-card .opt{font-weight:400;color:var(--bronze-text);font-size:13px}.tool-card .err{color:var(--warn);font-size:13.5px;font-weight:600;margin-top:5px}.tool-card .honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.tool-card .actions{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}.tool-card button{font:600 16px 'Manrope',sans-serif;padding:13px 22px;border-radius:4px;cursor:pointer;
+  border:1px solid var(--ink);min-height:48px}.tool-card .btn-primary{background:var(--ink);color:var(--cream)}.tool-card .btn-primary:hover{background:var(--ink2)}.tool-card .btn-secondary{background:transparent;color:var(--ink)}.tool-card .btn-secondary:hover{background:var(--cream2)}.tool-card button[disabled]{opacity:.5;cursor:not-allowed}.tool-card /* ---- results ---- */
 .hero{background:var(--cream2);border-left:4px solid var(--gold);
-  padding:20px 18px;border-radius:0 4px 4px 0;margin:0 0 18px}
-.hero .v{font-family:'Newsreader',Georgia,serif;font-size:clamp(34px,10vw,52px);
-  color:var(--ink);line-height:1;margin:6px 0}
-.metric{border-top:1px solid var(--cream3);padding:16px 0}
-.metric .t{font-weight:700;color:var(--ink);font-size:15px}
-.metric .v{font-family:'Newsreader',Georgia,serif;font-size:26px;color:var(--ink);margin:4px 0}
-.cmp{font-size:14px;margin:6px 0}
-.cmp .above{color:var(--ok);font-weight:600}
-.cmp .below{color:var(--warn);font-weight:600}
-.cmp .nocmp{font-style:italic}
-.read{font-size:14px;margin:6px 0 0}
-.read b{color:var(--bronze-text)}
-.gate{background:var(--cream2);border:1px solid var(--cream3);padding:20px 18px;
-  border-radius:4px;margin:22px 0}
-.consent{display:flex;gap:11px;align-items:flex-start;margin:0 0 16px}
-.consent input{margin-top:4px;width:20px;height:20px;flex:0 0 auto}
-.consent label{font-size:14px;line-height:1.5}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-[hidden]{display:none !important}
-@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+  padding:20px 18px;border-radius:0 4px 4px 0;margin:0 0 18px}.tool-card .hero .v{font-family:'Newsreader',Georgia,serif;font-size:clamp(34px,10vw,52px);
+  color:var(--ink);line-height:1;margin:6px 0}.tool-card .metric{border-top:1px solid var(--cream3);padding:16px 0}.tool-card .metric .t{font-weight:700;color:var(--ink);font-size:15px}.tool-card .metric .v{font-family:'Newsreader',Georgia,serif;font-size:26px;color:var(--ink);margin:4px 0}.tool-card .cmp{font-size:14px;margin:6px 0}.tool-card .cmp .above{color:var(--ok);font-weight:600}.tool-card .cmp .below{color:var(--warn);font-weight:600}.tool-card .cmp .nocmp{font-style:italic}.tool-card .read{font-size:14px;margin:6px 0 0}.tool-card .read b{color:var(--bronze-text)}.tool-card .gate{background:var(--cream2);border:1px solid var(--cream3);padding:20px 18px;
+  border-radius:4px;margin:22px 0}.tool-card .consent{display:flex;gap:11px;align-items:flex-start;margin:0 0 16px}.tool-card .consent input{margin-top:4px;width:20px;height:20px;flex:0 0 auto}.tool-card .consent label{font-size:14px;line-height:1.5}.tool-card .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.tool-card [hidden]{display:none !important}
+@media (prefers-reduced-motion:reduce){.tool-card *{transition:none !important;animation:none !important}}
+
+/* ---- corrections to the carried wizard --------------------------------------------------
+   Recorded here rather than edited into benchmark-parts/, so that stays a faithful copy of
+   what was lifted. The wizard was built against the old page's tokens and its own ground. */
+.tool-card h2{font-family:var(--serif);color:var(--text)}
+.tool-card label{color:var(--text-muted)}
+.tool-card input,.tool-card select{min-height:48px;border-radius:0;
+  font-family:var(--sans);color:var(--text)}
+.tool-card input:focus,.tool-card select:focus{outline:2px solid var(--text-accent);
+  outline-offset:-2px}
+/* Both consents are targets in their own right and both were shorter than 44px. They are
+   also the two checkboxes privacy.html describes as separate and independent, so they are
+   never merged into one row.
+
+   The checkbox is not inside its label here, it is a sibling joined by for=, so the label is
+   the clickable target and the label is what has to reach 44px. */
+.tool-card .consent{display:flex;align-items:flex-start;gap:11px;
+  font:400 14px/1.55 var(--sans);color:var(--text-body)}
+.tool-card .consent input{width:20px;height:20px;min-height:20px;margin-top:12px;flex:none;
+  accent-color:var(--gold)}
+.tool-card .consent label{display:flex;align-items:center;min-height:44px;margin:0;padding:4px 0;
+  font:400 14px/1.55 var(--sans);letter-spacing:normal;text-transform:none;
+  color:var(--text-body);cursor:pointer}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to the calculator</a>
-
-<div class="wrap">
-<header>
-  <div class="eyebrow">Marga Partners</div>
-  <h1>Practice Benchmark</h1>
-  <p>Four steps. No account. Your figures never leave your phone unless you ask for the full report.</p>
+<a class="btn btn-dark skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <div class="nav-cap" data-menu="false">
+    <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <span class="nav-drop" data-open="false">
+        <button type="button" aria-expanded="false" aria-controls="whopanel">Who we serve
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"/></svg></button>
+        <span class="nav-panel" id="whopanel" role="group" aria-label="Who we serve">
+          <a href="/for-manufacturers.html"><b>Manufacturers</b>
+            <span>Turn an asset into a franchise.</span></a>
+          <a href="/for-investors.html"><b>Investors</b>
+            <span>See what the market has not priced in.</span></a>
+          <a href="/for-providers.html"><b>Providers</b>
+            <span>Build advantage at the point of care.</span></a>
+        </span>
+      </span>
+      <a href="/the-marga-method.html">How we think</a>
+      <a href="/journal.html">MargaZine&trade;</a>
+      <a href="/about.html">About Us</a>
+      <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
+            aria-controls="navlinks"><i></i><i></i></button>
+  </div>
 </header>
+<main id="main" tabindex="-1">
 
-<main id="main">
+  <section class="hero bg-ink on-dark">
+    <div class="mark-layer" aria-hidden="true"><div class="mark-col"><svg class="hero-mark" data-mark viewBox="0 0 394 321" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z"></path><path d="M125 104V321H5V215.047L125 104Z"></path><path d="M274 104L196 162L0 1H155.229L274 104Z"></path></svg></div></div>
+    <div class="inner">
+      <p class="t-eyebrow">Practice benchmark</p>
+      <h1>See where your practice actually stands.</h1>
+      <p class="t-lead lead">Six minutes of figures against anonymized industry benchmarks.
+      The calculator runs in your browser, and nothing is sent to us unless you ask for the
+      full report.</p>
+    </div>
+  </section>
 
-  <!-- The mandatory label. Present on the form and on every results screen. -->
+  <section class="section bg-cream">
+    <div class="tool">
+      <div class="tool-card">
+<!-- The mandatory label. Present on the form and on every results screen. -->
   <div class="cohort-label" id="cohortLabel">
     <b>Seed cohort, v1</b>, assembled from published industry sources. Sample sizes and definitions
     vary by source. Marga Exchange panel data replaces this from wave one.
@@ -317,16 +352,60 @@ button[disabled]{opacity:.5;cursor:not-allowed}
       <button type="button" class="btn-secondary" id="restartBtn">Start over</button>
     </div>
   </section>
+      </div>
+      <p class="t-small" style="margin:22px 0 0;color:var(--text-muted);text-align:center">
+      What we store, and how to have it deleted, is set out in full on the
+      <a class="link-arrow" href="/privacy.html">privacy page</a>.</p>
+    </div>
+  </section>
+
+  
+  <section class="closing bg-ink on-dark">
+    <div class="cta-block">
+      <p class="t-eyebrow">Beyond the benchmark</p>
+      <h2>Want the read behind the numbers?</h2>
+      <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
+    </div>
+    <footer class="site-foot" role="contentinfo">
+      <div class="inner">
+        <div>
+          <div class="brand"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></div>
+          <p class="desc">Commercialization strategy and intelligence for the decisions that
+          shape a category.</p>
+        </div>
+        <div>
+          <h3>Who we partner with</h3>
+          <ul>
+            <li><a href="/for-manufacturers.html">Manufacturers</a></li>
+            <li><a href="/for-investors.html">Investors</a></li>
+            <li><a href="/for-providers.html">Providers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>The firm</h3>
+          <ul>
+            <li><a href="/the-marga-method.html">How we think</a></li>
+            <li><a href="/journal.html">MargaZine&trade;</a></li>
+            <li><a href="/about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get in touch</h3>
+          <ul>
+            <li><a href="/Consultation.html">Contact form</a></li>
+            <li><a href="https://www.linkedin.com/company/marga-partners">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <span>&copy; 2026 Marga Partners LLC. Marga&trade; is a trademark of Marga
+        Partners LLC and covers the product names used under it.</span>
+        <span><a href="/privacy.html">Privacy</a></span>
+      </div>
+    </footer>
+  </section>
 </main>
-
-<footer style="margin-top:48px;font-size:13px;border-top:1px solid var(--cream3);padding-top:18px">
-  <p>Marga&trade; is a trademark of Marga Partners LLC and covers the product names used under it.
-  <a href="privacy.html">Privacy</a>. To delete a submission, email
-  <a href="mailto:admin@margapartners.com">admin@margapartners.com</a> with your report token.</p>
-</footer>
-</div>
-
-<script type="module">
+<script src="/assets/marga-v3-nav.js"></script><script type="module">
 import { buildReport, UNGATED_METRICS } from './assets/benchmark/calculator.js';
 
 const API = 'https://app.margapartners.com/v1/benchmark';
@@ -546,5 +625,4 @@ document.getElementById('calc').addEventListener('input', saveHash);
 loadHash();
 showStep(step);
 </script>
-</body>
-</html>
+</body></html>

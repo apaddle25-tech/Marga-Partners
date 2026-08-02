@@ -1,49 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | Marga Partners</title>
-<meta name="robots" content="noindex">
+<meta name="description" content="That page could not be found. Here are the places most people are looking for.">
+<link rel="canonical" href="https://www.margapartners.com/404.html">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marga Partners">
+<meta property="og:title" content="Page not found">
+<meta property="og:description" content="That page could not be found. Here are the places most people are looking for.">
+<meta property="og:url" content="https://www.margapartners.com/404.html">
+<meta property="og:image" content="https://www.margapartners.com/assets/og/home.png">
+<meta property="og:image:width" content="2400"><meta property="og:image:height" content="1260">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Page not found">
+<meta name="twitter:description" content="That page could not be found. Here are the places most people are looking for.">
+<meta name="twitter:image" content="https://www.margapartners.com/assets/og/home.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/marga-v3.css">
 <style>
-  :root{--ink:#16140F;--cream:#FBF6EC;--cream2:#F1E9DB;--bronze:#9A742F;--gold:#C7A24B;--gold2:#B0863C;--body:#4A4435;--line:rgba(22,20,15,.14)}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--cream);color:var(--ink);font-family:'Manrope',system-ui,-apple-system,sans-serif;
-    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
-  .wrap{max-width:560px;text-align:center}
-  .lock{display:inline-flex;align-items:center;gap:11px;margin-bottom:40px}
-  .lock svg{width:30px;height:auto;display:block}
-  .lock b{font-weight:800;letter-spacing:-.02em;font-size:18px}
-  .code{font:700 13px/1 'Manrope',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:18px}
-  h1{font-family:'Newsreader','Libre Caslon Text',Georgia,serif;font-weight:400;font-size:clamp(30px,6vw,46px);
-    line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;text-wrap:balance}
-  p{font-size:16px;line-height:1.6;color:var(--body);margin:0 auto 34px;max-width:44ch}
-  .links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-  .links a{font:600 13px/1 'Manrope',sans-serif;padding:12px 18px;border-radius:3px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
-  .links a.primary{background:var(--ink);color:var(--cream2)}
-  .links a.primary:hover{background:#000}
-  .links a.ghost{color:var(--ink);border:1px solid var(--line)}
-  .links a.ghost:hover{border-color:var(--ink)}
+.section{padding:88px 0}
+.inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
+.bg-card-solid{background:var(--card)}
+.hero{position:relative;padding:calc(var(--pad-hero-top) + 10px) 0 84px;overflow:hidden}
+.hero h1{margin:0;font:400 clamp(36px,5.2vw,66px)/1 var(--serif);letter-spacing:-.03em;
+  color:var(--cream);max-width:16ch;text-wrap:balance}
+.hero .lead{margin:30px 0 0;max-width:58ch}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.t-h2{margin:12px 0 0;font:400 clamp(28px,3.6vw,48px)/1.06 var(--serif);letter-spacing:-.015em;
+  max-width:22ch;text-wrap:balance}
+.prose-p{max-width:66ch;margin:22px 0 0}
+.closing{padding:96px 0 0}
+.cta-block{width:var(--col);margin:0 auto;padding:0 var(--pad-x) 96px;text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.cta-block h2{margin:18px 0 0;font:400 clamp(30px,4vw,48px)/1.06 var(--serif);
+  letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+.cta-block .sub{margin:18px 0 30px;max-width:46ch}
+@media(max-width:720px){
+  .section{padding:60px 0}
+  .hero{padding-bottom:60px}
+  .closing{padding-top:64px}
+  .cta-block{padding-bottom:64px}
+}
+
+/* A single column of prose, for pages that are documents rather than layouts. */
+.doc{width:min(760px,100%);margin:0 auto;padding:0 var(--pad-x)}
+.doc h1{margin:14px 0 0;font:400 clamp(34px,4.6vw,58px)/1.02 var(--serif);letter-spacing:-.025em;
+  color:var(--cream);text-wrap:balance}
+.doc .stamp{margin:22px 0 0;color:var(--text-on-dark-muted);font:500 13px/1.5 var(--sans)}
+.doc-body h2{margin:44px 0 0;font:400 clamp(22px,2.4vw,30px)/1.15 var(--serif);
+  letter-spacing:-.01em;color:var(--text)}
+.doc-body p{margin:16px 0 0;font:400 16.5px/1.68 var(--sans);color:var(--text-body)}
+.doc-body ul{margin:16px 0 0;padding-left:1.1em}
+.doc-body li{margin:8px 0 0;font:400 16.5px/1.68 var(--sans);color:var(--text-body)}
+.doc-body code{display:block;margin:14px 0 0;padding:14px 16px;overflow-x:auto;
+  background:var(--card);border:1px solid rgba(22,20,15,.18);
+  font:500 13px/1.5 var(--mono);color:var(--text)}
+.doc-body a{color:var(--text-accent);text-decoration:underline}
+
+/* subscribe */
+.subform{margin-top:34px;display:grid;gap:16px;max-width:520px}
+.subform label{display:block;font:600 11px/1 var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.subform input[type=email],.subform select{width:100%;min-height:52px;padding:14px 15px;
+  background:var(--card);color:var(--text);border:1px solid rgba(22,20,15,.3);
+  font:400 15.5px/1.4 var(--sans)}
+.subform input[type=email]:focus,.subform select:focus{outline:2px solid var(--text-accent);
+  outline-offset:-2px;border-color:var(--text-accent)}
+/* label.consent, not .consent. The consent row IS a label, so `.subform label` above matched
+   it and set the field-label treatment: 11px uppercase mono with .16em tracking, which
+   turned a sentence of consent copy into an eyebrow nobody would read. Equal specificity
+   and later in the file, so the class alone loses.
+
+   The label is also the target rather than the 20px box, because clicking anywhere on it
+   toggles the checkbox. It came out 36px, which clears the 24px WCAG minimum and misses the
+   44px this site holds itself to, so it is padded to 44. */
+.subform label.consent{display:flex;gap:11px;align-items:center;min-height:44px;padding:4px 0;
+  margin:0;font:400 14px/1.55 var(--sans);letter-spacing:normal;text-transform:none;
+  color:var(--text-body);cursor:pointer}
+.consent input{width:20px;height:20px;min-height:20px;margin-top:2px;flex:none;
+  accent-color:var(--gold)}
+.subform .btn{justify-self:start}
+.subnote{margin:16px 0 0;font:400 13.5px/1.6 var(--sans);color:var(--text-muted)}
+#subdone{margin-top:26px;padding:20px 22px;background:var(--card);
+  border-left:2px solid var(--gold);font:400 15.5px/1.6 var(--sans);color:var(--text-body)}
+
+/* 404 */
+.oops{width:var(--col);margin:0 auto;padding:0 var(--pad-x);text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.oops h1{margin:16px 0 0;font:400 clamp(38px,5.4vw,72px)/1 var(--serif);letter-spacing:-.03em;
+  color:var(--cream);text-wrap:balance}
+.oops p{margin:20px 0 0;max-width:46ch}
+.oops .cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="lock" href="/index.html" aria-label="Marga Partners home">
-      <svg viewBox="0 0 394 321" fill="none" aria-hidden="true">
-        <path d="M394 0V320H274V104L394 0Z" fill="#16140F"/>
-        <path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"/>
-        <path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"/>
-      </svg>
-      <b>Marga Partners</b>
-    </a>
-    <div class="code">Error 404</div>
-    <h1>This page wandered off.</h1>
-    <p>The link may be old or the page may have moved. Here are a few good places to pick the thread back up.</p>
-    <div class="links">
-      <a class="primary" href="/index.html">Back to home</a>
-      <a class="ghost" href="/the-marga-method.html">Marga Intelligence&trade;</a>
-      <a class="ghost" href="/journal.html">The MargaZine</a>
-    </div>
+<a class="btn btn-dark skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <div class="nav-cap" data-menu="false">
+    <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <span class="nav-drop" data-open="false">
+        <button type="button" aria-expanded="false" aria-controls="whopanel">Who we serve
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"/></svg></button>
+        <span class="nav-panel" id="whopanel" role="group" aria-label="Who we serve">
+          <a href="/for-manufacturers.html"><b>Manufacturers</b>
+            <span>Turn an asset into a franchise.</span></a>
+          <a href="/for-investors.html"><b>Investors</b>
+            <span>See what the market has not priced in.</span></a>
+          <a href="/for-providers.html"><b>Providers</b>
+            <span>Build advantage at the point of care.</span></a>
+        </span>
+      </span>
+      <a href="/the-marga-method.html">How we think</a>
+      <a href="/journal.html">MargaZine&trade;</a>
+      <a href="/about.html">About Us</a>
+      <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
+            aria-controls="navlinks"><i></i><i></i></button>
   </div>
-</body>
-</html>
+</header>
+<main id="main" tabindex="-1">
+  <section class="hero bg-ink on-dark" style="padding-bottom:120px">
+    <div class="mark-layer" aria-hidden="true"><div class="mark-col"><svg class="hero-mark" data-mark viewBox="0 0 394 321" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z"></path><path d="M125 104V321H5V215.047L125 104Z"></path><path d="M274 104L196 162L0 1H155.229L274 104Z"></path></svg></div></div>
+    <div class="oops">
+      <p class="t-eyebrow">Error 404</p>
+      <h1>This page wandered off.</h1>
+      <p class="t-lead">The link may be old, or the page may have moved. Here are the places
+      most people are looking for.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/">Home</a>
+        <a class="btn btn-outline" href="/journal.html">MargaZine</a>
+        <a class="btn btn-outline" href="/the-marga-method.html">How we think</a>
+        <a class="btn btn-outline" href="/Consultation.html">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+    <footer class="site-foot" role="contentinfo">
+      <div class="inner">
+        <div>
+          <div class="brand"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></div>
+          <p class="desc">Commercialization strategy and intelligence for the decisions that
+          shape a category.</p>
+        </div>
+        <div>
+          <h3>Who we partner with</h3>
+          <ul>
+            <li><a href="/for-manufacturers.html">Manufacturers</a></li>
+            <li><a href="/for-investors.html">Investors</a></li>
+            <li><a href="/for-providers.html">Providers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>The firm</h3>
+          <ul>
+            <li><a href="/the-marga-method.html">How we think</a></li>
+            <li><a href="/journal.html">MargaZine&trade;</a></li>
+            <li><a href="/about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get in touch</h3>
+          <ul>
+            <li><a href="/Consultation.html">Contact form</a></li>
+            <li><a href="https://www.linkedin.com/company/marga-partners">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <span>&copy; 2026 Marga Partners LLC. Marga&trade; is a trademark of Marga
+        Partners LLC and covers the product names used under it.</span>
+        <span><a href="/privacy.html">Privacy</a></span>
+      </div>
+    </footer>
+</main>
+<script src="/assets/marga-v3-nav.js"></script>
+</body></html>

@@ -158,26 +158,50 @@ The public scorecard and the method radar are demonstrations, not the product.
 `margazine-build` publishes into this repo. Editing generated files here means your work
 is silently overwritten on the next publish. Fix the source in `margazine-build` instead.
 
+**As of the v4 migration on 2026-08-02, almost nothing here is hand-authored.** Twelve pages
+are emitted by a generator in `margazine-build`, and an edit made here is thrown away the next
+time that generator runs. Fix the generator.
+
+| Page | Generator |
+|---|---|
+| `index.html` | `build_home.py` |
+| `for-manufacturers.html`, `for-investors.html`, `for-providers.html` | `build_audience.py` |
+| `the-marga-method.html` | `build_method.py` (+ `method-parts/`) |
+| `about.html` | `build_about.py` |
+| `journal.html` | `build_journal.py` |
+| `Consultation.html` | `build_contact.py` (+ `contact-parts/`) |
+| `benchmark.html` | `build_benchmark.py` (+ `benchmark-parts/`) |
+| `privacy.html`, `subscribe.html`, `404.html` | `build_small.py` |
+
+The nav and footer for all of them live in `margazine-build/v4_chrome.py`. Change them once,
+there, and rebuild. They used to be copied into four generators, which is how they drift.
+
+The `*-parts/` directories hold components lifted verbatim from the pre-v4 pages: the Marga
+Index scorecard, the consultation form, and the benchmark wizard. Each carries a README
+saying what must never change in it. They are carried rather than retyped because a form is a
+contract with a server, and 5KB of DOM code does not survive being re-keyed.
+
 - Fully generated: everything in `journal/`, and each released article page at the repo root
   (for example `the-long-way-around.html`).
-- Partially generated, so edit with care:
-  - `index.html`: the "Free to read now" list between the `<!--MZFEED-->` and
-    `<!--/MZFEED-->` markers is rewritten on every publish. The rest of the page is
-    hand-authored and safe to edit.
-  - `journal.html`: the five `.feat` blocks inside the domain cards are rewritten. The
-    rest is hand-authored.
-  - `essays.html`: **this line used to say fully generated, and that was wrong.**
-    `write_essays` in `build_site.py` reads the file that is already here, swaps the
-    `<section class="a-body">` block, and writes it back. The head, the stylesheet, the
-    nav and the footer are all hand-authored here and survive every publish, which means
-    they can only be fixed here. Corrected 2026-08-01, after the mobile nav fix had to be
-    applied to this file directly.
+- Regions rewritten on every publish by `build_site.py`:
+  - `index.html`: the three `<!--PROOF1..3:slug-->` regions, one per proof card, flipped from
+    a scheduled date to a live link the morning each essay lands.
+  - `journal.html`: `<!--MZLIVE-->`, what is readable now, and `<!--MZSCHED-->`, what is
+    coming. Both are rendered by `build_journal.py`, which `build_site.py` imports rather
+    than duplicating.
+  - `sitemap.xml` is regenerated whole. Marketing dates live in `MARKETING` in
+    `build_site.py`; bump one when that page's content actually changes. Never hand-edit the
+    file, and never stamp every page with today, which tells Google something untrue.
+  - **Deleting or renaming any of those markers breaks the update silently.** The publish
+    still reports success and the region simply stops changing.
+- `essays.html` is a redirect stub to `journal.html` now. `write_essays` returns early when
+  the `a-body` region is absent, so a publish leaves the stub untouched.
 - Also generated: `assets/og/*.png`, produced by `make_og.py` in `margazine-build`.
   Regenerate there, do not edit the PNGs.
 
-Hand-authored pages you own here: `Consultation.html`, `for-manufacturers.html`,
-`for-investors.html`, `for-providers.html`, `the-marga-method.html`,
-`the-marga-difference.html`, `products.html`, `subscribe.html`, `404.html`.
+Hand-authored pages you still own here: `the-marga-difference.html`, `products.html`,
+`5p-playbook.html`, `5ps-index.html`, `social-5p.html`. All five are one-line redirect stubs
+pointing at `the-marga-method.html`.
 
 ### Contact and forms
 The consultation form posts to `app.margapartners.com/contact`. No email address belongs

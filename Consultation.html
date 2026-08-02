@@ -1,134 +1,196 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Schedule a Consultation | Marga Partners</title><meta property="og:type" content="website"><meta property="og:site_name" content="Marga Partners"><meta property="og:title" content="Start a conversation with Marga"><meta property="og:description" content="Consulting, the Exchange, indices, and diligence reads."><meta property="og:url" content="https://www.margapartners.com/Consultation.html"><meta property="og:image" content="https://www.margapartners.com/assets/og/consultation.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Start a conversation with Marga"><meta name="twitter:description" content="Consulting, the Exchange, indices, and diligence reads."><meta name="twitter:image" content="https://www.margapartners.com/assets/og/consultation.png"><link rel="icon" href="/assets/favicon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <meta name="description" content="Consultation intake for Marga Partners lifecycle strategy engagements.">
-  <meta name="theme-color" content="#14120E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --ink:#16140F;--ink2:#4A4435;--paper:#F1E9DB;--paper2:#EBE0CC;--card:#FBF6EC;
-      --gold:#B0863C;--gold2:#C7A24B;--golddeep:#7A5A20;--dark:#14120E;--line:rgba(22,20,15,.16);
-      --max:1240px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.035;background:linear-gradient(135deg,rgba(22,20,15,.5) 0 1px,transparent 1px 20px),linear-gradient(45deg,rgba(22,20,15,.3) 0 1px,transparent 1px 24px)}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(var(--max),100%);margin:0 auto;padding:0 clamp(22px,5vw,64px)}
-    .mono{font-family:'Manrope',sans-serif}
-    /* nav */
-    .nav{position:sticky;top:0;z-index:70;backdrop-filter:blur(14px);background:rgba(241,233,219,.9);border-bottom:1px solid rgba(22,20,15,.12)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand svg{width:30px;height:auto;flex:none}
-    .brand span{font-weight:800;letter-spacing:-.02em;font-size:18px;line-height:1}
-    .brand small{display:block;font:700 9px/1 'Manrope',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:rgba(22,20,15,.5);margin-top:3px}
-    .nav-links{display:flex;align-items:center;gap:30px;font:600 13px/1 Manrope,sans-serif;color:rgba(22,20,15,.72)}
-    .nav-links a:hover{color:var(--ink)}
-    .pill{background:var(--ink);color:var(--paper);padding:11px 17px;border-radius:3px}
-    .pill:hover{background:#000;color:var(--paper)}
-    /* hero */
-    main{position:relative;z-index:1}
-    .hero{padding:clamp(46px,7vw,80px) 0 clamp(50px,7vw,96px)}
-    .intake-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(34px,5vw,72px);align-items:start;min-width:0}
-    .eyebrow{display:flex;align-items:center;gap:13px;font:600 10px/1 'Manrope',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--golddeep);margin-bottom:26px}
-    .eyebrow:before{content:"";width:32px;height:1px;background:var(--gold)}
-    h1{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(3rem,6vw,5.4rem);line-height:.94;letter-spacing:-.02em;max-width:11ch}
-    h1 span{font-style:italic;color:var(--golddeep)}
-    .lead{font-size:clamp(1rem,1.2vw,1.14rem);line-height:1.62;max-width:52ch;color:var(--ink2);margin-top:26px}
-    .signal-grid{margin-top:34px;border:1px solid var(--line)}
-    .signal{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-bottom:1px solid var(--line);background:var(--card)}
-    .signal:last-child{border-bottom:0}
-    .signal i{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.14em;color:var(--golddeep);padding-top:3px;flex:none}
-    .signal b{font-weight:600;font-size:14.5px;line-height:1.45;color:var(--ink)}
-    /* form card */
-    .form-card{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 70px rgba(22,20,15,.12);padding:clamp(26px,3.4vw,44px);min-width:0}
-    .fig{position:absolute;top:-9px;right:22px;background:var(--golddeep);color:var(--card);font:600 9px/1 'Manrope',sans-serif;letter-spacing:.12em;padding:5px 9px}
-    .form-head{margin-bottom:30px}
-    .form-head h2{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.02;letter-spacing:-.01em;max-width:14ch}
-    .form-head p{margin-top:14px;max-width:44ch;color:var(--ink2);font-size:.95rem;line-height:1.55}
-    form{display:grid;gap:26px}
-    fieldset{border:0;display:grid;gap:15px}
-    legend{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--golddeep);margin-bottom:4px;padding-bottom:12px;border-bottom:1px solid var(--line);width:100%}
-    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .field{display:grid;gap:7px;min-width:0}
-    .field.full{grid-column:1/-1}
-    label{font:600 11px/1.2 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(22,20,15,.7)}
-    input,select,textarea{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:4px;min-height:48px;padding:12px 13px;font:15px/1.4 Manrope,sans-serif;outline:none;transition:border-color .18s,box-shadow .18s}
-    textarea{min-height:120px;resize:vertical}
-    input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,134,60,.16)}
-    .check-row{display:flex;align-items:flex-start;gap:11px;color:var(--ink2);font-size:.9rem;line-height:1.45}
-    .check-row input{width:18px;height:18px;min-height:18px;margin-top:2px;accent-color:var(--gold)}
-    .actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:4px}
-    .button{appearance:none;border:0;min-height:52px;border-radius:3px;padding:0 26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}
-    .button:hover{transform:translateY(-2px);background:#000}
-    .note{font-size:.82rem;color:rgba(22,20,15,.55);max-width:30ch}
-    /* intent chips */
-    .intent{display:flex;flex-wrap:wrap;gap:10px}
-    .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:4px;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}
-    .intent label:hover{border-color:var(--gold)}
-    .intent input{position:absolute;opacity:0;width:0;height:0}
-    .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}
-.intent-hint{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}
-    /* below */
-    .below{border-top:1px solid var(--line);padding:30px 0;color:rgba(22,20,15,.55);font-size:.86rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .below a{color:var(--golddeep);font-weight:700}
-    .below .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-    @media(max-width:980px){.intake-grid{grid-template-columns:1fr}}
-    @media(max-width:720px){
-      .nav-links a:not(.pill){display:none}
-      .fields{grid-template-columns:1fr}
-      h1{font-size:clamp(2.8rem,13vw,4rem)}
-    }
-  </style>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a conversation | Marga Partners</title>
+<meta name="description" content="Tell Marga about the decision in front of you. Consulting, the Marga Exchange, indices, and diligence reads.">
+<link rel="canonical" href="https://www.margapartners.com/Consultation.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marga Partners">
+<meta property="og:title" content="Define the path forward.">
+<meta property="og:description" content="Tell Marga about the decision in front of you. Consulting, the Marga Exchange, indices, and diligence reads.">
+<meta property="og:url" content="https://www.margapartners.com/Consultation.html">
+<meta property="og:image" content="https://www.margapartners.com/assets/og/home.png">
+<meta property="og:image:width" content="2400"><meta property="og:image:height" content="1260">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Define the path forward.">
+<meta name="twitter:description" content="Tell Marga about the decision in front of you. Consulting, the Marga Exchange, indices, and diligence reads.">
+<meta name="twitter:image" content="https://www.margapartners.com/assets/og/home.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://www.margapartners.com/Consultation.html#page","url":"https://www.margapartners.com/Consultation.html","name":"Start a conversation","description":"Tell Marga about the decision in front of you. Consulting, the Marga Exchange, indices, and diligence reads.","isPartOf":{"@id":"https://www.margapartners.com/#website"},"about":{"@id":"https://www.margapartners.com/#org"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.margapartners.com/Consultation.html#crumbs"}},{"@type":"BreadcrumbList","@id":"https://www.margapartners.com/Consultation.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.margapartners.com/"},{"@type":"ListItem","position":2,"name":"Contact"}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/marga-v3.css">
+<style>
+.section{padding:88px 0}
+.inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
+.bg-card-solid{background:var(--card)}
+.hero{position:relative;padding:calc(var(--pad-hero-top) + 10px) 0 84px;overflow:hidden}
+.hero h1{margin:0;font:400 clamp(36px,5.2vw,66px)/1 var(--serif);letter-spacing:-.03em;
+  color:var(--cream);max-width:16ch;text-wrap:balance}
+.hero .lead{margin:30px 0 0;max-width:58ch}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.t-h2{margin:12px 0 0;font:400 clamp(28px,3.6vw,48px)/1.06 var(--serif);letter-spacing:-.015em;
+  max-width:22ch;text-wrap:balance}
+.prose-p{max-width:66ch;margin:22px 0 0}
+.closing{padding:96px 0 0}
+.cta-block{width:var(--col);margin:0 auto;padding:0 var(--pad-x) 96px;text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.cta-block h2{margin:18px 0 0;font:400 clamp(30px,4vw,48px)/1.06 var(--serif);
+  letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+.cta-block .sub{margin:18px 0 30px;max-width:46ch}
+@media(max-width:720px){
+  .section{padding:60px 0}
+  .hero{padding-bottom:60px}
+  .closing{padding-top:64px}
+  .cta-block{padding-bottom:64px}
+}
+
+.intake{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:56px;
+  align-items:start}
+/* TWO SHAPES, ONE LIST. The page renders <li> and the script replaces them with its own
+   <div class="signal"><i>01</i><b>text</b></div> the moment an inquiry type is ticked, so
+   styling only the markup that ships means the list loses its design as soon as anyone
+   touches the form. Both are styled, and they are styled identically. */
+.signals{margin:30px 0 0;padding:0;list-style:none;border-top:1px solid rgba(22,20,15,.18)}
+.signals li,.signals .signal{display:flex;gap:14px;padding:18px 0;
+  border-bottom:1px solid rgba(22,20,15,.18);
+  font:400 15px/1.5 var(--sans);color:var(--text-body)}
+.signals li::before{content:"";flex:none;width:6px;height:6px;margin-top:7px;
+  background:var(--gold)}
+.signals .signal i{flex:none;font:600 11px/1.5 var(--mono);letter-spacing:.1em;
+  font-style:normal;color:var(--text-accent)}
+.signals .signal b{font-weight:400}
+.form-card{padding:var(--pad-card);background:var(--card);
+  border:1px solid rgba(22,20,15,.2)}
+.form-head h2{margin:0;font:400 clamp(24px,2.6vw,32px)/1.1 var(--serif);color:var(--text)}
+.form-head p{margin:12px 0 26px;font:400 15px/1.6 var(--sans);color:var(--text-body)}
+#sentBanner{margin-bottom:26px;padding:20px 22px;background:var(--proof);
+  border-left:2px solid var(--gold);font:400 15.5px/1.6 var(--sans);color:var(--text-body)}
+.form-card /* form card */
+    .form-card{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 70px rgba(22,20,15,.12);padding:clamp(26px,3.4vw,44px);min-width:0}.form-card form{display:grid;gap:26px}.form-card fieldset{border:0;display:grid;gap:15px}.form-card legend{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--golddeep);margin-bottom:4px;padding-bottom:12px;border-bottom:1px solid var(--line);width:100%}.form-card .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-card .field{display:grid;gap:7px;min-width:0}.form-card .field.full{grid-column:1/-1}.form-card label{font:600 11px/1.2 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(22,20,15,.7)}.form-card input,.form-card select,.form-card textarea{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:4px;min-height:48px;padding:12px 13px;font:15px/1.4 Manrope,sans-serif;outline:none;transition:border-color .18s,box-shadow .18s}.form-card textarea{min-height:120px;resize:vertical}.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,134,60,.16)}.form-card .check-row{display:flex;align-items:flex-start;gap:11px;color:var(--ink2);font-size:.9rem;line-height:1.45}.form-card .check-row input{width:18px;height:18px;min-height:18px;margin-top:2px;accent-color:var(--gold)}.form-card .actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:4px}.form-card .button{appearance:none;border:0;min-height:52px;border-radius:3px;padding:0 26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}.form-card .button:hover{transform:translateY(-2px);background:#000}.form-card .note{font-size:.82rem;color:rgba(22,20,15,.55);max-width:30ch}.form-card /* intent chips */
+    .intent{display:flex;flex-wrap:wrap;gap:10px}.form-card .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:4px;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}.form-card .intent label:hover{border-color:var(--gold)}.form-card .intent input{position:absolute;opacity:0;width:0;height:0}.form-card .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}.form-card .intent-hint{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}.form-card .fields{grid-template-columns:1fr}
+/* ---- corrections to the carried form ------------------------------------------------------
+   Recorded here rather than edited into contact-parts/, so that stays a faithful copy.
+   The old page styled these against its own tokens and its own grounds. */
+.form-card label{display:block;margin-bottom:7px;font:600 11px/1.3 var(--mono);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.form-card legend{width:100%;margin-bottom:14px;padding-bottom:12px;
+  border-bottom:1px solid rgba(22,20,15,.18);
+  font:600 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-accent)}
+.form-card fieldset{border:0;margin:0 0 28px;padding:0}
+/* :not([name="_honey"]) matters. The honeypot carries its own inline hiding, and the generic
+   input rule was still giving it min-height, which inflated a 1px trap into a 30 by 48 box
+   parked at the bottom right of the viewport. It is invisible and unclickable either way,
+   which is exactly why it would have sat there unnoticed. */
+.form-card input:not([name="_honey"]),.form-card select,.form-card textarea{
+  width:100%;min-height:48px;
+  padding:13px 14px;background:#fff;color:var(--text);border:1px solid rgba(22,20,15,.3);
+  border-radius:0;font:400 15px/1.4 var(--sans)}
+.form-card textarea{min-height:120px;resize:vertical}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{
+  outline:2px solid var(--text-accent);outline-offset:-2px;border-color:var(--text-accent)}
+.form-card .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form-card .field.full{grid-column:1/-1}
+/* The intent chips are the first control a person meets, and they were 13px tall. */
+.form-card .intent{display:flex;flex-wrap:wrap;gap:10px}
+.form-card .intent label{display:inline-flex;align-items:center;gap:9px;min-height:44px;
+  margin:0;padding:11px 15px;background:#fff;border:1px solid rgba(22,20,15,.3);
+  font:600 13px/1 var(--sans);letter-spacing:normal;text-transform:none;
+  color:var(--text);cursor:pointer;transition:border-color .15s,background .15s}
+.form-card .intent label:hover{border-color:var(--text-accent)}
+.form-card .intent label:has(input:checked){border-color:var(--text-accent);
+  background:rgba(199,162,75,.14);box-shadow:inset 0 0 0 1px var(--text-accent)}
+.form-card .intent input{position:absolute;opacity:0;width:0;height:0}
+.form-card .intent-hint{margin-left:8px;font:500 11px/1 var(--sans);color:var(--text-muted);
+  letter-spacing:normal;text-transform:none}
+.form-card .check-row{display:flex;align-items:flex-start;gap:11px;min-height:44px;
+  padding:4px 0;font:400 14px/1.55 var(--sans);color:var(--text-body)}
+.form-card .check-row input{width:20px;height:20px;min-height:20px;margin-top:2px;flex:none;
+  accent-color:var(--gold)}
+.form-card .actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:4px}
+.form-card .note{max-width:32ch;font:400 13px/1.5 var(--sans);color:var(--text-muted)}
+.form-card .button{appearance:none;display:inline-flex;align-items:center;
+  justify-content:center;min-height:48px;padding:0 26px;border:0;border-radius:40px;
+  background:var(--gold);color:var(--ink);font:700 14px/1 var(--sans);cursor:pointer;
+  transition:background .15s}
+.form-card .button:hover{background:var(--gold-hover)}
+/* The honeypot stays 1px. Excluding it from my own input rule was not enough, because the
+   carried stylesheet has an input rule of its own with min-height:48px, and min-height beats
+   the inline height:1px. The trap was rendering as a 28 by 48 box fixed to the bottom right
+   of the viewport: invisible at opacity 0 and unclickable, which is exactly why it would
+   have sat there for months. */
+.form-card input[name="_honey"]{min-height:0;width:1px;height:1px;padding:0;border:0}
+
+@media(max-width:900px){
+  .intake{grid-template-columns:minmax(0,1fr);gap:30px}
+  .form-card .fields{grid-template-columns:minmax(0,1fr)}
+}
+</style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap">
-      <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Marga Partners home">
-          <svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#16140F"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#16140F"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#B0863C"></path></svg>
-          <span>Marga<small>Partners</small></span>
-        </a>
-        <nav class="nav-links" aria-label="Consultation navigation">
-          <a href="/the-marga-method.html">Marga Intelligence&trade;</a>
-          <a href="/journal.html">The MargaZine</a>
-          <a href="/for-providers.html">For Providers</a>
-          <a class="pill" href="/index.html">Back to site</a>
-        </nav>
-      </div>
+<a class="btn btn-dark skip" href="#main">Skip to content</a>
+<header class="nav-wrap">
+  <div class="nav-cap" data-menu="false">
+    <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
+    <nav class="nav-links" id="navlinks" aria-label="Primary">
+      <span class="nav-drop" data-open="false">
+        <button type="button" aria-expanded="false" aria-controls="whopanel">Who we serve
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"/></svg></button>
+        <span class="nav-panel" id="whopanel" role="group" aria-label="Who we serve">
+          <a href="/for-manufacturers.html"><b>Manufacturers</b>
+            <span>Turn an asset into a franchise.</span></a>
+          <a href="/for-investors.html"><b>Investors</b>
+            <span>See what the market has not priced in.</span></a>
+          <a href="/for-providers.html"><b>Providers</b>
+            <span>Build advantage at the point of care.</span></a>
+        </span>
+      </span>
+      <a href="/the-marga-method.html">How we think</a>
+      <a href="/journal.html">MargaZine&trade;</a>
+      <a href="/about.html">About Us</a>
+      <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
+            aria-controls="navlinks"><i></i><i></i></button>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+
+  <section class="hero bg-ink on-dark">
+    <div class="mark-layer" aria-hidden="true"><div class="mark-col"><svg class="hero-mark" data-mark viewBox="0 0 394 321" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z"></path><path d="M125 104V321H5V215.047L125 104Z"></path><path d="M274 104L196 162L0 1H155.229L274 104Z"></path></svg></div></div>
+    <div class="inner">
+      <p class="t-eyebrow" id="eyebrow">Consultation intake</p>
+      <h1 id="intakeTitle">Define the <em>path</em> forward.</h1>
+      <p class="t-lead lead" id="intakeLead">Share the decisions, launches, or opportunities
+      in front of you. Select any that apply, and this single intake captures what Marga
+      needs for each.</p>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="wrap intake-grid">
+  <section class="section bg-cream">
+    <div class="inner">
+      <div class="intake">
         <div>
-          <div class="eyebrow" id="eyebrow">Consultation intake</div>
-          <h1 id="intakeTitle">Define the <span>path</span> forward.</h1>
-          <p class="lead" id="intakeLead">Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.</p>
-          <div class="signal-grid" id="signalGrid" aria-label="Consultation fit">
-            <div class="signal"><i>01</i><b>Lifecycle strategy across clinical, medical, and commercial decisions.</b></div>
-            <div class="signal"><i>02</i><b>Senior support for the moments where direction needs to hold together.</b></div>
-            <div class="signal"><i>03</i><b>Clear next steps for launch, portfolio, diligence, and growth planning.</b></div>
-          </div>
+          <p class="t-eyebrow">What we look for</p>
+          <h2 class="t-h2">Enough context to be useful on the first call.</h2>
+          <ul class="signals" id="signalGrid">
+          <li>Credentials and domain expertise across clinical, commercial, and scientific ground.</li>
+          <li>A point of view that sharpens the reads, and a name featured alongside them.</li>
+          <li>A standing seat in shaping Marga&#x27;s frameworks, indices, and commentary.</li>
+          </ul>
         </div>
-
         <div class="form-card">
-          <span class="fig">FIG. INTAKE</span>
+          <div id="sentBanner" hidden role="status">Thank you. Your enquiry is in and you
+          will hear back shortly.</div>
           <div class="form-head">
             <h2 id="formHeadTitle">Share the strategic context.</h2>
-            <p id="formHeadNote">Most fields are optional, but more context helps make the first conversation sharper.</p>
+            <p id="formHeadNote">Most fields are optional. Selected more than one path? Fill
+            in what applies to each.</p>
           </div>
-
-          <div id="sentBanner" role="status" style="display:none;margin:0 0 24px;padding:16px 20px;border-radius:10px;background:rgba(199,162,75,.14);border:1px solid rgba(154,116,47,.4);color:#16140F;font:600 15px/1.5 'Manrope',system-ui,sans-serif">Thank you. Your intake has been received, and Marga Partners will follow up shortly.</div>
-          <form action="https://app.margapartners.com/contact" method="POST">
+<form action="https://app.margapartners.com/contact" method="POST">
             <input type="hidden" name="_subject" id="subjField" value="New Marga Partners consultation request">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
 
@@ -327,7 +389,58 @@
               <p class="note">Your submission will be routed to Marga Partners.</p>
             </div>
           </form>
-          <script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="closing bg-ink on-dark">
+    <div class="cta-block">
+      <p class="t-eyebrow">No rush</p>
+      <h2>Prefer to read first?</h2>
+      <a class="btn btn-primary" href="/journal.html">Read the MargaZine</a>
+    </div>
+    <footer class="site-foot" role="contentinfo">
+      <div class="inner">
+        <div>
+          <div class="brand"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></div>
+          <p class="desc">Commercialization strategy and intelligence for the decisions that
+          shape a category.</p>
+        </div>
+        <div>
+          <h3>Who we partner with</h3>
+          <ul>
+            <li><a href="/for-manufacturers.html">Manufacturers</a></li>
+            <li><a href="/for-investors.html">Investors</a></li>
+            <li><a href="/for-providers.html">Providers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>The firm</h3>
+          <ul>
+            <li><a href="/the-marga-method.html">How we think</a></li>
+            <li><a href="/journal.html">MargaZine&trade;</a></li>
+            <li><a href="/about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get in touch</h3>
+          <ul>
+            <li><a href="/Consultation.html">Contact form</a></li>
+            <li><a href="https://www.linkedin.com/company/marga-partners">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <span>&copy; 2026 Marga Partners LLC. Marga&trade; is a trademark of Marga
+        Partners LLC and covers the product names used under it.</span>
+        <span><a href="/privacy.html">Privacy</a></span>
+      </div>
+    </footer>
+  </section>
+</main>
+<script src="/assets/marga-v3-nav.js"></script><script>
           (function(){
             var f=document.querySelector('form'); if(!f) return;
             f.addEventListener('submit', function(){
@@ -341,19 +454,8 @@
               }catch(_){}
             });
           })();
-          </script>
-        </div>
-      </div>
-    </section>
+          
 
-    <div class="wrap">
-      <div class="below">
-        <p><a href="index.html">&larr; Return to the main site</a></p>
-        <p class="mono">Marga Partners &middot; Lifecycle strategy</p>
-      </div>
-    </div>
-  </main>
-  <script>
   (function(){
     var TYPES={
       consultation:{eyebrow:'Consultation intake',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
@@ -405,7 +507,5 @@
     apply();
     document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',apply);});
   })();
-  </script>
-  <script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>
-</body>
-</html>
+  </script><script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>
+</body></html>

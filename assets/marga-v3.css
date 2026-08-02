@@ -49,6 +49,12 @@
   --card:#FBF6EC;
   --card2:#F6F0E3;
 
+  /* ---- three grounds the v4 design adds. Measured, not eyeballed. ---- */
+  --sand2:#E3D8BE;        /* the thesis band. The darkest light ground on the site, which
+                             is why the accent below had to move. */
+  --card3:#F4EEE1;        /* the lens section behind the three cards */
+  --proof:#F4EBD9;        /* the proof block inside a card */
+
   /* ---- accents. Both unchanged, but only one of them may be text. ---- */
   --gold:#C7A24B;         /* PRIMARY CTA FILL. On dark it is also safe as text, 6.93:1+ */
   --gold-hover:#D4B45F;
@@ -57,9 +63,22 @@
   /* ---- text colours. These are the only tokens a text rule may use. ---- */
   --text:var(--ink);                        /* body and headings on light */
   --text-body:#4A4435;                      /* long-form body on light, 7.4:1 on sand */
-  --text-accent:#7A5A20;                    /* eyebrows and links on light. 4.85:1 on sand,
-                                               5.89:1 on card. This replaces bronze-as-text. */
+  /* THE ACCENT DARKENED, AND THE DESIGN IS WHY. #7A5A20 cleared every ground the site had.
+     v4 adds --sand2 #E3D8BE, and #7A5A20 measures 4.48:1 on it, which misses AA by two
+     hundredths. The v4 prototype uses #6B4F1C for exactly this text and it clears
+     everywhere, so the design's own value is the fix rather than a compromise:
+
+       ground      #FBF6EC  #F6F0E3  #F4EEE1  #F4EBD9  #F1E9DB  #EBE0CC  #E3D8BE
+       #7A5A20        5.89     5.59     5.49     5.36     5.26     4.85     4.48  <- fails
+       #6B4F1C        7.06     6.70     6.58     6.42     6.31     5.82     5.37
+
+     Darkening only ever raises contrast, so no existing page can regress on this. */
+  --text-accent:#6B4F1C;                    /* eyebrows and links on light, all seven grounds */
   --text-muted:rgba(22,20,15,.62);          /* was .40/.45/.50, all failing. 4.67:1 on sand */
+  --text-numeral:rgba(22,20,15,.5);         /* the 01/02/03 card index. The design draws these
+                                               at .26, which is 1.77:1 and unreadable. .50 is
+                                               the faintest that clears the 3:1 large-text bar
+                                               on every ground: 3.19 on sand2 to 3.41 on card. */
   --text-on-dark:var(--cream);
   --text-on-dark-body:rgba(241,233,219,.72);/* 7.77:1 on ink3, the lightest dark ground */
   --text-on-dark-muted:rgba(241,233,219,.55);/* was .35/.40, both failing. 5.0:1 on ink3 */
@@ -80,7 +99,12 @@
   --mono:'Spline Sans Mono',ui-monospace,monospace; /* eyebrows, metadata, numerics */
 
   /* ---- layout ---- */
-  --col:min(1240px,100%);
+  /* 1280, not 1240. The v4 prototype puts no max width on the content and simply pads the
+     section by 64, so at a 1280 viewport its column is 1152. At 1240 ours came out 1112 and
+     every measured alignment in the design was 40px out. 1280 reproduces the prototype
+     exactly at 1280 and still caps the line length on a wide display, which the prototype
+     does not do at all. */
+  --col:min(1280px,100%);
   --col-narrow:min(900px,100%);
   --pad-y:clamp(60px,8vw,88px);
   --pad-x:clamp(22px,5vw,64px);
@@ -105,7 +129,12 @@
    the homepage was rendering in Times. A base declaration makes the worst case a wrong brand
    face rather than no brand face, which matters more with every page Phase 3 onward adds.
    Manrope because CLAUDE.md assigns it body and UI, and headings set --serif explicitly. */
-body{font-family:var(--sans);font-size:16px;line-height:1.62;
+/* margin:0 is not housekeeping. The browser's default body margin is 8px, the system never
+   removed it, and every full-bleed section was therefore inset by 8px with a 16px-narrower
+   content column than the design draws. It showed up as the hero mark's right edge landing
+   at 1208 instead of 1216, which is the sort of thing that reads as "close enough" until
+   every alignment in the design is measured against it. */
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
 .t-h1{font:400 clamp(44px,6.4vw,92px)/.96 var(--serif);letter-spacing:-.03em;text-wrap:balance}
@@ -167,7 +196,11 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
 .btn-square{border-radius:0}
 .btn-outline{border-color:rgba(22,20,15,.48);color:var(--ink);background:transparent}
 .btn-outline:hover{border-color:var(--ink)}
-.on-dark .btn-outline{border-color:rgba(241,233,219,.34);color:var(--cream)}
+/* .40, not v4's .34. A control's boundary is the only thing saying it is a control, and AA
+   asks 3:1 for that. .34 measures 2.78:1 on ink. The light-ground twin above was raised for
+   the same reason on 1 August and this one was missed, because nothing had measured a border
+   on a dark ground until the v4 hero put two buttons there. */
+.on-dark .btn-outline{border-color:rgba(241,233,219,.4);color:var(--cream)}
 .on-dark .btn-outline:hover{border-color:var(--cream)}
 .btn-dark{background:var(--ink);color:var(--cream)}
 .btn-dark:hover{background:#000}
@@ -184,6 +217,12 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
    The callout: a panel with a 2px gold left border. Used for the homepage thesis and the
    Exchange statement.
    ========================================================================================== */
+/* The same component on a light ground, which is where v4 puts it. The gold left border is
+   a rule and not text, so it stays gold. */
+.callout-light{background:var(--card);border-left:2px solid var(--gold)}
+.callout-light p{color:var(--text-body)}
+.callout-light .link-arrow{color:var(--text-accent)}
+
 .callout{background:rgba(241,233,219,.09);border-left:2px solid var(--gold);
   padding:34px 36px}
 .callout p{font-size:21px;line-height:1.5;color:var(--text-on-dark-body);margin:0 0 18px}
@@ -197,9 +236,48 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
 .section.narrow>.inner{width:var(--col-narrow)}
 .bg-cream{background:var(--cream)}
 .bg-sand{background:var(--sand)}
+.bg-sand2{background:var(--sand2)}
+.bg-card2{background:var(--card3)}
 .bg-ink{background:var(--ink2)}
 .bg-ink3{background:var(--ink3)}
 .hero{padding-top:var(--pad-hero-top)}
+
+/* ---- the hero mark ----------------------------------------------------------------------
+   A large watermark of the Marga mark, behind the hero text. Three measurements off the v4
+   prototype at 1280px define it: left edge 630 and right edge 1216, so it spans from the
+   nav's "Who we serve" pill to the right edge of the content column, and its top sits on
+   the cap line of the headline.
+
+   It is decorative, so it is aria-hidden in the markup and it never sits above text: the
+   mark layer is z-index 0 and the content is z-index 1. Without both, a 5% watermark still
+   captures clicks across half the hero. */
+.mark-layer{position:absolute;inset:0;padding:0 var(--pad-x);pointer-events:none;z-index:0}
+.mark-col{position:relative;width:var(--col);height:100%;margin:0 auto}
+/* The fallback lands the mark just under where the eyebrow sits, which is close enough that
+   the hero is composed with JavaScript off. marga-v3-nav.js then measures the headline and
+   sets --mark-top exactly, because cap height depends on the rendered font and no CSS length
+   can stand in for it. */
+.hero-mark{position:absolute;right:0;top:var(--mark-top,calc(var(--pad-hero-top) + 72px));
+  width:min(586px,51%);height:auto;opacity:.05;fill:var(--cream)}
+.hero>.inner{position:relative;z-index:1}
+
+/* The rule under the hero, with the lead on the left and the buttons on the right. */
+.hero-foot{display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;
+  align-items:flex-end;border-top:1px solid rgba(241,233,219,.2);padding-top:44px}
+/* The lead takes the slack and the buttons never shrink. At 56ch the lead measured 683px,
+   which with a 436px button row and a 36px gap came to 1155 in a 1136 column, so the row
+   wrapped and the design's single line broke. 52ch is the prototype's own measure. */
+.hero-foot .lead{flex:1 1 auto;max-width:52ch;margin:0}
+/* 0 1 auto with min-width:0, not 0 0 auto. The row wraps its own buttons, but a flex item
+   whose basis is max-content and which is forbidden to shrink never gets narrow enough for
+   that wrap to trigger: at 375px the two buttons stayed side by side and pushed 84px of
+   horizontal scroll onto the page. min-width:0 removes the automatic minimum that would
+   otherwise hold it at max-content anyway. */
+.hero-foot .cta-row{flex:0 1 auto;min-width:0;display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:720px){
+  .hero-foot{gap:24px;padding-top:30px}
+  .hero-mark{top:auto;bottom:0;width:74%;opacity:.045}
+}
 .hero-gradient{background:
   radial-gradient(70% 70% at 84% 10%,#F0E4C8 0%,rgba(240,228,200,0) 52%),
   linear-gradient(158deg,#F1E9DB 0%,#EBE0CC 62%,#E4D8BF 100%)}
@@ -241,7 +319,11 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
   pointer-events:none}
 .nav-cap{width:min(1200px,100%);margin:0 auto;pointer-events:auto;display:flex;
   align-items:center;justify-content:space-between;gap:18px;
-  padding:11px 14px 11px 22px;background:rgba(20,18,14,.85);
+  padding:11px 14px 11px 22px;
+  /* v4 lifts the capsule off the page: a warmer, lighter fill with a visible hairline, so it
+     reads as a floating object rather than a darker patch of the hero. Over ink it composites
+     to rgb(52,49,41), and nav links at .78 measure 7.25:1 on that. */
+  background:rgba(55,51,43,.92);border:1px solid rgba(241,233,219,.22);
   backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
   border-radius:var(--r-nav);box-shadow:0 16px 44px -20px rgba(10,16,16,.55)}
 
@@ -249,23 +331,30 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
 .nav-brand svg{width:26px;height:auto;flex:none}
 .nav-brand b{font:700 17px/1 var(--sans);color:var(--cream);letter-spacing:-.01em}
 
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{font:600 13.5px/1 var(--sans);color:rgba(241,233,219,.78);text-decoration:none;
-  padding:14px 12px;min-height:44px;display:inline-flex;align-items:center;
+/* 20px, not 6. v4 lets the nav breathe, and the spacing is load bearing rather than taste:
+   it is what puts the "Who we serve" pill at x=630 on a 1280 viewport, which is exactly
+   where the hero mark's left edge falls. Tighten this and the two stop lining up. */
+.nav-links{display:flex;align-items:center;gap:20px}
+/* Vertical padding only. The 44px target is a height requirement and the gap above already
+   sets the horizontal rhythm, so padding the sides as well would double the spacing v4 draws
+   and push the pill off the mark's edge. The hit area stays 44px tall and as wide as the
+   label, and the narrowest label here is 56px. */
+.nav-links a{font:500 13px/1 var(--sans);color:rgba(241,233,219,.78);text-decoration:none;
+  padding:14px 0;min-height:44px;display:inline-flex;align-items:center;
   transition:color .15s}
 .nav-links a:hover,.nav-links a[aria-current=page]{color:var(--cream)}
 /* The CTA is a button that happens to sit in the nav, and `.nav-links a` out-specifies
    `.btn-primary`, so it inherited cream text onto a gold fill: 1.74:1, the worst pair on the
    page. A button keeps its own colour wherever it lands. */
-.nav-links a.btn{padding:15px 28px}
+.nav-links a.btn{padding:12px 20px;font:700 13px/1 var(--sans);border-radius:30px}
 .nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:var(--ink)}
 .nav-links a.btn-dark,.nav-links a.btn-dark:hover{color:var(--cream)}
 
 /* the "Who we serve" trigger and its panel */
 .nav-drop{position:relative}
 .nav-drop>button{display:inline-flex;align-items:center;gap:7px;min-height:44px;
-  padding:11px 15px;background:rgba(241,233,219,.07);border:0;border-radius:30px;
-  font:600 13.5px/1 var(--sans);color:rgba(241,233,219,.78);cursor:pointer;
+  padding:11px 16px;background:rgba(241,233,219,.07);border:0;border-radius:30px;
+  font:500 13px/1 var(--sans);color:rgba(241,233,219,.78);cursor:pointer;
   transition:color .15s,background .15s}
 .nav-drop>button:hover,.nav-drop>button[aria-expanded=true]{color:var(--cream);
   background:rgba(241,233,219,.12)}
@@ -335,21 +424,42 @@ body{font-family:var(--sans);font-size:16px;line-height:1.62;
 /* ==========================================================================================
    FOOTER
    ========================================================================================== */
-.site-foot{background:var(--footer);color:var(--text-on-dark-muted);padding:48px 0 34px}
+.site-foot{background:var(--footer);color:var(--text-on-dark-muted);padding:54px 0 44px;
+  border-top:1px solid rgba(241,233,219,.14)}
+/* Four columns in v4, not three: the link groups split into who we partner with, the firm,
+   and get in touch. minmax(0,1fr) rather than 1fr, because 1fr means minmax(auto,1fr) and
+   that auto floor refuses to shrink below the widest word, which is how a column pushes a
+   grid wider than its track and the page gains horizontal scroll. */
 .site-foot .inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x);display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+  grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));
+  gap:clamp(28px,5vw,56px);align-items:start}
 .site-foot .brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .site-foot .brand svg{width:24px;height:auto}
 .site-foot .brand b{font:700 15.5px/1 var(--sans);color:var(--cream)}
 .site-foot .desc{font:400 13.5px/1.6 var(--sans);max-width:32ch;
   color:var(--text-on-dark-muted)}
+/* Gold, per v4. Safe here and only here: gold on the footer ground measures 7.99:1, where the
+   same colour on cream is 2.24:1. This is the one place a heading may be gold. */
 .site-foot h3,.site-foot h4{font:600 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(241,233,219,.55);margin:0 0 6px}
+  color:var(--text-accent-dark);margin:0 0 6px}
 .site-foot ul{list-style:none;margin:0;padding:0}
 .site-foot ul a{display:inline-flex;align-items:center;min-height:44px;
-  font:500 13.5px/1 var(--sans);color:var(--text-on-dark-muted);text-decoration:none;
+  font:500 13.5px/1 var(--sans);color:var(--text-on-dark-body);text-decoration:none;
   transition:color .15s}
 .site-foot ul a:hover{color:var(--cream)}
+
+/* The copyright row. v4 sets this at rgba(241,233,219,.45), which is 3.95:1 at 12px and
+   fails. --text-on-dark-muted is .55 and measures 5.36:1 on this ground. */
+.site-foot .foot-legal{width:var(--col);margin:28px auto 0;padding:20px var(--pad-x) 0;
+  display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;
+  border-top:1px solid rgba(241,233,219,.16);
+  font:500 12px/1.5 var(--sans);color:var(--text-on-dark-muted)}
+/* These are real links and they need a real target. Left inline they rendered 17px tall. */
+.site-foot .foot-legal a{display:inline-flex;align-items:center;min-height:44px;
+  color:inherit;text-decoration:none}
+.site-foot .foot-legal a:hover{color:var(--cream);text-decoration:underline}
+
 @media(max-width:980px){
-  .site-foot .inner{grid-template-columns:1fr;gap:32px}
+  .site-foot .inner{grid-template-columns:minmax(0,1fr);gap:32px}
+  .site-foot .foot-legal{justify-content:flex-start}
 }

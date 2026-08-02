@@ -121,4 +121,53 @@
       if (toggle) { toggle.setAttribute('aria-expanded', 'false'); toggle.focus(); }
     }
   });
+
+  // ---- the hero mark -----------------------------------------------------------------------
+  // The v4 hero puts a large watermark of the Marga mark behind the headline, with its top on
+  // the headline's cap line. Cap height is a property of the rendered font, so no CSS length
+  // expresses it: 97px of Newsreader has a different cap line from 44px of it, and the size is
+  // fluid. The stylesheet carries a fallback that lands close, and this measures and corrects.
+  //
+  // It runs on any page with [data-mark] inside a .mark-col and returns on every page without
+  // one, so it is safe to load site wide.
+  var col = document.querySelector('.mark-col');
+  var mark = col && col.querySelector('[data-mark]');
+  if (!mark) return;
+
+  var heading = col.closest('section') && col.closest('section').querySelector('h1, h2');
+  if (!heading) return;
+
+  // Newsreader's cap height is 0.7em. The half-leading above the first line has to come off
+  // as well, and it is negative whenever line-height is tighter than the font size, which it
+  // is on the hero at 97px over 0.9.
+  var CAP = 0.7;
+
+  var place = function () {
+    // The narrow layout drops the mark to the bottom, where the measurement means nothing and
+    // would fight the stylesheet.
+    if (window.matchMedia('(max-width:720px)').matches) {
+      mark.style.removeProperty('--mark-top');
+      return;
+    }
+    var cs = window.getComputedStyle(heading);
+    var size = parseFloat(cs.fontSize);
+    var line = parseFloat(cs.lineHeight);
+    if (!size) return;
+    if (!line) line = size * 1.2;
+    var halfLeading = (line - size) / 2;
+    var capTop = heading.getBoundingClientRect().top + halfLeading + size * (1 - CAP);
+    mark.style.setProperty('--mark-top',
+      Math.round(capTop - col.getBoundingClientRect().top) + 'px');
+  };
+
+  // Fonts change the measurement, so it runs again once they have loaded. Without this the
+  // mark is placed against the fallback face and then never corrected.
+  place();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+
+  var pending;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(pending);
+    pending = window.setTimeout(place, 120);
+  });
 }());

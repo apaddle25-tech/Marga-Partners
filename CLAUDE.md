@@ -33,11 +33,37 @@ Measured 2026-07-28, contrast against the three cream grounds:
 | gold #C7A24B | 2.24 | 2.00 | 1.85 | fill and rules only, never text |
 | gold2 #B0863C | 3.08 | 2.76 | 2.54 | never body text |
 | bronze #9A742F | 3.97 | 3.55 | 3.27 | large text only, floor for eyebrows |
-| **#7A5A20** (darkened bronze) | 5.89 | 5.26 | 4.85 | **clears AA on all three, use for body-size text** |
+| #7A5A20 (darkened bronze) | 5.89 | 5.26 | 4.85 | clears AA on all three |
 | body #4A4435 | 8.99 | 8.03 | 7.41 | body copy |
 | ink #16140F | 17.09 | 15.27 | 14.08 | headings |
 
-Bronze alone does not clear 4.5:1 on any cream. Use #7A5A20 when the text is body size.
+Bronze alone does not clear 4.5:1 on any cream.
+
+### The accent is #6B4F1C, updated 2026-08-02
+
+The v4 design adds three grounds, and the darkest of them broke the old floor. #7A5A20
+measures **4.48:1** on `--sand2`, which misses AA by two hundredths. The v4 prototype uses
+#6B4F1C for this text and it clears everywhere, so the design's own value is now the token.
+
+| Ground | | #7A5A20 | **#6B4F1C** |
+|---|---|---|---|
+| `--card` | #FBF6EC | 5.89 | **7.06** |
+| `--card2` | #F6F0E3 | 5.59 | **6.70** |
+| `--card3` | #F4EEE1 | 5.49 | **6.58** |
+| `--proof` | #F4EBD9 | 5.36 | **6.42** |
+| `--cream` | #F1E9DB | 5.26 | **6.31** |
+| `--sand` | #EBE0CC | 4.85 | **5.82** |
+| `--sand2` | #E3D8BE | **4.48 fails** | **5.37** |
+
+Darkening only ever raises contrast, so nothing already shipped can regress on this.
+
+`--text-numeral` rgba(22,20,15,.5) is for the large faint index numerals. The v4 design draws
+them at .26, which is 1.77:1. .50 is the faintest that clears the 3:1 large-text bar on every
+ground, 3.19 on sand2 to 3.41 on card.
+
+**The article template is not on this yet.** `margazine-build/seo-package/design-tokens.json`
+still carries #7A5A20 and its grounds are unchanged, so it remains correct there. The two
+converge when the v4 article design lands.
 
 ## The marks (enforced by bin/naming-check.js)
 

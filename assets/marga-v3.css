@@ -241,6 +241,11 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
 .bg-ink{background:var(--ink2)}
 .bg-ink3{background:var(--ink3)}
 .hero{padding-top:var(--pad-hero-top)}
+/* The eyebrow sits well clear of the headline. v4 leaves 50px between the two boxes at
+   1280 and the hero was inheriting 14px from the heading's own margin, which read as the
+   label being stuck to the first line. Fluid, so it tightens with the headline rather than
+   leaving a hole above a 44px h1 on a phone: 50px at 1280 and 26px at 375. */
+.hero .t-eyebrow{margin:0 0 clamp(26px,4vw,50px)}
 
 /* ---- the hero mark ----------------------------------------------------------------------
    A large watermark of the Marga mark, behind the hero text. Three measurements off the v4

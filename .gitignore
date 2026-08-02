@@ -9,3 +9,11 @@
 .DS_Store
 Thumbs.db
 *.swp
+
+# Build artifacts. build_home.py writes home.html for a human to promote to index.html,
+# and every builder writes a *-review.html that inlines the whole stylesheet. Neither
+# belongs on a site GitHub Pages serves: home.html would publish a second homepage
+# claiming the same canonical as index.html.
+home.html
+*-review.html
+.claude/

@@ -46,6 +46,11 @@
   display:flex;flex-direction:column;align-items:center}
 .cta-block h2{margin:18px 0 0;font:400 clamp(30px,4vw,48px)/1.06 var(--serif);
   letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+/* The closing button sat flush against the headline: .cta-block is a flex column with
+   no gap, so the only space was the button's own zero margin. Spacing the button alone
+   rather than adding a gap, because a gap would also push the eyebrow off the h2, which
+   is already set deliberately at 18px. */
+.cta-block .btn{margin-top:clamp(26px,3vw,38px)}
 .cta-block .sub{margin:18px 0 30px;max-width:46ch}
 
 @media(max-width:720px){
@@ -133,11 +138,11 @@
       <p class="t-eyebrow">Example output</p>
       <h2 class="t-h2">A profile, a verdict, and the reasoning behind both.</h2>
       <p class="t-lead prose-p">Reads are delivered as a written document: the scored profile, the material conclusions, the assumptions each rests on, and the confidence level attached to each.</p>
-      <p class="t-lead prose-p">The Marga Index&amp;trade; does not replace investment judgment. It makes the commercial assumptions behind that judgment visible, comparable and challengeable.</p>
+      <p class="t-lead prose-p">The Marga Index™ does not replace investment judgment. It makes the commercial assumptions behind that judgment visible, comparable and challengeable.</p>
       <p class="t-lead prose-p">Marga is founder led and supported by an expert network. We do not claim institutional scale, and we say so in writing when a question exceeds what the evidence supports.</p>
     </div>
   </section>
-  <section class="section bg-card-solid">
+  <section class="section bg-sand">
     <div class="inner">
       <div class="split-head">
         <div>

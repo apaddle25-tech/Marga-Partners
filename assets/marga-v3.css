@@ -266,9 +266,14 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
   width:min(586px,51%);height:auto;opacity:.05;fill:var(--cream)}
 .hero>.inner{position:relative;z-index:1}
 
-/* The rule under the hero, with the lead on the left and the buttons on the right. */
+/* The rule under the hero, with the lead on the left and the buttons on the right.
+   The headline carries no bottom margin, so without margin-top here the rule sat hard
+   against the descenders of "wins" and read as an underline on the headline rather than a
+   divider under the banner. The space belongs above the border, not in padding-top, which
+   would only move the text and leave the line where it was. */
 .hero-foot{display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;
-  align-items:flex-end;border-top:1px solid rgba(241,233,219,.2);padding-top:44px}
+  align-items:flex-end;margin-top:clamp(38px,5vw,72px);
+  border-top:1px solid rgba(241,233,219,.2);padding-top:44px}
 /* The lead takes the slack and the buttons never shrink. At 56ch the lead measured 683px,
    which with a 436px button row and a 36px gap came to 1155 in a 1136 column, so the row
    wrapped and the design's single line broke. 52ch is the prototype's own measure. */
@@ -280,7 +285,10 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
    otherwise hold it at max-content anyway. */
 .hero-foot .cta-row{flex:0 1 auto;min-width:0;display:flex;flex-wrap:wrap;gap:12px}
 @media(max-width:720px){
-  .hero-foot{gap:24px;padding-top:30px}
+  /* No rule on a phone. In one column the lead sits directly under the headline with nothing
+     to its right, so the border is not dividing two things, it is drawing a line across the
+     copy. The gap separates them instead. */
+  .hero-foot{gap:24px;margin-top:clamp(22px,6vw,32px);border-top:0;padding-top:0}
   /* Centred on a phone rather than pinned to a corner. The desktop mark is anchored to the
      right edge of the content column and the headline's cap line, which is a relationship
      between two things that both exist on a wide screen. Neither survives a single column,

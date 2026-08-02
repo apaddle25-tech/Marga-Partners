@@ -37,6 +37,11 @@
   display:flex;flex-direction:column;align-items:center}
 .cta-block h2{margin:18px 0 0;font:400 clamp(30px,4vw,48px)/1.06 var(--serif);
   letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+/* The closing button sat flush against the headline: .cta-block is a flex column with
+   no gap, so the only space was the button's own zero margin. Spacing the button alone
+   rather than adding a gap, because a gap would also push the eyebrow off the h2, which
+   is already set deliberately at 18px. */
+.cta-block .btn{margin-top:clamp(26px,3vw,38px)}
 .cta-block .sub{margin:18px 0 30px;max-width:46ch}
 @media(max-width:720px){
   .section{padding:60px 0}
@@ -45,8 +50,8 @@
   .cta-block{padding-bottom:64px}
 }
 
-.intake{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:56px;
-  align-items:start}
+.intake{display:grid;grid-template-columns:minmax(0,1fr);max-width:920px;
+  margin:0 auto;align-items:start}
 /* TWO SHAPES, ONE LIST. The page renders <li> and the script replaces them with its own
    <div class="signal"><i>01</i><b>text</b></div> the moment an inquiry type is ticked, so
    styling only the markup that ships means the list loses its design as soon as anyone
@@ -123,7 +128,6 @@
 .form-card input[name="_honey"]{min-height:0;width:1px;height:1px;padding:0;border:0}
 
 @media(max-width:900px){
-  .intake{grid-template-columns:minmax(0,1fr);gap:30px}
   .form-card .fields{grid-template-columns:minmax(0,1fr)}
 }
 </style>
@@ -173,15 +177,6 @@
   <section class="section bg-cream">
     <div class="inner">
       <div class="intake">
-        <div>
-          <p class="t-eyebrow">What we look for</p>
-          <h2 class="t-h2">Enough context to be useful on the first call.</h2>
-          <ul class="signals" id="signalGrid">
-          <li>Credentials and domain expertise across clinical, commercial, and scientific ground.</li>
-          <li>A point of view that sharpens the reads, and a name featured alongside them.</li>
-          <li>A standing seat in shaping Marga&#x27;s frameworks, indices, and commentary.</li>
-          </ul>
-        </div>
         <div class="form-card">
           <div id="sentBanner" hidden role="status">Thank you. Your enquiry is in and you
           will hear back shortly.</div>

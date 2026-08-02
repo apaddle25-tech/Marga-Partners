@@ -281,7 +281,13 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
 .hero-foot .cta-row{flex:0 1 auto;min-width:0;display:flex;flex-wrap:wrap;gap:12px}
 @media(max-width:720px){
   .hero-foot{gap:24px;padding-top:30px}
-  .hero-mark{top:auto;bottom:0;width:74%;opacity:.045}
+  /* Centred on a phone rather than pinned to a corner. The desktop mark is anchored to the
+     right edge of the content column and the headline's cap line, which is a relationship
+     between two things that both exist on a wide screen. Neither survives a single column,
+     so the mark centres in the section instead. right:auto and bottom:auto are needed to
+     release the desktop anchors, or the offsets fight. */
+  .hero-mark{top:50%;left:50%;right:auto;bottom:auto;
+    transform:translate(-50%,-50%);width:78%;opacity:.045}
 }
 .hero-gradient{background:
   radial-gradient(70% 70% at 84% 10%,#F0E4C8 0%,rgba(240,228,200,0) 52%),

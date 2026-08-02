@@ -155,7 +155,7 @@
   box-shadow:0 14px 28px -12px rgba(22,20,15,.5)}
 .btn-primary:hover{background:var(--gold-hover)}
 .btn-square{border-radius:0}
-.btn-outline{border-color:rgba(22,20,15,.32);color:var(--ink);background:transparent}
+.btn-outline{border-color:rgba(22,20,15,.48);color:var(--ink);background:transparent}
 .btn-outline:hover{border-color:var(--ink)}
 .on-dark .btn-outline{border-color:rgba(241,233,219,.34);color:var(--cream)}
 .on-dark .btn-outline:hover{border-color:var(--cream)}
@@ -261,6 +261,7 @@
   background:rgba(241,233,219,.12)}
 .nav-drop>button svg{width:9px;height:9px;transition:transform .18s}
 .nav-drop>button[aria-expanded=true] svg{transform:rotate(180deg)}
+.nav-drop[data-open=true]::after{content:"";position:absolute;top:100%;left:0;right:0;height:16px}
 .nav-panel{position:absolute;top:calc(100% + 14px);left:0;width:340px;
   background:rgba(20,18,14,.97);backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);border:1px solid rgba(241,233,219,.14);
@@ -302,20 +303,30 @@
   .nav-links>a{padding:14px 20px}
   .nav-drop>button{width:calc(100% - 40px);margin:10px 20px 4px;justify-content:space-between;
     border-radius:12px}
-  /* the panel stops floating and simply opens in place */
-  .nav-panel{position:static;width:auto;opacity:1;visibility:visible;transform:none;
-    background:transparent;border:0;box-shadow:none;padding:0 10px;
-    max-height:0;overflow:hidden;transition:max-height .2s}
-  .nav-drop[data-open=true] .nav-panel{max-height:320px}
+  /* The panel stops floating and opens in place. Two things here are load-bearing.
+     DISPLAY:BLOCK. It is a <span>, so it was an inline box, and max-height does nothing to
+     an inline box: the nested panel never collapsed and stood 234px tall in every state.
+     VISIBILITY:INHERIT, not visible. Forcing visible let a child override its hidden
+     parent, so with the drawer shut the three audience links kept their layout boxes and
+     stayed in the tab order: three phantom stops on a closed menu. */
+  .nav-panel{position:static;display:block;width:auto;opacity:1;
+    transform:none;background:transparent;border:0;box-shadow:none;padding:0 10px;
+    max-height:0;overflow:hidden;visibility:hidden;
+    transition:max-height .2s,visibility 0s .2s}
+  /* visibility, not just max-height. A collapsed panel clipped by overflow:hidden is still
+     in the tab order, so with the drawer open and this disclosure shut a keyboard user
+     walked through three invisible links. inherit rather than visible, so a shut drawer
+     still wins over an open disclosure. */
+  .nav-drop[data-open=true] .nav-panel{max-height:340px;visibility:inherit;
+    transition:max-height .2s,visibility 0s}
   .nav-links .btn{margin:10px 20px 4px;width:calc(100% - 40px)}
 }
 
 /* ==========================================================================================
    FOOTER
    ========================================================================================== */
-.site-foot{background:var(--footer);color:var(--text-on-dark-muted);
-  padding:48px var(--pad-x) 34px}
-.site-foot .inner{width:var(--col);margin:0 auto;display:grid;
+.site-foot{background:var(--footer);color:var(--text-on-dark-muted);padding:48px 0 34px}
+.site-foot .inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x);display:grid;
   grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
 .site-foot .brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .site-foot .brand svg{width:24px;height:auto}

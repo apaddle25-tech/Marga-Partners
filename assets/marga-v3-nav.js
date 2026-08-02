@@ -18,6 +18,9 @@
   var cap = document.querySelector('.nav-cap');
   if (!cap) return;
 
+  // Declared before the drawer handler, which closes the disclosure when the drawer shuts.
+  var closeDrop = function () {};
+
   // ---- the mobile drawer -----------------------------------------------------------------
   var toggle = cap.querySelector('.nav-toggle');
   if (toggle) {
@@ -26,6 +29,10 @@
       var open = cap.getAttribute('data-menu') !== 'true';
       cap.setAttribute('data-menu', String(open));
       toggle.setAttribute('aria-expanded', String(open));
+      // Closing the drawer has to close the disclosure inside it. Left alone the dropdown
+      // kept reporting aria-expanded="true" for a panel that was no longer on screen, so a
+      // screen reader announced an open menu that had gone.
+      if (!open) closeDrop();
     });
   }
 
@@ -46,6 +53,8 @@
       // is the single thing in this file that does not fire in a backgrounded tab.
       if (open && focusFirst && items.length) items[0].focus();
     };
+
+    closeDrop = function () { setOpen(false, false); };
 
     btn.addEventListener('click', function (e) {
       e.stopPropagation();

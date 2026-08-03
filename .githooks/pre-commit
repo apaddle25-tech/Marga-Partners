@@ -65,6 +65,13 @@ fi
 exit $fail
 
 # Product naming guard. Staged files only, so the hook stays fast.
+if [ -f bin/embargo-check.js ]; then
+  node bin/embargo-check.js || {
+    echo "pre-commit: a public page states corpus detail while scoring is open."
+    exit 1
+  }
+fi
+
 if [ -f bin/naming-check.js ]; then
   node bin/naming-check.js --staged || {
     echo "pre-commit: a retired product name is staged. Fix with: node bin/naming-check.js --fix"

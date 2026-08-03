@@ -74,3 +74,8 @@ jobs:
         # Four marks, no strays. A retired product name fails the build, which is
         # what stops the rename from regressing one commit at a time.
         run: node bin/naming-check.js
+
+      - name: Corpus embargo
+        # No public page may state a corpus grade or corpus membership while two assessors are
+        # being asked for a judgement blind to those outcomes. Lifts when both seals exist.
+        run: node bin/embargo-check.js

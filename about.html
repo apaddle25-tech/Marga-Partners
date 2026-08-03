@@ -29,7 +29,12 @@
 .bg-card-solid{background:var(--card)}
 
 .hero{position:relative;padding:calc(var(--pad-hero-top) + 24px) 0 96px;overflow:hidden}
-.about-hero{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:52px;
+/* .50fr is a compromise the geometry forces. The photograph fills its frame edge to edge,
+   with no headroom to trim, so showing it whole locks width to height at 1197:1440. A
+   wider plate is therefore a taller plate, and the card cannot be both wider and level
+   with the foot of the lead. This is half again the width it started at and lands about
+   forty pixels below the lead, which reads as aligned without cropping the picture. */
+.about-hero{display:grid;grid-template-columns:minmax(0,.50fr) minmax(0,1fr);gap:52px;
   align-items:start}
 /* The photograph sits in a bordered plate with a caption rule beneath it, which is what
    stops a portrait on a dark ground reading as a floating cut-out. */
@@ -56,13 +61,13 @@
    plate grew to fit it, the plate then set the grid row, and the row got taller than
    the text beside it. Released, the row height comes from the text column and the
    photograph crops from the bottom, which is where the jacket is rather than the face. */
-/* An explicit height, because nothing else constrains it. In an auto grid row the
-   plate's own content sets the row height, so the photograph at its intrinsic size
-   made the card taller than the text beside it however the flex properties were set.
-   Capped here, the text column governs the row and cover crops the photograph from
-   the bottom, which is jacket rather than face. */
-.shot img{flex:0 0 auto;height:clamp(230px,25vw,380px);
-  object-fit:cover;object-position:top center}
+/* No crop. The photograph is shown whole, at its own aspect.
+   object-fit:cover with a capped height was cutting the frame at 78 per cent, which
+   removed the pocket square entirely: it sits between 95.6 and 99.7 per cent of the
+   source height. Cover also resamples the crop rather than cleanly downscaling the
+   whole frame, which is where the graininess came from. Both go away together.
+   The cost is that a wider plate is now a taller plate, since the aspect is fixed. */
+
 .shot figcaption{display:flex;justify-content:space-between;gap:12px;
   margin-top:20px;padding-top:18px;border-top:1px solid rgba(241,233,219,.16);
   font:600 10px/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;
@@ -116,6 +121,10 @@
 
 @media(max-width:900px){
   .about-hero,.why{grid-template-columns:minmax(0,1fr);gap:30px}
+  /* Capped in the stacked layout. Without this the plate takes the full column, and
+     since the photograph is shown whole its height follows: at 768 it rendered 691 by
+     876 and pushed the headline off the first screen. */
+  .shot{max-width:380px}
   .why-prose{padding-top:0}
   .journey>li{grid-template-columns:minmax(0,1fr);gap:10px}
   .marks{grid-template-columns:minmax(0,1fr)}

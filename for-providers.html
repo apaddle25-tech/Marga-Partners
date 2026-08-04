@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.margapartners.com/for-providers.html#page","url":"https://www.margapartners.com/for-providers.html","name":"For Providers","description":"Growth strategy for practices across aesthetics and life science: digital marketing and SEO for AI and Google, vendor leverage, and practice operations.","isPartOf":{"@id":"https://www.margapartners.com/#website"},"about":{"@id":"https://www.margapartners.com/#org"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.margapartners.com/for-providers.html#crumbs"}},{"@type":"BreadcrumbList","@id":"https://www.margapartners.com/for-providers.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.margapartners.com/"},{"@type":"ListItem","position":2,"name":"Who we serve"},{"@type":"ListItem","position":3,"name":"For providers"}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/marga-v3.css?v=04859a0c45">
+<link rel="stylesheet" href="/assets/marga-v3.css?v=a856d6bf7e">
 <style>
 /* Audience-page layout. Everything else comes from /assets/marga-v3.css */
 .section{padding:88px 0}
@@ -184,6 +184,50 @@
         <a class="btn btn-primary" href="/exchange-survey.html">Continue to the survey</a>
         <p class="t-small">The benchmark survey takes about six minutes and every question is optional. Already a member? The survey is always open. <a class="link-arrow" href="/exchange-survey.html">Go straight to it &rarr;</a></p>
       </div>
+    </div>
+  </section>
+  <section class="section bg-cream">
+    <div class="inner">
+      <div class="mz-head">
+        <p class="t-eyebrow">Not ready to join?</p>
+        <h2 class="t-h2">Start with the essays.</h2>
+        <p class="t-lead prose-p">The MargaZine is free and ungated. Read first, join the Exchange when it is worth it to you.</p>
+      </div>
+      <form class="mz-form" action="https://app.margapartners.com/newsletter/subscribe" method="POST">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none">
+        <div class="mz-row">
+          <div class="mz-f">
+            <label class="mz-l" for="mz-name">Your name</label>
+            <input id="mz-name" type="text" name="name" placeholder="Jordan Reyes" required>
+          </div>
+          <div class="mz-f">
+            <label class="mz-l" for="mz-sub-email">Email</label>
+            <input id="mz-sub-email" type="email" name="email" placeholder="you@practice.com"
+                   required>
+          </div>
+          <div class="mz-f">
+            <label class="mz-l" for="mz-role">Your role <span class="mz-opt">optional</span></label>
+            <select id="mz-role" name="role">
+              <option value="">Prefer not to say</option>
+            <option>Injector or core clinician</option>
+            <option>Physician, practice owner</option>
+            <option>Practice manager or operator</option>
+            <option>Multi-location group or MSO</option>
+            <option>PE-backed platform</option>
+            <option>Manufacturer</option>
+            <option>Investor</option>
+            <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <label class="mz-consent">
+          <input type="checkbox" name="consortium" value="yes">
+          <span>Tell me about the Marga Exchange too. It gives practices their benchmark back,
+          and this is how you hear when it is worth joining.</span>
+        </label>
+        <button class="btn btn-dark" type="submit">Subscribe</button>
+      </form>
     </div>
   </section>
   <section class="closing bg-ink on-dark">

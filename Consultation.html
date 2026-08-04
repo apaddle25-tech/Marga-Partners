@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://www.margapartners.com/Consultation.html#page","url":"https://www.margapartners.com/Consultation.html","name":"Start a conversation","description":"Tell Marga about the decision in front of you. Consulting, the Marga Exchange, indices, and diligence reads.","isPartOf":{"@id":"https://www.margapartners.com/#website"},"about":{"@id":"https://www.margapartners.com/#org"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.margapartners.com/Consultation.html#crumbs"}},{"@type":"BreadcrumbList","@id":"https://www.margapartners.com/Consultation.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.margapartners.com/"},{"@type":"ListItem","position":2,"name":"Contact"}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/marga-v3.css?v=04859a0c45">
+<link rel="stylesheet" href="/assets/marga-v3.css?v=a856d6bf7e">
 <style>
 .section{padding:88px 0}
 .inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
@@ -73,7 +73,13 @@
   border-left:2px solid var(--gold);font:400 15.5px/1.6 var(--sans);color:var(--text-body)}
 .form-card /* form card */
     .form-card{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 70px rgba(22,20,15,.12);padding:clamp(26px,3.4vw,44px);min-width:0}.form-card form{display:grid;gap:26px}.form-card fieldset{border:0;display:grid;gap:15px}.form-card legend{font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--golddeep);margin-bottom:4px;padding-bottom:12px;border-bottom:1px solid var(--line);width:100%}.form-card .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-card .field{display:grid;gap:7px;min-width:0}.form-card .field.full{grid-column:1/-1}.form-card label{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(22,20,15,.7)}.form-card input,.form-card select,.form-card textarea{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:0;min-height:48px;padding:12px 13px;font:15px/1.4 Manrope,sans-serif;outline:none;transition:border-color .18s,box-shadow .18s}.form-card textarea{min-height:120px;resize:vertical}.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,134,60,.16)}.form-card .check-row{display:flex;align-items:flex-start;gap:11px;color:var(--ink2);font-size:.9rem;line-height:1.45}.form-card .check-row input{width:18px;height:18px;min-height:18px;margin-top:2px;accent-color:var(--gold)}.form-card .actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:4px}.form-card .button{appearance:none;border:0;min-height:52px;border-radius:0;padding:0 26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}.form-card .button:hover{transform:translateY(-2px);background:#000}.form-card .note{font-size:.82rem;color:rgba(22,20,15,.55);max-width:30ch}.form-card /* intent chips */
-    .intent{display:flex;flex-wrap:wrap;gap:10px}.form-card .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:0;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}.form-card .intent label:hover{border-color:var(--gold)}.form-card .intent input{position:absolute;opacity:0;width:0;height:0}.form-card .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}.form-card .intent-hint{font:600 10px/1 var(--sans);letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}.form-card .fields{grid-template-columns:1fr}
+    .intent{display:flex;flex-wrap:wrap;gap:10px}.form-card .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:0;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}.form-card .intent label:hover{border-color:var(--gold)}.form-card .intent input{position:absolute;opacity:0;width:0;height:0}.form-card .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}.form-card .intent-hint{font:600 10px/1 var(--sans);letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}.form-card .fields{grid-template-columns:1fr}.form-card /* The path selector became three audiences with a line under each,.form-card so a chip is a block now
+   rather than a word. Radio,.form-card not checkbox: someone is one of these,.form-card and the previous multi
+   select produced records with three intents and no way to route them. */
+.intent{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}.form-card .intent label{display:block;padding:16px 18px;border:1px solid rgba(22,20,15,.24);
+  background:var(--card);cursor:pointer;font:700 14px/1.3 var(--sans);color:var(--text)}.form-card .intent label:hover{border-color:var(--text-accent)}.form-card .intent label:has(input:checked){border-color:var(--gold);background:var(--proof)}.form-card .intent label input{margin-right:10px;accent-color:var(--text-accent)}.form-card .intent label span{display:block;margin-top:8px;font:400 13px/1.5 var(--sans);
+  color:var(--text-body)}
+
 /* ---- corrections to the carried form ------------------------------------------------------
    Recorded here rather than edited into contact-parts/, so that stays a faithful copy.
    The old page styled these against its own tokens and its own grounds. */
@@ -189,13 +195,12 @@
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
 
             <fieldset>
-              <legend>I&rsquo;m reaching out to <span class="intent-hint">Select any that apply</span></legend>
+              <legend>Which of these are you? <span class="intent-hint">Three ways in, pick the one that fits</span></legend>
               <div class="intent" role="group" aria-label="Reason for reaching out (select any that apply)">
-                <label><input type="checkbox" name="inquiry_type" value="consultation" checked>Start a consulting engagement</label>
-                <label><input type="checkbox" name="inquiry_type" value="consortium">Join the Marga Exchange</label>
-                <label><input type="checkbox" name="inquiry_type" value="waitlist">Product waitlist / early access</label>
-                <label><input type="checkbox" name="inquiry_type" value="index">Commission an index or diligence read</label>
-                <label><input type="checkbox" name="inquiry_type" value="other">Something else</label>
+                <label><input type="radio" name="inquiry_type" value="manufacturers" checked>Manufacturers<span>Manufacturer strategy, launch planning, portfolio and lifecycle work.</span></label>
+                <label><input type="radio" name="inquiry_type" value="investors">Investors<span>Boards and asset evaluations. Independent reads and category work.</span></label>
+                <label><input type="radio" name="inquiry_type" value="providers">Providers<span>Practice strategy, vendor economics, and the Marga Exchange.</span></label>
+                <label><input type="radio" name="inquiry_type" value="other">Something else<span>Expert network participation, or a question that fits none of the above.</span></label>
               </div>
             </fieldset>
 
@@ -374,7 +379,7 @@
             </label>
 
             <label class="check-row">
-              <input type="checkbox" id="mz-optin" name="join_margazine" value="yes" checked>
+              <input type="checkbox" id="mz-optin" name="join_margazine" value="yes">
               <span>Also send me the MargaZine, Marga&rsquo;s free weekly read on the business of aesthetics. You can unsubscribe anytime.</span>
             </label>
 
@@ -388,6 +393,51 @@
     </div>
   </section>
 
+  
+  <section class="section bg-sand2">
+    <div class="inner">
+      <div class="mz-head">
+        <p class="t-eyebrow">Not ready for a conversation?</p>
+        <h2 class="t-h2">Start with the essays.</h2>
+        <p class="t-lead prose-p">The MargaZine is free and ungated. One email a week, and the occasional note about the Marga Exchange.</p>
+      </div>
+      <form class="mz-form" action="https://app.margapartners.com/newsletter/subscribe" method="POST">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none">
+        <div class="mz-row">
+          <div class="mz-f">
+            <label class="mz-l" for="mz-name">Your name</label>
+            <input id="mz-name" type="text" name="name" placeholder="Jordan Reyes" required>
+          </div>
+          <div class="mz-f">
+            <label class="mz-l" for="mz-sub-email">Email</label>
+            <input id="mz-sub-email" type="email" name="email" placeholder="you@practice.com"
+                   required>
+          </div>
+          <div class="mz-f">
+            <label class="mz-l" for="mz-role">Your role <span class="mz-opt">optional</span></label>
+            <select id="mz-role" name="role">
+              <option value="">Prefer not to say</option>
+            <option>Injector or core clinician</option>
+            <option>Physician, practice owner</option>
+            <option>Practice manager or operator</option>
+            <option>Multi-location group or MSO</option>
+            <option>PE-backed platform</option>
+            <option>Manufacturer</option>
+            <option>Investor</option>
+            <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <label class="mz-consent">
+          <input type="checkbox" name="consortium" value="yes">
+          <span>Tell me about the Marga Exchange too. It gives practices their benchmark back,
+          and this is how you hear when it is worth joining.</span>
+        </label>
+        <button class="btn btn-dark" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
   
   <section class="closing bg-ink on-dark">
     <div class="cta-block">
@@ -453,10 +503,10 @@
 
   (function(){
     var TYPES={
-      consultation:{eyebrow:'Consultation intake',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
-      consortium:{eyebrow:'Exchange application',title:'Join the <span>Exchange</span>.',lead:'KOLs, clinicians, operators, analysts, and investors shaping where aesthetics goes next: tell Marga who you are and how you would contribute. Exchange members inform the reads and are featured in them.',subject:'New Marga Exchange application',mode:'consortium',headTitle:'Tell us about you.',headNote:'Share your background and where you would want to contribute. A CV is welcome but optional.',signals:['Credentials and domain expertise across clinical, commercial, and scientific ground.','A point of view that sharpens the reads, and a name featured alongside them.','A standing seat in shaping Marga\u2019s frameworks, indices, and commentary.']},
+      manufacturers:{eyebrow:'Manufacturers',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      providers:{eyebrow:'Providers',title:'Join the <span>Exchange</span>.',lead:'KOLs, clinicians, operators, analysts, and investors shaping where aesthetics goes next: tell Marga who you are and how you would contribute. Exchange members inform the reads and are featured in them.',subject:'New Marga Exchange application',mode:'consortium',headTitle:'Tell us about you.',headNote:'Share your background and where you would want to contribute. A CV is welcome but optional.',signals:['Credentials and domain expertise across clinical, commercial, and scientific ground.','A point of view that sharpens the reads, and a name featured alongside them.','A standing seat in shaping Marga\u2019s frameworks, indices, and commentary.']},
       waitlist:{eyebrow:'Product waitlist',title:'Get <span>early access</span>.',lead:'Marga\u2019s productized intelligence \u2014 scorecards, category indices, and diligence reads \u2014 is launching soon. Join the waitlist to be first in line and help shape what ships.',challenge:'Which product or category matters most to you, and why?',subject:'New Marga product waitlist request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
-      index:{eyebrow:'Commission an index',title:'Put it on the <span>index</span>.',lead:'Commission a P5 scorecard, a category index, or an independent diligence read. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      investors:{eyebrow:'Investors',title:'Put it on the <span>index</span>.',lead:'Commission a P5 scorecard, a category index, or an independent diligence read. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
       other:{eyebrow:'General inquiry',title:'Start a <span>conversation</span>.',lead:'Tell Marga what prompted you to reach out, and it will point you to the right next step.',challenge:'What can Marga help you with?',subject:'New Marga Partners inquiry',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'}
     };
     var eb=document.getElementById('eyebrow'),ti=document.getElementById('intakeTitle'),ld=document.getElementById('intakeLead'),cl=document.getElementById('challengeLabel'),sj=document.getElementById('subjField');

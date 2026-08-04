@@ -104,9 +104,18 @@
   .sched{grid-template-columns:minmax(0,1fr)}
 }
 
-/* The origin essay, given a band of its own. */
-.origin{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;
-  align-items:start;margin-top:30px}
+/* ---- the origin essay card ----------------------------------------------------------------
+   One card, not two columns with a gap between them. The design makes the whole thing a single
+   link with the thesis panel flush against the copy on a dark ground, so the quote reads as the
+   other half of the card rather than a note sitting beside it. gap:0 is load bearing. */
+.origin{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:0;
+  align-items:stretch;margin-top:30px;color:var(--text);background:var(--card);
+  border:1px solid rgba(22,20,15,.2);box-shadow:0 26px 54px -40px rgba(22,20,15,.5);
+  transition:box-shadow .3s ease,transform .3s ease}
+.origin:hover{color:var(--text);transform:translateY(-3px);
+  box-shadow:0 38px 70px -40px rgba(22,20,15,.62)}
+.origin-copy{padding:clamp(34px,4vw,52px) clamp(30px,3.6vw,54px)}
+.origin-kicker{display:block;margin:0 0 22px;color:var(--text-accent)}
 .origin h2{margin:10px 0 0;font:400 clamp(30px,3.8vw,48px)/1.04 var(--serif);
   letter-spacing:-.02em;text-wrap:balance}
 .origin .dek{margin:14px 0 0;font:italic 400 clamp(17px,1.7vw,20px)/1.45 var(--serif);
@@ -114,12 +123,14 @@
 .origin p{margin:18px 0 0;font:400 clamp(16px,1.5vw,17px)/1.62 var(--sans);
   color:var(--text-body);max-width:56ch}
 .origin .link-arrow{display:inline-flex;margin-top:22px}
-.thesis-card{padding:var(--pad-card);background:var(--card);
-  border-left:2px solid var(--gold)}
-.thesis-card .k{font:600 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
-  color:var(--text-accent)}
-.thesis-card p{margin:14px 0 0;font:400 clamp(19px,2vw,23px)/1.35 var(--serif);
-  color:var(--text)}
+/* The dark half. The gold bar is a border rather than an absolutely positioned div: the same
+   4px the design draws, one fewer element to keep in place. */
+.thesis-card{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(34px,4vw,52px) clamp(30px,3.6vw,46px);background:var(--ink2);
+  border-left:4px solid var(--gold)}
+.thesis-card .k{display:block;margin:0 0 20px;color:var(--gold)}
+.thesis-card .q{margin:0;font:300 clamp(24px,2.7vw,33px)/1.2 var(--serif);
+  letter-spacing:-.01em;color:var(--cream)}
 
 /* Released pieces. */
 .live{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
@@ -157,7 +168,7 @@
 .sched .next{color:var(--gold)}
 
 @media(max-width:900px){
-  .origin{grid-template-columns:minmax(0,1fr);gap:26px}
+  .origin{grid-template-columns:minmax(0,1fr)}
   .live{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
   .live>li{display:flex;flex-direction:column;gap:10px}
   .sched li{grid-template-columns:64px minmax(0,1fr);gap:16px}
@@ -209,9 +220,9 @@
 
   <section class="section bg-sand2">
     <div class="inner">
-      <p class="t-eyebrow">Origin essay &middot; 7 min</p>
-      <div class="origin">
-        <div>
+      <a class="origin" href="/the-long-way-around.html">
+        <div class="origin-copy">
+          <p class="t-label origin-kicker">Origin essay &middot; 7 min</p>
           <h2>Why I Started Marga Partners</h2>
           <!-- The prototype's dek reads "Why I started Marga." under a title that already
                says "Why I Started Marga Partners", so it restates the headline. This is the
@@ -219,13 +230,14 @@
           <p class="dek">Raising the standard of an industry I grew up inside.</p>
           <p>Why development and commercialization were never two disciplines, and what
           thirteen years of watching good products lose taught me about the difference.</p>
-          <a class="link-arrow" href="/the-long-way-around.html">Read the essay &rarr;</a>
+          <span class="link-arrow">Read the essay &rarr;</span>
         </div>
-        <div class="thesis-card">
-          <div class="k">The thesis</div>
-          <p>The best product rarely wins. The best connected set of decisions does.</p>
+        <div class="thesis-card on-dark">
+          <p class="t-label k">The thesis</p>
+          <p class="q">The best product rarely wins. The best connected set of decisions
+          does.</p>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 

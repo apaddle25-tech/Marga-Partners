@@ -46,6 +46,41 @@
 .callout-light p{margin:0 0 18px;font:400 clamp(16px,1.5vw,18px)/1.55 var(--sans)}
 
 /* ---- the three cards -------------------------------------------------------------------- */
+/* ---- the two-capability band and the Index band ------------------------------------------
+   The section the v4 design has between the thesis and the three stakeholder cards. Grounds
+   from the design: --sand for the section, --card for the two cards, --ink2 for the band. */
+.cap-head{margin-bottom:clamp(32px,4vw,44px)}
+.cap-head h2{margin:20px 0 0;font:400 clamp(34px,4.2vw,48px)/1.04 var(--serif);
+  letter-spacing:-.018em;max-width:22ch;text-wrap:balance}
+.caps{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cap{display:flex;flex-direction:column;gap:18px;background:var(--card);
+  border:1px solid rgba(22,20,15,.22);padding:clamp(28px,3.4vw,36px) clamp(26px,3vw,32px)}
+.cap-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.cap-num{font:400 24px/1 var(--serif);color:var(--text-numeral)}
+.cap h3{margin:0;font:400 clamp(26px,2.7vw,30px)/1.08 var(--serif);color:var(--text)}
+.cap>p{margin:0}
+.cap-list{margin:0;padding:10px 0 0;list-style:none;display:flex;flex-direction:column;gap:11px;
+  border-top:1px solid rgba(22,20,15,.14)}
+.cap-list li{display:flex;gap:12px;font:400 15px/1.5 var(--sans);color:var(--text-body)}
+/* The dash is decoration, so it is drawn rather than typed: a literal em dash in the markup
+   would be read out before every item, and the copy rules forbid one in prose anyway. */
+.cap-list li::before{content:"";flex:none;width:11px;height:1px;margin-top:11px;
+  background:var(--gold)}
+.cap .link-arrow{margin-top:auto;align-self:flex-start}
+
+.indexband{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(30px,4.5vw,58px);
+  align-items:center;margin-top:20px;padding:clamp(32px,4vw,44px) clamp(28px,3.6vw,46px)}
+.indexband-copy{display:flex;flex-direction:column;gap:24px}
+.indexband-copy h3{margin:18px 0 16px;font:400 clamp(28px,3.2vw,36px)/1.06 var(--serif);
+  letter-spacing:-.015em;max-width:20ch}
+.indexband-copy>div>p{margin:0;max-width:46ch}
+.indexband-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;max-width:520px;
+  background:var(--line-dark);border:1px solid var(--line-dark)}
+.indexband-split>div{display:flex;flex-direction:column;gap:9px;background:var(--ink2);
+  padding:20px 22px}
+.indexband .link-arrow{align-self:flex-start}
+.index-mark{width:100%;max-width:300px;height:auto;display:block;justify-self:center}
+
 .lens-head{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;
   align-items:flex-end;margin-bottom:44px}
 .lens-head h2{margin:10px 0 0;font:400 clamp(30px,3.8vw,48px)/1.06 var(--serif);
@@ -127,6 +162,11 @@
   .lens-head{gap:22px;margin-bottom:32px}
   .lens-head h2,.lens-head .right{max-width:none}
 }
+@media(max-width:900px){
+  .caps{grid-template-columns:minmax(0,1fr)}
+  .indexband{grid-template-columns:minmax(0,1fr);justify-items:start}
+  .indexband-split{grid-template-columns:minmax(0,1fr)}
+}
 @media(max-width:720px){
   .section{padding:60px 0}
   .hero{padding-bottom:60px}
@@ -201,12 +241,81 @@
     </div>
   </section>
 
+  <section class="section bg-sand">
+    <div class="inner">
+      <div class="cap-head">
+        <p class="t-eyebrow">What Marga does</p>
+        <h2>Two capabilities. One foundational framework.</h2>
+      </div>
+
+      <div class="caps">
+        <div class="cap">
+          <div class="cap-top">
+            <span class="t-label">Advisory</span>
+            <span class="cap-num" aria-hidden="true">01</span>
+          </div>
+          <h3>Set the direction, or the market sets it for you.</h3>
+          <p class="t-body">We help answer the commercial questions that decide where an asset
+          competes and how far it gets. Brought in on a defined question, or retained as
+          standing counsel to a team already in motion.</p>
+          <ul class="cap-list">
+            <li>Market and category analysis</li>
+            <li>Commercial assessment and due diligence</li>
+            <li>Portfolio and asset strategy</li>
+            <li>Launch, pricing and lifecycle</li>
+          </ul>
+          <a class="link-arrow" href="/for-manufacturers.html">Advisory for manufacturers
+          &rarr;</a>
+        </div>
+        <div class="cap">
+          <div class="cap-top">
+            <span class="t-label">Intelligence</span>
+            <span class="cap-num" aria-hidden="true">02</span>
+          </div>
+          <h3>Not more data. An insider read on what it means.</h3>
+          <p class="t-body">Market data tells you what shipped and what it cost. A Marga read
+          tells you whether it will hold, scored the same way every time and interpreted by
+          someone who has made these decisions from inside the industry.</p>
+          <ul class="cap-list">
+            <li>The Marga Index&trade;, scored and traceable</li>
+            <li>Diligence reads on a named asset</li>
+            <li>Standing category monitoring</li>
+          </ul>
+          <a class="link-arrow" href="/the-marga-method.html">Review a sample read &rarr;</a>
+        </div>
+      </div>
+
+      <div class="indexband bg-ink on-dark">
+        <div class="indexband-copy">
+          <div>
+            <p class="t-eyebrow">The common thread</p>
+            <h3>Everything runs through the Marga Index&trade;.</h3>
+            <p class="t-body">Our proprietary framework for reading the market.</p>
+          </div>
+          <div class="indexband-split">
+            <div>
+              <span class="t-label">In advisory</span>
+              <span class="t-body">It frames the question and tests the answer.</span>
+            </div>
+            <div>
+              <span class="t-label">In intelligence</span>
+              <span class="t-body">It scores every read, the same way each time.</span>
+            </div>
+          </div>
+          <a class="link-arrow" href="/the-marga-method.html#index">How the Index works
+          &rarr;</a>
+        </div>
+        <svg class="index-mark" viewBox="0 0 200 200" role="img" aria-label="Abstract pentagon diagram representing the Marga Index framework"><polygon points="100,20 176.1,75.3 147,164.7 53,164.7 23.9,75.3" fill="none" stroke="#F1E9DB" stroke-opacity=".22" stroke-width="1"></polygon><polygon points="100,46.7 150.7,83.5 131.3,143.1 68.7,143.1 49.3,83.5" fill="none" stroke="#F1E9DB" stroke-opacity=".14" stroke-width="1"></polygon><polygon points="100,73.3 125.4,91.7 115.7,121.6 84.3,121.6 74.6,91.7" fill="none" stroke="#F1E9DB" stroke-opacity=".1" stroke-width="1"></polygon><line x1="100" y1="100" x2="100" y2="20" stroke="#F1E9DB" stroke-opacity=".14"></line><line x1="100" y1="100" x2="176.1" y2="75.3" stroke="#F1E9DB" stroke-opacity=".14"></line><line x1="100" y1="100" x2="147" y2="164.7" stroke="#F1E9DB" stroke-opacity=".14"></line><line x1="100" y1="100" x2="53" y2="164.7" stroke="#F1E9DB" stroke-opacity=".14"></line><line x1="100" y1="100" x2="23.9" y2="75.3" stroke="#F1E9DB" stroke-opacity=".14"></line><polygon points="100,32 145.7,85.2 135.3,148.5 76.5,132.4 46.7,82.7" fill="#C7A24B" fill-opacity=".16" stroke="#C7A24B" stroke-width="1.75"></polygon><circle cx="100" cy="32" r="3.5" fill="#C7A24B"></circle><circle cx="145.7" cy="85.2" r="3.5" fill="#C7A24B"></circle><circle cx="135.3" cy="148.5" r="3.5" fill="#C7A24B"></circle><circle cx="76.5" cy="132.4" r="3.5" fill="#C7A24B"></circle><circle cx="46.7" cy="82.7" r="3.5" fill="#C7A24B"></circle></svg>
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-card2">
     <div class="inner">
       <div class="lens-head">
         <div>
-          <p class="t-eyebrow">How we think</p>
-          <h2>Three stakeholders, three objectives, same lens.</h2>
+          <p class="t-eyebrow">Who we work with</p>
+          <h2>Three stakeholders, three objectives.</h2>
         </div>
         <div class="right">
           <p class="t-body t-muted">Each one comes with an essay that shows the thinking in

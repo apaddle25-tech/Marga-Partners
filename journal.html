@@ -50,21 +50,59 @@
   .cta-block{padding-bottom:64px}
 }
 
-/* ---- the archive band -------------------------------------------------------------------
-   The subscriber section the v4 design carries and this page did not, which is most of the
-   word count the live page was missing. Five numbered benefits, the same numbered-list idiom
-   the audience pages use, so it inherits rather than invents. */
-.arch-head{max-width:60ch}
-.arch-head .t-h2{margin:12px 0 0}
-.arch-head .prose-p{margin-top:20px}
-.arch-label{display:block;margin:clamp(30px,4vw,42px) 0 18px;color:var(--text-accent)}
-.archgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,236px),1fr));
-  gap:1px;margin:0;padding:0;list-style:none;background:var(--hair);border:1px solid var(--hair)}
-.archgrid li{display:flex;flex-direction:column;gap:10px;background:var(--card);
-  padding:clamp(22px,2.6vw,28px)}
-.archgrid .n{font:600 11px/1 var(--mono);letter-spacing:.18em;color:var(--text-accent)}
-.archgrid h3{margin:0;font:400 clamp(19px,1.9vw,21px)/1.2 var(--serif);color:var(--text)}
-.archgrid p{margin:0;font:400 14px/1.55 var(--sans);color:var(--text-body)}
+/* ---- the archive band, and the schedule tiles ---------------------------------------------
+   Both as the design draws them. The archive is a two-column band with the subscriber panel on
+   a dark ground; the schedule is a grid of dated tiles where the next piece takes the gold one.
+   The email field carries name="email" so marga-prefill.js captures it, which is what stops it
+   being a box that swallows a typed address: the subscribe page finds it already filled. */
+.arch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);
+  gap:clamp(34px,5vw,60px);align-items:center}
+.arch .t-h2{margin:12px 0 0}
+.arch .prose-p{margin-top:22px;max-width:50ch}
+.arch-panel{padding:clamp(26px,3.2vw,38px)}
+.arch-inc{display:block;padding-bottom:20px;border-bottom:1px solid var(--line-dark);
+  color:var(--gold)}
+.arch-list{margin:0 0 8px;padding:0;list-style:none}
+.arch-list li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:16px;padding:16px 0;
+  border-bottom:1px solid rgba(241,233,219,.12)}
+.arch-list li:last-child{border-bottom:0}
+.arch-list .n{font:500 10px/1.7 var(--mono);letter-spacing:.14em;color:var(--gold)}
+.arch-list b{display:block;font:600 15px/1.4 var(--sans);color:var(--cream)}
+.arch-list span span{display:block;margin-top:4px;font:400 13.5px/1.55 var(--sans);
+  color:var(--text-on-dark-body)}
+.arch-go{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;
+  border-top:1px solid var(--line-dark);padding-top:24px}
+.arch-go input{background:rgba(241,233,219,.07);border:1px solid rgba(241,233,219,.24);
+  color:var(--cream);font:500 14.5px/1 var(--sans);padding:15px 18px;width:100%}
+.arch-go input::placeholder{color:var(--text-on-dark-muted)}
+.arch-note{margin:14px 0 0;color:var(--text-on-dark-muted)}
+/* Visible to a screen reader, not on screen. The field has a placeholder, which is a hint and
+   not a label, so the label exists and is simply not drawn. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.sched{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:30px 0 0;
+  padding:0;list-style:none;background:var(--line-dark);border:1px solid var(--line-dark)}
+.tile{display:flex;flex-direction:column;justify-content:space-between;gap:20px;
+  min-height:172px;padding:26px 28px 24px;background:var(--ink4);color:var(--text-on-dark)}
+.tile.next{background:var(--gold);color:var(--ink)}
+.tile-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.tile-d{display:flex;align-items:baseline;gap:9px;font:300 44px/.86 var(--serif);
+  letter-spacing:-.02em}
+.tile-d span{font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold)}
+.tile.next .tile-d span{color:rgba(22,20,15,.66)}
+.tile-dom{display:block;font:700 19px/1.2 var(--sans);letter-spacing:-.01em}
+.tile-meta{display:flex;align-items:center;gap:10px;margin-top:12px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-on-dark-muted)}
+.tile.next .tile-meta{color:rgba(22,20,15,.6)}
+.tile-meta i{width:14px;height:1px;background:currentColor;display:block}
+
+@media(max-width:900px){
+  .arch{grid-template-columns:minmax(0,1fr)}
+  .sched{grid-template-columns:minmax(0,1fr)}
+}
 
 /* The origin essay, given a band of its own. */
 .origin{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;
@@ -212,42 +250,72 @@
       <p class="t-lead prose-p">Upcoming titles are held until the morning they run. Only the
       domain, the date and the length are listed until then.</p>
       <!--MZSCHED--><ul class="sched">
-        <li><span class="d">24<span>Aug</span></span><span class="dom">Adoption</span><span class="meta"><span class="t-label next">Next up</span><span>9 min</span></span></li>
-        <li><span class="d">27<span>Aug</span></span><span class="dom">Molecule</span><span class="meta"><span class="t-label">Scheduled</span><span>4 min</span></span></li>
-        <li><span class="d">31<span>Aug</span></span><span class="dom">Growth</span><span class="meta"><span class="t-label">Scheduled</span><span>7 min</span></span></li>
-        <li><span class="d">03<span>Sep</span></span><span class="dom">Architecture</span><span class="meta"><span class="t-label">Scheduled</span><span>6 min</span></span></li>
-        <li><span class="d">07<span>Sep</span></span><span class="dom">Growth</span><span class="meta"><span class="t-label">Scheduled</span><span>13 min</span></span></li>
-        <li><span class="d">10<span>Sep</span></span><span class="dom">Reputation</span><span class="meta"><span class="t-label">Scheduled</span><span>4 min</span></span></li>
-        <li><span class="d">14<span>Sep</span></span><span class="dom">Molecule</span><span class="meta"><span class="t-label">Scheduled</span><span>8 min</span></span></li>
-        <li><span class="d">17<span>Sep</span></span><span class="dom">Growth</span><span class="meta"><span class="t-label">Scheduled</span><span>4 min</span></span></li>
-        <li><span class="d">21<span>Sep</span></span><span class="dom">Molecule</span><span class="meta"><span class="t-label">Scheduled</span><span>8 min</span></span></li>
+        <li class="tile next">
+          <div class="tile-top"><span class="tile-d">24<span>Aug</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Adoption</span><span class="tile-meta"><span>Next up</span><i aria-hidden="true"></i><span>9 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">27<span>Aug</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Molecule</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>4 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">31<span>Aug</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Growth</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>7 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">03<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Architecture</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>6 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">07<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Growth</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>13 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">10<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Reputation</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>4 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">14<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Molecule</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>8 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">17<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Growth</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>4 min</span></span></div>
+        </li>
+        <li class="tile">
+          <div class="tile-top"><span class="tile-d">21<span>Sep</span></span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></div>
+          <div class="tile-foot"><span class="tile-dom">Molecule</span><span class="tile-meta"><span>Scheduled</span><i aria-hidden="true"></i><span>8 min</span></span></div>
+        </li>
       </ul><!--/MZSCHED-->
       <a class="link-arrow" href="/subscribe.html"
          style="display:inline-flex;margin-top:26px">Get each one on the day it drops &rarr;</a>
     </div>
   </section>
 
-  <section class="section bg-cream">
-    <div class="inner">
-      <div class="arch-head">
+  <section class="section bg-sand2">
+    <div class="inner arch">
+      <div>
         <p class="t-eyebrow">The archive</p>
         <h2 class="t-h2">Read every essay. Keep the whole library.</h2>
         <p class="t-lead prose-p">Subscribe for full access to the archive, the frameworks and
-        the briefings, and to be first to each new piece.</p>
+        the briefings, and to be first to read each new essay as soon as it drops.</p>
       </div>
-      <p class="t-label arch-label">Included with your free subscription</p>
-      <ul class="archgrid">
-        <li><span class="n" aria-hidden="true">01</span><h3>Every essay, the moment it
-          drops</h3><p>Straight to your inbox before it circulates anywhere else.</p></li>
-        <li><span class="n" aria-hidden="true">02</span><h3>The complete archive</h3>
-          <p>Everything published, permanently open to you.</p></li>
-        <li><span class="n" aria-hidden="true">03</span><h3>Downloadable frameworks</h3>
-          <p>The models behind the essays, built to use in your own decks.</p></li>
-        <li><span class="n" aria-hidden="true">04</span><h3>Exclusive briefings</h3>
-          <p>Subscriber-only pieces that never run on the site.</p></li>
-        <li><span class="n" aria-hidden="true">05</span><h3>The annual compendium</h3>
-          <p>The year of thinking, collected in one volume.</p></li>
-      </ul>
+      <div class="arch-panel bg-ink on-dark">
+        <p class="t-label arch-inc">Included with your free subscription</p>
+        <ul class="arch-list">
+          <li><span class="n">01</span><span><b>Every essay, the moment it drops</b><span>Straight to your inbox before it circulates anywhere else.</span></span></li>
+          <li><span class="n">02</span><span><b>The complete archive</b><span>Everything published, permanently open to you.</span></span></li>
+          <li><span class="n">03</span><span><b>Downloadable frameworks</b><span>The models behind the essays, built to use in your own decks.</span></span></li>
+          <li><span class="n">04</span><span><b>Exclusive briefings</b><span>Subscriber-only pieces that never run on the site.</span></span></li>
+          <li><span class="n">05</span><span><b>The annual compendium</b><span>The year of thinking, collected in one volume.</span></span></li>
+        </ul>
+        <div class="arch-go">
+          <label class="sr-only" for="mz-email">Email address</label>
+          <input id="mz-email" type="email" name="email" placeholder="you@company.com">
+          <a class="btn btn-primary" href="/subscribe.html">Subscribe</a>
+        </div>
+        <p class="t-small arch-note">One email a week. No cost, and nothing else ever.</p>
+      </div>
     </div>
   </section>
 
@@ -299,5 +367,5 @@
     </footer>
   </section>
 </main>
-<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script>
+<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script src="/assets/marga-prefill.js?v=ca8a8eca1b"></script>
 </body></html>

@@ -91,9 +91,25 @@
   color:var(--text-body);max-width:60ch}
 .why-prose{padding-top:31px}
 
-/* ---- the journey ------------------------------------------------------------------------ */
-.journey{display:grid;gap:18px;margin-top:34px;padding:0;list-style:none}
-.journey>li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;
+/* ---- the journey ------------------------------------------------------------------------
+   Two columns, as the design draws it: the heading and the logos hold still on the left while
+   the career runs past them on the right. An <ol> because it is a sequence and reads as one.
+   The dot and the rule are pseudo-elements, so no markup carries decoration. */
+.jr{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(34px,5vw,64px);align-items:start}
+.jr-side{position:sticky;top:110px}
+.jr-where{display:block;margin:30px 0 14px;color:var(--text-muted)}
+.jr-side .marks{margin-top:0;max-width:400px}
+.journey{display:block;margin:0;padding:0;list-style:none}
+.journey>li{position:relative;padding:0 0 38px 36px;
+  border-left:1px solid rgba(22,20,15,.22)}
+.journey>li:last-child{padding-bottom:0;border-left-color:transparent}
+.journey>li::before{content:"";position:absolute;left:-5px;top:5px;width:9px;height:9px;
+  border-radius:50%;background:var(--gold)}
+.journey .k{display:block;margin-bottom:12px}
+.journey h3{margin:0 0 10px;font:400 27px/1.1 var(--serif);color:var(--text)}
+.journey p{margin:0;font:400 15.5px/1.6 var(--sans);color:var(--text-body);max-width:52ch}
+.journey>li.legacy{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;
   padding:30px 34px;background:var(--card);border:1px solid rgba(22,20,15,.18)}
 .journey .k{font:600 11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;
   color:var(--text-accent)}
@@ -124,7 +140,8 @@
      876 and pushed the headline off the first screen. */
   .shot{max-width:380px}
   .why-prose{padding-top:0}
-  .journey>li{grid-template-columns:minmax(0,1fr);gap:10px}
+  .jr{grid-template-columns:minmax(0,1fr);gap:26px}
+  .jr-side{position:static}
   .marks{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:720px){
@@ -216,23 +233,28 @@
 
   <section class="section bg-cream">
     <div class="inner">
-      <p class="t-eyebrow">My unique journey</p>
-      <h2 class="t-h2">Every link in the chain, first hand.</h2>
-      <p class="t-lead prose-p">Not a career spent in one function. The same path a
-      product takes, walked end to end, which is why the framework reads it the way it
-      does.</p>
-      <ul class="journey">
+      <div class="jr">
+        <div class="jr-side">
+          <p class="t-eyebrow">My unique journey</p>
+          <h2 class="t-h2">Every link in the chain, first hand.</h2>
+          <p class="t-lead prose-p">Not a career spent in one function. The same path a
+          product takes, walked end to end, which is why the framework reads it the way it
+          does.</p>
+          <p class="t-label jr-where">Where</p>
+          <ul class="marks">
+        <li><img src="/assets/logo-allergan.png" alt="Allergan Aesthetics" width="94" loading="lazy"></li>
+        <li><img src="/assets/logo-evolus.png" alt="Evolus" width="165" loading="lazy"></li>
+        <li><img src="/assets/logo-galderma.png" alt="Galderma" width="206" loading="lazy"></li>
+          </ul>
+        </div>
+        <ol class="journey">
         <li><div class="k">Training</div><div><h3>Doctor of Pharmacy</h3><p>Basic science and clinical pharmacology. Registered pharmacist.</p></div></li>
         <li><div class="k">Clinical development</div><div><h3>Early and late-stage programs</h3><p>Led development work in aesthetics, including Phase 3 design and endpoint strategy.</p></div></li>
         <li><div class="k">Commercialization</div><div><h3>Upstream strategy through launch</h3><p>Target product profile, positioning, market assessment and launch sequencing across neurotoxins, fillers and devices.</p></div></li>
         <li><div class="k">Brand and portfolio</div><div><h3>Loyalty and lifecycle</h3><p>Loyalty strategy, market research, data architecture and sales-force design.</p></div></li>
         <li><div class="k">Teaching</div><div><h3>Guest lecturer, USC School of Pharmacy</h3><p>On the commercial realities that shape which science reaches patients.</p></div></li>
-      </ul>
-      <ul class="marks">
-        <li><img src="/assets/logo-allergan.png" alt="Allergan Aesthetics" width="94" loading="lazy"></li>
-        <li><img src="/assets/logo-evolus.png" alt="Evolus" width="165" loading="lazy"></li>
-        <li><img src="/assets/logo-galderma.png" alt="Galderma" width="206" loading="lazy"></li>
-      </ul>
+        </ol>
+      </div>
     </div>
   </section>
 

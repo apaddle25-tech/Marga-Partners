@@ -18,10 +18,8 @@
 <link rel="icon" href="/assets/favicon.svg">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.margapartners.com/for-manufacturers.html#page","url":"https://www.margapartners.com/for-manufacturers.html","name":"For Manufacturers & Brands","description":"Commercialization strategy across aesthetics and life science: go-to-market and launch strategy, scientific communications, and lifecycle management.","isPartOf":{"@id":"https://www.margapartners.com/#website"},"about":{"@id":"https://www.margapartners.com/#org"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.margapartners.com/for-manufacturers.html#crumbs"}},{"@type":"BreadcrumbList","@id":"https://www.margapartners.com/for-manufacturers.html#crumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.margapartners.com/"},{"@type":"ListItem","position":2,"name":"Who we serve"},{"@type":"ListItem","position":3,"name":"Manufacturers"}]}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/marga-v3.css?v=eb076e4364">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Spline+Sans+Mono:wght@600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/marga-v3.css?v=04859a0c45">
 <style>
 /* Audience-page layout. Everything else comes from /assets/marga-v3.css */
 .section{padding:88px 0}
@@ -59,12 +57,49 @@
   .closing{padding-top:64px}
   .cta-block{padding-bottom:64px}
 }
+
+/* ---- the question explorer ---------------------------------------------------------------
+   Proportions from the v4 design: .88fr/1.12fr, the beat row at 150px + rest. Colours are
+   tokens rather than the design's literals, which is the whole reason the token pass ran
+   first. The selected question's rule is --gold, a fill, and its text is --text-accent, which
+   is the accent that clears AA on sand2. The design used bronze for both. */
+.qx-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr);gap:clamp(20px,3vw,48px);
+  align-items:end;margin-bottom:clamp(26px,3vw,40px)}
+.qx-sub{margin:0;max-width:42ch}
+.qx{display:grid;grid-template-columns:.88fr 1.12fr;gap:clamp(20px,2.6vw,32px);align-items:start}
+
+.qx-list{display:flex;flex-direction:column;gap:2px}
+.qx-q{width:100%;text-align:left;cursor:pointer;background:transparent;
+  border:none;border-left:2px solid transparent;padding:16px 18px;display:grid;gap:7px;
+  transition:background .18s ease,border-color .18s ease}
+.qx-q:hover{background:rgba(22,20,15,.04)}
+.qx-q[aria-selected=true]{background:var(--card);border-left-color:var(--gold)}
+.qx-stage{font:600 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-muted)}
+.qx-q[aria-selected=true] .qx-stage{color:var(--text-accent)}
+.qx-short{font:300 clamp(17px,1.75vw,20px)/1.22 var(--serif);color:var(--text-body)}
+.qx-q[aria-selected=true] .qx-short{color:var(--text)}
+
+.qx-panel{background:var(--card);padding:clamp(26px,3vw,38px)}
+.qx-pstage{margin:0;color:var(--text-accent)}
+.qx-pq{margin:10px 0 6px;font:400 clamp(22px,2.2vw,28px)/1.14 var(--serif);color:var(--text);
+  text-wrap:balance}
+.qx-beat{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(16px,2vw,26px);
+  padding:18px 0;border-bottom:1px solid var(--hair)}
+.qx-beat:last-child{border-bottom:0;padding-bottom:0}
+.qx-beat p{margin:0}
+
+@media(max-width:900px){
+  .qx-head{grid-template-columns:minmax(0,1fr);align-items:start;gap:14px}
+  .qx{grid-template-columns:minmax(0,1fr)}
+  .qx-beat{grid-template-columns:minmax(0,1fr);row-gap:8px}
+}
 </style>
 </head>
 <body>
 <a class="btn btn-dark skip" href="#main">Skip to content</a>
 <header class="nav-wrap">
-  <div class="nav-cap" data-menu="false">
+  <div class="nav-cap on-dark" data-menu="false">
     <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <span class="nav-drop" data-open="false">
@@ -81,7 +116,7 @@
             <span>Build advantage at the point of care.</span></a>
         </span>
       </span>
-      <a href="/the-marga-method.html">How we think</a>
+      <a href="/the-marga-method.html">Intelligence</a>
       <a href="/journal.html">MargaZine&trade;</a>
       <a href="/about.html">About Us</a>
       <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
@@ -108,15 +143,139 @@
 
   <section class="section bg-sand2">
     <div class="inner">
+      <div class="qx-head">
+        <div>
       <p class="t-eyebrow">The decisions we are brought in for</p>
-      <ul class="qgrid">
-        <li>Is the target product profile commercially meaningful?</li>
-        <li>Are the trials measuring what the market will value?</li>
-        <li>Can the differentiation survive outside the deck?</li>
-        <li>What launch sequence creates sustainable adoption?</li>
-        <li>How should the asset sit inside the portfolio?</li>
-        <li>What is the second act after launch?</li>
-      </ul>
+      <h2 class="t-h2">Questions clients actually arrive with.</h2>
+        </div>
+        <p class="t-body t-muted qx-sub">A few examples. Choose one to see how we take it apart.</p>
+      </div>
+      <div class="qx">
+        <div class="qx-list" role="tablist" aria-label="The decisions we are brought in for">
+          <button class="qx-q" role="tab" id="qx-t0" aria-controls="qx-p0" aria-selected="true" tabindex="0">
+            <span class="qx-stage">Development</span>
+            <span class="qx-short">Is the target product profile commercially meaningful?</span>
+          </button>
+          <button class="qx-q" role="tab" id="qx-t1" aria-controls="qx-p1" aria-selected="false" tabindex="-1">
+            <span class="qx-stage">Evidence</span>
+            <span class="qx-short">Are the trials measuring what the market will value?</span>
+          </button>
+          <button class="qx-q" role="tab" id="qx-t2" aria-controls="qx-p2" aria-selected="false" tabindex="-1">
+            <span class="qx-stage">Positioning</span>
+            <span class="qx-short">Can the differentiation survive outside the boardroom?</span>
+          </button>
+          <button class="qx-q" role="tab" id="qx-t3" aria-controls="qx-p3" aria-selected="false" tabindex="-1">
+            <span class="qx-stage">Launch</span>
+            <span class="qx-short">What launch sequence creates sustainable adoption?</span>
+          </button>
+          <button class="qx-q" role="tab" id="qx-t4" aria-controls="qx-p4" aria-selected="false" tabindex="-1">
+            <span class="qx-stage">Portfolio</span>
+            <span class="qx-short">How should the asset sit inside the portfolio?</span>
+          </button>
+          <button class="qx-q" role="tab" id="qx-t5" aria-controls="qx-p5" aria-selected="false" tabindex="-1">
+            <span class="qx-stage">Lifecycle</span>
+            <span class="qx-short">What is the second act after launch?</span>
+          </button>
+        </div>
+        <div class="qx-panels">
+          <div class="qx-panel" role="tabpanel" id="qx-p0" aria-labelledby="qx-t0">
+            <p class="t-label qx-pstage">Development</p>
+            <h3 class="qx-pq">Is the target product profile commercially meaningful?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">What the profile promises, set against what this market already pays for.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">A profile built to clear a trial is not the same as one built to win a chair.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">The profile scored against the forces that decide adoption, with the weak claims named.</p>
+            </div>
+          </div>
+          <div class="qx-panel" role="tabpanel" id="qx-p1" aria-labelledby="qx-t1" hidden>
+            <p class="t-label qx-pstage">Evidence</p>
+            <h3 class="qx-pq">Are the trials measuring what the market will value?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">Whether the endpoints map to something a provider or a patient will actually notice.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">Statistical significance and commercial significance are not the same claim.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">An endpoint set that has to satisfy the agency and the market, judged against both.</p>
+            </div>
+          </div>
+          <div class="qx-panel" role="tabpanel" id="qx-p2" aria-labelledby="qx-t2" hidden>
+            <p class="t-label qx-pstage">Positioning</p>
+            <h3 class="qx-pq">Can the differentiation survive outside the boardroom?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">How the claim holds once a competitor is in the room and the question gets hostile.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">Differentiation that exists only in a slide deck collapses at the first real objection.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">One claim structure that holds from medical affairs through to the field.</p>
+            </div>
+          </div>
+          <div class="qx-panel" role="tabpanel" id="qx-p3" aria-labelledby="qx-t3" hidden>
+            <p class="t-label qx-pstage">Launch</p>
+            <h3 class="qx-pq">What launch sequence creates sustainable adoption?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">Which audience has to believe it first, and what they need to see before they will.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">Sequence sets the ceiling more often than spend does.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">A launch order with the dependencies between audiences made explicit.</p>
+            </div>
+          </div>
+          <div class="qx-panel" role="tabpanel" id="qx-p4" aria-labelledby="qx-t4" hidden>
+            <p class="t-label qx-pstage">Portfolio</p>
+            <h3 class="qx-pq">How should the asset sit inside the portfolio?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">What the asset takes from, and gives to, everything else you already sell.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">Two products can both perform and still quietly cost each other.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">A portfolio position with the trade-offs priced rather than assumed.</p>
+            </div>
+          </div>
+          <div class="qx-panel" role="tabpanel" id="qx-p5" aria-labelledby="qx-t5" hidden>
+            <p class="t-label qx-pstage">Lifecycle</p>
+            <h3 class="qx-pq">What is the second act after launch?</h3>
+            <div class="qx-beat">
+              <p class="t-label">What we look at</p>
+              <p class="t-body">What is left to sell once the novelty of the launch is spent.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What often surfaces</p>
+              <p class="t-body">The second act is usually decided long before the first one ships.</p>
+            </div>
+            <div class="qx-beat">
+              <p class="t-label">What you get</p>
+              <p class="t-body">A lifecycle path that does not depend on another molecule arriving.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section bg-cream">
@@ -186,7 +345,7 @@
         <div>
           <h3>The firm</h3>
           <ul>
-            <li><a href="/the-marga-method.html">How we think</a></li>
+            <li><a href="/the-marga-method.html">Intelligence</a></li>
             <li><a href="/journal.html">MargaZine&trade;</a></li>
             <li><a href="/about.html">About Us</a></li>
           </ul>
@@ -208,5 +367,29 @@
   </section>
 
 </main>
-<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script>
+<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script>
+(function(){
+  var list=document.querySelector('.qx-list'); if(!list) return;
+  var tabs=[].slice.call(list.querySelectorAll('[role=tab]'));
+  function show(i,focus){
+    tabs.forEach(function(t,n){
+      var on=n===i, p=document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+      if(p){ if(on){p.removeAttribute('hidden');} else {p.setAttribute('hidden','');} }
+    });
+    if(focus) tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(i,false);});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowDown'||e.key==='ArrowRight'?1:
+            e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:0;
+      if(!d) return;
+      e.preventDefault();
+      show((i+d+tabs.length)%tabs.length,true);
+    });
+  });
+})();
+</script>
 </body></html>

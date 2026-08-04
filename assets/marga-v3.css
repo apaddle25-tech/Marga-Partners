@@ -589,3 +589,17 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
   .site-foot .inner{grid-template-columns:minmax(0,1fr);gap:32px}
   .site-foot .foot-legal{justify-content:flex-start}
 }
+
+/* ---- carried-over identity notice --------------------------------------------------------
+   marga-prefill.js inserts this at the top of a form when it has filled a blank from an
+   earlier form in the same visit. It exists so the fill is visible rather than merely
+   convenient, and it is only ever in the DOM when something was actually filled.
+
+   The clear control is a real <button> styled as a link. It performs an action on this page,
+   so it is not an <a>: an anchor that goes nowhere is a promise the markup does not keep, and
+   it reads as a link to a screen reader. */
+.prefill-note{margin:0 0 22px;padding:14px 18px;background:var(--proof);
+  border-left:2px solid var(--gold);font:400 13.5px/1.55 var(--sans);color:var(--text-body)}
+.prefill-clear{background:none;border:0;padding:0;font:600 13.5px/1.55 var(--sans);
+  color:var(--text-accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.prefill-clear:hover{color:var(--ink)}

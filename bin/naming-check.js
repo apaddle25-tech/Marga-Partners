@@ -250,7 +250,10 @@ if (findings.length) {
     }
     console.error('');
   }
-  console.error('  The estate is four marks: Marga Method, Marga Index, Marga Studio, MargaZine.');
+  // Read from naming.json rather than repeated here. This line named the four marks, so
+  // registering a fifth meant remembering to edit a string in a file nobody opens when
+  // adding a mark, and the message would have kept saying four.
+  console.error(`  The estate is ${config.marks.length} marks: ${config.marks.join(', ')}.`);
   console.error('  Fix with: node bin/naming-check.js --fix\n');
 }
 
@@ -270,7 +273,7 @@ if (reviews.length && !QUIET) {
 }
 
 if (!findings.length && !reviews.length) {
-  console.log('naming-check: clean. Four marks, no strays.');
+  console.log(`naming-check: clean. ${config.marks.length} marks, no strays.`);
 }
 
 process.exit(findings.length ? 1 : 0);

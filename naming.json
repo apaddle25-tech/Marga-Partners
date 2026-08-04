@@ -1,15 +1,16 @@
 {
-  "$note": "Product naming contract. The estate uses four product marks under one root mark, and nothing else. bin/naming-check.js enforces this file in CI and in the pre-commit hook.",
+  "$note": "Product naming contract. The estate uses five product marks under one root mark, and nothing else. bin/naming-check.js enforces this file in CI and in the pre-commit hook.",
   "version": "1.0.0",
   "updated": "2026-08-02",
   "rootMark": "Marga",
   "marks": [
+    "Marga Intelligence",
     "Marga Method",
     "Marga Index",
     "Marga Studio",
     "MargaZine"
   ],
-  "markRule": "The trademark is on Marga itself and covers every product name used under it. Sub-brands are not registered separately. Product naming is a separate discipline from trademark coverage: a fifth Marga-prefixed name would be legally covered and is still forbidden, because the estate is four marks.",
+  "markRule": "The trademark is on Marga itself and covers every product name used under it. Sub-brands are not registered separately. Product naming is a separate discipline from trademark coverage: a sixth Marga-prefixed name would be legally covered and is still forbidden, because the estate is five marks.",
   "prose": {
     "firstUse": "Every mark takes the trademark symbol on first prominent use in any human-visible surface.",
     "attribution": "Marga is a trademark of Marga Partners LLC and covers the product names used under it. Never claim each sub-brand as a separate mark.",

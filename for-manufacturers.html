@@ -58,6 +58,17 @@
   .cta-block{padding-bottom:64px}
 }
 
+/* ---- the Exchange join gate (providers only) --------------------------------------------- */
+.gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap:18px;margin-top:32px}
+.gate-l{display:block;font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-accent);margin-bottom:10px}
+.gate input,.gate select{font:400 15px/1.5 var(--sans);color:var(--text);background:var(--card);
+  border:1px solid rgba(22,20,15,.24);padding:14px 16px;width:100%}
+.gate input:focus,.gate select:focus{border-color:var(--gold)}
+.gate-go{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:28px}
+.gate-go p{margin:0}
+
 /* ---- the question explorer ---------------------------------------------------------------
    Proportions from the v4 design: .88fr/1.12fr, the beat row at 150px + rest. Colours are
    tokens rather than the design's literals, which is the whole reason the token pass ran
@@ -103,11 +114,11 @@
     <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <span class="nav-drop" data-open="false">
-        <button type="button" aria-expanded="false" aria-controls="whopanel">Who we serve
+        <button type="button" aria-expanded="false" aria-controls="whopanel">Advisory
           <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4"
             stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
             stroke-linejoin="round"/></svg></button>
-        <span class="nav-panel" id="whopanel" role="group" aria-label="Who we serve">
+        <span class="nav-panel" id="whopanel" role="group" aria-label="Advisory">
           <a href="/for-manufacturers.html" aria-current="page"><b>Manufacturers</b>
             <span>Turn an asset into a franchise.</span></a>
           <a href="/for-investors.html"><b>Investors</b>
@@ -117,8 +128,8 @@
         </span>
       </span>
       <a href="/the-marga-method.html">Intelligence</a>
-      <a href="/journal.html">MargaZine&trade;</a>
-      <a href="/about.html">About Us</a>
+      <a href="/journal.html">Journal</a>
+      <a href="/about.html">About</a>
       <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
     </nav>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
@@ -335,7 +346,7 @@
           shape a category.</p>
         </div>
         <div>
-          <h3>Who we partner with</h3>
+          <h3>Advisory</h3>
           <ul>
             <li><a href="/for-manufacturers.html">Manufacturers</a></li>
             <li><a href="/for-investors.html">Investors</a></li>
@@ -346,8 +357,9 @@
           <h3>The firm</h3>
           <ul>
             <li><a href="/the-marga-method.html">Intelligence</a></li>
-            <li><a href="/journal.html">MargaZine&trade;</a></li>
-            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/journal.html">Journal</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/Consultation.html">Contact</a></li>
           </ul>
         </div>
         <div>

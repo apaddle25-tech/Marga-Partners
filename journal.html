@@ -50,6 +50,22 @@
   .cta-block{padding-bottom:64px}
 }
 
+/* ---- the archive band -------------------------------------------------------------------
+   The subscriber section the v4 design carries and this page did not, which is most of the
+   word count the live page was missing. Five numbered benefits, the same numbered-list idiom
+   the audience pages use, so it inherits rather than invents. */
+.arch-head{max-width:60ch}
+.arch-head .t-h2{margin:12px 0 0}
+.arch-head .prose-p{margin-top:20px}
+.arch-label{display:block;margin:clamp(30px,4vw,42px) 0 18px;color:var(--text-accent)}
+.archgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,236px),1fr));
+  gap:1px;margin:0;padding:0;list-style:none;background:var(--hair);border:1px solid var(--hair)}
+.archgrid li{display:flex;flex-direction:column;gap:10px;background:var(--card);
+  padding:clamp(22px,2.6vw,28px)}
+.archgrid .n{font:600 11px/1 var(--mono);letter-spacing:.18em;color:var(--text-accent)}
+.archgrid h3{margin:0;font:400 clamp(19px,1.9vw,21px)/1.2 var(--serif);color:var(--text)}
+.archgrid p{margin:0;font:400 14px/1.55 var(--sans);color:var(--text-body)}
+
 /* The origin essay, given a band of its own. */
 .origin{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;
   align-items:start;margin-top:30px}
@@ -118,11 +134,11 @@
     <a class="nav-brand" href="/"><svg viewBox="0 0 394 321" fill="none" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z" fill="#F1E9DB"></path><path d="M125 104V321H5V215.047L125 104Z" fill="#F1E9DB"></path><path d="M274 104L196 162L0 1H155.229L274 104Z" fill="#C7A24B"></path></svg><b>Marga Partners</b></a>
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <span class="nav-drop" data-open="false">
-        <button type="button" aria-expanded="false" aria-controls="whopanel">Who we serve
+        <button type="button" aria-expanded="false" aria-controls="whopanel">Advisory
           <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4"
             stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
             stroke-linejoin="round"/></svg></button>
-        <span class="nav-panel" id="whopanel" role="group" aria-label="Who we serve">
+        <span class="nav-panel" id="whopanel" role="group" aria-label="Advisory">
           <a href="/for-manufacturers.html"><b>Manufacturers</b>
             <span>Turn an asset into a franchise.</span></a>
           <a href="/for-investors.html"><b>Investors</b>
@@ -132,8 +148,8 @@
         </span>
       </span>
       <a href="/the-marga-method.html">Intelligence</a>
-      <a href="/journal.html" aria-current="page">MargaZine&trade;</a>
-      <a href="/about.html">About Us</a>
+      <a href="/journal.html" aria-current="page">Journal</a>
+      <a href="/about.html">About</a>
       <a class="btn btn-primary" href="/Consultation.html">Start a conversation</a>
     </nav>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
@@ -178,7 +194,7 @@
   <section class="section bg-card-solid">
     <div class="inner">
       <p class="t-eyebrow">Available now</p>
-      <h2 class="t-h2">Open to read, no email required.</h2>
+      <h2 class="t-h2">Three flagship essays, plus the origin.</h2>
       <p class="t-lead prose-p">Published pieces stay ungated and permanent. Everything after
       them lands on the schedule below.</p>
       <!--MZLIVE--><ul class="live">
@@ -211,10 +227,34 @@
     </div>
   </section>
 
+  <section class="section bg-cream">
+    <div class="inner">
+      <div class="arch-head">
+        <p class="t-eyebrow">The archive</p>
+        <h2 class="t-h2">Read every essay. Keep the whole library.</h2>
+        <p class="t-lead prose-p">Subscribe for full access to the archive, the frameworks and
+        the briefings, and to be first to each new piece.</p>
+      </div>
+      <p class="t-label arch-label">Included with your free subscription</p>
+      <ul class="archgrid">
+        <li><span class="n" aria-hidden="true">01</span><h3>Every essay, the moment it
+          drops</h3><p>Straight to your inbox before it circulates anywhere else.</p></li>
+        <li><span class="n" aria-hidden="true">02</span><h3>The complete archive</h3>
+          <p>Everything published, permanently open to you.</p></li>
+        <li><span class="n" aria-hidden="true">03</span><h3>Downloadable frameworks</h3>
+          <p>The models behind the essays, built to use in your own decks.</p></li>
+        <li><span class="n" aria-hidden="true">04</span><h3>Exclusive briefings</h3>
+          <p>Subscriber-only pieces that never run on the site.</p></li>
+        <li><span class="n" aria-hidden="true">05</span><h3>The annual compendium</h3>
+          <p>The year of thinking, collected in one volume.</p></li>
+      </ul>
+    </div>
+  </section>
+
   
   <section class="closing bg-ink on-dark">
     <div class="cta-block">
-      <p class="t-eyebrow">The archive</p>
+      <p class="t-eyebrow">Get started</p>
       <h2>Read every essay, and be first to each new one.</h2>
       <p class="t-lead sub">One email a week. No cost, and nothing else ever.</p>
       <a class="btn btn-primary" href="/subscribe.html">Subscribe, free</a>
@@ -227,7 +267,7 @@
           shape a category.</p>
         </div>
         <div>
-          <h3>Who we partner with</h3>
+          <h3>Advisory</h3>
           <ul>
             <li><a href="/for-manufacturers.html">Manufacturers</a></li>
             <li><a href="/for-investors.html">Investors</a></li>
@@ -238,8 +278,9 @@
           <h3>The firm</h3>
           <ul>
             <li><a href="/the-marga-method.html">Intelligence</a></li>
-            <li><a href="/journal.html">MargaZine&trade;</a></li>
-            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/journal.html">Journal</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/Consultation.html">Contact</a></li>
           </ul>
         </div>
         <div>

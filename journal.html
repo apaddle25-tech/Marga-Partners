@@ -101,7 +101,20 @@
 
 @media(max-width:900px){
   .arch{grid-template-columns:minmax(0,1fr)}
+  /* Two across rather than one. A tile holds a date, a domain and a read time, so at 700px a
+     full-width tile is mostly empty space and the grid stops reading as a grid. */
+  .sched{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* An odd count leaves a half row, and the empty cell reads as a tile with its text missing
+     rather than as the end of the list. The schedule length changes every week, so this has to
+     hold for either parity. */
+  .tile:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media(max-width:560px){
+  /* One across, and the tile gives up the height it was holding for a three-up row. Nine of
+     them stacked at 172px each is a long scroll past a lot of nothing. */
   .sched{grid-template-columns:minmax(0,1fr)}
+  .tile{min-height:0;gap:14px;padding:20px 22px}
+  .tile-d{font-size:36px}
 }
 
 /* ---- the origin essay card ----------------------------------------------------------------
@@ -158,26 +171,10 @@
   .live>li{display:flex;flex-direction:column;gap:10px}
 }
 
-/* The schedule. */
-.sched{margin:34px 0 0;padding:0;list-style:none;
-  border-top:1px solid rgba(241,233,219,.16)}
-.sched li{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:24px;
-  align-items:center;padding:20px 0;border-bottom:1px solid rgba(241,233,219,.16)}
-.sched .d{font:400 26px/1 var(--serif);color:var(--text-on-dark)}
-.sched .d span{display:block;margin-top:4px;font:600 10px/1 var(--mono);letter-spacing:.16em;
-  text-transform:uppercase;color:var(--text-on-dark-muted)}
-.sched .dom{font:400 clamp(18px,1.8vw,21px)/1.2 var(--serif);color:var(--text-on-dark)}
-.sched .meta{display:flex;gap:10px;align-items:center;
-  font:600 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--text-on-dark-muted);text-align:right}
-.sched .next{color:var(--gold)}
-
 @media(max-width:900px){
   .origin{grid-template-columns:minmax(0,1fr)}
   .live{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
   .live>li{display:flex;flex-direction:column;gap:10px}
-  .sched li{grid-template-columns:64px minmax(0,1fr);gap:16px}
-  .sched .meta{grid-column:2;justify-content:flex-start;text-align:left}
 }
 </style>
 </head>

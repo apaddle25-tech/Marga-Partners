@@ -87,39 +87,39 @@
 /* ---- the scorecard ---------------------------------------------------------------------
    Lifted unchanged from the pre-v4 page along with its markup and its script. Restyled only
    where the surrounding grounds changed. */
-.lens .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.mi .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:14px}
+.lens .k{font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.mi .k{font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:14px}
 /* scorecard */
 .deliv{margin-top:clamp(30px,4vw,44px);background:var(--card);border:1px solid rgba(22,20,15,.2);overflow:hidden}
 .d-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px clamp(24px,3vw,34px);background:var(--ink2);color:var(--cream2)}
-.d-top .l .k{font:600 10px/1 'Spline Sans Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
-.d-top .l .t{font-family:'Newsreader',serif;font-size:clamp(20px,2.2vw,25px);line-height:1.1}
-.d-top .conf{font:600 9.5px/1 'Spline Sans Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:7px 11px;border-radius:2px;white-space:nowrap}
+.d-top .l .k{font:600 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.d-top .l .t{font-family:var(--serif);font-size:clamp(20px,2.2vw,25px);line-height:1.1}
+.d-top .conf{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);background:var(--gold);padding:7px 11px;border-radius:0;white-space:nowrap}
 .d-body{display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:var(--card)}
 .d-left{padding:clamp(26px,3vw,38px);border-right:1px solid rgba(22,20,15,.14)}
 .d-comp{display:flex;align-items:flex-end;gap:12px}
-.d-num{font-family:'Newsreader',serif;font-size:clamp(62px,7vw,90px);line-height:.82;color:var(--ink)}
-.d-band{font:600 9.5px/1 'Spline Sans Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:20px;margin-bottom:12px}
+.d-num{font-family:var(--serif);font-size:clamp(62px,7vw,90px);line-height:.82;color:var(--ink)}
+.d-band{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:20px;margin-bottom:12px}
 .d-band.neutral{color:var(--bronze-text, #7A5A20);background:rgba(154,116,47,.14)}
-.d-idx{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(22,20,15,.5);margin-top:10px}
+.d-idx{font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(22,20,15,.5);margin-top:10px}
 .d-verdict{margin:26px 0 24px;padding:24px 26px;background:#fff;border:1px solid rgba(22,20,15,.18);min-height:150px}
-.d-verdict .vt{font:600 10px/1 'Spline Sans Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:8px}
-.d-verdict .vv{font-family:'Newsreader',serif;font-size:24px;line-height:1.1;color:var(--ink);margin-bottom:10px}
+.d-verdict .vt{font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:8px}
+.d-verdict .vv{font-family:var(--serif);font-size:24px;line-height:1.1;color:var(--ink);margin-bottom:10px}
 .d-verdict p{margin:0;font-size:14.5px;line-height:1.6;color:var(--text-body)}
 .d-forces .fr{display:grid;grid-template-columns:30px minmax(0,1fr) auto 112px;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(22,20,15,.1)}
 .d-forces .fn{display:contents}
-.d-forces .fn .ix{font:500 11px/1 'Spline Sans Mono',monospace;color:rgba(22,20,15,.4);letter-spacing:.1em}
-.d-forces .fn .red{height:9px;border-radius:5px;background:rgba(22,20,15,.14)}
-.d-forces .fs{font-family:'Newsreader',serif;font-size:26px;line-height:1;text-align:right}
-.d-forces .pill{justify-self:end;font:600 9.5px/1 'Spline Sans Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:20px;width:92px;text-align:center}
+.d-forces .fn .ix{font:500 11px/1 var(--mono);color:rgba(22,20,15,.4);letter-spacing:.1em}
+.d-forces .fn .red{height:9px;border-radius:0;background:rgba(22,20,15,.14)}
+.d-forces .fs{font-family:var(--serif);font-size:26px;line-height:1;text-align:right}
+.d-forces .pill{justify-self:end;font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:20px;width:92px;text-align:center}
 .pill.adv{color:var(--green);background:rgba(31,122,77,.12)}
 .pill.neu{color:var(--bronze-text, #7A5A20);background:rgba(154,116,47,.14)}
 .pill.det{color:#B4463C;background:rgba(180,70,60,.13)}
 .d-band.advantage{color:var(--green);background:rgba(31,122,77,.12)}
 .d-band.detractor{color:#B4463C;background:rgba(180,70,60,.13)}
 .d-right{padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;justify-content:center}
-.d-right .rh{font:600 10px/1 'Spline Sans Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:14px;text-align:center}
-.d-tease{margin-top:16px;font:600 11px/1.5 'Manrope',sans-serif;letter-spacing:.01em;color:rgba(22,20,15,.5)}
+.d-right .rh{font:600 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:14px;text-align:center}
+.d-tease{margin-top:16px;font:600 11px/1.5 var(--sans);letter-spacing:.01em;color:rgba(22,20,15,.5)}
 .d-fade{transition:opacity .3s ease}
 .d-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 0 18px;background:var(--cream)}
 .d-dots{display:flex;gap:7px;justify-content:center}
@@ -128,8 +128,8 @@
 .d-arrow{width:30px;height:30px;border-radius:50%;border:1px solid rgba(22,20,15,.2);background:transparent;color:var(--ink);cursor:pointer;font-size:14px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex:none}
 .d-arrow:hover{border-color:var(--bronze-text, #7A5A20);color:var(--bronze-text, #7A5A20)}
 .note{margin-top:16px;font-size:12.5px;color:rgba(22,20,15,.5);font-style:italic}
-.con .k{font:600 9px/1 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:12px}
-.thinking .l .k{font:600 10px/1 'Manrope',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:8px}
+.con .k{font:600 9px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:12px}
+.thinking .l .k{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-text, #7A5A20);margin-bottom:8px}
 .thinking .l h3{font-size:24px;color:var(--ink)}
 .thinking .l p{margin:8px 0 0;font-size:14px;color:var(--body);max-width:52ch}
 .d-body{grid-template-columns:1fr}
@@ -230,6 +230,7 @@
       products, markets, companies, and events at the intersection of science and
       commercialization, shaped by 13+ years of leading major launches across three
       manufacturers.</p>
+      <p class="t-small t-muted">13+ years leading major launches across three manufacturers.</p>
       <div class="defs">
         <div>
           <p class="t-label">The Marga Method&trade;</p>
@@ -264,6 +265,7 @@
   <section class="section bg-card-solid">
     <div class="inner">
       <p class="t-eyebrow">How it is used</p>
+      <p class="t-lead prose-p">Every read is built the same way, and the method behind it is not a mystery.</p>
       <h2 class="t-h2">Scoped to the decision in front of you.</h2>
       <ul class="uses">
         <li><h3>Asset and deal evaluation</h3><p>An independent read before a term sheet, a bid, or a board decision.</p></li>

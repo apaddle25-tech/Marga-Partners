@@ -30,6 +30,23 @@
    Body text on dark at .72 measures 7.77 to 8.53:1. Advantage and Detractor in the scorecard
    clear at 6.46 and 5.02:1. The only scorecard colour that failed was Neutral, which is
    bronze again.
+
+   THE V4 PAGE DESIGNS, READ 2026-08-04, AND WHAT PORTING THEM MUST NOT CARRY OVER.
+
+   Twenty distinct colours across the eight files. Sixteen already have tokens here, two more
+   are added below, and two are rounding artifacts of tokens that already exist.
+
+   The design's own README lists bronze failing AA as an open item needing "one deliberate
+   decision, then a patch across all eight files". That decision is the one above, taken on
+   28 July and implemented here on 1 August: bronze is a fill and a rule, never text. The v4
+   files regress on it in 43 places, as `color` 26 times, as the `--eye` eyebrow variable 14
+   times, and as `--link` 3 times. All 43 map to --text-accent when the markup lands. The
+   other 5 uses are an `accent-color` on a form control and a JS background toggle, neither of
+   which is text, and both stay bronze.
+
+   The design is not wrong to want an accent there. It is wrong about which one: it already
+   uses #6B4F1C, the correct value, in 61 other places across the same eight files, and
+   #7A5A20, superseded on 2 August, in 9 more. One accent applied consistently is the fix.
    ========================================================================================== */
 
 /* Border-box everywhere. Every page on the current site already does this and the system
@@ -78,6 +95,21 @@
                              is why the accent below had to move. */
   --card3:#F4EEE1;        /* the lens section behind the three cards */
   --proof:#F4EBD9;        /* the proof block inside a card */
+
+  /* ---- two more the v4 page designs add, 2026-08-04 ----------------------------------
+     Every other colour in the eight v4 pages already had a token. These two did not, and
+     neither is text, so neither carries a contrast obligation of its own.
+
+     Two further values in those files are NOT tokens and must not become any: #E4D8BF is
+     two units from --sand2 and #211E19 is six from --ink3, distances no eye resolves. They
+     are a design tool rounding a colour it already had, and adding a token for each would
+     put two names on one ground and leave the next person guessing which to reach for. */
+  --sand-glow:#F0E4C8;    /* the lit corner of the page background, as the first stop of a
+                             radial gradient that fades to transparent by 52%. Never a fill
+                             on its own and never behind text. */
+  --ink4:#2E2B24;         /* raised dark surface, lighter than --ink3. The scheduled-state
+                             block on a proof card. Measured 2026-08-04: cream 11.71:1,
+                             card 13.11:1, gold 5.85:1. All clear AA at any size. */
 
   /* ---- accents. Both unchanged, but only one of them may be text. ---- */
   --gold:#C7A24B;         /* PRIMARY CTA FILL. On dark it is also safe as text, 6.93:1+ */

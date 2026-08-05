@@ -26,6 +26,9 @@
 export const FIELDS = Object.freeze([
   'locations', 'treatmentRooms', 'injectorFte', 'openHoursPerWeek',
   'annualRevenue', 'revenueInjectables', 'revenueEnergy', 'revenueRetail', 'revenueMemberships',
+  // The cohort publishes patient_visits_per_month, so the calculator has to accept it or a
+  // respondent answering the survey question is refused for a field the benchmark itself uses.
+  'patientVisitsPerMonth',
   'newPatientsPerMonth', 'returningPatientShare',
   'averageTicket', 'activeMembers', 'monthlyMarketingSpend',
   'state', 'metroTier',

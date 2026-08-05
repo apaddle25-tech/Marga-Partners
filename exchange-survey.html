@@ -51,10 +51,19 @@
 
 .ex-f{display:block;margin:0 0 22px;border:0;padding:0}
 .ex-f:last-child{margin-bottom:0}
+/* A number input carries a hint saying what the figure buys the respondent, because a practice
+   asked for revenue with no reason given answers a smaller question than one that knows it is
+   buying a benchmark. It has to sit under the control, not beside it: as an inline span it ran
+   alongside a browser-default number box and read as a caption on the wrong thing. */
+.ex-hint{display:block;margin-top:7px;font:400 13px/1.5 var(--sans);color:var(--text-muted)}
+/* Number spinners are noise on a form of figures, and they narrow the control in Safari. */
+.ex-form input[type=number]{-moz-appearance:textfield;max-width:220px}
+.ex-form input[type=number]::-webkit-outer-spin-button,
+.ex-form input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .ex-lab{display:block;font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
   color:var(--text-accent);margin-bottom:10px;padding:0}
 .ex-req{margin-left:8px;letter-spacing:.1em;color:var(--text-muted)}
-.ex-form input[type=text],.ex-form input[type=email],.ex-form select,.ex-form textarea{
+.ex-form input[type=text],.ex-form input[type=email],.ex-form input[type=number],.ex-form select,.ex-form textarea{
   font:400 15px/1.5 var(--sans);color:var(--text);background:var(--card);
   border:1px solid rgba(22,20,15,.24);padding:14px 16px;width:100%}
 .ex-form input:focus,.ex-form select:focus,.ex-form textarea:focus{
@@ -153,10 +162,11 @@
         <nav class="ex-jump" aria-label="Survey sections">
           <a href="#s0">01 &nbsp;Your details</a>
           <a href="#s1">02 &nbsp;Your practice</a>
-          <a href="#s2">03 &nbsp;Services and mix</a>
+          <a href="#s2">03 &nbsp;The numbers</a>
           <a href="#s3">04 &nbsp;Patients and demand</a>
-          <a href="#s4">05 &nbsp;Manufacturers and buying</a>
-          <a href="#s5">06 &nbsp;What you want back</a>
+          <a href="#s4">05 &nbsp;Products and buying</a>
+          <a href="#s5">06 &nbsp;Switching and fit</a>
+          <a href="#s6">07 &nbsp;What you want back</a>
         </nav>
         <div class="ex-body">
         <section class="ex-sec" id="s0" aria-labelledby="s0-h">
@@ -183,6 +193,24 @@
             <h2 id="s1-h">Your practice</h2>
           </div>
           <div class="ex-f">
+            <label class="ex-lab" for="f-locations">Locations</label>
+            <input id="f-locations" type="number" inputmode="numeric" min="0" step="any" name="locations" placeholder="1">
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-treatmentRooms">Treatment rooms, per location</label>
+            <input id="f-treatmentRooms" type="number" inputmode="numeric" min="0" step="any" name="treatmentRooms" placeholder="4">
+            <span class="ex-hint">With injector hours below, this gives revenue per room and per chair hour. No published source reports either.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-injectorFte">Injector FTE</label>
+            <input id="f-injectorFte" type="number" inputmode="numeric" min="0" step="any" name="injectorFte" placeholder="2.5">
+            <span class="ex-hint">Full-time equivalents, so two half-time injectors is 1.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-openHoursPerWeek">Open hours per week</label>
+            <input id="f-openHoursPerWeek" type="number" inputmode="numeric" min="0" step="any" name="openHoursPerWeek" placeholder="45">
+          </div>
+          <div class="ex-f">
             <label class="ex-lab" for="f-exchange_years">Years in the category</label>
             <select id="f-exchange_years" name="exchange_years">
                 <option value="">No answer</option>
@@ -193,41 +221,118 @@
             </select>
           </div>
           <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_rooms">Treatment rooms</label>
-            <select id="f-exchange_rooms" name="exchange_rooms">
-                <option value="">No answer</option>
-                <option>1 to 2</option>
-                <option>3 to 5</option>
-                <option>6 to 10</option>
-                <option>More than 10</option>
-            </select>
+            <label class="ex-lab" for="f-state">State</label>
+            <input id="f-state" type="text" name="state" placeholder="CA">
           </div>
           <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_injectors">Injectors on staff</label>
-            <select id="f-exchange_injectors" name="exchange_injectors">
+            <label class="ex-lab" for="f-metroTier">Market</label>
+            <select id="f-metroTier" name="metroTier">
                 <option value="">No answer</option>
-                <option>Just me</option>
-                <option>2 to 3</option>
-                <option>4 to 8</option>
-                <option>More than 8</option>
-            </select>
-          </div>
-          <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_revenue_band">Annual revenue band</label>
-            <select id="f-exchange_revenue_band" name="exchange_revenue_band">
-                <option value="">No answer</option>
-                <option>Prefer not to say</option>
-                <option>Under $1M</option>
-                <option>$1M to $3M</option>
-                <option>$3M to $10M</option>
-                <option>Over $10M</option>
+                <option>Major metro</option>
+                <option>Mid-size metro</option>
+                <option>Small metro or suburban</option>
+                <option>Rural</option>
             </select>
           </div>
         </section>
         <section class="ex-sec" id="s2" aria-labelledby="s2-h">
           <div class="ex-sec-head">
             <span class="ex-num" aria-hidden="true">03</span>
-            <h2 id="s2-h">Services and mix</h2>
+            <h2 id="s2-h">The numbers</h2>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-annualRevenue">Annual revenue, all locations</label>
+            <input id="f-annualRevenue" type="number" inputmode="numeric" min="0" step="any" name="annualRevenue" placeholder="1400000">
+            <span class="ex-hint">A figure unlocks your revenue per room, per chair hour and per new patient. Leave blank and pick a band below instead.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-annualRevenueBand">Or a band, if you would rather not give a figure</label>
+            <select id="f-annualRevenueBand" name="annualRevenueBand">
+                <option value="">No answer</option>
+                <option>Under $1M</option>
+                <option>$1M to $3M</option>
+                <option>$3M to $10M</option>
+                <option>Over $10M</option>
+            </select>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-averageTicket">Average ticket</label>
+            <input id="f-averageTicket" type="number" inputmode="numeric" min="0" step="any" name="averageTicket" placeholder="525">
+            <span class="ex-hint">Average spend per visit.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-revenueInjectables">Revenue share, injectables</label>
+            <input id="f-revenueInjectables" type="number" inputmode="numeric" min="0" step="any" name="revenueInjectables" placeholder="55">
+            <span class="ex-hint">Per cent. The four shares should come to about 100.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-revenueEnergy">Revenue share, energy and devices</label>
+            <input id="f-revenueEnergy" type="number" inputmode="numeric" min="0" step="any" name="revenueEnergy" placeholder="20">
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-revenueMemberships">Revenue share, memberships</label>
+            <input id="f-revenueMemberships" type="number" inputmode="numeric" min="0" step="any" name="revenueMemberships" placeholder="15">
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-revenueRetail">Revenue share, retail and skincare</label>
+            <input id="f-revenueRetail" type="number" inputmode="numeric" min="0" step="any" name="revenueRetail" placeholder="10">
+          </div>
+        </section>
+        <section class="ex-sec" id="s3" aria-labelledby="s3-h">
+          <div class="ex-sec-head">
+            <span class="ex-num" aria-hidden="true">04</span>
+            <h2 id="s3-h">Patients and demand</h2>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-patientVisitsPerMonth">Patient visits per month</label>
+            <input id="f-patientVisitsPerMonth" type="number" inputmode="numeric" min="0" step="any" name="patientVisitsPerMonth" placeholder="245">
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-newPatientsPerMonth">New patients per month</label>
+            <input id="f-newPatientsPerMonth" type="number" inputmode="numeric" min="0" step="any" name="newPatientsPerMonth" placeholder="35">
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-returningPatientShare">Share of visits from returning patients</label>
+            <input id="f-returningPatientShare" type="number" inputmode="numeric" min="0" step="any" name="returningPatientShare" placeholder="65">
+            <span class="ex-hint">Per cent.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-activeMembers">Active members</label>
+            <input id="f-activeMembers" type="number" inputmode="numeric" min="0" step="any" name="activeMembers" placeholder="120">
+            <span class="ex-hint">Membership penetration is one of the six figures nobody publishes.</span>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-monthlyMarketingSpend">Monthly marketing spend</label>
+            <input id="f-monthlyMarketingSpend" type="number" inputmode="numeric" min="0" step="any" name="monthlyMarketingSpend" placeholder="8000">
+            <span class="ex-hint">With new patients above, this gives your acquisition cost.</span>
+          </div>
+          <fieldset class="ex-f ex-fset">
+            <legend class="ex-lab">Where new patients come from</legend>
+            <div class="ex-checks">
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Referral from patients">Referral from patients</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Search">Search</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Social">Social</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Manufacturer locator">Manufacturer locator</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Physician referral">Physician referral</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Paid advertising">Paid advertising</label>
+              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Events">Events</label>
+            </div>
+          </fieldset>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_male_share">Share of male patients</label>
+            <select id="f-exchange_male_share" name="exchange_male_share">
+                <option value="">No answer</option>
+                <option>Under 10%</option>
+                <option>10 to 20%</option>
+                <option>20 to 35%</option>
+                <option>Over 35%</option>
+            </select>
+          </div>
+        </section>
+        <section class="ex-sec" id="s4" aria-labelledby="s4-h">
+          <div class="ex-sec-head">
+            <span class="ex-num" aria-hidden="true">05</span>
+            <h2 id="s4-h">Products and buying</h2>
           </div>
           <fieldset class="ex-f ex-fset">
             <legend class="ex-lab">Categories you treat</legend>
@@ -273,6 +378,10 @@
             </select>
           </div>
           <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_manufacturers">Manufacturers you buy from most</label>
+            <input id="f-exchange_manufacturers" type="text" name="exchange_manufacturers" placeholder="Who you order from">
+          </div>
+          <div class="ex-f">
             <label class="ex-lab" for="f-exchange_added">Added in the last year</label>
             <input id="f-exchange_added" type="text" name="exchange_added" placeholder="Anything new on the menu">
           </div>
@@ -280,41 +389,14 @@
             <label class="ex-lab" for="f-exchange_retired">Retired in the last year</label>
             <input id="f-exchange_retired" type="text" name="exchange_retired" placeholder="Anything you stopped offering">
           </div>
-        </section>
-        <section class="ex-sec" id="s3" aria-labelledby="s3-h">
-          <div class="ex-sec-head">
-            <span class="ex-num" aria-hidden="true">04</span>
-            <h2 id="s3-h">Patients and demand</h2>
-          </div>
           <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_monthly_patients">Monthly aesthetic patients</label>
-            <select id="f-exchange_monthly_patients" name="exchange_monthly_patients">
+            <label class="ex-lab" for="f-exchange_volume_agreement">Are you on a volume or rebate agreement?</label>
+            <select id="f-exchange_volume_agreement" name="exchange_volume_agreement">
                 <option value="">No answer</option>
-                <option>Under 100</option>
-                <option>100 to 250</option>
-                <option>250 to 500</option>
-                <option>500 to 1,000</option>
-                <option>More than 1,000</option>
-            </select>
-          </div>
-          <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_returning_share">Share who are returning</label>
-            <select id="f-exchange_returning_share" name="exchange_returning_share">
-                <option value="">No answer</option>
-                <option>Under 25%</option>
-                <option>25 to 50%</option>
-                <option>50 to 75%</option>
-                <option>Over 75%</option>
-            </select>
-          </div>
-          <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_male_share">Share of male patients</label>
-            <select id="f-exchange_male_share" name="exchange_male_share">
-                <option value="">No answer</option>
-                <option>Under 10%</option>
-                <option>10 to 20%</option>
-                <option>20 to 35%</option>
-                <option>Over 35%</option>
+                <option>Yes, with one manufacturer</option>
+                <option>Yes, with several</option>
+                <option>No</option>
+                <option>Not sure</option>
             </select>
           </div>
           <div class="ex-f">
@@ -327,37 +409,11 @@
                 <option>No</option>
             </select>
           </div>
-          <fieldset class="ex-f ex-fset">
-            <legend class="ex-lab">Where new patients come from</legend>
-            <div class="ex-checks">
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Referral from patients">Referral from patients</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Search">Search</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Social">Social</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Manufacturer locator">Manufacturer locator</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Physician referral">Physician referral</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Paid advertising">Paid advertising</label>
-              <label class="ex-check"><input type="checkbox" name="exchange_new_patient_sources" value="Events">Events</label>
-            </div>
-          </fieldset>
         </section>
-        <section class="ex-sec" id="s4" aria-labelledby="s4-h">
+        <section class="ex-sec" id="s5" aria-labelledby="s5-h">
           <div class="ex-sec-head">
-            <span class="ex-num" aria-hidden="true">05</span>
-            <h2 id="s4-h">Manufacturers and buying</h2>
-          </div>
-          <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_manufacturers">Manufacturers you buy from most</label>
-            <input id="f-exchange_manufacturers" type="text" name="exchange_manufacturers" placeholder="Who you order from">
-          </div>
-          <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_volume_agreement">Are you on a volume or rebate agreement?</label>
-            <select id="f-exchange_volume_agreement" name="exchange_volume_agreement">
-                <option value="">No answer</option>
-                <option>Yes, with one manufacturer</option>
-                <option>Yes, with several</option>
-                <option>No</option>
-                <option>Not sure</option>
-            </select>
+            <span class="ex-num" aria-hidden="true">06</span>
+            <h2 id="s5-h">Switching and fit</h2>
           </div>
           <div class="ex-f">
             <label class="ex-lab" for="f-exchange_switch_frequency">How often do you switch products?</label>
@@ -374,14 +430,47 @@
             <textarea id="f-exchange_switch_trigger" name="exchange_switch_trigger" rows="3" placeholder="Optional, and the most useful answer on this page."></textarea>
           </div>
           <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_training_burden">How long before a new injector is confident on your newest product?</label>
+            <select id="f-exchange_training_burden" name="exchange_training_burden">
+                <option value="">No answer</option>
+                <option>Same day</option>
+                <option>Within a week</option>
+                <option>Several weeks</option>
+                <option>Months</option>
+                <option>We stopped offering it</option>
+            </select>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_workflow_fit">Does your newest product fit the room and the appointment you already run?</label>
+            <select id="f-exchange_workflow_fit" name="exchange_workflow_fit">
+                <option value="">No answer</option>
+                <option>Yes, it slotted in</option>
+                <option>Needed a longer appointment</option>
+                <option>Needed new equipment or a room change</option>
+                <option>Needed both</option>
+                <option>It never really fitted</option>
+            </select>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_staffing_model">Who administers most injectable treatments?</label>
+            <select id="f-exchange_staffing_model" name="exchange_staffing_model">
+                <option value="">No answer</option>
+                <option>Physician</option>
+                <option>Nurse practitioner or PA</option>
+                <option>Registered nurse</option>
+                <option>A mix</option>
+                <option>Varies by product</option>
+            </select>
+          </div>
+          <div class="ex-f">
             <label class="ex-lab" for="f-exchange_support_wanted">What support do you wish manufacturers actually gave you?</label>
             <textarea id="f-exchange_support_wanted" name="exchange_support_wanted" rows="3" placeholder="Optional"></textarea>
           </div>
         </section>
-        <section class="ex-sec" id="s5" aria-labelledby="s5-h">
+        <section class="ex-sec" id="s6" aria-labelledby="s6-h">
           <div class="ex-sec-head">
-            <span class="ex-num" aria-hidden="true">06</span>
-            <h2 id="s5-h">What you want back</h2>
+            <span class="ex-num" aria-hidden="true">07</span>
+            <h2 id="s6-h">What you want back</h2>
           </div>
           <fieldset class="ex-f ex-fset">
             <legend class="ex-lab">Most useful to you</legend>

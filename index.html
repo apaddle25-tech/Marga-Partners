@@ -83,8 +83,11 @@
 
 .lens-head{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;
   align-items:flex-end;margin-bottom:44px}
+/* 20ch, because "Three stakeholders," is nineteen characters and 14ch broke it after the
+   first word. The line breaks are explicit in the markup now, so text-wrap:balance is gone
+   with it: balance redistributes across lines a browser chose, and these were chosen here. */
 .lens-head h2{margin:10px 0 0;font:400 clamp(30px,3.8vw,48px)/1.06 var(--serif);
-  letter-spacing:-.015em;max-width:14ch;text-wrap:balance}
+  letter-spacing:-.015em;max-width:20ch}
 .lens-head .right{max-width:34ch}
 .lens-head .right p{margin:0}
 
@@ -131,9 +134,24 @@
    foot each line up across all three. Its padding is what keeps the block reading as an
    inset panel rather than five loose rows. */
 .proof{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:10px;
-  padding:20px;text-decoration:none;
+  padding:20px;text-decoration:none;position:relative;
   background:var(--proof);border:1px solid rgba(22,20,15,.16)}
 .proof:hover{border-color:rgba(22,20,15,.3)}
+
+/* The whole card is the link, when there is an essay to link to.
+   The overlay hangs off the foot anchor instead of wrapping the card in one. Wrapping would
+   nest an anchor inside an anchor, which is invalid, and would hand a screen reader the
+   card's entire text as the link name. This way the markup keeps one focusable link with
+   real text, and the card grows a click target around it.
+   It is also why this needs no condition. A card whose essay has not published yet renders
+   its foot as .proof-soon, which is a span, so there is no anchor, no overlay, and no click
+   through to a page that does not exist. The three cards are scheduled independently and two
+   of them are usually unpublished, so that is the normal state and not an edge case.
+   The overlay covers the card's text, so text inside a published card is no longer
+   selectable. That is the accepted cost of the pattern and the reason it is scoped to .proof
+   rather than applied to every card on the page. */
+.proof .link-arrow::after{content:"";position:absolute;inset:0}
+.proof .link-arrow:focus-visible{outline-offset:3px}
 .proof-top{display:flex;justify-content:space-between;gap:12px}
 .proof-top .t-label{margin:0}
 .proof-title{margin:0;font:400 clamp(19px,1.8vw,22px)/1.2 var(--serif);color:var(--text);
@@ -255,7 +273,7 @@
             <span class="t-label">Advisory</span>
             <span class="cap-num" aria-hidden="true">01</span>
           </div>
-          <h3>Set the direction, or the market sets it for you.</h3>
+          <h3>Set the direction,<br>or the market sets it for you.</h3>
           <p class="t-body">We help answer the commercial questions that decide where an asset
           competes and how far it gets. Brought in on a defined question, or retained as
           standing counsel to a team already in motion.</p>
@@ -273,7 +291,7 @@
             <span class="t-label">Intelligence</span>
             <span class="cap-num" aria-hidden="true">02</span>
           </div>
-          <h3>Not more data. An insider read on what it means.</h3>
+          <h3>Not more data.<br>An insider read on what it means.</h3>
           <p class="t-body">Market data tells you what shipped and what it cost. A Marga read
           tells you whether it will hold, scored the same way every time and interpreted by
           someone who has made these decisions from inside the industry.</p>
@@ -316,7 +334,7 @@
       <div class="lens-head">
         <div>
           <p class="t-eyebrow">Who we work with</p>
-          <h2>Three stakeholders, three objectives.</h2>
+          <h2>Three stakeholders,<br>three objectives.</h2>
         </div>
         <div class="right">
           <p class="t-body t-muted">Each one comes with an essay that shows the thinking in

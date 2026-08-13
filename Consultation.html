@@ -52,19 +52,6 @@
 
 .intake{display:grid;grid-template-columns:minmax(0,1fr);max-width:920px;
   margin:0 auto;align-items:start}
-/* TWO SHAPES, ONE LIST. The page renders <li> and the script replaces them with its own
-   <div class="signal"><i>01</i><b>text</b></div> the moment an inquiry type is ticked, so
-   styling only the markup that ships means the list loses its design as soon as anyone
-   touches the form. Both are styled, and they are styled identically. */
-.signals{margin:30px 0 0;padding:0;list-style:none;border-top:1px solid rgba(22,20,15,.18)}
-.signals li,.signals .signal{display:flex;gap:14px;padding:18px 0;
-  border-bottom:1px solid rgba(22,20,15,.18);
-  font:400 15px/1.5 var(--sans);color:var(--text-body)}
-.signals li::before{content:"";flex:none;width:6px;height:6px;margin-top:7px;
-  background:var(--gold)}
-.signals .signal i{flex:none;font:600 11px/1.5 var(--mono);letter-spacing:.1em;
-  font-style:normal;color:var(--text-accent)}
-.signals .signal b{font-weight:400}
 .form-card{padding:var(--pad-card);background:var(--card);
   border:1px solid rgba(22,20,15,.2)}
 .form-head h2{margin:0;font:400 clamp(24px,2.6vw,32px)/1.1 var(--serif);color:var(--text)}
@@ -199,7 +186,7 @@
               <div class="intent" role="group" aria-label="Reason for reaching out (select any that apply)">
                 <label><input type="radio" name="inquiry_type" value="manufacturers">Manufacturers<span>Manufacturer strategy, launch planning, portfolio and lifecycle work.</span></label>
                 <label><input type="radio" name="inquiry_type" value="investors">Investors<span>Boards and asset evaluations. Independent reads and category work.</span></label>
-                <label><input type="radio" name="inquiry_type" value="providers">Providers<span>Practice strategy, vendor economics, and the Marga Exchange.</span></label>
+                <label><input type="radio" name="inquiry_type" value="providers">Providers<span>Practice strategy, vendor economics, and service line work.</span></label>
                 <label><input type="radio" name="inquiry_type" value="other">Something else<span>Expert network participation, or a question that fits none of the above.</span></label>
               </div>
             </fieldset>
@@ -303,71 +290,6 @@
                 <div class="field full">
                   <label for="success">What would make the work successful?</label>
                   <textarea id="success" name="success_definition"></textarea>
-                </div>
-              </div>
-            </fieldset>
-            </div>
-
-            <div id="consortiumFields" hidden>
-            <fieldset>
-              <legend>Background</legend>
-              <div class="fields">
-                <div class="field">
-                  <label for="credentials">Credentials</label>
-                  <input id="credentials" name="credentials" placeholder="e.g. MD, PharmD, MBA">
-                </div>
-                <div class="field">
-                  <label for="expertise">Domain of expertise</label>
-                  <select id="expertise" name="expertise_domain">
-                    <option value="">Select one</option>
-                    <option>Clinical practice / injector</option>
-                    <option>Dermatology</option>
-                    <option>Plastic &amp; reconstructive surgery</option>
-                    <option>R&amp;D / clinical science</option>
-                    <option>Regulatory / medical affairs</option>
-                    <option>Commercial / marketing</option>
-                    <option>Investment / finance</option>
-                    <option>Data / analytics</option>
-                    <option>Media / KOL / education</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="years">Years in the industry</label>
-                  <select id="years" name="years_experience">
-                    <option value="">Select one</option>
-                    <option>Under 3 years</option>
-                    <option>3 to 7 years</option>
-                    <option>8 to 15 years</option>
-                    <option>15+ years</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="links">LinkedIn or portfolio</label>
-                  <input id="links" name="links" placeholder="Link to your profile or work">
-                </div>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend>Contribution</legend>
-              <div class="fields">
-                <div class="field">
-                  <label for="interest">Partnership topic of interest</label>
-                  <select id="interest" name="partnership_interest">
-                    <option value="">Select one</option>
-                    <option>Content &amp; commentary</option>
-                    <option>Product / index development</option>
-                    <option>Advisory board</option>
-                    <option>Co-development / ventures</option>
-                    <option>Research collaboration</option>
-                    <option>Speaking / events</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="field full">
-                  <label for="background">Tell us about your background and what you would contribute</label>
-                  <textarea id="background" name="background_summary"></textarea>
                 </div>
               </div>
             </fieldset>
@@ -504,20 +426,12 @@
   (function(){
     var TYPES={
       manufacturers:{eyebrow:'Manufacturers',title:'Define the <span>path</span> forward.',lead:'Share the decision, launch, diligence question, or growth challenge in front of you. This intake helps Marga assess fit and prepare for a focused first conversation.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners consultation request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
-      providers:{eyebrow:'Providers',title:'Join the <span>Exchange</span>.',lead:'KOLs, clinicians, operators, analysts, and investors shaping where aesthetics goes next: tell Marga who you are and how you would contribute. Exchange members inform the reads and are featured in them.',subject:'New Marga Exchange application',mode:'consortium',headTitle:'Tell us about you.',headNote:'Share your background and where you would want to contribute. A CV is welcome but optional.',signals:['Credentials and domain expertise across clinical, commercial, and scientific ground.','A point of view that sharpens the reads, and a name featured alongside them.','A standing seat in shaping Marga\u2019s frameworks, indices, and commentary.']},
-      waitlist:{eyebrow:'Product waitlist',title:'Get <span>early access</span>.',lead:'Marga\u2019s productized intelligence \u2014 scorecards, category indices, and diligence reads \u2014 is launching soon. Join the waitlist to be first in line and help shape what ships.',challenge:'Which product or category matters most to you, and why?',subject:'New Marga product waitlist request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
+      providers:{eyebrow:'Providers',title:'Build advantage at the <span>point of care</span>.',lead:'Practice strategy, vendor economics, and service line work. Joining the Marga Exchange is a separate form, and the providers page opens it.',challenge:'What decision or challenge should we understand?',subject:'New Marga Partners provider inquiry',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
       investors:{eyebrow:'Investors',title:'Put it on the <span>index</span>.',lead:'Commission a Marga Index scorecard, a category read, or independent diligence. Tell Marga the asset, deal, or question and the decision it needs to inform.',challenge:'What asset, deal, or question should the index address?',subject:'New Marga index / diligence request',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'},
       other:{eyebrow:'General inquiry',title:'Start a <span>conversation</span>.',lead:'Tell Marga what prompted you to reach out, and it will point you to the right next step.',challenge:'What can Marga help you with?',subject:'New Marga Partners inquiry',mode:'standard',headTitle:'Share the strategic context.',headNote:'Most fields are optional, but more context helps make the first conversation sharper.'}
     };
     var eb=document.getElementById('eyebrow'),ti=document.getElementById('intakeTitle'),ld=document.getElementById('intakeLead'),cl=document.getElementById('challengeLabel'),sj=document.getElementById('subjField');
-    var standardBlock=document.getElementById('standardFields'),consortiumBlock=document.getElementById('consortiumFields'),headTitle=document.getElementById('formHeadTitle'),headNote=document.getElementById('formHeadNote'),signalGrid=document.getElementById('signalGrid');
-    function setBlock(block,on){
-      if(!block)return;
-      block.hidden=!on;
-      block.querySelectorAll('input,select,textarea').forEach(function(el){el.disabled=!on;});
-    }
-    var signalDefault=signalGrid?signalGrid.innerHTML:'';
-    function renderSignals(list){signalGrid.innerHTML=list.map(function(s,i){return '<div class="signal"><i>0'+(i+1)+'</i><b>'+s+'</b></div>';}).join('');}
+    var headTitle=document.getElementById('formHeadTitle'),headNote=document.getElementById('formHeadNote');
     // Multi-select: hero is tailored for a single intent, neutral for zero or
     // several; the fields shown are the UNION of what the selected intents need,
     // so one form captures everything (no filling out two intakes).
@@ -525,29 +439,17 @@
       var boxes=[].slice.call(document.querySelectorAll('input[name="inquiry_type"]'));
       var sel=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
       var single=(sel.length===1)?sel[0]:null;
-      var c=single?(TYPES[single]||TYPES.consultation):TYPES.consultation;
-      if(eb)eb.textContent=single?c.eyebrow:'Consultation intake';
-      if(ti)ti.innerHTML=single?c.title:'Define the <span>path</span> forward.';
-      if(ld)ld.textContent=single?c.lead:'Share the decisions, launches, or opportunities in front of you. Select any that apply, and this single intake captures what Marga needs for each.';
-      if(cl)cl.textContent=(single&&c.challenge)?c.challenge:'What decision or challenge should we understand?';
-      if(headTitle)headTitle.textContent=single?c.headTitle:'Share the strategic context.';
-      if(headNote)headNote.textContent=single?c.headNote:'Most fields are optional. Selected more than one path? Fill in what applies to each.';
-      var wantsCons=sel.indexOf('consortium')>=0;
-      var wantsStd=sel.some(function(v){return (TYPES[v]||{}).mode!=='consortium';})||sel.length===0;
-      setBlock(standardBlock,wantsStd);
-      setBlock(consortiumBlock,wantsCons);
-      if(signalGrid){(wantsCons&&TYPES.consortium.signals)?renderSignals(TYPES.consortium.signals):(signalGrid.innerHTML=signalDefault);}
-      if(sj)sj.value=single?c.subject:(sel.length?'New Marga Partners inquiry ('+sel.join(', ')+')':'New Marga Partners inquiry');
+      var c=single?(TYPES[single]||null):null;
+      if(eb)eb.textContent=c?c.eyebrow:'Consultation intake';
+      if(ti)ti.innerHTML=c?c.title:'Define the <span>path</span> forward.';
+      if(ld)ld.textContent=c?c.lead:'Share the decisions, launches, or opportunities in front of you. Select any that apply, and this single intake captures what Marga needs for each.';
+      if(cl)cl.textContent=(c&&c.challenge)?c.challenge:'What decision or challenge should we understand?';
+      if(headTitle)headTitle.textContent=c?c.headTitle:'Share the strategic context.';
+      if(headNote)headNote.textContent=c?c.headNote:'Most fields are optional. Selected more than one path? Fill in what applies to each.';
+      if(sj)sj.value=c?c.subject:(sel.length?'New Marga Partners inquiry ('+sel.join(', ')+')':'New Marga Partners inquiry');
     }
-    // The panel is the Marga Exchange everywhere a person can read it. The value this form
-    // POSTS is still "consortium", because that is the contract with the intake endpoint at
-    // app.margapartners.com/contact, and renaming one side of a live form silently drops
-    // enquiries into a case the backend does not handle. So the URL accepts both:
-    // ?type=exchange is what the site links to now, ?type=exchange still resolves for any
-    // link already sent out. The wire value retires with the backend, not before it.
-    var TYPE_ALIAS={exchange:'consortium'};
     var q=new URLSearchParams(location.search).get('type');
-    if(q){q.split(',').forEach(function(v){v=v.trim();v=TYPE_ALIAS[v]||v;
+    if(q){q.split(',').forEach(function(v){v=v.trim();
       var r=document.querySelector('input[name="inquiry_type"][value="'+v+'"]');if(r)r.checked=true;});}
     apply();
     document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',apply);});

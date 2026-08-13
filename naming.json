@@ -1,16 +1,17 @@
 {
   "$note": "Product naming contract. The estate uses five product marks under one root mark, and nothing else. bin/naming-check.js enforces this file in CI and in the pre-commit hook.",
   "version": "1.0.0",
-  "updated": "2026-08-02",
+  "updated": "2026-08-13",
   "rootMark": "Marga",
   "marks": [
     "Marga Intelligence",
     "Marga Method",
     "Marga Index",
+    "Marga Exchange",
     "Marga Studio",
     "MargaZine"
   ],
-  "markRule": "The trademark is on Marga itself and covers every product name used under it. Sub-brands are not registered separately. Product naming is a separate discipline from trademark coverage: a sixth Marga-prefixed name would be legally covered and is still forbidden, because the estate is five marks.",
+  "markRule": "The trademark is on Marga itself and covers every product name used under it. Sub-brands are not registered separately. Product naming is a separate discipline from trademark coverage: a seventh Marga-prefixed name would be legally covered and is still forbidden, because the estate is six marks.",
   "prose": {
     "firstUse": "Every mark takes the trademark symbol on first prominent use in any human-visible surface.",
     "attribution": "Marga is a trademark of Marga Partners LLC and covers the product names used under it. Never claim each sub-brand as a separate mark.",
@@ -102,7 +103,7 @@
       "term": "The 5 P's of Aesthetics",
       "apostropheVariants": [
         "The 5 P's of Aesthetics",
-        "The 5 P’s of Aesthetics",
+        "The 5 P\u2019s of Aesthetics",
         "The 5 Ps of Aesthetics",
         "The Five P's of Aesthetics"
       ],
@@ -121,6 +122,21 @@
         "Marga Index",
         "Marga Studio",
         "remove the sub-label entirely"
+      ],
+      "autoReplace": false
+    },
+    {
+      "term": "P5 ",
+      "apostropheVariants": [
+        "P5 ",
+        "5P "
+      ],
+      "reason": "A bare P5 or 5P in front of any noun. The rules retire P5 Studio, P5 Index, P5 Method and P5 Playbook by name, so anything else takes the prefix straight past a clean check. That is not hypothetical: \"Commission a P5 scorecard\" sat in the consultation form's visible copy while naming-check reported five marks and no strays. The replacement depends on the noun, which is why this warns rather than auto-replacing. Identifiers stay exempt under neverReplace, so P5_ variables, p5_session, p5-method-1.0 and p5-studio are not reported.",
+      "options": [
+        "Marga Index (when it names the score or a scored output, including a scorecard)",
+        "Marga Studio (when it names the application surface)",
+        "Marga Method (when it names the methodology)",
+        "the five P's, lower case (when it describes the five domains rather than naming a product)"
       ],
       "autoReplace": false
     }
@@ -147,7 +163,7 @@
       "reason": "The GitHub remote path."
     },
     {
-      "pattern": "the five P's|five P's|5 P's ·",
+      "pattern": "the five P's|five P's|5 P's \u00b7",
       "reason": "The descriptive name of the five domains in running prose. Not a product mark. See prose.domains."
     },
     {
@@ -165,6 +181,10 @@
     {
       "pattern": "consortiumFields|consentConsortium|consortiumBlock|TYPES\\.consortium|st\\.consortium|CONSORTIUM=",
       "reason": "DOM ids and local JavaScript identifiers inside a single page. Not visible to a reader and not a name. Renaming them is churn with no reader-facing effect."
+    },
+    {
+      "pattern": "(?:5p-playbook|5ps-index|social-5p|the-marga-difference)\\s?",
+      "reason": "Redirect stub filenames at the site root, kept so links sent out under the retired names still resolve. They are paths, not marks, and the bare slug is how prose refers to them. The quoted-filename pattern above only covers a slug inside backticks or quotes."
     }
   ],
   "scan": {

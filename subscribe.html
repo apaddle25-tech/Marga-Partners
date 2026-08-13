@@ -146,7 +146,7 @@
       <form class="subform" id="subscribe" novalidate>
         <div>
           <label for="email">Email</label>
-          <input id="email" type="email" required autocomplete="email"
+          <input id="email" name="email" type="email" required autocomplete="email"
                  placeholder="you@company.com">
         </div>
         <div>
@@ -170,8 +170,7 @@
         <p>You are on the list. The next essay lands in your inbox the morning it
         publishes.</p>
         <p style="margin-top:12px">Practising clinicians and operators can go further:
-        <a class="link-arrow" id="joinConsort"
-           href="/Consultation.html?type=exchange">Join the Marga Exchange &rarr;</a></p>
+        <a class="link-arrow" href="/exchange-survey.html">Join the Marga Exchange &rarr;</a></p>
       </div>
       <p class="subnote">Already published essays stay open on the site with no email
       required. <a class="link-arrow" href="/journal.html">Read the MargaZine &rarr;</a></p>
@@ -221,11 +220,13 @@
         <span>&copy; 2026 Marga Partners LLC. Marga&trade; is a trademark of Marga
         Partners LLC and covers the product names used under it.</span>
         <span><a href="/privacy.html">Privacy</a></span>
+        <span><a href="/independence.html">Independence and conflicts</a></span>
+        <span><a href="/exchange-terms.html">Exchange terms</a></span>
       </div>
     </footer>
   </section>
 </main>
-<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script>(function(){
+<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script src="/assets/marga-prefill.js?v=3b961dc3ca"></script><script>(function(){
   var q=new URLSearchParams(location.search).get('email');
   if(q){var e=document.getElementById('email'); if(e) e.value=q;}
   var f=document.getElementById('subscribe');
@@ -238,12 +239,12 @@
     try{fetch('https://app.margapartners.com/newsletter/subscribe',{method:'POST',
       headers:{'content-type':'application/x-www-form-urlencoded'},body:body});}catch(_){}
     try{localStorage.setItem('mz_subscribed','1');}catch(_){}
-    // The Exchange call to action becomes a signup link with the address already filled in,
-    // so the person does not type it twice. This is the one thing the old page did that a
-    // straight port nearly lost, and it is the only path from subscribing into the Studio.
-    var jc=document.getElementById('joinConsort');
-    if(jc){jc.href='https://app.margapartners.com/login?tab=signup&email='
-      +encodeURIComponent(email);}
+    // The Exchange link used to be rewritten here to a Studio signup carrying the address in
+    // a query string. Both halves of that are wrong now. A practice has no Studio account to
+    // sign up for, and putting a work email in a URL is the thing this site refuses everywhere
+    // else, because it lands in history and in the referrer. marga-prefill.js carries the
+    // address in session storage instead, and this page loads it, so the intake opens filled
+    // in and nothing about the person travels in the link.
     var done=document.getElementById('subdone');
     if(done){done.hidden=false;done.focus();}
     f.hidden=true;

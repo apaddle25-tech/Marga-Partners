@@ -60,13 +60,22 @@
       document.querySelectorAll('input' + sel + ',select' + sel + ',textarea' + sel));
   }
 
+  // A PAGE MAY CARRY THE SAME FIELD NAME TWICE, and the providers page does. The Exchange join
+  // gate asks for name and email at the top, and the MargaZine signup asks for both again at the
+  // bottom. This used to loop over every match and let the last one win, so typing your name into
+  // the gate stored it and the empty signup field immediately deleted it again. Nothing failed,
+  // and the two fields the survey most wants were the two that never arrived.
+  //
+  // First non-empty wins now. A key is only forgotten when every control for it on this page is
+  // blank, which is still what clearing a field by hand should do.
   function remember() {
     var data = read();
     KEYS.forEach(function (k) {
-      controls(k).forEach(function (el) {
-        var v = String(el.value || '').trim();
-        if (v) { data[k] = v; } else { delete data[k]; }
-      });
+      var els = controls(k);
+      if (!els.length) { return; }  // Not asked here. Leave whatever an earlier page stored.
+      var v = '';
+      for (var i = 0; i < els.length && !v; i++) { v = String(els[i].value || '').trim(); }
+      if (v) { data[k] = v; } else { delete data[k]; }
     });
     if (Object.keys(data).length) { write(data); } else { drop(); }
   }

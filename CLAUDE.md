@@ -67,20 +67,25 @@ converge when the v4 article design lands.
 
 ## The marks (enforced by bin/naming-check.js)
 
-The estate is **five product marks under one root mark, and nothing else**:
+The estate is **six product marks under one root mark, and nothing else**:
 
 | Mark | What it names |
 |---|---|
 | **Marga Intelligence** | the proprietary lens the Method and the Index sit inside |
 | **Marga Method** | the methodology |
 | **Marga Index** | the composite score and the model that produces it |
+| **Marga Exchange** | the respondent panel. Sixth mark, 2026-08-09, sunsetting Consortium |
 | **Marga Studio** | the application surface |
 | **MargaZine** | the publication |
 
 The trademark is on **Marga** itself and covers every product name used under it.
 Sub-brands are not registered separately, so a new Marga-prefixed name is covered the
-moment it ships. That is a legal fact, not a naming licence: a sixth Marga-prefixed
-product name would be covered and is still forbidden, because the estate is five marks.
+moment it ships. That is a legal fact, not a naming licence: a seventh Marga-prefixed
+product name would be covered and is still forbidden, because the estate is six marks.
+
+**The bare word `consortium` is deliberately not retired.** It is a property key on the wire and
+in the store, and a rule for it would fail the build on identifiers rather than on prose. Only the
+branded phrase `Marga Consortium` is rewritten.
 
 **Prose rule.**
 - Trademark symbol on first prominent use in any human-visible surface.

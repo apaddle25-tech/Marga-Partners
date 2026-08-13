@@ -328,7 +328,11 @@ fieldset{border:0;padding:0;margin:0 0 8px;min-width:0}.tool-card legend{padding
         </select>
       </div>
 
-      <!-- Two consents. Separate boxes, separate wording, both unchecked. -->
+      <!-- Two consents. Separate boxes, separate wording, both unchecked, and both now
+           required, because the full report is the member benefit. Separate still matters: they
+           are two decisions and each is refusable, and neither may ever imply the other. The
+           second one used to be an interest signal that explicitly did not affect the report,
+           which stopped being true when membership became what the report is for. -->
       <div class="consent">
         <input type="checkbox" id="consentBenchmarks" required>
         <label for="consentBenchmarks">
@@ -338,10 +342,12 @@ fieldset{border:0;padding:0;margin:0 0 8px;min-width:0}.tool-card legend{padding
         </label>
       </div>
       <div class="consent">
-        <input type="checkbox" id="consentConsortium">
-        <label for="consentConsortium">
-          Separately, I would like to hear about the Marga Exchange panel. This is optional and is
-          not required to receive your report.
+        <input type="checkbox" id="consentMembership" required>
+        <label for="consentMembership">
+          I am joining the Marga Exchange. Marga may contact me about surveys, briefings and events,
+          and my answers may be aggregated into published reads. Nothing is attributed to me or my
+          practice without my written consent, asked for each time. I have read the
+          <a href="exchange-terms.html">participation terms</a>.
         </label>
       </div>
 
@@ -572,11 +578,14 @@ $('unlockBtn').addEventListener('click', async () => {
   const role = $('role').value;
   const size = $('practiceSize').value;
   const consent = $('consentBenchmarks').checked;
+  const membership = $('consentMembership').checked;
   const problems = [];
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) problems.push('a valid work email');
   if (!role) problems.push('your role');
   if (!size) problems.push('your practice size');
   if (!consent) problems.push('your consent to store the submission');
+  // Named as joining rather than as a tick box, so the sentence says what it costs.
+  if (!membership) problems.push('your agreement to join the Exchange');
   $('email').setAttribute('aria-invalid', String(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)));
 
   if (problems.length) {
@@ -602,7 +611,7 @@ $('unlockBtn').addEventListener('click', async () => {
       body: JSON.stringify({
         input: readForm(),
         gate: { email, role, practiceSize: size },
-        consent: { benchmarks: true, consortium: $('consentConsortium').checked },
+        consent: { benchmarks: true, membership: true },
         practiceWebsite: $('practiceWebsite').value,
         elapsedSeconds: Math.round((Date.now() - startedAt) / 1000),
       }),

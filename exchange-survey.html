@@ -400,13 +400,14 @@
             </select>
           </div>
           <div class="ex-f">
-            <label class="ex-lab" for="f-exchange_loyalty_program">Does your practice run a membership or loyalty programme?</label>
+            <label class="ex-lab" for="f-exchange_loyalty_program">Which loyalty or rewards programmes do patients at your practice actually use?</label>
             <select id="f-exchange_loyalty_program" name="exchange_loyalty_program">
                 <option value="">No answer</option>
-                <option>Yes, our own</option>
-                <option>Yes, manufacturer programme only</option>
-                <option>Both</option>
-                <option>No</option>
+                <option>A manufacturer programme covering several of their products, and patients use it across treatments</option>
+                <option>A manufacturer programme covering one product</option>
+                <option>A manufacturer programme exists and patients rarely bring it up</option>
+                <option>Only our own membership scheme</option>
+                <option>Nothing like that here</option>
             </select>
           </div>
         </section>
@@ -428,6 +429,22 @@
           <div class="ex-f">
             <label class="ex-lab" for="f-exchange_switch_trigger">What would make you switch a core product tomorrow?</label>
             <textarea id="f-exchange_switch_trigger" name="exchange_switch_trigger" rows="3" placeholder="Optional, and the most useful answer on this page."></textarea>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_switch_outcome">Think of the last time your practice moved patients from one product to another. Did they stay on the new one?</label>
+            <select id="f-exchange_switch_outcome" name="exchange_switch_outcome">
+                <option value="">No answer</option>
+                <option>They stayed on the new one</option>
+                <option>Most stayed, a few asked to go back</option>
+                <option>About evenly split</option>
+                <option>Most asked to go back to the old one</option>
+                <option>We moved everybody back</option>
+                <option>We have not moved patients between products</option>
+            </select>
+          </div>
+          <div class="ex-f">
+            <label class="ex-lab" for="f-exchange_switch_pair">Which product did you move from, and which did you move to?</label>
+            <input id="f-exchange_switch_pair" type="text" name="exchange_switch_pair" placeholder="For example: Voluma to Restylane Contour">
           </div>
           <div class="ex-f">
             <label class="ex-lab" for="f-exchange_training_burden">Think of the most recent product your practice adopted. How long before someone new was confident using that one?</label>

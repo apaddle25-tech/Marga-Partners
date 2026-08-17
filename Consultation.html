@@ -180,6 +180,13 @@
 <form action="https://app.margapartners.com/contact" method="POST">
             <input type="hidden" name="_subject" id="subjField" value="New Marga Partners consultation request">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none" aria-hidden="true">
+            <!-- Time on form. Stamped by form.js when the page loads, checked by the server, which
+                 refuses anything submitted in under eight seconds. The honeypot catches a bot that
+                 fills every field it can see; this catches the opposite one, which POSTs the URL
+                 directly and never renders the page. Three of those reached the digest in August
+                 2026, which is what this is for. Empty in the markup on purpose: a value here
+                 rather than from the script would be a value a bot could copy. -->
+            <input type="hidden" name="_t" value="">
 
             <fieldset>
               <legend>Which of these are you? <span class="intent-hint">Three ways in, pick the one that fits</span></legend>
@@ -455,5 +462,14 @@
     apply();
     document.querySelectorAll('input[name="inquiry_type"]').forEach(function(el){el.addEventListener('change',apply);});
   })();
-  </script><script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>
+
+  /* Stamp the load time so the server can tell a person from a script.
+     Set here rather than rendered into the HTML: the page is static and cached, so a value baked
+     into the markup would age with the cache and eventually let anything through. Written on load
+     and read at submit, so the elapsed time is the reader's, not the file's. */
+  (function(){
+    var t=document.querySelector('form[action$="/contact"] input[name="_t"]');
+    if(t)t.value=String(Date.now());
+  })();
+</script><script>(function(){try{if(new URLSearchParams(location.search).get('sent')==='1'){var b=document.getElementById('sentBanner');if(b){b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'center'});}}}catch(_){}})();</script>
 </body></html>

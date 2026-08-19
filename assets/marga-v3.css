@@ -261,13 +261,36 @@ body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.62;
 .btn-dark{background:var(--ink);color:var(--cream)}
 .btn-dark:hover{background:#000}
 
-/* The text link with its rule and arrow. Given real padding so the target is not 21px. */
+/* The text link with its rule and arrow. Given real padding so the target is not 21px.
+
+   THE RULE IS PAINTED, NOT BORDERED, and the reason is the hit target. This was a border-bottom on
+   a box with `min-height:44px` and centred text, so the rule sat at the bottom of the BOX while the
+   text floated in the middle of it: roughly fifteen pixels of gap, and a further six from
+   padding-bottom. It read as a rule belonging to the card rather than an underline belonging to
+   the words. Shrinking the box would have fixed the look and broken the 44px minimum the design
+   brief sets for anything tappable.
+
+   IT IS A BACKGROUND RATHER THAN A PSEUDO-ELEMENT, and that is the load-bearing choice. The first
+   fix here drew the rule with `::after` and set `position:relative` to hang it on. Both broke the
+   homepage. `.proof .link-arrow::after` is already taken: it is the overlay that makes the whole
+   proof card clickable, and it resolves `inset:0` against `.proof`, which is the positioned
+   ancestor. Adding `position:relative` to the link re-parents that overlay onto the link itself and
+   shrinks the card target to the words; claiming `::after` collides with it outright. A background
+   gradient needs neither, so a component that styles its own pseudo-elements keeps working.
+
+   `text-decoration` cannot do this job here either, because the element is an inline-flex container
+   and decoration does not propagate to flex items.
+
+   The offset is measured from the CENTRE, since that is where `align-items:center` puts the text:
+   half the line box, then four pixels of air. `--ul` carries the colour so the hover and on-dark
+   variants set one value rather than restating the gradient. */
 .link-arrow{display:inline-flex;align-items:center;gap:.4em;min-height:44px;
   font:700 13.5px/1 var(--sans);color:var(--text-accent);text-decoration:none;
-  border-bottom:1px solid rgba(122,90,32,.4);padding-bottom:6px;align-self:flex-start}
-.link-arrow:hover{border-bottom-color:var(--text-accent)}
-.on-dark .link-arrow{color:var(--gold);border-bottom-color:rgba(199,162,75,.4)}
-.on-dark .link-arrow:hover{border-bottom-color:var(--gold)}
+  align-self:flex-start;--ul:rgba(122,90,32,.4);
+  background:linear-gradient(var(--ul),var(--ul)) no-repeat left calc(50% + .5em + 4px)/100% 1px}
+.link-arrow:hover{--ul:var(--text-accent)}
+.on-dark .link-arrow{color:var(--gold);--ul:rgba(199,162,75,.4)}
+.on-dark .link-arrow:hover{--ul:var(--gold)}
 
 /* ==========================================================================================
    The callout: a panel with a 2px gold left border. Used for the homepage thesis and the

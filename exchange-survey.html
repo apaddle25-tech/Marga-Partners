@@ -159,6 +159,18 @@
         <input type="hidden" name="inquiry_type" value="Marga Exchange benchmark survey">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
                style="position:fixed;inset:auto 0 0 auto;width:1px;height:1px;opacity:0;pointer-events:none">
+        <!-- Time on form. Stamped by the script at the foot of this page and checked by the server,
+             which refuses anything submitted in under eight seconds.
+
+             THIS PAGE POSTS TO THE SAME ENDPOINT AS THE CONSULTATION FORM AND DID NOT CARRY THIS.
+             The clock landed on POST /contact and on Consultation.html on 2026-08-17 and not here,
+             so from that day every Exchange survey submission was answered 400 and the respondent
+             saw a refusal. Six days, and the only symptom was silence, which reads exactly like
+             nobody filling it in.
+
+             Empty in the markup on purpose: the page is static and cached, so a value baked in
+             would age with the cache and eventually let anything through. -->
+        <input type="hidden" name="_t" value="">
         <nav class="ex-jump" aria-label="Survey sections">
           <a href="#s0">01 &nbsp;Your details</a>
           <a href="#s1">02 &nbsp;Your practice</a>
@@ -604,5 +616,5 @@
     </footer>
   </section>
 </main>
-<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script src="/assets/marga-prefill.js?v=3b961dc3ca"></script>
+<script src="/assets/marga-v3-nav.js?v=5d0c8b4d8c"></script><script src="/assets/marga-prefill.js?v=3b961dc3ca"></script><script>(function(){var t=document.querySelector('form[action$="/contact"] input[name="_t"]');if(t)t.value=String(Date.now());})();</script>
 </body></html>

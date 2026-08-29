@@ -59,17 +59,8 @@
   .cta-block{padding-bottom:64px}
 }
 
-/* ---- the Exchange join gate (providers only) --------------------------------------------- */
-.gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
-  gap:18px;margin-top:32px}
-.gate-l{display:block;font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--text-accent);margin-bottom:10px}
-.gate input,.gate select{font:400 15px/1.5 var(--sans);color:var(--text);background:var(--card);
-  border:1px solid rgba(22,20,15,.24);padding:14px 16px;width:100%}
-.gate input:focus,.gate select:focus{border-color:var(--gold)}
-.gate-consent{margin:22px 0 0;max-width:62ch;color:var(--text-muted)}
-.gate-go{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:28px}
-.gate-go p{margin:0}
+/* The Exchange join gate lived here, on a page that has no gate markup. It is on
+   for-providers.html now, beside the six elements it styles. */
 
 /* ---- the question explorer ---------------------------------------------------------------
    Proportions from the v4 design: .88fr/1.12fr, the beat row at 150px + rest. Colours are

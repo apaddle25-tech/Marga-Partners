@@ -60,12 +60,9 @@
   border-left:2px solid var(--gold);font:400 15.5px/1.6 var(--sans);color:var(--text-body)}
 .form-card /* form card */
     .form-card{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 70px rgba(22,20,15,.12);padding:clamp(26px,3.4vw,44px);min-width:0}.form-card form{display:grid;gap:26px}.form-card fieldset{border:0;display:grid;gap:15px}.form-card legend{font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--golddeep);margin-bottom:4px;padding-bottom:12px;border-bottom:1px solid var(--line);width:100%}.form-card .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-card .field{display:grid;gap:7px;min-width:0}.form-card .field.full{grid-column:1/-1}.form-card label{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(22,20,15,.7)}.form-card input,.form-card select,.form-card textarea{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:0;min-height:48px;padding:12px 13px;font:15px/1.4 Manrope,sans-serif;outline:none;transition:border-color .18s,box-shadow .18s}.form-card textarea{min-height:120px;resize:vertical}.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,134,60,.16)}.form-card .check-row{display:flex;align-items:flex-start;gap:11px;color:var(--ink2);font-size:.9rem;line-height:1.45}.form-card .check-row input{width:18px;height:18px;min-height:18px;margin-top:2px;accent-color:var(--gold)}.form-card .actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:4px}.form-card .button{appearance:none;border:0;min-height:52px;border-radius:0;padding:0 26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}.form-card .button:hover{transform:translateY(-2px);background:#000}.form-card .note{font-size:.82rem;color:rgba(22,20,15,.55);max-width:30ch}.form-card /* intent chips */
-    .intent{display:flex;flex-wrap:wrap;gap:10px}.form-card .intent label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:0;padding:11px 14px;font-weight:600;font-size:13px;line-height:1;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}.form-card .intent label:hover{border-color:var(--gold)}.form-card .intent input{position:absolute;opacity:0;width:0;height:0}.form-card .intent label:has(input:checked){border-color:var(--gold);background:rgba(176,134,60,.10);box-shadow:0 0 0 3px rgba(176,134,60,.14)}.form-card .intent-hint{font:600 10px/1 var(--sans);letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}.form-card .fields{grid-template-columns:1fr}.form-card /* The path selector became three audiences with a line under each,.form-card so a chip is a block now
+    .form-card .intent-hint{font:600 10px/1 var(--sans);letter-spacing:.04em;text-transform:none;color:var(--muted,#6B6455);margin-left:8px;opacity:.8}.form-card .fields{grid-template-columns:1fr}.form-card /* The path selector became three audiences with a line under each,.form-card so a chip is a block now
    rather than a word. Radio,.form-card not checkbox: someone is one of these,.form-card and the previous multi
    select produced records with three intents and no way to route them. */
-.intent{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}.form-card .intent label{display:block;padding:16px 18px;border:1px solid rgba(22,20,15,.24);
-  background:var(--card);cursor:pointer;font:700 14px/1.3 var(--sans);color:var(--text)}.form-card .intent label:hover{border-color:var(--text-accent)}.form-card .intent label:has(input:checked){border-color:var(--gold);background:var(--proof)}.form-card .intent label input{margin-right:10px;accent-color:var(--text-accent)}.form-card .intent label span{display:block;margin-top:8px;font:400 13px/1.5 var(--sans);
-  color:var(--text-body)}
 
 /* ---- corrections to the carried form ------------------------------------------------------
    Recorded here rather than edited into contact-parts/, so that stays a faithful copy.
@@ -90,16 +87,34 @@
   outline:2px solid var(--text-accent);outline-offset:-2px;border-color:var(--text-accent)}
 .form-card .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .form-card .field.full{grid-column:1/-1}
-/* The intent chips are the first control a person meets, and they were 13px tall. */
-.form-card .intent{display:flex;flex-wrap:wrap;gap:10px}
-.form-card .intent label{display:inline-flex;align-items:center;gap:9px;min-height:44px;
-  margin:0;padding:11px 15px;background:#fff;border:1px solid rgba(22,20,15,.3);
-  font:600 13px/1 var(--sans);letter-spacing:normal;text-transform:none;
+/* ---- the path selector, ONE definition ------------------------------------------------------
+   This component was declared three times in this file: a chip row in the carried minified block,
+   a card grid, and a second chip row. The last one won on both order and specificity, so the card
+   grid never applied and the four options rendered as ragged shrink-to-fit chips with the
+   description running on inline after the label. The other two are deleted rather than left dead.
+
+   EQUAL COLUMNS, so four options of different name lengths line up. `auto-fit` with a 240px floor
+   gives two columns on a wide card and one on a narrow one, and every cell is the same width.
+
+   THE RADIO STAYS VISIBLE. These are cards rather than chips, and a hidden radio leaves the fact
+   that this is a single choice resting entirely on a border colour. The legend says pick the one
+   that fits, so the control should look like one. */
+.form-card .intent{display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.form-card .intent label{display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:4px 10px;align-items:start;margin:0;padding:15px 17px;min-height:44px;
+  background:#fff;border:1px solid rgba(22,20,15,.3);
+  font:700 14px/1.35 var(--sans);letter-spacing:normal;text-transform:none;
   color:var(--text);cursor:pointer;transition:border-color .15s,background .15s}
 .form-card .intent label:hover{border-color:var(--text-accent)}
 .form-card .intent label:has(input:checked){border-color:var(--text-accent);
   background:rgba(199,162,75,.14);box-shadow:inset 0 0 0 1px var(--text-accent)}
-.form-card .intent input{position:absolute;opacity:0;width:0;height:0}
+.form-card .intent input{width:18px;height:18px;min-height:0;margin:1px 0 0;flex:none;
+  accent-color:var(--text-accent)}
+/* The description sits UNDER the label rather than after it, in the second column so it aligns
+   with the label rather than with the radio. */
+.form-card .intent label span{grid-column:2;margin:0;
+  font:400 13px/1.5 var(--sans);color:var(--text-body)}
 .form-card .intent-hint{margin-left:8px;font:500 11px/1 var(--sans);color:var(--text-muted);
   letter-spacing:normal;text-transform:none}
 .form-card .check-row{display:flex;align-items:flex-start;gap:11px;min-height:44px;

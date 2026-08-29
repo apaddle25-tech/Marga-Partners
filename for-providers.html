@@ -38,6 +38,45 @@
 .num-foot{margin:22px 0 0;color:var(--text-muted)}
 .split-head .t-h2{margin-top:10px}
 .prose-p{max-width:62ch;margin:22px 0 0}
+
+/* ---- the Exchange join gate ----------------------------------------------------------------
+   THESE LIVED ON for-manufacturers.html, WHICH HAS NO GATE MARKUP. That page carried the rules
+   and the comment "providers only"; this page carried the six elements and no rules at all, so
+   every label sat inline against its input with no gap and the form read as one run of text.
+   Moved rather than copied, so the two pages cannot drift again.
+
+   Not in marga-v3.css, because the essay pages use a bare `.gate` for something else entirely,
+   a width container, and a shared rule would reach them. */
+.gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap:18px;margin-top:32px}
+.gate-f{display:grid;min-width:0}
+.gate-l{display:block;font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-accent);margin-bottom:10px}
+.gate input,.gate select{font:400 15px/1.5 var(--sans);color:var(--text);background:var(--card);
+  border:1px solid rgba(22,20,15,.24);padding:14px 16px;width:100%;min-height:48px;border-radius:0}
+.gate input:focus,.gate select:focus{border-color:var(--gold);outline:2px solid var(--gold);
+  outline-offset:-2px}
+.gate-consent{margin:22px 0 0;max-width:62ch;color:var(--text-muted)}
+.gate-go{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:28px}
+.gate-go p{margin:0;max-width:62ch}
+
+/* ---- who belongs -----------------------------------------------------------------------------
+   `.chips` is a short label component, 13px on a line-height of 1, and it is used correctly on
+   the investors and manufacturers pages for bare words like "Asset diligence". Here each item is
+   a profile AND a sentence about it, so the two ran together as "Injectors and core cliniciansThe
+   hands that decide" and the boxes came out ragged at four different widths.
+
+   A separate class rather than an override, so the chip component keeps working where it is the
+   right one. */
+.roster{display:grid;gap:10px;margin:0;padding-top:8px;list-style:none;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.roster li{padding:15px 17px;background:var(--cream);border:1px solid rgba(22,20,15,.24)}
+.roster b{display:block;font:700 14px/1.35 var(--sans);color:var(--text)}
+.roster span{display:block;margin-top:6px;font:400 13px/1.5 var(--sans);color:var(--text-body)}
+.on-dark .roster li{background:rgba(241,233,219,.06);border-color:rgba(241,233,219,.22)}
+.on-dark .roster b{color:var(--text-on-dark)}
+.on-dark .roster span{color:var(--text-on-dark-body)}
+
 .section>.inner>.link-arrow{display:inline-flex;margin-top:24px}
 
 .closing{padding:96px 0 0}
@@ -144,7 +183,7 @@
       <p class="t-eyebrow">Who belongs</p>
       <h2 class="t-h2">Built for people carrying real decisions.</h2>
         </div>
-        <ul class="chips">
+        <ul class="roster">
           <li><b>Injectors and core clinicians</b><span>The hands that decide whether a product travels.</span></li>
           <li><b>Owner-operated practices</b><span>One location, high reputation, deciding what to become next.</span></li>
           <li><b>Multi-location groups and MSOs</b><span>Standardizing offer, pricing and vendor terms across sites.</span></li>

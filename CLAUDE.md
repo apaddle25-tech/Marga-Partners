@@ -20,8 +20,18 @@ build step. Served by GitHub Pages from `main` at the repository root, with a CN
 --ink #16140F, --ink2 #14120E, --bronze #9A742F, --gold #C7A24B,
 --bronze2/gold2 #B0863C, --cream #FBF6EC, --cream2 #F1E9DB,
 --cream3 #EBE0CC, --body #4A4435
-Type: Newsreader (display and headings), Manrope (body and UI),
-Spline Sans Mono (labels and mono).
+Type: Newsreader (display and headings), Manrope (body, UI and every
+uppercase eyebrow or label), Spline Sans Mono (code blocks and numerals
+only, where fixed advance widths are the point).
+
+Eyebrows and labels are uppercase Manrope 700 on one of two tracking
+tokens, never a literal:
+  --track-eyebrow .18em   primary eyebrows
+  --track-label   .14em   secondary labels, chips, table heads
+Changed 2026-08-30. These were Spline Sans Mono 600 at six different
+tracking values between .14em and .24em, which is drift rather than
+hierarchy: the same role was set differently depending on which page you
+landed on. Mono stays only where the glyphs need to line up in a column.
 IMPORTANT: #C7A24B on cream fails WCAG AA for text at roughly 2:1. Gold is a
 fill and rule color only. For text on cream use --bronze at minimum, and
 prefer a darkened variant that clears 4.5:1. Never ship gold text on cream.

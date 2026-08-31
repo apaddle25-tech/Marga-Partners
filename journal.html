@@ -24,7 +24,12 @@
 .section{padding:88px 0}
 .inner{width:var(--col);margin:0 auto;padding:0 var(--pad-x)}
 .bg-card-solid{background:var(--card)}
-.hero{position:relative;padding:calc(var(--pad-hero-top) + 10px) 0 84px;overflow:hidden}
+.hero{position:relative;padding:var(--pad-hero-top) 0 64px;overflow:hidden}
+/* The watermark filled the empty right half. The card fills it now, and the mark is 477px tall
+   against a 341px card, so what showed was the part sticking out below it: stray geometry rather
+   than a ground. Hidden only where the card is beside the copy. Below 960 the card stacks under
+   it, the right half is empty again, and the mark goes back to doing its job. */
+@media (min-width:960px){ .hero .mark-layer{display:none} }
 .hero h1{margin:0;font:400 clamp(36px,5.2vw,66px)/1 var(--serif);letter-spacing:-.03em;
   color:var(--cream);max-width:16ch;text-wrap:balance}
 .hero .lead{margin:30px 0 0;max-width:58ch}
@@ -121,51 +126,59 @@
    One card, not two columns with a gap between them. The design makes the whole thing a single
    link with the thesis panel flush against the copy on a dark ground, so the quote reads as the
    other half of the card rather than a note sitting beside it. gap:0 is load bearing. */
-.origin{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:0;
-  align-items:stretch;margin-top:30px;color:var(--text);background:var(--card);
+/* THE HERO CARRIES THE ORIGIN CARD, so the essay index clears the fold.
+   Two columns from 960px, stacked below it. `align-items:center` rather than `stretch`: the card
+   is shorter than the copy at some widths and taller at others, and a stretched card would grow
+   its own whitespace rather than sit against the headline. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(38px,4vw,56px);
+  align-items:center;position:relative;z-index:1}
+@media (min-width:960px){
+  .hero-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+    gap:clamp(40px,4.4vw,72px)}
+}
+.origin{display:block;margin:0;color:var(--text);background:var(--card);
   border:1px solid rgba(22,20,15,.2);box-shadow:0 26px 54px -40px rgba(22,20,15,.5);
+  padding:clamp(28px,3vw,40px) clamp(26px,2.8vw,38px);
   transition:box-shadow .3s ease,transform .3s ease}
 .origin:hover{color:var(--text);transform:translateY(-3px);
   box-shadow:0 38px 70px -40px rgba(22,20,15,.62)}
+/* THE CARD IS LIGHT AND IT SITS INSIDE `.on-dark`, which is a trap rather than a detail.
+   `.on-dark .t-label` and `.on-dark .link-arrow` are both (0,2,0) and would paint the kicker in
+   the dark-ground muted and the link in gold, so the kicker would be light on a light card and
+   the link would be gold on cream, which measures 2.00 and is the one thing the brand forbids
+   outright. These restate the light-ground values at the same specificity, and win on order
+   because this block comes after the linked stylesheet. */
+.origin .t-label{color:var(--text-accent)}
+.origin .link-arrow{color:var(--text-accent);--ul:rgba(122,90,32,.4)}
+.origin .link-arrow:hover{--ul:var(--text-accent)}
 /* The card is one big <a>, so every word inside it was being underlined: the kicker, the
    headline, the dek and the standfirst. text-decoration inherits into descendants, and a link
    the size of a card is not a link anyone expects to look like one. Only text-decoration is
    cleared, so .link-arrow keeps the painted rule that is how this system draws a link, which is a
    background rather than a border and was never at risk from this reset anyway. */
 .origin,.origin *{text-decoration:none}
-.origin-copy{padding:clamp(34px,4vw,52px) clamp(30px,3.6vw,54px)}
-.origin-kicker{display:block;margin:0 0 22px;color:var(--text-accent)}
-.origin h2{margin:10px 0 0;font:400 clamp(30px,3.8vw,48px)/1.04 var(--serif);
+.origin-kicker{display:block;margin:0 0 16px;color:var(--text-accent)}
+.origin h2{margin:0;font:400 clamp(27px,2.7vw,36px)/1.06 var(--serif);
   letter-spacing:-.02em;text-wrap:balance}
-.origin .dek{margin:14px 0 0;font:italic 400 clamp(17px,1.7vw,20px)/1.45 var(--serif);
+.origin .dek{margin:12px 0 0;font:italic 400 clamp(16px,1.5vw,18px)/1.45 var(--serif);
   color:var(--text-accent)}
-/* Body copy inside the card, and NOT the two labels in it.
-   `.origin p` used to reach every paragraph here, including the kicker and the thesis label, both
-   of which carry `.t-label`. At (0,1,1) it beat `.t-label` at (0,1,0) and replaced the whole font
-   shorthand, so the two labels rendered at 17px/400: the same size and weight as the body paragraph
-   beside them, distinguishable only by the uppercase and the tracking `.t-label` still supplied.
-   Every other eyebrow on the site is 11px, so this was an accident rather than a treatment.
-   `.origin-kicker` and `.thesis-card .k` set display, margin and colour only, which is how a
-   modifier is written: they always assumed a base class, and the base was being eaten.
-   The exclusion protects any `.t-label` added here later, which naming the body paragraph would
-   not have done.
-
-   IT IS `:not(:where(...))` AND NOT `:not(...)`, WHICH MATTERS. A bare `:not(.t-label)` counts its
-   argument, taking this rule to (0,2,1), which then beats `.thesis-card .q` at (0,2,0) and strips
-   the pull quote of its serif. Fixing a specificity collision by raising specificity just moves it
-   onto the next rule along. `:where()` contributes nothing, so this matches the same elements and
-   stays at (0,1,1), exactly where it was. */
-.origin p:not(:where(.t-label)){margin:18px 0 0;font:400 clamp(16px,1.5vw,17px)/1.62 var(--sans);
-  color:var(--text-body);max-width:56ch}
+/* The card has no body paragraph any more. `.origin p` used to set one, and it reached the
+   two labels as well: at (0,1,1) it beat `.t-label` at (0,1,0) and replaced the whole font
+   shorthand, so both rendered at 17px/400, the same size and weight as the body copy beside
+   them. That was fixed on 2026-08-30 with `:not(:where(.t-label))`, and the standfirst moved
+   off the card entirely on 2026-08-31, which leaves the rule matching nothing it styles.
+   Deleted rather than kept, because a body-copy rule inside a card with no body copy is the
+   trap reloaded: the next paragraph added here would inherit a collision nobody chose. */
 .origin .link-arrow{display:inline-flex;margin-top:22px}
-/* The dark half. The gold bar is a border rather than an absolutely positioned div: the same
-   4px the design draws, one fewer element to keep in place. */
-.thesis-card{display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(34px,4vw,52px) clamp(30px,3.6vw,46px);background:var(--ink2);
-  border-left:4px solid var(--gold)}
-.thesis-card .k{display:block;margin:0 0 20px;color:var(--gold)}
-.thesis-card .q{margin:0;font:300 clamp(24px,2.7vw,33px)/1.2 var(--serif);
-  letter-spacing:-.01em;color:var(--cream)}
+/* The thesis, as a ruled pull quote rather than the dark half of a two-up.
+   It used to be an ink panel beside the copy, which worked on the sand band the card used to sit
+   in. In the hero it would be a dark block inside a light card on a dark ground, three layers
+   deep and reading as a hole in the card. The gold survives as the rule, which is what gold is
+   for on a light ground: a fill or a border, never text. The label takes bronze. */
+.origin-thesis{margin:20px 0 0;padding:1px 0 1px 17px;border-left:3px solid var(--gold)}
+.origin-thesis .k{display:block;margin:0 0 7px;color:var(--text-accent)}
+.origin-thesis .q{margin:0;font:400 clamp(17px,1.7vw,21px)/1.3 var(--serif);
+  letter-spacing:-.01em;color:var(--text)}
 
 /* Released pieces. */
 .live{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
@@ -228,34 +241,33 @@
 
   <section class="hero bg-ink on-dark">
     <div class="mark-layer" aria-hidden="true"><div class="mark-col"><svg class="hero-mark" data-mark viewBox="0 0 394 321" aria-hidden="true"><path d="M394 0V320H274V104L394 0Z"></path><path d="M125 104V321H5V215.047L125 104Z"></path><path d="M274 104L196 162L0 1H155.229L274 104Z"></path></svg></div></div>
-    <div class="inner">
-      <p class="t-eyebrow">The MargaZine&trade;</p>
-      <h1>The perspective, in full.</h1>
-      <p class="t-lead lead">Ideas that name what the industry already feels, reframe
-      familiar problems, and turn a trend into a decision. Published ungated, two pieces a
-      week.</p>
-    </div>
-  </section>
+    <div class="inner hero-grid">
+      <div class="hero-copy">
+        <p class="t-eyebrow">The MargaZine&trade;</p>
+        <h1>The perspective, in full.</h1>
+        <p class="t-lead lead">Ideas that name what the industry already feels, reframe
+        familiar problems, and turn a trend into a decision. Published ungated, two pieces a
+        week.</p>
+      </div>
+      <!-- The origin card sits beside the hero rather than in a band under it. It used to open
+           its own full-width section, which pushed the essay index to 1193px on a 1280x860
+           screen: 333px below the fold, so a reader who did not scroll never learned the index
+           existed. The hero's right half was empty except the watermark, which is where a
+           feature card belongs.
 
-  <section class="section bg-sand2">
-    <div class="inner">
+           The essay's standfirst is not repeated here. The dek carries the same promise in one
+           line, and the two together made the card tall enough to push the index back under the
+           fold, which is the whole reason for the move. It is still on the essay itself. -->
       <a class="origin" href="/the-long-way-around.html">
-        <div class="origin-copy">
-          <p class="t-label origin-kicker">Origin essay &middot; 7 min</p>
-          <h2>Why I Started Marga Partners</h2>
-          <!-- The prototype's dek reads "Why I started Marga." under a title that already
-               says "Why I Started Marga Partners", so it restates the headline. This is the
-               essay's own standfirst, the one its meta description has always carried. -->
-          <p class="dek">Raising the standard of an industry I grew up inside.</p>
-          <p>Why development and commercialization were never two disciplines, and what
-          thirteen years of watching good products lose taught me about the difference.</p>
-          <span class="link-arrow">Read the essay &rarr;</span>
-        </div>
-        <div class="thesis-card on-dark">
+        <p class="t-label origin-kicker">Origin essay &middot; 7 min</p>
+        <h2>Why I Started Marga Partners</h2>
+        <p class="dek">Raising the standard of an industry I grew up inside.</p>
+        <blockquote class="origin-thesis">
           <p class="t-label k">The thesis</p>
           <p class="q">The best product rarely wins. The best connected set of decisions
           does.</p>
-        </div>
+        </blockquote>
+        <span class="link-arrow">Read the essay &rarr;</span>
       </a>
     </div>
   </section>

@@ -139,7 +139,23 @@
   letter-spacing:-.02em;text-wrap:balance}
 .origin .dek{margin:14px 0 0;font:italic 400 clamp(17px,1.7vw,20px)/1.45 var(--serif);
   color:var(--text-accent)}
-.origin p{margin:18px 0 0;font:400 clamp(16px,1.5vw,17px)/1.62 var(--sans);
+/* Body copy inside the card, and NOT the two labels in it.
+   `.origin p` used to reach every paragraph here, including the kicker and the thesis label, both
+   of which carry `.t-label`. At (0,1,1) it beat `.t-label` at (0,1,0) and replaced the whole font
+   shorthand, so the two labels rendered at 17px/400: the same size and weight as the body paragraph
+   beside them, distinguishable only by the uppercase and the tracking `.t-label` still supplied.
+   Every other eyebrow on the site is 11px, so this was an accident rather than a treatment.
+   `.origin-kicker` and `.thesis-card .k` set display, margin and colour only, which is how a
+   modifier is written: they always assumed a base class, and the base was being eaten.
+   The exclusion protects any `.t-label` added here later, which naming the body paragraph would
+   not have done.
+
+   IT IS `:not(:where(...))` AND NOT `:not(...)`, WHICH MATTERS. A bare `:not(.t-label)` counts its
+   argument, taking this rule to (0,2,1), which then beats `.thesis-card .q` at (0,2,0) and strips
+   the pull quote of its serif. Fixing a specificity collision by raising specificity just moves it
+   onto the next rule along. `:where()` contributes nothing, so this matches the same elements and
+   stays at (0,1,1), exactly where it was. */
+.origin p:not(:where(.t-label)){margin:18px 0 0;font:400 clamp(16px,1.5vw,17px)/1.62 var(--sans);
   color:var(--text-body);max-width:56ch}
 .origin .link-arrow{display:inline-flex;margin-top:22px}
 /* The dark half. The gold bar is a border rather than an absolutely positioned div: the same

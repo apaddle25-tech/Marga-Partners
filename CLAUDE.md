@@ -234,3 +234,13 @@ python3 -m http.server 8000
 Check both light rendering and mobile width before committing. A publish from
 `margazine-build` may land between your commit and your push, so rebase rather than
 merge if the push is rejected.
+
+## AGENTS.md, and the second model
+
+Added 2026-09-05. `AGENTS.md` in this repo is a symlink to this file. Claude reads `CLAUDE.md`,
+Codex and tools following that convention read `AGENTS.md`, and both get these rules from one
+place. Edit this file. The link needs nothing.
+
+**This repo may be handed to a second model whole.** It holds no engine material. The exception is
+`p5-studio-backend`, which holds the scoring engine and is reviewed as a diff instead. That split
+is the operative rule, and the reasoning behind it sits in `p5-studio-backend/CLAUDE.md`.

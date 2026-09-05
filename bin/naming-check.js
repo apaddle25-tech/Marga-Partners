@@ -19,7 +19,7 @@
 // string, and the p5-studio repository name are identifiers. Renaming them
 // breaks deployments, signs out every member, or rewrites the provenance on
 // deliverables already sent to clients.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, lstatSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -106,6 +106,16 @@ const EXTS = new Set(config.scan.extensions);
 const ALLOW = config.scan.allowlist.map((a) => a.path);
 const NEVER = config.neverReplace.map((n) => new RegExp(n.pattern, 'g'));
 
+
+// A symlink's tracked content is the target PATH, not the target's bytes. Reading through it scans
+// the target a second time under a name whose exemptions were never written, so the same content
+// passes at one path and fails at the other. AGENTS.md is a symlink to CLAUDE.md in four repos for
+// exactly that reason. The target is tracked and scanned on its own, so skipping the link loses
+// nothing. Added 2026-09-05.
+const notSymlink = (f) => {
+  try { return !lstatSync(path.join(ROOT, f)).isSymbolicLink(); } catch { return true; }
+};
+
 /** Files git knows about, so build output and node_modules never appear. */
 function trackedFiles() {
   const cmd = STAGED
@@ -118,7 +128,7 @@ function trackedFiles() {
   // EMAIL_FROM, which becomes the From header on real mail, and path.extname
   // returns ".example" so no extension rule could ever reach it.
   const extra = new Set(config.scan.extraFiles || []);
-  return tracked.filter((f) => EXTS.has(path.extname(f)) || extra.has(f));
+  return tracked.filter((f) => notSymlink(f) && (EXTS.has(path.extname(f)) || extra.has(f)));
 }
 
 const isAllowed = (file) => ALLOW.some((a) => (a.endsWith('/') ? file.startsWith(a) : file === a));
